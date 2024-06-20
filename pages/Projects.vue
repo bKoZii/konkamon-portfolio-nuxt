@@ -1,0 +1,58 @@
+<template>
+  <div>
+    <div class="flex flex-col flex-nowrap gap-10">
+      <article class="prose dark:prose-invert">
+        <h2>Projects</h2>
+        <p>รวมโปรเจค / ชิ้นงาน ต่างๆ -- ผมเป็นคนที่ชอบทำงาน / โปรเจคอะไรเล็กๆ น้อยๆ โดย List ต่อไปนี้จะเลือกเฉพาะงานที่พอจะนำมาเสนอได้</p>
+      </article>
+      <section class="flex flex-col space-y-3 text-black dark:text-white rounded-lg gap-3">
+        <div v-for="work in workList" :key="work.name" class="flex items-end justify-between space-x-2">
+          <ProjectListItem :work-data="work" />
+        </div>
+      </section>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import type workListInterface from '~/types/workListInterface'
+
+const workList: workListInterface[] = [
+  {
+    name: 'Ionic + Angular - Firebase CRUD ',
+    description: 'ชิ้นงาน Ionic ประจำรายวิชา การพัฒนาคลาวด์แอปพลิเคชัน',
+    icon: 'ph:device-mobile-camera-duotone',
+    link: 'https://github.com/bKoZii/cloud-konkamon-ionic-angular'
+  },
+
+  {
+    name: 'Ionic + Vue - Firebase CRUD',
+    description: 'ชิ้นงาน Ionic ประจำรายวิชา การพัฒนาคลาวด์แอปพลิเคชัน',
+    icon: 'ph:device-mobile-camera-duotone',
+    link: 'https://github.com/bKoZii/cloud-konkamon-ionic-vue'
+  },
+  {
+    name: 'Dashboard from Mock Up',
+    description: 'ฝึกการสร้าง Dashboard โดยลอกจากงาน Design ด้วย Vue / Quasar',
+    icon: 'ic:twotone-dashboard'
+  },
+  {
+    name: 'Angular Website',
+    description: 'Angular + Bootstrap - ชิ้นงานประจำรายวิชา การพัฒนาคลาวด์แอปพลิเคชัน',
+    icon: 'ph:globe-simple-duotone',
+    link: 'https://github.com/bKoZii/cloud-konkamon-bootstrap'
+  },
+  {
+    name: 'Vue + Vuetify - Firestore CRUD',
+    description: 'ศึกษาการใช้งาน Vuetify ในการสร้างแอพ CRUD',
+    icon: 'mdi:vuetify',
+    link: 'https://github.com/bKoZii/vuetify-firestore-crud'
+  }
+]
+
+useSeoMeta({
+  title: 'รวมโปรเจค - Konkamon Sion'
+})
+</script>
+
+<style></style>

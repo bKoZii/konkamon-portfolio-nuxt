@@ -1,0 +1,84 @@
+<template>
+  <div
+    class="sticky container mx-auto max-w-[1000px] rounded-lg px-6 py-2 shadow-md z-10 bg-white bg-opacity-80 backdrop-blur-lg border dark:bg-neutral-900 dark:text-white dark:border-neutral-800"
+  >
+    <header class="flex items-center justify-between">
+      <nuxt-link id="myName" to="/" class="inline-flex items-center gap-2.5 text-xl font-extrabold" aria-label="logo"> KONKAMON </nuxt-link>
+      <nav class="hidden gap-5 lg:flex">
+        <div v-for="data in navItems" :key="data.name" class="inline-flex">
+          <nuxt-link
+            :to="data.link"
+            active-class="!text-primary border-b-2 border-primary-light"
+            class="group relative inline-flex text-gray-400 transition duration-100 hover:text-black active:text-indigo-700 dark:hover:text-white"
+          >
+            <Icon :name="data.icon" size="24px" mode="svg" />
+            <Label :msg="data.name" />
+          </nuxt-link>
+        </div>
+        <button class="inline-flex text-gray-400 group relative" @click="toggleTheme">
+          <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
+          <Label msg="Switch Theme" />
+        </button>
+      </nav>
+      <button
+        type="button"
+        class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:hidden"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        Menu
+      </button>
+    </header>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const navItems = [
+  {
+    name: 'Home',
+    link: '/',
+    icon: 'ph:house-duotone'
+  },
+  {
+    name: 'Projects',
+    link: '/Projects',
+    icon: 'ph:folder-open-duotone'
+  },
+  {
+    name: "What's In My Bag?",
+    link: '/WhatIsInMyBag',
+    icon: 'ph:backpack-duotone'
+  }
+]
+
+const isDark = ref(false)
+
+const checkSystemPreference = () => {
+  isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  document.documentElement.classList.toggle('dark', isDark.value)
+}
+
+const toggleTheme = () => {
+  isDark.value = !isDark.value
+  document.documentElement.classList.toggle('dark', isDark.value)
+  localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+}
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem('theme')
+  if (savedTheme) {
+    isDark.value = savedTheme === 'dark'
+  } else {
+    checkSystemPreference()
+  }
+  document.documentElement.classList.toggle('dark', isDark.value)
+})
+</script>
