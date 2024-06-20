@@ -9,9 +9,9 @@
           <nuxt-link
             :to="data.link"
             active-class="!text-primary border-b-2 border-primary-light"
-            class="group relative inline-flex text-gray-400 transition duration-100 hover:text-black active:text-indigo-700 dark:hover:text-white"
+            class="group relative inline-flex text-gray-400 transition duration-100 hover:text-black dark:hover:text-white"
           >
-            <Icon :name="data.icon" size="24px" mode="svg" />
+            <Icon :name="data.icon" size="24px" mode="svg" class="active:scale-90" />
             <Label :msg="data.name" />
           </nuxt-link>
         </div>
