@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-lg font-bold text-gray-600 mb-6">Framework / Library ที่เคยใช้งาน</h2>
+    <h2 class="text-lg font-bold text-gray-500 mb-6">Framework / Library ที่เคยใช้งาน</h2>
     <div class="flex flex-row flex-wrap justify-center gap-2 text-gray-600 dark:text-white">
       <div v-for="list in frameworkList" class="inline-flex select-none">
         <div class="group relative inline-flex">
