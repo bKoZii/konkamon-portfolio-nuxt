@@ -66,6 +66,9 @@ const bookmarkItem: BookmarkItemsInterface[] = [
     description: 'วัดความเร็วในการพิมพ์ มีลูกเล่นมากมาย Customize ได้หลากหลาย'
   }
 ]
+useSeoMeta({
+  title: 'Bookmarks - Konkamon Sion'
+})
 </script>
 
 <style></style>
