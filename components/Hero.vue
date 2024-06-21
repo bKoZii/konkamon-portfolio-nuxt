@@ -15,8 +15,8 @@
           Download CV <Icon name="ph:file-text-fill" mode="svg" size="24px" />
         </button>
       </div>
-      <div class="lg:max-w-lg w-1/2">
-        <img class="object-contain object-center rounded-lg shadow-md" alt="hero" src="/me-rmutsv-square.webp" />
+      <div class="lg:max-w-lg w-fit sm:w-1/2">
+        <NuxtImg src="/me-rmutsv-square.webp" class="object-contain object-center rounded-lg shadow-md" width="100%" height="100%" />
       </div>
     </div>
   </section>
