@@ -3,22 +3,17 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
-  modules: [
-    "nuxt-typed-router",
-    "@nuxtjs/tailwindcss",
-    "@nuxtjs/google-fonts",
-    "@nuxt/icon",
-    "@nuxt/eslint",
-  ],
+  modules: ['nuxt-typed-router', '@nuxtjs/tailwindcss', '@nuxtjs/google-fonts', '@nuxt/icon', '@nuxt/eslint'],
   app: {
-    pageTransition: { name: "page", mode: "out-in" },
-    head:{
-      htmlAttrs:{
+    pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      htmlAttrs: {
         lang: 'th'
       },
       charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1'
-    },
+      viewport: 'width=device-width, initial-scale=1',
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
+    }
   },
   googleFonts: {
     families: {
@@ -26,20 +21,20 @@ export default defineNuxtConfig({
         wght: [400, 500, 600, 700, 800, 900]
       },
       'Noto Sans Thai Looped': {
-        wght: [400, 500, 600, 700, 800, 900],
+        wght: [400, 500, 600, 700, 800, 900]
       },
       'Rubik Mono One': true
     }
   },
   tailwindcss: {
-    configPath: 'tailwind.config.ts',
+    configPath: 'tailwind.config.ts'
   },
   icon: {
     customCollections: [
       {
         prefix: 'my-icon',
         dir: './assets/icons'
-      },
-    ],
-  },
+      }
+    ]
+  }
 })
