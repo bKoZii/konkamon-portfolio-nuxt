@@ -38,9 +38,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useRoute } from 'vue-router'
-
-const route = useRoute()
 const navItems = [
   {
     name: 'Home',
@@ -56,6 +53,11 @@ const navItems = [
     name: "What's In My Bag?",
     link: '/WhatIsInMyBag',
     icon: 'ph:backpack-duotone'
+  },
+  {
+    name: 'Bookmarks',
+    link: '/Bookmarks',
+    icon: 'ph:bookmark-duotone'
   }
 ]
 
