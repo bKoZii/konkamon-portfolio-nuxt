@@ -1,23 +1,16 @@
 <template>
-  <div>
-    <!-- <button class="inline-flex text-gray-400 group relative hover:text-gray-900 dark:hover:text-gray-100" @click="isDark = !isDark">
-      <UTooltip text="Toggle Theme" :popper="{ strategy: 'absolute' }">
-        <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
-      </UTooltip> -->
+  <div class="inline-flex">
     <ClientOnly>
-      <UButton
-        :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
-        color="gray"
-        variant="ghost"
-        aria-label="Theme"
-        :padded="false"
-        @click="isDark = !isDark"
-      />
+      <UTooltip text="Toggle Theme" :popper="{ strategy: 'absolute' }">
+        <button class="inline-flex text-gray-400 group relative hover:text-gray-900 dark:hover:text-gray-100" @click="isDark = !isDark">
+          <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
+        </button>
+      </UTooltip>
+
       <template #fallback>
-        <USkeleton class="h-5 w-5" :ui="{ rounded: 'rounded-full' }" />
+        <USkeleton class="h-6 w-6" :ui="{ rounded: 'rounded-full' }" />
       </template>
     </ClientOnly>
-    <!-- </button> -->
   </div>
 </template>
 
