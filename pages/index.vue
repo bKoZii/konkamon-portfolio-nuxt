@@ -3,7 +3,7 @@
     <div class="flex flex-col flex-nowrap gap-10">
       <Hero />
       <AboutMe />
-      <FrameworksList />
+      <Technology />
       <SocialLinks />
       <FeaturedWork />
     </div>
