@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="flex flex-col">
+    <div class="flex flex-col dark:text-gray-200">
       <h3 class="font-bold">{{ title }}</h3>
       <div class="flex flex-row gap-1">
         <div v-for="item in technologyData" :key="item.name">
-          <Icon :name="item.icon" mode="svg" size="36px" />
+          <UTooltip :text="item.name">
+            <UIcon :name="item.icon" dynamic size="36px" />
+          </UTooltip>
         </div>
       </div>
     </div>

@@ -3,21 +3,24 @@
     class="sticky container mx-auto max-w-[1000px] rounded-lg px-6 py-2 shadow-md z-10 bg-white bg-opacity-80 backdrop-blur-lg border dark:bg-neutral-900 dark:text-white dark:border-neutral-800"
   >
     <header class="flex items-center justify-between">
-      <nuxt-link id="myName" to="/" class="inline-flex items-center gap-2.5 text-xl font-extrabold" aria-label="logo"> KONKAMON </nuxt-link>
+      <ULink id="myName" to="/" class="inline-flex items-center gap-2.5 text-xl font-extrabold" aria-label="logo"> KONKAMON </ULink>
       <nav class="hidden gap-5 lg:flex">
         <div v-for="data in navItems" :key="data.name" class="inline-flex">
-          <nuxt-link
-            :to="data.link"
-            active-class="!text-primary border-b-2 border-primary-light"
-            class="group relative inline-flex text-gray-400 transition duration-100 hover:text-black dark:hover:text-white"
-          >
-            <Icon :name="data.icon" size="24px" mode="svg" class="active:scale-90" />
-            <Label :msg="data.name" />
-          </nuxt-link>
+          <UTooltip :text="data.name" :ui="{ popper: { strategy: 'absolute' } }">
+            <ULink
+              :to="data.link"
+              active-class="text-primary"
+              class="group relative inline-flex text-gray-400 transition duration-100 hover:text-gray-800 dark:hover:text-white"
+            >
+              <Icon :name="data.icon" size="24px" mode="svg" class="active:scale-90" />
+            </ULink>
+          </UTooltip>
         </div>
-        <button class="inline-flex text-gray-400 group relative" @click="toggleTheme">
-          <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
-          <Label msg="Switch Theme" />
+        <UDivider orientation="vertical" />
+        <button class="inline-flex text-gray-400 group relative hover:text-gray-900 dark:hover:text-gray-100" @click="toggleTheme">
+          <UTooltip text="Toggle Theme" :popper="{ strategy: 'absolute' }">
+            <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
+          </UTooltip>
         </button>
       </nav>
       <button

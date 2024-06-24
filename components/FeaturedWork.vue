@@ -1,17 +1,12 @@
 <template>
   <div>
-    <div>
-      <h2 class="text-lg font-bold text-gray-500 mb-6">Featured Work</h2>
-    </div>
+    <h2 class="text-lg font-bold text-gray-500 mb-6">Featured Work</h2>
     <div class="flex flex-col space-y-3 text-black dark:text-white rounded-lg gap-3">
       <div v-for="work in workList" :key="work.name" class="flex items-end justify-between space-x-2">
         <ProjectListItem :work-data="work" />
       </div>
-      <div class="flex justify-center py-3">
-        <nuxt-link to="/Projects" class="flex items-center gap-2 text-primary ring-primary px-5 py-1 rounded hover:underline">
-          All Project
-          <Icon name="ph:arrow-right-light" size="20px" />
-        </nuxt-link>
+      <div class="flex justify-center">
+        <UButton to="/Projects" label="All Projects" variant="ghost" icon="ph:arrow-right-light" trailing />
       </div>
     </div>
   </div>

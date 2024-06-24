@@ -4,9 +4,10 @@
       <h2 class="text-2xl font-bold mb-2 dark:text-white">What's in my bag?</h2>
       <p class="text-gray-500">รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้</p>
     </div>
-    <div class="flex flex-col flex-nowrap gap-8">
+    <div class="flex flex-col flex-nowrap gap-12">
       <div>
-        <Divider msg="Hardware" />
+        <!-- <Divider msg="Hardware" /> -->
+        <UDivider label="Hardware" class="mb-3" />
         <div class="flex flex-col gap-5">
           <div v-for="data in hardwareList" :key="data.name">
             <WhatIsInMyBagItemContainer :data-input="[data]" />
@@ -14,7 +15,7 @@
         </div>
       </div>
       <div>
-        <Divider msg="Software" />
+        <UDivider label="Software" class="mb-3" />
         <div class="flex flex-col gap-5">
           <div v-for="sData in softwareInfo" :key="sData.name">
             <WhatIsInMyBagItemContainer :data-input="[sData]" />
