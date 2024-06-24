@@ -17,11 +17,7 @@
           </UTooltip>
         </div>
         <UDivider orientation="vertical" />
-        <button class="inline-flex text-gray-400 group relative hover:text-gray-900 dark:hover:text-gray-100" @click="toggleTheme">
-          <UTooltip text="Toggle Theme" :popper="{ strategy: 'absolute' }">
-            <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
-          </UTooltip>
-        </button>
+        <NavbarThemeSwitch />
       </nav>
       <button
         type="button"
@@ -63,27 +59,4 @@ const navItems = [
     icon: 'ph:bookmark-duotone'
   }
 ]
-
-const isDark = ref(false)
-
-const checkSystemPreference = () => {
-  isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-  document.documentElement.classList.toggle('dark', isDark.value)
-}
-
-const toggleTheme = () => {
-  isDark.value = !isDark.value
-  document.documentElement.classList.toggle('dark', isDark.value)
-  localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
-}
-
-onMounted(() => {
-  const savedTheme = localStorage.getItem('theme')
-  if (savedTheme) {
-    isDark.value = savedTheme === 'dark'
-  } else {
-    checkSystemPreference()
-  }
-  document.documentElement.classList.toggle('dark', isDark.value)
-})
 </script>
