@@ -1,8 +1,8 @@
 <template>
   <div class="inline-flex">
     <ClientOnly>
-      <UTooltip text="Toggle Theme" :popper="{ strategy: 'absolute' }">
-        <button class="inline-flex text-gray-400 group relative hover:text-gray-900 dark:hover:text-gray-100" @click="isDark = !isDark">
+      <UTooltip :text="tooltipText">
+        <button class="inline-flex text-gray-400 group relative hover:text-gray-900 dark:hover:text-gray-100" @click="swtichTheme()">
           <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
         </button>
       </UTooltip>
@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+const tooltipText = ref('Switch Theme')
 const colorMode = useColorMode()
 const isDark = computed({
   get() {
@@ -25,6 +26,17 @@ const isDark = computed({
   }
 })
 
+const swtichTheme = () => {
+  isDark.value = !isDark.value
+  switchText()
+}
+
+const switchText = () => {
+  tooltipText.value = 'Switched!'
+  setTimeout(() => {
+    tooltipText.value = 'Switch Theme'
+  }, 2000)
+}
 onMounted(() => {
   console.log(isDark)
 })
