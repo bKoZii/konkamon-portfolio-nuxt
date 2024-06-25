@@ -6,7 +6,6 @@
     </div>
     <div class="flex flex-col flex-nowrap gap-12">
       <div>
-        <!-- <Divider msg="Hardware" /> -->
         <UDivider label="Hardware" class="mb-3" />
         <div class="flex flex-col gap-5">
           <div v-for="data in hardwareList" :key="data.name">
