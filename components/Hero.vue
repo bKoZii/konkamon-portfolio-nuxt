@@ -6,13 +6,13 @@
         <h1 class="sm:text-4xl text-3xl mb-2 font-bold">นาย กรกมล ศรีอ่อน</h1>
         <p class="font mb-8">นักศึกษา มหาวิทยาลัยเทคโนโลยีราชมงคลศรีวิชัย คณะวิทยาศาสตร์และเทคโนโลยี แผนกเทคโนโลยีสารสนเทศ</p>
         <UButton
-          @click="toast.add({ title: 'Coming Soon!', icon: 'mdi:information' })"
+          @click="downloadCV()"
           icon="ph:file-text-fill"
           class="p-2 hover:scale-105 transition-transform active:scale-100"
           color="primary"
           size="lg"
           block
-          >Download CV</UButton
+          >Download CV - Thai</UButton
         >
       </div>
       <div class="lg:max-w-lg w-fit sm:w-1/2">
@@ -24,7 +24,12 @@
 </template>
 
 <script lang="ts" setup>
-const toast = useToast()
+const downloadCV = () => {
+  const link = document.createElement('a')
+  link.href = '/Resume_กรกมล_ศรีอ่อน.pdf'
+  link.download = 'Resume_กรกมล_ศรีอ่อน.pdf'
+  link.click()
+}
 </script>
 
 <style></style>
