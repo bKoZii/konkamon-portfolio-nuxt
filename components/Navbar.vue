@@ -9,8 +9,8 @@
           <UTooltip :text="data.name" :ui="{ popper: { strategy: 'absolute' } }">
             <ULink
               :to="data.link"
-              active-class="text-primary"
-              class="inline-flex text-gray-600 transition duration-100 hover:text-gray-900 dark:hover:text-white"
+              active-class="text-primary dark:text-primary"
+              class="inline-flex text-gray-600 dark:text-gray-100 transition duration-100 hover:text-gray-900 dark:hover:text-white"
             >
               <icon :name="data.icon" size="24px" mode="svg" class="active:scale-90" />
             </ULink>
