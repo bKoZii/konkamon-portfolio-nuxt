@@ -2,7 +2,7 @@
   <div class="inline-flex">
     <ClientOnly>
       <UTooltip :text="tooltipText" :popper="{ strategy: 'absolute' }">
-        <button class="inline-flex text-gray-600 dark:text-gray-100 hover:text-gray-900 dark:hover:text-gray-100" @click="swtichTheme()">
+        <button class="inline-flex text-gray-600 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-100" @click="swtichTheme()">
           <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
         </button>
       </UTooltip>

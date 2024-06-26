@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 class="text-lg font-bold text-gray-500 mb-3">Technology</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-gray-800 gap-5 lg:gap-0">
+    <h2 class="mb-3 text-lg font-bold text-gray-500">Technology</h2>
+    <div class="grid grid-cols-1 gap-5 text-gray-800 sm:grid-cols-2 lg:grid-cols-3 lg:gap-0">
       <TechnologyGridItems title="Languages" :technology-data="languageList" />
       <TechnologyGridItems title="Frameworks" :technology-data="frameworkList" />
       <TechnologyGridItems title="Softwares / Services" :technology-data="softwareList" />

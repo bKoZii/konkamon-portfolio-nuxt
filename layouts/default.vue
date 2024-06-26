@@ -1,11 +1,11 @@
 <template>
   <div
-    class="fixed inset-0 h-full w-full bg-slate-200 dark:bg-neutral-950 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:42px_42px]"
+    class="fixed inset-0 h-full w-full bg-slate-200 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:42px_42px] dark:bg-neutral-950"
   ></div>
 
-  <UContainer class="max-w-[850px] py-5 flex flex-col gap-5 flex-nowrap">
+  <UContainer class="flex max-w-[850px] flex-col flex-nowrap gap-5 py-5">
     <Navbar />
-    <main class="bg-white dark:bg-neutral-900 p-3 lg:p-8 border rounded-lg dark:border-neutral-800 drop-shadow-md dark:drop-shadow-none">
+    <main class="rounded-lg border bg-white p-3 drop-shadow-md lg:p-8 dark:border-neutral-800 dark:bg-neutral-900 dark:drop-shadow-none">
       <slot />
     </main>
     <Footer />

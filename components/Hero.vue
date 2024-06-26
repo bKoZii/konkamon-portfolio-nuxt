@@ -1,21 +1,21 @@
 <template>
-  <section class="text-gray-600 body-font mb-0 lg:mb-5">
-    <UContainer class="flex justify-between pt-4 flex-col-reverse lg:flex-row items-center gap-5" :ui="{ padding: 'px-0 lg:px-0', base: 'mx-auto' }">
-      <div class="lg:flex-grow flex flex-col mb-16 md:mb-0 items-center lg:items-start prose dark:prose-invert">
-        <h1 class="sm:text-4xl text-3xl mb-2 font-bold">นาย กรกมล ศรีอ่อน</h1>
+  <section class="body-font mb-0 text-gray-600 lg:mb-5">
+    <UContainer class="flex flex-col-reverse items-center justify-between gap-5 pt-4 lg:flex-row" :ui="{ padding: 'px-0 lg:px-0', base: 'mx-auto' }">
+      <div class="prose dark:prose-invert mb-16 flex flex-col items-center md:mb-0 lg:flex-grow lg:items-start">
+        <h1 class="mb-2 text-3xl font-bold sm:text-4xl">นาย กรกมล ศรีอ่อน</h1>
         <p class="font mb-8">นักศึกษา มหาวิทยาลัยเทคโนโลยีราชมงคลศรีวิชัย คณะวิทยาศาสตร์และเทคโนโลยี แผนกเทคโนโลยีสารสนเทศ</p>
         <UButton
           @click="downloadCV()"
           icon="ph:file-text-fill"
-          class="p-2 hover:scale-105 transition-transform active:scale-100"
+          class="p-2 transition-transform hover:scale-105 active:scale-100"
           color="primary"
           size="lg"
           block
           >Download CV - Thai</UButton
         >
       </div>
-      <div class="lg:max-w-[20rem] w-fit sm:w-1/2">
-        <NuxtImg src="/me-rmutsv-square.webp" class="object-contain object-center rounded-lg shadow-md" width="100%" height="100%" />
+      <div class="w-fit sm:w-1/2 lg:max-w-[20rem]">
+        <NuxtImg src="/me-rmutsv-square.webp" class="rounded-lg object-contain object-center shadow-md" width="100%" height="100%" />
       </div>
     </UContainer>
     <!-- </div> -->

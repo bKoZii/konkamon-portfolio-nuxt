@@ -4,11 +4,11 @@
       <h2>Bookmarks</h2>
       <p>รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ</p>
     </article>
-    <div class="flex flex-col flex-nowrap gap-3 mt-6">
+    <div class="mt-6 flex flex-col flex-nowrap gap-3">
       <div
         v-for="data in bookmarkItem"
         :key="data.name"
-        class="hover:bg-gray-200 dark:hover:bg-neutral-800 rounded-lg hover:shadow-md transition-all"
+        class="rounded-lg text-gray-500 transition-all hover:bg-gray-200 hover:text-gray-700 hover:shadow-md dark:hover:bg-neutral-800 hover:dark:text-gray-200"
       >
         <BookmarkItem :web-item="data" />
       </div>

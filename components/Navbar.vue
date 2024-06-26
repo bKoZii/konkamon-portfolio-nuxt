@@ -1,16 +1,16 @@
 <template>
   <div
-    class="sticky top-0 rounded-lg px-6 py-2 shadow-md z-10 bg-white bg-opacity-80 backdrop-blur-lg border dark:bg-neutral-900 dark:text-white dark:border-neutral-800"
+    class="sticky top-0 z-10 rounded-lg border bg-white bg-opacity-80 px-6 py-2 shadow-md backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-900 dark:text-white"
   >
-    <header class="flex items-center justify-between sm:justify-between xs:justify-center">
-      <ULink id="myName" to="/" class="hidden sm:inline-flex items-center gap-2.5 text-xl font-extrabold" aria-label="logo"> KONKAMON </ULink>
-      <nav class="gap-5 flex">
+    <header class="flex items-center justify-between xs:justify-center sm:justify-between">
+      <ULink id="myName" to="/" class="hidden items-center gap-2.5 text-xl font-extrabold sm:inline-flex" aria-label="logo"> KONKAMON </ULink>
+      <nav class="flex gap-5">
         <div v-for="data in navItems" :key="data.name" class="inline-flex">
           <UTooltip :text="data.name" :ui="{ popper: { strategy: 'absolute' } }">
             <ULink
               :to="data.link"
               active-class="text-primary dark:text-primary"
-              class="inline-flex text-gray-600 dark:text-gray-100 transition duration-100 hover:text-gray-900 dark:hover:text-white"
+              class="inline-flex text-gray-600 transition duration-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white"
             >
               <icon :name="data.icon" size="24px" mode="svg" class="active:scale-90" />
             </ULink>

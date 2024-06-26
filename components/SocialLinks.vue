@@ -7,13 +7,13 @@
       <div v-for="data in socialList" :key="data.name">
         <div class="flex items-center justify-between space-x-2">
           <div v-if="data.link">
-            <a :href="data.link" target="_blank" ref="noopener noreferrer" class="flex-shrink-0 text-lg hover:text-primary"
+            <a :href="data.link" target="_blank" ref="noopener noreferrer" class="flex gap-2 flex-shrink-0 text-lg hover:text-primary"
               >{{ data.name }}
               <Icon class="flex-shrink-0" name="mdi:launch" />
             </a>
           </div>
           <span class="border-b border-dashed border-gray-300 dark:border-neutral-700 flex-grow"></span>
-          <span class="flex-shrink-0 text-gray-600 dark:text-white">
+          <span class="flex-shrink-0 text-gray-800 dark:text-white">
             <Icon :name="data.icon" size="28px" mode="svg" />
           </span>
         </div>

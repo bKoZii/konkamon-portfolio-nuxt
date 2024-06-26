@@ -5,7 +5,7 @@
         <h2>Projects</h2>
         <p>รวมโปรเจค / ชิ้นงาน ต่างๆ -- ผมเป็นคนที่ชอบทำงาน / โปรเจคอะไรเล็กๆ น้อยๆ โดย List ต่อไปนี้จะเลือกเฉพาะงานที่พอจะนำมาเสนอได้</p>
       </article>
-      <section class="flex flex-col space-y-3 text-black dark:text-white rounded-lg gap-3">
+      <section class="flex flex-col gap-3 space-y-3 rounded-lg text-black dark:text-white">
         <div v-for="work in workList" :key="work.name" class="flex items-end justify-between space-x-2">
           <ProjectListItem :work-data="work" />
         </div>

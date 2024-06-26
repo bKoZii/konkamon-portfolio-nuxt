@@ -5,7 +5,7 @@
       :href="workData.link"
       target="_blank"
       ref="noopener noreferrer"
-      class="flex gap-2 flex-shrink-0 text-lg hover:text-primary"
+      class="hover:text-primary flex flex-shrink-0 gap-2 text-lg"
       >{{ workData.name }}
       <Icon name="mdi:launch" mode="svg" />
     </a>
@@ -15,8 +15,8 @@
     <span class="flex-shrink-0 text-sm text-gray-600 dark:text-gray-400">{{ workData.description }}</span>
   </div>
 
-  <span class="border-b border-dashed border-gray-300 dark:border-gray-700 flex-grow"></span>
-  <span class="flex gap-2 flex-shrink-0 text-gray-600 dark:text-white">
+  <span class="flex-grow border-b border-dashed border-gray-300 dark:border-gray-700"></span>
+  <span class="flex flex-shrink-0 gap-2 text-gray-800 dark:text-white">
     <Icon :name="workData.icon" size="36px" mode="svg" />
   </span>
 </template>
