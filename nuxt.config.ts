@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     enabled: true
   },
   ssr: true,
-  modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/content', '@nuxt/ui'],
+  modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui'],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
