@@ -1,6 +1,7 @@
 <template>
   <Html class="dark:bg-neutral-950" />
   <NuxtLayout>
+    <NuxtLoadingIndicator />
     <NuxtPage />
   </NuxtLayout>
   <UNotifications />
