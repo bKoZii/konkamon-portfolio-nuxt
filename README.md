@@ -5,7 +5,10 @@
 > [!NOTE]
 > At this time, this website is only available in Thai. English support will be added in the near future.
 
-See it live! : https://konkamon-nuxt.web.app
+## See it live!
+
+- Firebase's hosting (Static SSR) : [konkamon-nuxt.web.app](https://konkamon-nuxt.web.app)
+- Vercel : [konkamon.vercel.app](https://konkamon.vercel.app/)
 
 A Minimal Portfolio Website, Made with Nuxt 3 and Tailwind
 
