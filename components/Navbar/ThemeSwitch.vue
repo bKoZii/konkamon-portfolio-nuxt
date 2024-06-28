@@ -1,10 +1,12 @@
 <template>
   <div class="inline-flex">
     <ClientOnly>
-      <UTooltip :text="tooltipText" :popper="{ strategy: 'absolute' }">
-        <button class="inline-flex text-gray-600 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-100" @click="swtichTheme()">
-          <Icon :name="isDark ? 'ph:cloud-sun-duotone' : 'ph:moon-stars-duotone'" size="24px" />
-        </button>
+      <UTooltip text="Switch Theme" :popper="{ strategy: 'absolute' }">
+        <UButton square @click="switchColorMode" :padded="false" size="xl" color="black" variant="ghost" :icon="iconName" class="group">
+          <template #trailing>
+            <span class="hidden text-sm group-hover:block">{{ capitalize($colorMode.preference) }}</span>
+          </template>
+        </UButton>
       </UTooltip>
 
       <template #fallback>
@@ -15,30 +17,26 @@
 </template>
 
 <script lang="ts" setup>
-const tooltipText = ref('Switch Theme')
+import { capitalize } from 'vue'
 const colorMode = useColorMode()
-const isDark = computed({
-  get() {
-    return colorMode.value === 'dark'
-  },
-  set() {
-    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+
+const ColorModeList = ['light', 'dark', 'system'] as const
+type ColorMode = (typeof ColorModeList)[number]
+
+const switchColorMode = () => {
+  const currentIndex = ColorModeList.indexOf(colorMode.preference as ColorMode)
+  const nextIndex = (currentIndex + 1) % ColorModeList.length
+  colorMode.preference = ColorModeList[nextIndex]
+}
+
+const iconName = computed(() => {
+  const iconNameMap: Record<ColorMode, string> = {
+    system: 'monitor-duotone',
+    light: 'sun-duotone',
+    dark: 'moon-duotone'
   }
-})
-
-const swtichTheme = () => {
-  isDark.value = !isDark.value
-  switchText()
-}
-
-const switchText = () => {
-  tooltipText.value = 'Switched!'
-  setTimeout(() => {
-    tooltipText.value = 'Switch Theme'
-  }, 2000)
-}
-onMounted(() => {
-  console.log(isDark)
+  const iconName = colorMode.preference as ColorMode
+  return `ph:${iconNameMap[iconName]}`
 })
 </script>
 
