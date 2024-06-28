@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-10 rounded-lg border bg-white/80 px-6 py-2 shadow-md backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-900/85 dark:text-white"
+    class="sticky top-0 z-10 border-b bg-white/80 px-6 py-2 shadow-md backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-900/85 dark:text-white"
   >
     <header class="flex items-center justify-between xs:justify-center sm:justify-between">
       <ULink id="myName" to="/" class="hidden items-center gap-2.5 text-xl font-extrabold sm:inline-flex" aria-label="logo"> KONKAMON </ULink>
