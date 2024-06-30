@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui'],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
       htmlAttrs: {
         lang: 'th'
@@ -29,6 +30,7 @@ export default defineNuxtConfig({
     }
   },
   tailwindcss: {
+    cssPath: '~/assets/main.css',
     configPath: 'tailwind.config.ts'
   },
   icon: {
