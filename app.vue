@@ -1,7 +1,7 @@
 <template>
   <Html class="dark:bg-neutral-950" />
+  <NuxtLoadingIndicator />
   <NuxtLayout>
-    <NuxtLoadingIndicator />
     <NuxtPage />
   </NuxtLayout>
   <UNotifications />
@@ -37,5 +37,14 @@ useHead({
   opacity: 0;
   filter: blur(4px);
   transform: translateY(20px);
+}
+.layout-enter-active,
+.layout-leave-active {
+  transition: all 0.4s;
+}
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
 }
 </style>
