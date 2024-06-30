@@ -44,6 +44,11 @@ const navItems = [
     name: 'Bookmarks',
     link: '/Bookmarks',
     icon: 'ph:bookmark-duotone'
+  },
+  {
+    name: 'Resume',
+    link: '/Resume',
+    icon: 'ph:read-cv-logo-duotone'
   }
 ]
 </script>
