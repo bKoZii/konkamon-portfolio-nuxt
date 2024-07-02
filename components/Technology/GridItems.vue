@@ -4,7 +4,7 @@
       <h3 class="font-bold">{{ title }}</h3>
       <div class="flex flex-row gap-1">
         <div v-for="item in technologyData" :key="item.name">
-          <UTooltip :text="item.name" :popper="{ arrow: true }">
+          <UTooltip :text="item.name" :popper="{ arrow: true, strategy: 'absolute' }">
             <UIcon :name="item.icon" dynamic size="36px" />
           </UTooltip>
         </div>
