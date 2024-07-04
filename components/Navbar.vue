@@ -49,6 +49,11 @@ const navItems = [
     name: 'Resume',
     link: '/Resume',
     icon: 'ph:read-cv-logo-duotone'
+  },
+  {
+    name: 'Blog',
+    link: '/blog',
+    icon: 'ph:notebook-duotone'
   }
 ]
 </script>
