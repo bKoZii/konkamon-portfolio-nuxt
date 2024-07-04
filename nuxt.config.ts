@@ -5,7 +5,14 @@ export default defineNuxtConfig({
     enabled: true
   },
   ssr: true,
-  modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui'],
+
+  routeRules: {
+    '/blog': { isr: 3600 },
+    '/blog/**': { isr: true }
+  },
+
+  modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui', '@nuxtjs/sanity'],
+
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
@@ -40,5 +47,10 @@ export default defineNuxtConfig({
         dir: './assets/icons'
       }
     ]
+  },
+  compatibilityDate: '2024-07-04',
+  sanity: {
+    projectId: 'twzxgy2b',
+    minimal: true
   }
 })
