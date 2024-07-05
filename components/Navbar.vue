@@ -2,13 +2,13 @@
   <div
     class="sticky top-0 z-10 border-b bg-white/80 px-6 py-2 shadow-md backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-900/85 dark:text-white"
   >
-    <header class="flex items-center justify-between xs:justify-center sm:justify-between">
-      <ULink id="myName" to="/" class="hidden items-center gap-2.5 text-xl font-extrabold sm:inline-flex" aria-label="logo"> KONKAMON </ULink>
-      <nav class="flex gap-5">
-        <div v-for="data in navItems" :key="data.name" class="inline-flex">
-          <UTooltip :text="data.name" :ui="{ popper: { strategy: 'absolute' } }">
+    <header class="flex items-center justify-between xs:justify-between sm:justify-between">
+      <ULink id="myName" to="/" class="items-center gap-2.5 text-xl font-extrabold inline-flex" aria-label="logo"> KONKAMON </ULink>
+      <nav class="flex gap-5 ">
+        <div v-for="data in navItems" :key="data.label" class="hidden md:inline-flex self-center">
+          <UTooltip :text="data.label" :ui="{ popper: { strategy: 'absolute' } }">
             <ULink
-              :to="data.link"
+              :to="data.to"
               active-class="text-primary dark:text-primary dark:hover:text-primary hover:text-primary"
               class="inline-flex text-gray-600 transition duration-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white"
             >
@@ -16,43 +16,62 @@
             </ULink>
           </UTooltip>
         </div>
-        <UDivider orientation="vertical" />
+        <UDivider orientation="vertical" class="hidden md:block"/>
         <NavbarThemeSwitch />
+        <UButton class="inline-flex md:hidden" aria-label="Open" icon="ph:list" variant="ghost" color="black" @click="isSidebarOpen = true" />
+        <USlideover v-model="isSidebarOpen">
+          <div class="flex flex-1 flex-col gap-3 p-4">
+            <UButton
+              color="white"
+              variant="solid"
+              size="sm"
+              icon="ic:baseline-close"
+              class="absolute end-5 top-5 z-10 flex sm:hidden"
+              square
+              padded
+              @click="isSidebarOpen = false"
+            />
+            <ULink id="myName" to="/" class="text-2xl font-extrabold" aria-label="logo"> KONKAMON </ULink>
+            <UDivider/>
+            <UVerticalNavigation :links="navItems" :ui="{active:'text-primary',icon: { active: 'text-primary'}}" />
+          </div>
+        </USlideover>
       </nav>
     </header>
   </div>
 </template>
 
 <script lang="ts" setup>
+const isSidebarOpen = ref(false)
 const navItems = [
   {
-    name: 'Home',
-    link: '/',
+    label: 'Home',
+    to: '/',
     icon: 'ph:house-duotone'
   },
   {
-    name: 'Projects',
-    link: '/Projects',
+    label: 'Projects',
+    to: '/Projects',
     icon: 'ph:folder-open-duotone'
   },
   {
-    name: "What's In My Bag?",
-    link: '/WhatIsInMyBag',
+    label: "What's In My Bag?",
+    to: '/WhatIsInMyBag',
     icon: 'ph:backpack-duotone'
   },
   {
-    name: 'Bookmarks',
-    link: '/Bookmarks',
+    label: 'Bookmarks',
+    to: '/Bookmarks',
     icon: 'ph:bookmark-duotone'
   },
   {
-    name: 'Resume',
-    link: '/Resume',
+    label: 'Resume',
+    to: '/Resume',
     icon: 'ph:read-cv-logo-duotone'
   },
   {
-    name: 'Blog',
-    link: '/blog',
+    label: 'Blog',
+    to: '/blog',
     icon: 'ph:notebook-duotone'
   }
 ]
