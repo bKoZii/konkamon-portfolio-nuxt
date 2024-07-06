@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '/blog/**': { isr: true }
   },
 
-  modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui', '@nuxtjs/sanity'],
+  modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui', '@nuxtjs/sanity', 'dayjs-nuxt'],
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -50,7 +50,11 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-07-04',
   sanity: {
-    projectId: 'twzxgy2b',
+    projectId: process.env.SANITY_PROJECTID,
     minimal: true
+  },
+  dayjs: {
+    locales: ['th'],
+    defaultLocale: 'th'
   }
 })
