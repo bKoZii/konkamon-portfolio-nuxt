@@ -19,7 +19,8 @@ export interface MainImage {
 }
 
 export interface Asset {
-  _id: string
+  url: string,
+  _ref: string
 }
 
 export interface Slug {
