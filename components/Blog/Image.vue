@@ -1,19 +1,15 @@
 <template>
-  <SanityImage class="rounded-lg shadow w-full" :asset-id="asset._ref" auto="format" fit="fillmax" />
+  <SanityImage class="rounded-lg w-full" :asset-id="image._ref" auto="format" fit="fillmax" />
 </template>
 
-<script setup>
-// import { ref, computed } from 'vue';
-// import imageUrlBuilder from '@sanity/image-url';
+<script setup lang="ts">
+import type { MainImage } from '~/types/BlogInterface';
 
 const props = defineProps({
   asset: {
-    type: Object,
+    type: Object as () => MainImage["asset"],
     required: true
   }
 })
-
-// const { config } = useSanity();
-// const builder = imageUrlBuilder(config);
-// const url = computed(() => builder.image(props.asset._ref).url());
+const image = markRaw(props.asset)
 </script>
