@@ -1,11 +1,14 @@
 import type { Config } from 'tailwindcss'
-// import tailwindTypography from '@tailwindcss/typography'
+import tailwindTypography from '@tailwindcss/typography'
 export default <Partial<Config>>{
   content: [],
   css: ['~/assets/main.css'],
   darkMode: 'selector',
   theme: {
     extend: {
+      screens: {
+        xs: '400px'
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -27,10 +30,10 @@ export default <Partial<Config>>{
           DEFAULT: '#344C64',
           light: '#577B8D'
         }
+      },
+      fontFamily: {
+        sans: ['Outfit', 'Noto Sans Thai Looped', 'system-ui']
       }
-    },
-    fontFamily: {
-      sans: ['Outfit', 'Noto Sans Thai Looped', 'system-ui']
     }
   }
 }
