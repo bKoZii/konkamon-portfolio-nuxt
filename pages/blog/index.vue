@@ -54,7 +54,8 @@ title,
   _createdAt
 }
 | order(_createdAt desc)`
-const { data } = useSanityQuery<IBlogIndex>(query)
+const sanity = useSanity()
+const { data } = await useAsyncData('blogs', () => sanity.fetch<IBlogIndex>(query))
 useSeoMeta({
   title: 'Blog - Konkamon Sion'
 })
