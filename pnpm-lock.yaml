@@ -23,6 +23,9 @@ importers:
       '@nuxtjs/sanity':
         specifier: ^1.11.4
         version: 1.11.4(magicast@0.3.4)(rollup@4.18.0)
+      '@sanity/image-url':
+        specifier: ^1.0.2
+        version: 1.0.2
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
         version: 0.4.2(tailwindcss@3.4.4)
@@ -57,6 +60,12 @@ importers:
       '@nuxt/kit':
         specifier: ^3.12.2
         version: 3.12.3(magicast@0.3.4)(rollup@4.18.0)
+      dayjs:
+        specifier: ^1.11.11
+        version: 1.11.11
+      dayjs-nuxt:
+        specifier: ^2.1.9
+        version: 2.1.9(magicast@0.3.4)(rollup@4.18.0)
       prettier:
         specifier: ^3.3.2
         version: 3.3.2
@@ -1279,6 +1288,10 @@ packages:
   '@sanity/eventsource@5.0.2':
     resolution: {integrity: sha512-/B9PMkUvAlUrpRq0y+NzXgRv5lYCLxZNsBJD2WXVnqZYOfByL9oQBV7KiTaARuObp5hcQYuPfOAVjgXe3hrixA==}
 
+  '@sanity/image-url@1.0.2':
+    resolution: {integrity: sha512-C4+jb2ny3ZbMgEkLd7Z3C75DsxcTEoE+axXQJsQ75ou0AKWGdVsP351hqK6mJUUxn5HCSlu3vznoh7Yljye4cQ==}
+    engines: {node: '>=10.0.0'}
+
   '@sanity/preview-url-secret@1.6.18':
     resolution: {integrity: sha512-LmGZAxhKNBkzx3bVD9xHMZ1y4a1oS4ZDLVqDpZFpTNWlfWw+WqXAUeFejQOlWbaqUbbwZETYbPzrwVI8moxjqQ==}
     engines: {node: '>=18'}
@@ -1994,6 +2007,12 @@ packages:
 
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+
+  dayjs-nuxt@2.1.9:
+    resolution: {integrity: sha512-7L1X8Wm+O2s2o+YK8RH1GK0SUUsh7l0lnIzsjaLGvyu64asLs2KVNoh25J4tQurdILp2TyrFaTo/k3k/ZPub9Q==}
+
+  dayjs@1.11.11:
+    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==}
 
   db0@0.1.4:
     resolution: {integrity: sha512-Ft6eCwONYxlwLjBXSJxw0t0RYtA5gW9mq8JfBXn9TtC0nDPlqePAhpv9v4g9aONBi6JI1OXHTKKkUYGd+BOrCA==}
@@ -5679,6 +5698,8 @@ snapshots:
       event-source-polyfill: 1.0.31
       eventsource: 2.0.2
 
+  '@sanity/image-url@1.0.2': {}
+
   '@sanity/preview-url-secret@1.6.18(@sanity/client@6.20.1)':
     dependencies:
       '@sanity/client': 6.20.1
@@ -6462,6 +6483,17 @@ snapshots:
       css-tree: 2.2.1
 
   csstype@3.1.3: {}
+
+  dayjs-nuxt@2.1.9(magicast@0.3.4)(rollup@4.18.0):
+    dependencies:
+      '@nuxt/kit': 3.12.3(magicast@0.3.4)(rollup@4.18.0)
+      dayjs: 1.11.11
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+
+  dayjs@1.11.11: {}
 
   db0@0.1.4: {}
 

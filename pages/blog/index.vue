@@ -1,45 +1,60 @@
 <template>
-  <div class="flex flex-col gap-8">
-    <article class="prose dark:prose-invert sm:prose-lg lg:prose max-w-none text-center lg:text-left">
-      <h2>My Blog</h2>
-      <p>รวม Blog ต่างๆ ด้าน IT / โดย Sanity CMS</p>
-    </article>
-    <section class="grid grid-cols-2 gap-3">
-      <ClientOnly>
+  <div>
+    <div class="flex flex-col gap-8">
+      <article class="prose dark:prose-invert sm:prose-lg lg:prose max-w-none p-0 text-center lg:text-left">
+        <h2>My Blog</h2>
+        <p>รวม Blog ต่างๆ ด้าน IT / โดย Sanity CMS</p>
+      </article>
+      <section class="grid grid-cols-1 gap-3 sm:grid-cols-1 md:grid-cols-2">
         <div v-for="(post, index) in data" :key="index">
-          <ULink :to="`blog/${post.slug.current}`">
+          <ULink :to="`/blog/${post.slug.current}`">
             <UCard
               :ui="{
-                header: {
+                body: {
                   base: 'hover:text-primary prose-h2:hover:text-primary',
-                  padding: 'px-2 sm:px-0 sm:pt-0'
+                  padding: 'p-0 sm:px-0 sm:pt-0 md:p-0'
                 }
               }"
             >
-              <template #header>
-                <SanityImage v-if="post.mainImage" :asset-id="post.mainImage?.asset._ref" auto="format" class="rounded-t-lg" />
-                <div class="prose dark:prose-invert max-w-none px-4 py-5 sm:p-6">
-                  <h2>{{ post.title }}</h2>
-                  <p>{{ post.introText }}</p>
+              <SanityImage :asset-id="post.mainImage?.asset._ref" class="rounded-t-lg" />
+              <div class="prose prose-sm dark:prose-invert sm:prose-sm md:prose-md prose-h2:m-0 flex max-w-none flex-col gap-2 p-5">
+                <h2>{{ post.title }}</h2>
+                <section class="flex flex-row gap-1" v-if="post.categories">
+                  <div v-for="(category, index) in post.categories" :key="index">
+                    <UBadge size="xs">{{ category.title }}</UBadge>
+                  </div>
+                </section>
+                <div class="flex flex-row items-center gap-1">
+                  <UIcon name="ph:calendar-dots-duotone" class="size-5" />
+                  <UTooltip :text="useFormatDate(post._createdAt)" :popper="{ arrow: true, strategy: 'absolute', offsetDistance: 0 }">
+                    <p class="m-0 text-xs">{{ `${useRelativeDate(post._createdAt)}` }}</p>
+                  </UTooltip>
+                  <p class="m-0 text-xs">{{ `- ${post.author.name}` }}</p>
                 </div>
-              </template>
+              </div>
             </UCard>
           </ULink>
         </div>
-        <template #fallback>
-          <div v-for="a in 4" :key="a">
-            <USkeleton class="h-64 w-full" />
-          </div>
-        </template>
-      </ClientOnly>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { IBlog } from '~/types/BlogInterface'
-const query = groq`*[_type == "post"]{title, mainImage, introText, slug}`
-const { data, refresh } = useSanityQuery<IBlog>(query)
+import type { IBlogIndex } from '../../types/BlogIndexInterface'
+const query = groq`*[_type == "post"] {
+title,
+  author->{name},
+  mainImage {
+    ...,
+    asset{_ref}
+  },
+  categories[]->{title},
+  slug{current},
+  _createdAt
+}
+| order(_createdAt desc)`
+const { data } = useSanityQuery<IBlogIndex>(query)
 useSeoMeta({
   title: 'Blog - Konkamon Sion'
 })
