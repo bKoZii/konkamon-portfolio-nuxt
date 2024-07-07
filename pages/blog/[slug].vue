@@ -12,13 +12,19 @@
               <h1>{{ postData.title }}</h1>
               <section class="flex flex-row gap-2" v-if="postData.categories">
                 <div v-for="(category, index) in postData.categories" :key="index">
-                  <UBadge>{{ category.title }}</UBadge>
+                  <UBadge variant="soft">{{ category.title }}</UBadge>
                 </div>
               </section>
             </div>
             <div class="not-prose flex flex-col flex-nowrap gap-1">
-              <p class="m-0 text-sm"><UIcon name="ph:user-circle-duotone" class="size-5" /> {{ `${postData.author?.name}` }}</p>
-              <p class="m-0 text-sm"><UIcon name="ph:calendar-dots-duotone" class="size-5" /> {{ `${useFormatDate(postData._createdAt ?? '')}` }}</p>
+              <div class="flex flex-row items-center space-x-2">
+                <UAvatar :src="postData.author.image.asset.url" alt="Avatar" size="xs" />
+                <p class="m-0 text-sm">{{ `${postData.author?.name}` }}</p>
+              </div>
+              <div class="flex flex-row items-center space-x-2">
+                <UIcon name="ph:calendar-dots-duotone" class="size-6" />
+                <p class="m-0 text-sm">{{ `${useFormatDate(postData._createdAt ?? '')}` }}</p>
+              </div>
               <p v-if="postData._updatedAt" class="m-0 text-xs italic text-neutral-500">
                 {{ `แก้ไขล่าสุดเมื่อ: ${useFormatDate(postData._updatedAt ?? '')}` }}
               </p>
@@ -26,7 +32,7 @@
           </div>
           <SanityImage v-if="postData.mainImage" :asset-id="postData.mainImage?.asset._ref" auto="format" class="rounded-lg" />
           <UDivider class="my-4" />
-          <section class="prose prose-neutral dark:prose-invert prose-sm md:prose-base max-w-none text-justify">
+          <section class="prose prose-neutral dark:prose-invert prose-sm md:prose-base max-w-none">
             <SanityContent :blocks="postData.body" :serializers="serializers" />
           </section>
         </section>
@@ -42,10 +48,10 @@ import type { IBlog } from '~/types/BlogInterface'
 const route: RouteLocationNormalized = useRoute()
 
 const sanity = useSanity()
-const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{name}, _createdAt,_updatedAt, mainImage, body, categories[]->{title}}`
+const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset->{url}}, name}, _createdAt,_updatedAt, mainImage, body, categories[]->{title}}`
 const { data: postData } = await useAsyncData('blog', () => sanity.fetch<IBlog>(query, { slug: route.params['slug'] }))
 const title = computed(() => `${postData.value?.title} - Blog - Konkamon Sion`)
-watch(postData,  () => {
+watch(postData, () => {
   useHead({
     title: title.value ? title.value : 'Blog - Konkamon Sion'
   })
