@@ -40,5 +40,14 @@ export interface Category {
 }
 
 export interface Author {
+  image: Image
   name: string
+}
+
+export interface Image {
+  asset: Asset
+}
+
+export interface Asset {
+  url: string
 }
