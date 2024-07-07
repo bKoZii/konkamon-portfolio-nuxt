@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="flex flex-col flex-nowrap gap-10">
-      <article class="prose dark:prose-invert">
-        <h2>Projects</h2>
-        <p>รวมโปรเจค / ชิ้นงาน ต่างๆ -- ผมเป็นคนที่ชอบทำงาน / โปรเจคอะไรเล็กๆ น้อยๆ โดย List ต่อไปนี้จะเลือกเฉพาะงานที่พอจะนำมาเสนอได้</p>
-      </article>
+      <PageHeader
+        title="Projects"
+        description="รวมโปรเจค / ชิ้นงาน ต่างๆ ผมเป็นคนที่ชอบทำงาน / โปรเจคอะไรเล็กๆ น้อยๆ โดย List ต่อไปนี้จะเลือกเฉพาะงานที่พอจะนำมาเสนอได้"
+      />
       <section class="flex flex-col gap-3 space-y-3 rounded-lg text-black dark:text-white">
         <div v-for="work in workList" :key="work.name" class="flex items-end justify-between space-x-2">
           <ProjectListItem :work-data="work" />

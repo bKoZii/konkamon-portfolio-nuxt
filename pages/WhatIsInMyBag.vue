@@ -1,10 +1,7 @@
 <template>
   <div>
-    <div class="mb-5">
-      <h2 class="mb-2 text-2xl font-bold dark:text-white">What's in my bag?</h2>
-      <p class="text-gray-500">รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้</p>
-    </div>
-    <div class="flex flex-col flex-nowrap gap-12">
+    <PageHeader title="อะไรอยู่ในกระเป๋า?" description="รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้" />
+    <div class="flex flex-col flex-nowrap gap-12 mt-10">
       <div>
         <UDivider label="Hardware" class="mb-3" />
         <div class="flex flex-col gap-5">

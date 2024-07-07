@@ -1,9 +1,6 @@
 <template>
   <div>
-    <article class="prose dark:prose-invert">
-      <h2>Bookmarks</h2>
-      <p>รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ</p>
-    </article>
+    <PageHeader title="Bookmarks" description="รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ" />
     <div class="mt-6 flex flex-col flex-nowrap gap-3">
       <div
         v-for="data in bookmarkItem"
