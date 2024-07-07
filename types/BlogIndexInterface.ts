@@ -4,13 +4,23 @@ export interface Root2 {
   title: string
   author: Author
   mainImage: MainImage
+  introText: string
   slug: Slug
   _createdAt: string
   categories?: Category[]
 }
 
 export interface Author {
+  image: Image
   name: string
+}
+
+export interface Image {
+  asset: Asset
+}
+
+export interface Asset {
+  url: string
 }
 
 export interface MainImage {
@@ -19,7 +29,7 @@ export interface MainImage {
 }
 
 export interface Asset {
-  url: string,
+  url: string
   _ref: string
 }
 
