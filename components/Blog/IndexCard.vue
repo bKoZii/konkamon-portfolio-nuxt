@@ -38,7 +38,6 @@
 
 <script lang="ts" setup>
 import type { Root2 } from '~/types/BlogIndexInterface'
-import { defineProps } from 'vue'
 const prop = defineProps<{ post: Root2 }>()
 const { post } = toRefs(prop)
 </script>
