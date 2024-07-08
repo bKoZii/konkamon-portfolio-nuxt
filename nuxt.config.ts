@@ -6,11 +6,6 @@ export default defineNuxtConfig({
   },
   ssr: true,
 
-  routeRules: {
-    '/blog': { isr: 3600 },
-    '/blog/**': { isr: true }
-  },
-
   modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui', '@nuxtjs/sanity', 'dayjs-nuxt'],
 
   app: {
