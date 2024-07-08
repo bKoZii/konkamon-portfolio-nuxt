@@ -79,7 +79,27 @@
 </template>
 
 <script lang="ts" setup>
-import type { Resume } from '../types/ResumeDataInterface'
+type IResume = Resume[]
+interface Resume {
+  technology: headingAndDetail[]
+  education: headingAndDetail[]
+  project: projects[]
+}
+
+interface introWeb {
+  name: string
+  url: string
+}
+
+interface headingAndDetail {
+  heading: string
+  detail: string
+}
+interface projects {
+  title: string
+  detail: string
+  url: string
+}
 definePageMeta({
   layout: 'resume'
 })
@@ -121,7 +141,9 @@ const resumeData: Resume[] = [
 ]
 useSeoMeta({
   title: 'Resume - Konkamon Sion',
-  ogTitle: 'Resume - Konkamon Sion'
+  ogTitle: 'Resume - Konkamon Sion',
+  description: 'Resume ของนาย กรกมล ศรีอ่อน',
+  ogDescription: 'Resume ของนาย กรกมล ศรีอ่อน'
 })
 
 function removeHttps(url: string) {

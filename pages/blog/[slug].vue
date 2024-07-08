@@ -51,13 +51,25 @@ const { $urlFor, $Prism } = useNuxtApp()
 const sanity = useSanity()
 const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset->{url}}, name},introText, _createdAt,_updatedAt, mainImage, body, categories[]->{title}}`
 const { data: postData } = await useAsyncData('blog', () => sanity.fetch<IBlog>(query, { slug: route.params['slug'] }))
-const title = computed(() => `${postData.value?.title} - Blog - Konkamon Sion`)
+const title = computed(() => `${postData.value?.title} - Blog`)
 
 useSeoMeta({
   title: title.value,
   ogTitle: title.value,
+  description: postData.value?.introText,
+  ogDescription: postData.value?.introText,
+  ogImage: $urlFor(postData.value?.mainImage?.asset?._ref!).url(),
 })
 
+useHead({
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/vnd.microsoft.icon',
+      href: '/favicon.png'
+    }
+  ]
+})
 const serializers = markRaw({
   types: {
     image: BlogImage,

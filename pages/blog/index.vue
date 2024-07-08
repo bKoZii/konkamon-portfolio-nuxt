@@ -29,8 +29,12 @@ author->{image{asset->{url}}, name},
 const sanity = useSanity()
 const { data } = await useAsyncData('blogs', () => sanity.fetch<IBlogIndex>(query))
 useSeoMeta({
-  title: 'Blog - Konkamon Sion'
+  title: 'Blogs',
+  ogTitle: 'Blogs',
+  description: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
+  ogDescription: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
 })
+
 </script>
 
 <style></style>

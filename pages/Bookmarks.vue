@@ -64,7 +64,10 @@ const bookmarkItem: BookmarkItemsInterface[] = [
   }
 ]
 useSeoMeta({
-  title: 'Bookmarks - Konkamon Sion'
+  title: 'Bookmarks',
+  ogTitle: 'Bookmarks',
+  description: 'รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ',
+  ogDescription: 'รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ'
 })
 </script>
 
