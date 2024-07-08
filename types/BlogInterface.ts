@@ -3,6 +3,7 @@ export interface IBlog {
   body: Body[]
   categories: Category[]
   title: string
+  introText: string
   author: Author
   _createdAt: string
   _updatedAt: string
@@ -31,6 +32,7 @@ export interface Body {
 export interface Children {
   _type: string
   marks: string[]
+  code: CodeBlock[]
   text: string
   _key: string
 }
@@ -50,4 +52,9 @@ export interface Image {
 
 export interface Asset {
   url: string
+}
+export interface CodeBlock {
+  _type: string
+  language: string
+  code: string
 }
