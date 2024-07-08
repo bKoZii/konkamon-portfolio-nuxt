@@ -28,7 +28,7 @@ export default defineNuxtConfig({
       'Noto Sans Thai Looped': {
         wght: [400, 500, 600, 700, 800, 900]
       },
-      'Rubik Mono One': true
+      'M PLUS Code Latin': true
     }
   },
   tailwindcss: {
