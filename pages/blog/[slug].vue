@@ -45,27 +45,27 @@
 import BlogImage from '~/components/Blog/Image.vue'
 import type { RouteLocationNormalized } from 'vue-router'
 import type { IBlog } from '~/types/BlogInterface'
+import BlogCodeBlock from '~/components/Blog/CodeBlock.vue'
 const route: RouteLocationNormalized = useRoute()
-
+const { $urlFor, $Prism } = useNuxtApp()
 const sanity = useSanity()
-const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset->{url}}, name}, _createdAt,_updatedAt, mainImage, body, categories[]->{title}}`
+const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset->{url}}, name},introText, _createdAt,_updatedAt, mainImage, body, categories[]->{title}}`
 const { data: postData } = await useAsyncData('blog', () => sanity.fetch<IBlog>(query, { slug: route.params['slug'] }))
 const title = computed(() => `${postData.value?.title} - Blog - Konkamon Sion`)
-watch(postData, () => {
-  useHead({
-    title: title.value ? title.value : 'Blog - Konkamon Sion'
-  })
-})
-onUnmounted(() => {
-  useSeoMeta({
-    title: 'Blog - Konkamon Sion'
-  })
+
+useSeoMeta({
+  title: title.value,
+  ogTitle: title.value,
 })
 
 const serializers = markRaw({
   types: {
-    image: BlogImage
+    image: BlogImage,
+    code: BlogCodeBlock
   }
+})
+onMounted(() => {
+  $Prism.highlightAll()
 })
 </script>
 
