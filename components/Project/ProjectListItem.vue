@@ -15,8 +15,8 @@
     <span class="flex-shrink-0 text-sm text-gray-600 dark:text-gray-400">{{ workData.description }}</span>
   </div>
 
-  <span class="flex-grow border-b border-dashed border-gray-300 dark:border-gray-700"></span>
-  <span class="flex flex-shrink-0 gap-2 text-gray-800 dark:text-white">
+  <span class="hidden flex-grow border-b border-dashed border-gray-300 sm:block dark:border-gray-700"></span>
+  <span class="hidden flex-shrink-0 gap-2 text-gray-800 sm:flex dark:text-white">
     <Icon :name="workData.icon" size="36px" mode="svg" />
   </span>
 </template>
