@@ -42,10 +42,10 @@
 </template>
 
 <script lang="ts" setup>
-import BlogImage from '~/components/Blog/Image.vue'
 import type { RouteLocationNormalized } from 'vue-router'
 import type { IBlog } from '~/types/BlogInterface'
-import BlogCodeBlock from '~/components/Blog/CodeBlock.vue'
+import { BlogImage, BlogCodeBlock } from "#components"
+
 const route: RouteLocationNormalized = useRoute()
 const { $urlFor, $Prism } = useNuxtApp()
 const sanity = useSanity()
