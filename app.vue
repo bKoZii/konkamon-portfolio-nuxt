@@ -7,19 +7,6 @@
   <UNotifications />
 </template>
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Konkamon Sion',
-  description: 'เว็บไซต์ Portfolio ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
-  author: 'Konkamon Sion',
-  ogTitle: 'Konkamon Sion',
-  ogDescription: 'เว็บไซต์ Portfolio ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
-  creator: 'Konkamon Sion',
-  ogImage: '/ogImage.png',
-
-  ogUrl: 'https://konkamon-nuxt.web.app/',
-  ogLocale: 'th_TH',
-  ogSiteName: 'Konkamon Sion'
-})
 useHead({
   htmlAttrs: {
     lang: 'th'
