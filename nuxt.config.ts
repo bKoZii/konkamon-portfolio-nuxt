@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
+      titleTemplate: '%s - Konkamon Sion',
       htmlAttrs: {
         lang: 'th'
       },
@@ -46,7 +47,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-07-04',
   sanity: {
     projectId: process.env.SANITY_PROJECTID,
-    minimal: true
+    minimal: true,
+    apiVersion: '2022-03-17'
   },
   dayjs: {
     locales: ['th'],
