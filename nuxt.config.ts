@@ -7,8 +7,8 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/blog': { swr: true },
-    '/blog/**': { swr: 3600 }
+    '/blog': { isr: true },
+    '/blog/**': { isr: 3600 }
   },
 
   modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui', '@nuxtjs/sanity', 'dayjs-nuxt'],
