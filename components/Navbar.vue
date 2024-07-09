@@ -3,9 +3,9 @@
     class="sticky top-0 z-10 border-b bg-white/80 px-6 py-2 shadow-md backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-900/85 dark:text-white"
   >
     <header class="flex items-center justify-between xs:justify-between sm:justify-between">
-      <ULink id="myName" to="/" class="items-center gap-2.5 text-xl font-extrabold inline-flex" aria-label="logo"> KONKAMON </ULink>
-      <nav class="flex gap-5 ">
-        <div v-for="data in navItems" :key="data.label" class="hidden md:inline-flex self-center">
+      <ULink id="myName" to="/" class="inline-flex items-center gap-2.5 text-xl font-extrabold" aria-label="logo"> KONKAMON </ULink>
+      <nav class="flex gap-5">
+        <div v-for="data in navItems" :key="data.label" class="hidden self-center md:inline-flex">
           <UTooltip :text="data.label" :ui="{ popper: { strategy: 'absolute' } }">
             <ULink
               :to="data.to"
@@ -17,7 +17,7 @@
             </ULink>
           </UTooltip>
         </div>
-        <UDivider orientation="vertical" class="hidden md:block"/>
+        <UDivider orientation="vertical" class="hidden md:block" />
         <NavbarThemeSwitch />
         <UButton class="inline-flex md:hidden" aria-label="Open" icon="ph:list" variant="ghost" color="black" @click="isSidebarOpen = true" />
         <USlideover v-model="isSidebarOpen">
@@ -33,8 +33,8 @@
               @click="isSidebarOpen = false"
             />
             <ULink id="myName" to="/" class="text-2xl font-extrabold" aria-label="logo"> KONKAMON </ULink>
-            <UDivider/>
-            <UVerticalNavigation :links="navItems" :ui="{active:'text-primary',icon: { active: 'text-primary'}}" />
+            <UDivider />
+            <UVerticalNavigation :links="navItems" :ui="{ active: 'text-primary', icon: { active: 'text-primary' } }" @click="isSidebarOpen = false" />
           </div>
         </USlideover>
       </nav>
