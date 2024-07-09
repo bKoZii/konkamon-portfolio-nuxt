@@ -10,6 +10,24 @@
   </main>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+useSeoMeta({
+  title: 'Konkamon Sion',
+  description: 'เว็บไซต์ Portfolio ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
+  author: 'Konkamon Sion',
+  ogTitle: 'Konkamon Sion',
+  ogDescription: 'เว็บไซต์ Portfolio ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
+  creator: 'Konkamon Sion',
+  ogImage: '/ogImage-index.webp',
+
+  ogUrl: 'https://konkamon.vercel.app/',
+  ogLocale: 'th_TH',
+  ogSiteName: 'Konkamon Sion'
+})
+
+useHead({
+  titleTemplate: '%s - Portfolio & Blogs Website'
+})
+</script>
 
 <style></style>

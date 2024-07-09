@@ -33,6 +33,7 @@ useSeoMeta({
   ogTitle: 'Blogs',
   description: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
   ogDescription: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
+  ogImage: '/ogImage-blogs.webp'
 })
 
 </script>

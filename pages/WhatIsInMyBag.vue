@@ -62,7 +62,8 @@ useSeoMeta({
   title: 'ในกระเป๋ามีอะไร?',
   ogTitle: 'ในกระเป๋ามีอะไร?',
   description: 'รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้',
-  ogDescription: 'รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้'
+  ogDescription: 'รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้',
+  ogImage: '/ogImage-myBag.webp'
 })
 </script>
 
