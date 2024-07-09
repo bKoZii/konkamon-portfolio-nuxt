@@ -6,6 +6,11 @@ export default defineNuxtConfig({
   },
   ssr: true,
 
+  routeRules: {
+    '/blog': { swr: true },
+    '/blog/**': { swr: 3600 }
+  },
+
   modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui', '@nuxtjs/sanity', 'dayjs-nuxt'],
 
   app: {
@@ -17,7 +22,7 @@ export default defineNuxtConfig({
       },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+      link: [{ rel: 'icon', type: 'image/vnd.microsoft.icon', href: '/favicon.ico' }]
     }
   },
   googleFonts: {
