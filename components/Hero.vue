@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="w-fit sm:w-1/2 lg:max-w-[20rem]">
-        <NuxtImg src="/me-rmutsv-square.webp" class="rounded-lg object-contain object-center shadow-md" width="100%" height="100%" />
+        <NuxtImg src="/me-rmutsv-square.webp" class="rounded-lg object-contain object-center shadow-md" width="100%" height="100%" alt="Picture of Me, Konkamon Sion" aria-label="Picture of Me, Konkamon Sion"/>
       </div>
     </UContainer>
     <!-- </div> -->

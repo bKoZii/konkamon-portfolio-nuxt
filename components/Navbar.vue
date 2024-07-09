@@ -11,6 +11,7 @@
               :to="data.to"
               active-class="text-primary dark:text-primary dark:hover:text-primary hover:text-primary"
               class="inline-flex text-gray-600 transition duration-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white"
+              :aria-label="`Go to ${data.label} Page.`"
             >
               <icon :name="data.icon" size="24px" mode="svg" class="active:scale-90" />
             </ULink>
