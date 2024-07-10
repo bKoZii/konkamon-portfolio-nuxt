@@ -13,7 +13,7 @@
         <p class="text-base font-semibold text-black dark:text-white">{{ webItem.name }}</p>
         <p class="text-xs text-gray-500 sm:text-sm">{{ webItem.description }}</p>
       </div>
-      <span class="flex-1"></span><span class="text-sm text-gray-800 sm:block dark:text-gray-500">{{ getHostname(webItem.url) }}</span>
+      <span class="flex-1"></span><span class="text-sm text-gray-800 sm:block dark:text-gray-500">{{ useGetHostname(webItem.url) }}</span>
     </a>
   </div>
 </template>
@@ -27,11 +27,6 @@ defineProps({
     required: true
   }
 })
-
-const getHostname = (url: string) => {
-  const hostname = new URL(url).hostname
-  return hostname.replace(/^www\./, '')
-}
 </script>
 
 <style></style>
