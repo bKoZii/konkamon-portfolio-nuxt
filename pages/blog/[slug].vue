@@ -25,7 +25,7 @@
                 <UIcon name="ph:calendar-dots-duotone" class="size-6" />
                 <p class="m-0 text-sm">{{ `${useFormatDate(postData._createdAt ?? '')}` }}</p>
               </div>
-              <p v-if="postData._updatedAt" class="m-0 text-xs italic text-neutral-500">
+              <p v-if="postData._updatedAt && postData._updatedAt !== postData._createdAt" class="m-0 text-xs italic text-neutral-500">
                 {{ `แก้ไขล่าสุดเมื่อ: ${useFormatDate(postData._updatedAt ?? '')}` }}
               </p>
             </div>
