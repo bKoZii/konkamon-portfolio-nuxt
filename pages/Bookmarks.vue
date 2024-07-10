@@ -5,7 +5,7 @@
       <div
         v-for="data in bookmarkItem"
         :key="data.name"
-        class="rounded-lg text-gray-500 transition-all hover:bg-gray-200 hover:text-gray-700 hover:shadow-md dark:hover:bg-neutral-800 hover:dark:text-gray-200"
+        class="rounded-lg text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-700 hover:shadow dark:hover:bg-neutral-800 hover:dark:text-gray-200"
       >
         <BookmarkItem :web-item="data" />
       </div>
