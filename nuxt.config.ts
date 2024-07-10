@@ -23,9 +23,7 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Outfit: {
-        wght: [400, 500, 600, 700, 800, 900]
-      },
+      Outfit: true,
       'Noto Sans Thai Looped': {
         wght: [400, 500, 600, 700, 800, 900]
       },
