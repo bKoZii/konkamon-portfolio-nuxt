@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     families: {
       Outfit: true,
       'Noto Sans Thai Looped': {
-        wght: [400, 500, 600, 700, 800, 900]
+        wght: [400, 600, 700, 800]
       },
       'M PLUS Code Latin': true
     }
