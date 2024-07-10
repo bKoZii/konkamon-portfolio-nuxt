@@ -11,7 +11,7 @@
           }
         }"
       >
-        <SanityImage v-if="post.mainImage" :asset-id="post.mainImage?.asset._ref" class="rounded-t-lg" />
+        <SanityImage v-if="post.mainImage" :asset-id="post.mainImage?.asset._ref" class="rounded-t-lg" w="560" fit="clip" auto="format" />
         <div class="prose prose-sm dark:prose-invert sm:prose-sm md:prose-md prose-h2:m-0 prose-p:m-0 flex max-w-none flex-col gap-2 p-5">
           <div class="not-prose flex flex-row items-center space-x-2">
             <UAvatar :src="post.author.image.asset.url" alt="Avatar" size="xs" />
