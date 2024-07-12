@@ -7,8 +7,8 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/blog': { cache: { maxAge: 60 * 60 }, swr: true },
-    '/blog/**': { cache: { maxAge: 60 * 60 }, swr: true }
+    '/blog': { cache: { maxAge: 60 * 60 } },
+    '/blog/**': { cache: { maxAge: 60 * 60 } }
   },
 
   modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui', '@nuxtjs/sanity', 'dayjs-nuxt', '@vueuse/motion/nuxt'],
