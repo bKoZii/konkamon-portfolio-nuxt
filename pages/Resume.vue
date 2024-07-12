@@ -144,7 +144,8 @@ useSeoMeta({
   ogTitle: 'Resume',
   description: 'Resume ของนาย กรกมล ศรีอ่อน',
   ogDescription: 'Resume ของนาย กรกมล ศรีอ่อน',
-  ogImage: '/ogImage-resume.webp'
+  ogImage: '/ogImage-resume.webp',
+  titleTemplate: '%s - Konkamon Sion',
 })
 
 function removeHttps(url: string) {

@@ -59,6 +59,7 @@ useSeoMeta({
   description: postData.value?.introText,
   ogDescription: postData.value?.introText,
   ogImage: $urlFor(postData.value?.mainImage?.asset?._ref!).url(),
+  titleTemplate: '%s [Blogs - Konkamon Sion]',
 })
 
 useHead({

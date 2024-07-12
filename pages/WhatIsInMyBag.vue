@@ -63,7 +63,8 @@ useSeoMeta({
   ogTitle: 'ในกระเป๋ามีอะไร?',
   description: 'รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้',
   ogDescription: 'รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้',
-  ogImage: '/ogImage-myBag.webp'
+  ogImage: '/ogImage-myBag.webp',
+  titleTemplate: '%s - Konkamon Sion',
 })
 </script>
 

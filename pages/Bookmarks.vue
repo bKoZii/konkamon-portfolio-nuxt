@@ -68,7 +68,8 @@ useSeoMeta({
   ogTitle: 'Bookmarks',
   description: 'รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ',
   ogDescription: 'รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ',
-  ogImage: '/ogImage-bookmarks.webp'
+  ogImage: '/ogImage-bookmarks.webp',
+  titleTemplate: '%s - Konkamon Sion',
 })
 </script>
 

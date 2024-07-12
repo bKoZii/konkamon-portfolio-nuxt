@@ -35,7 +35,8 @@ useSeoMeta({
   ogTitle: 'Blogs',
   description: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
   ogDescription: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
-  ogImage: '/ogImage-blogs.webp'
+  ogImage: '/ogImage-blogs.webp',
+  titleTemplate: '%s [Blogs - Konkamon Sion]',
 })
 
 </script>
