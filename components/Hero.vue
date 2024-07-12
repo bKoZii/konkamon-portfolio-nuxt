@@ -28,17 +28,33 @@
 
 <script lang="ts" setup>
 const loading = ref(false)
-const downloadCV = () => {
-  loading.value = true
+const downloadCV = async () => {
+  try {
+    loading.value = true
 
-  const link = document.createElement('a')
-  link.href = '/Resume_กรกมล_ศรีอ่อน.pdf'
-  link.download = 'Resume_กรกมล_ศรีอ่อน.pdf'
+    const response = await fetch('/Resume_กรกมล_ศรีอ่อน.pdf', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/pdf',
+      },
+    })
 
-  link.addEventListener('click', () => {
+    const blob = await response.blob()
+    const url = URL.createObjectURL(blob)
+
+    const link = document.createElement('a')
+    link.href = url
+    link.download = 'Resume_กรกมล_ศรีอ่อน.pdf'
+
+    link.addEventListener('click', () => {
+      loading.value = false
+    })
+    link.dispatchEvent(new MouseEvent('click'))
+  } catch (error) {
+    console.error(error)
+  } finally {
     loading.value = false
-  })
-  link.click()
+  }
 }
 </script>
 
