@@ -1,9 +1,9 @@
 <template>
   <section class="body-font mb-0 text-gray-600 lg:mb-5">
     <UContainer class="flex flex-col-reverse items-center justify-between gap-5 pt-4 lg:flex-row" :ui="{ padding: 'px-0 lg:px-0', base: 'mx-auto' }">
-      <div class="prose dark:prose-invert mb-16 flex w-[90%] flex-col items-center md:mb-0 lg:flex-grow lg:items-start">
-        <h1 class="mb-2 text-3xl font-bold sm:text-4xl">นาย กรกมล ศรีอ่อน</h1>
-        <p class="font mb-8">นักศึกษา มหาวิทยาลัยเทคโนโลยีราชมงคลศรีวิชัย คณะวิทยาศาสตร์และเทคโนโลยี แผนกเทคโนโลยีสารสนเทศ</p>
+      <div class="prose prose-sm flex max-w-none flex-col items-center sm:prose-base dark:prose-invert md:mb-0 lg:flex-grow lg:items-start">
+        <h1 class="mb-0 text-3xl font-bold sm:text-4xl md:mb-1">นาย กรกมล ศรีอ่อน</h1>
+        <p class="text-center sm:text-left">นักศึกษา มหาวิทยาลัยเทคโนโลยีราชมงคลศรีวิชัย คณะวิทยาศาสตร์และเทคโนโลยี แผนกเทคโนโลยีสารสนเทศ</p>
         <div class="flex w-full flex-col gap-2">
           <UButton
             @click="downloadCV()"
@@ -18,8 +18,15 @@
           <UButton icon="ph:file-text-fill" block variant="link" to="/Resume">Open Resume</UButton>
         </div>
       </div>
-      <div class="w-fit sm:w-1/2 lg:max-w-[20rem]">
-        <NuxtImg src="/me-rmutsv-square.webp" class="rounded-lg object-contain object-center shadow-md" width="100%" height="100%" alt="Picture of Me, Konkamon Sion" aria-label="Picture of Me, Konkamon Sion"/>
+      <div class="w-1/2 sm:w-1/2 lg:max-w-[20rem]">
+        <NuxtImg
+          src="/me-rmutsv-square.webp"
+          class="rounded-lg object-contain object-center shadow-md"
+          width="100%"
+          height="100%"
+          alt="Picture of Me, Konkamon Sion"
+          aria-label="Picture of Me, Konkamon Sion"
+        />
       </div>
     </UContainer>
     <!-- </div> -->
@@ -35,8 +42,8 @@ const downloadCV = async () => {
     const response = await fetch('/Resume_กรกมล_ศรีอ่อน.pdf', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/pdf',
-      },
+        'Content-Type': 'application/pdf'
+      }
     })
 
     const blob = await response.blob()

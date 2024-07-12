@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="mb-6 text-lg font-bold text-gray-500">Featured Work</h2>
-    <div class="flex flex-col gap-3 space-y-3 rounded-lg text-black dark:text-white">
+    <div class="flex flex-col gap-5 rounded-lg text-black dark:text-white">
       <div v-for="work in workList" :key="work.name" class="flex items-end justify-between space-x-2">
         <ProjectListItem :work-data="work" />
       </div>

@@ -5,14 +5,14 @@
       :href="workData.link"
       target="_blank"
       ref="noopener noreferrer"
-      class="hover:text-primary flex flex-shrink-0 gap-2 text-lg"
+      class="hover:text-primary flex flex-shrink-0 gap-2 text-sm sm:text-lg"
       >{{ workData.name }}
       <Icon name="mdi:launch" mode="svg" />
     </a>
-    <p v-else class="text-lg">
+    <p v-else class="text-sm sm:text-lg">
       {{ workData.name }}
     </p>
-    <span class="flex-shrink-0 text-sm text-gray-600 dark:text-gray-400">{{ workData.description }}</span>
+    <span class="flex-shrink-0 text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ workData.description }}</span>
   </div>
 
   <span class="hidden flex-grow border-b border-dashed border-gray-300 sm:block dark:border-gray-700"></span>

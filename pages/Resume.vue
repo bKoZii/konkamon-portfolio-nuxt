@@ -1,7 +1,7 @@
 <template>
   <article class="flex max-w-none flex-col gap-8 print:text-xs">
     <section class="flex flex-col flex-nowrap items-center justify-between py-3 xs:flex-col lg:flex-row print:flex-row print:p-0">
-      <div class="prose dark:prose-invert flex flex-1 flex-col text-sm print:text-xs">
+      <div class="prose flex flex-1 flex-col text-center text-sm dark:prose-invert sm:text-left print:text-left print:text-xs">
         <a href="mailto:konkamon.work@gmail.com">konkamon.work@gmail.com</a>
         <span>Nakhon Si Thammarat, Thailand</span>
       </div>
@@ -11,17 +11,17 @@
         Konkamon Sion
         <span class="-mt-1 block text-base lg:text-lg">( Big )</span>
       </div>
-      <div class="prose dark:prose-invert flex flex-1 flex-col text-left text-sm sm:py-4 sm:text-right print:text-right print:text-xs">
+      <div class="prose flex flex-1 flex-col text-center text-sm dark:prose-invert sm:py-4 sm:text-right print:text-right print:text-xs">
         <a href="https://github.com/bKoZii" target="_blank" rel="noopener noreferrer">github.com/bKoZii</a>
         <a href="https://konkamon-nuxt.web.app" target="_blank">konkamon-nuxt.web.app</a>
       </div>
     </section>
     <section>
       <div class="border-primary border-b">
-        <h2 class="text-xl font-bold uppercase print:text-xs">Technologies / Languages</h2>
+        <h2 class="text-base font-bold uppercase sm:text-xl print:text-xs">Technologies / Languages</h2>
       </div>
       <div>
-        <ul v-for="(item, index) in resumeData" :key="index" class="ml-5 list-inside list-disc">
+        <ul v-for="(item, index) in resumeData" :key="index" class="ml-5 list-inside list-disc text-sm sm:text-base print:text-xs">
           <li v-for="(data, idx) in item.technology" :key="idx">
             <span class="inline-block w-28 pr-1 font-semibold">{{ data.heading }}: </span>
             {{ data.detail }}
@@ -31,10 +31,10 @@
     </section>
     <section>
       <div class="border-primary border-b">
-        <h2 class="text-xl font-bold uppercase print:text-xs">Educations</h2>
+        <h2 class="text-base font-bold uppercase sm:text-xl print:text-xs">Educations</h2>
       </div>
       <div>
-        <ul v-for="(item, index) in resumeData" :key="index" class="ml-5 list-inside list-disc">
+        <ul v-for="(item, index) in resumeData" :key="index" class="ml-5 list-inside list-disc sm:text-base print:text-xs">
           <li v-for="(data, idx) in item.education" :key="idx">
             <span class="pr-1 font-semibold">{{ data.heading }}, </span>
             {{ data.detail }}
@@ -44,10 +44,10 @@
     </section>
     <section>
       <div class="border-primary border-b">
-        <h2 class="text-xl font-bold uppercase print:text-xs">Work Experience</h2>
+        <h2 class="text-base font-bold uppercase sm:text-xl print:text-xs">Work Experience</h2>
       </div>
       <section>
-        <div class="flex flex-row justify-between font-bold print:text-xs">
+        <div class="flex flex-col justify-between text-sm font-bold sm:flex-row sm:text-base print:text-xs">
           <span>Internship - Frond-end Developer, Tester</span><span>Siam IT Networking (Thailand) Co., Ltd.</span>
           <span>7 May 2024 - 21 June 2024</span>
         </div>
@@ -61,10 +61,10 @@
     </section>
     <section>
       <div class="border-primary border-b">
-        <h2 class="text-xl font-bold uppercase print:text-xs">Projects</h2>
+        <h2 class="text-base font-bold uppercase sm:text-xl print:text-xs">Projects</h2>
       </div>
       <div>
-        <ul v-for="(item, index) in resumeData" :key="index" class="ml-5 list-inside list-disc">
+        <ul v-for="(item, index) in resumeData" :key="index" class="ml-5 list-inside list-disc sm:text-base print:text-xs">
           <li v-for="(data, idx) in item.project" :key="idx">
             <span class="pr-1 font-semibold">{{ data.title }}, </span>
             {{ data.detail }}

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="flex flex-col dark:text-gray-200">
+    <div class="flex w-full flex-col dark:text-gray-200">
       <h3 class="font-bold">{{ title }}</h3>
-      <div class="flex flex-row gap-1">
+      <div class="flex flex-row justify-center gap-1 sm:justify-start">
         <div v-for="item in technologyData" :key="item.name">
           <UTooltip :text="item.name" :popper="{ arrow: true, strategy: 'absolute' }">
             <UIcon :name="item.icon" dynamic size="36px" />
