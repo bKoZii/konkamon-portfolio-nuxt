@@ -35,7 +35,7 @@
           </section>
           <div class="not-prose flex flex-row items-center gap-1">
             <UIcon name="ph:calendar-dots-duotone" class="size-5" />
-            <UTooltip :text="useFormatDate(post._createdAt)" :popper="{ arrow: true, strategy: 'absolute', offsetDistance: 0 }">
+            <UTooltip :text="useFormatDate(post._createdAt)" :popper="{ arrow: true, strategy: 'absolute' }">
               <p class="m-0 text-xs">{{ `${useRelativeDate(post._createdAt)}` }}</p>
             </UTooltip>
           </div>
