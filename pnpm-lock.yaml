@@ -1172,6 +1172,9 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
+  '@stefanobartoletti/nuxt-social-share@1.0.0':
+    resolution: {integrity: sha512-smrfpagBbNaW9fNAZK/6c1rK/UXNgYWY4Iu1+S1C1hN94NBKSidoLE4R+k/X9aVT380Pc4CbgQiLO1mrVCCnOw==}
+
   '@tailwindcss/aspect-ratio@0.4.2':
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
     peerDependencies:

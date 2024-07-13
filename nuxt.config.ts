@@ -11,7 +11,16 @@ export default defineNuxtConfig({
     '/blog/**': { cache: { maxAge: 60 * 60 } }
   },
 
-  modules: ['nuxt-typed-router', '@nuxtjs/google-fonts', '@nuxt/image', '@nuxt/ui', '@nuxtjs/sanity', 'dayjs-nuxt', '@vueuse/motion/nuxt'],
+  modules: [
+    'nuxt-typed-router',
+    '@nuxtjs/google-fonts',
+    '@nuxt/image',
+    '@nuxt/ui',
+    '@nuxtjs/sanity',
+    'dayjs-nuxt',
+    '@vueuse/motion/nuxt',
+    "@stefanobartoletti/nuxt-social-share"
+  ],
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
