@@ -4,6 +4,7 @@
       <Hero />
       <AboutMe />
       <Technology />
+      <LazyLatestBlogs />
       <SocialLinks />
       <FeaturedWork />
     </div>
