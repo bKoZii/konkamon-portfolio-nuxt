@@ -16,6 +16,7 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/sanity": "^1.11.4",
     "@sanity/image-url": "^1.0.2",
+    "@stefanobartoletti/nuxt-social-share": "^1.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
@@ -36,5 +37,6 @@
     "dayjs-nuxt": "^2.1.9",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5"
-  }
+  },
+  "packageManager": "pnpm@9.4.0+sha256.b6fd0bfda555e7e584ad7e56b30c68b01d5a04f9ee93989f4b93ca8473c49c74"
 }
