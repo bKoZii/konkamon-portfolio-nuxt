@@ -6,7 +6,7 @@
           <UBreadcrumb divider="/" :links="[{ label: 'Konkamon\'s Blog', to: '/blog' }, { label: postData.title }]" />
         </section>
         <UDivider />
-        <section class="flex flex-col gap-5">
+        <section class="flex flex-col gap-5 items-start">
           <div class="prose prose-sm md:prose-base dark:prose-invert prose-h1:mb-3 prose-p:mb-1 flex max-w-none flex-col gap-6">
             <div>
               <h1>{{ postData.title }}</h1>
@@ -29,8 +29,12 @@
                 {{ `แก้ไขล่าสุดเมื่อ: ${useFormatDate(postData._updatedAt ?? '')}` }}
               </p>
             </div>
+            <section class="not-prose">
+              <p class="text-sm font-bold">Share This Blog!</p>
+              <SocialShare network="facebook" class="text-white bg-blue-600 p-1 w-7 h-7 rounded" :styled="false" :label="false"/>
+            </section>
           </div>
-          <SanityImage v-if="postData.mainImage" :asset-id="postData.mainImage?.asset._ref" auto="format" class="rounded-lg" />
+          <SanityImage v-if="postData.mainImage" :asset-id="postData.mainImage?.asset._ref" auto="format" class="rounded-lg shadow-lg" />
           <UDivider class="my-4" />
           <section class="prose prose-neutral dark:prose-invert prose-sm md:prose-base max-w-none">
             <SanityContent :blocks="postData.body" :serializers="serializers" />
@@ -78,8 +82,11 @@ const serializers = markRaw({
     code: BlogCodeBlock
   }
 })
+
+const shareFacebook = useSocialShare({ network: 'facebook' })
 onMounted(() => {
   $Prism.highlightAll()
+  shareFacebook.value
 })
 </script>
 
