@@ -52,11 +52,11 @@ const workList: workListInterface[] = [
 
 useSeoMeta({
   title: 'รวมโปรเจค',
-  ogTitle: 'รวมโปรเจค',
+  ogTitle: '%s - Konkamon Sion',
   description: 'รวมโปรเจค / ชิ้นงาน ต่างๆ ผมเป็นคนที่ชอบทำงาน / โปรเจคอะไรเล็กๆ น้อยๆ โดย List ต่อไปนี้จะเลือกเฉพาะงานที่พอจะนำมาเสนอได้',
   ogDescription: 'รวมโปรเจค / ชิ้นงาน ต่างๆ ผมเป็นคนที่ชอบทำงาน / โปรเจคอะไรเล็กๆ น้อยๆ โดย List ต่อไปนี้จะเลือกเฉพาะงานที่พอจะนำมาเสนอได้',
   ogImage: '/ogImage-projects.webp',
-  titleTemplate: '%s - Konkamon Sion',
+  ogUrl: 'https://konkamon.vercel.app/Projects'
 })
 </script>
 

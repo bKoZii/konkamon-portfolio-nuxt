@@ -13,20 +13,15 @@
 <script lang="ts" setup>
 useSeoMeta({
   title: 'Konkamon Sion',
-  description: 'เว็บไซต์ Portfolio ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
+  description: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
   author: 'Konkamon Sion',
-  ogTitle: 'Konkamon Sion',
-  ogDescription: 'เว็บไซต์ Portfolio ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
+  ogTitle: '%s - Portfolio & Blogs Website',
+  ogDescription: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
   creator: 'Konkamon Sion',
   ogImage: '/ogImage-index.webp',
-
   ogUrl: 'https://konkamon.vercel.app/',
   ogLocale: 'th_TH',
   ogSiteName: 'Konkamon Sion',
-  titleTemplate: '%s - Portfolio & Blogs Website'
-})
-
-useHead({
   titleTemplate: '%s - Portfolio & Blogs Website'
 })
 </script>

@@ -32,11 +32,11 @@ const sanity = useSanity()
 const { data } = await useAsyncData('blogs', () => sanity.fetch<IBlogIndex>(query))
 useSeoMeta({
   title: 'Blogs',
-  ogTitle: 'Blogs',
+  ogTitle: '%s - Konkamon Sion',
   description: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
   ogDescription: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
   ogImage: '/ogImage-blogs.webp',
-  titleTemplate: '%s [Blogs - Konkamon Sion]',
+  ogUrl: 'https://konkamon.vercel.app/blog'
 })
 
 </script>

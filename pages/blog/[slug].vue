@@ -3,7 +3,7 @@
     <div v-if="postData">
       <article class="flex flex-col gap-5">
         <section>
-          <UBreadcrumb divider="/" :links="[{ label: 'Konkamon\'s Blog', to: '/blog' }, { label: postData.title || '' }]" />
+          <UBreadcrumb divider="/" :links="[{ label: 'Konkamon\'s Blog', to: '/blog' }, { label: postData.title }]" />
         </section>
         <UDivider />
         <section class="flex flex-col gap-5">
@@ -49,17 +49,17 @@ import { BlogImage, BlogCodeBlock } from "#components"
 const route: RouteLocationNormalized = useRoute()
 const { $urlFor, $Prism } = useNuxtApp()
 const sanity = useSanity()
-const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset->{url}}, name},introText, _createdAt,_updatedAt, mainImage, body, categories[]->{title}}`
+const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset->{url}}, name},introText, _createdAt,_updatedAt, mainImage, body,slug{current}, categories[]->{title}}`
 const { data: postData } = await useAsyncData('blog', () => sanity.fetch<IBlog>(query, { slug: route.params['slug'] }))
 const title = computed(() => `${postData.value?.title}`)
 
 useSeoMeta({
   title: title.value,
-  ogTitle: title.value,
+  ogTitle: '%s [Blogs - Konkamon]',
   description: postData.value?.introText,
   ogDescription: postData.value?.introText,
   ogImage: $urlFor(postData.value?.mainImage?.asset?._ref!).url(),
-  titleTemplate: '%s [Blogs - Konkamon Sion]',
+  ogUrl: `https://konkamon.vercel.app/blog/${postData.value?.slug?.current}`
 })
 
 useHead({

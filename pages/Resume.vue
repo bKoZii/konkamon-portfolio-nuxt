@@ -141,11 +141,11 @@ const resumeData: Resume[] = [
 ]
 useSeoMeta({
   title: 'Resume',
-  ogTitle: 'Resume',
+  ogTitle: '%s - Konkamon Sion',
   description: 'Resume ของนาย กรกมล ศรีอ่อน',
   ogDescription: 'Resume ของนาย กรกมล ศรีอ่อน',
   ogImage: '/ogImage-resume.webp',
-  titleTemplate: '%s - Konkamon Sion',
+  ogUrl: 'https://konkamon.vercel.app/Resume'
 })
 
 function removeHttps(url: string) {

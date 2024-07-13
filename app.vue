@@ -11,7 +11,9 @@ useHead({
   htmlAttrs: {
     lang: 'th'
   },
-  titleTemplate: '%s - Konkamon Sion',
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} - Konkamon Sion` : 'Konkamon Sion';
+  },
   link: [
     {
       rel: 'icon',

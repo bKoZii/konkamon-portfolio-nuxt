@@ -60,11 +60,11 @@ const softwareInfo: BagItemInterface[] = [
 
 useSeoMeta({
   title: 'ในกระเป๋ามีอะไร?',
-  ogTitle: 'ในกระเป๋ามีอะไร?',
+  ogTitle: '%s - Konkamon Sion',
   description: 'รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้',
   ogDescription: 'รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้',
   ogImage: '/ogImage-myBag.webp',
-  titleTemplate: '%s - Konkamon Sion',
+  ogUrl: 'https://konkamon.vercel.app/WhatIsInMyBag'
 })
 </script>
 

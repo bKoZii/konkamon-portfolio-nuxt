@@ -65,11 +65,11 @@ const bookmarkItem: BookmarkItemsInterface[] = [
 ]
 useSeoMeta({
   title: 'Bookmarks',
-  ogTitle: 'Bookmarks',
+  ogTitle: '%s - Konkamon Sion',
   description: 'รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ',
   ogDescription: 'รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ',
   ogImage: '/ogImage-bookmarks.webp',
-  titleTemplate: '%s - Konkamon Sion',
+  ogUrl: 'https://konkamon.vercel.app/Bookmarks'
 })
 </script>
 
