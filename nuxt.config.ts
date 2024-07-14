@@ -6,10 +6,10 @@ export default defineNuxtConfig({
   },
   ssr: true,
 
-  routeRules: {
-    '/blog': { ssr: false, cache: { maxAge: 60 * 60 } },
-    '/blog/**': { ssr: false, cache: { maxAge: 60 * 60 } }
-  },
+  // routeRules: {
+  //   '/blog': { ssr: false, cache: { maxAge: 60 * 60 } },
+  //   '/blog/**': { ssr: false, cache: { maxAge: 60 * 60 } }
+  // },
 
   modules: [
     'nuxt-typed-router',
