@@ -4,7 +4,7 @@
       <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
       <section class="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-1 md:grid-cols-2">
         <div v-for="(post, index) in data" :key="index">
-          <Motion is="p" preset="pop" :delay="index * 100">
+          <Motion preset="pop" :delay="index * 100">
             <BlogIndexCard :post="post" />
           </Motion>
         </div>
@@ -17,7 +17,7 @@
 import type { IBlogIndex } from '~/types/BlogIndexInterface'
 const query = groq`*[_type == "post"] {
 title,
-author->{image{asset->{url}}, name},
+author->{image{asset{_ref}}, name},
   introText,
   mainImage {
     ...,
@@ -38,7 +38,6 @@ useSeoMeta({
   ogImage: '/ogImage-blogs.webp',
   ogUrl: 'https://konkamon.vercel.app/blog'
 })
-
 </script>
 
 <style></style>

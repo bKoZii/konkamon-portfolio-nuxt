@@ -19,7 +19,7 @@
             </div>
             <div class="not-prose flex flex-col flex-nowrap gap-1">
               <div class="flex flex-row items-center space-x-2">
-                <UAvatar :src="postData.author.image.asset.url" alt="Avatar" size="xs" />
+                <SanityImage :asset-id="postData.author.image.asset._ref" w="48" fit="clip" auto="format" class="h-6 w-6 rounded-lg" />
                 <p class="m-0 text-sm">{{ `${postData.author?.name}` }}</p>
               </div>
               <div class="flex flex-row items-center space-x-2">
@@ -54,7 +54,7 @@ import { BlogImage, BlogCodeBlock } from '#components'
 const route: RouteLocationNormalized = useRoute()
 const { $urlFor, $Prism } = useNuxtApp()
 const sanity = useSanity()
-const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset->{url}}, name},introText, _createdAt,_updatedAt, mainImage, body,slug{current}, categories[]->{title}}`
+const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset{_ref}}, name},introText, _createdAt,_updatedAt, mainImage, body,slug{current}, categories[]->{title}}`
 const { data: postData } = await useAsyncData('blog', () => sanity.fetch<IBlog>(query, { slug: route.params['slug'] }))
 const title = computed(() => `${postData.value?.title}`)
 

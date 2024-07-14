@@ -21,9 +21,9 @@
           :alt="`รูปภาพหลักของโพสต์ ${post.title}`"
           :aria-label="`รูปภาพหลักของโพสต์ ${post.title}`"
         />
-        <div class="md:prose-md prose prose-sm flex max-w-none flex-col gap-2 p-5 sm:prose-sm dark:prose-invert prose-h2:m-0 prose-p:m-0">
+        <div class="md:prose-md prose prose-sm sm:prose-sm dark:prose-invert prose-h2:m-0 prose-p:m-0 flex max-w-none flex-col gap-2 p-5">
           <div class="not-prose flex flex-row items-center space-x-2">
-            <UAvatar :src="post.author.image.asset.url" alt="Avatar" size="xs" />
+            <SanityImage :asset-id="post.author.image.asset._ref" w="48" fit="clip" auto="format" class="h-6 w-6 rounded-lg" />
             <p class="m-0 text-xs">{{ `${post.author.name}` }}</p>
           </div>
           <h2>{{ post.title }}</h2>
