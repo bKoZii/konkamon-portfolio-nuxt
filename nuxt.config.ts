@@ -67,5 +67,9 @@ export default defineNuxtConfig({
   dayjs: {
     locales: ['th'],
     defaultLocale: 'th'
+  },
+  socialShare: {
+    baseUrl: 'https://konkamon.vercel.app/' // required!
+    // other optional module options
   }
 })

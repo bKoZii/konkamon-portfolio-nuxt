@@ -30,6 +30,10 @@
               </p>
             </div>
           </div>
+          <section class="not-prose mt-2 space-y-2">
+            <p class="text-sm font-bold">Share this Blog!</p>
+            <SocialShare network="facebook" :label="false" class="h-7 w-7 rounded bg-blue-600 p-1 text-white" />
+          </section>
           <SanityImage v-if="postData.mainImage" :asset-id="postData.mainImage?.asset._ref" auto="format" class="rounded-lg" />
           <UDivider class="my-4" />
           <section class="prose prose-neutral dark:prose-invert prose-sm md:prose-base max-w-none">
@@ -44,7 +48,7 @@
 <script lang="ts" setup>
 import type { RouteLocationNormalized } from 'vue-router'
 import type { IBlog } from '~/types/BlogInterface'
-import { BlogImage, BlogCodeBlock } from "#components"
+import { BlogImage, BlogCodeBlock } from '#components'
 
 const route: RouteLocationNormalized = useRoute()
 const { $urlFor, $Prism } = useNuxtApp()
@@ -70,7 +74,7 @@ useHead({
       href: '/favicon.ico'
     }
   ],
-  titleTemplate: '%s [Blogs - Konkamon Sion]',
+  titleTemplate: '%s [Blogs - Konkamon Sion]'
 })
 const serializers = markRaw({
   types: {
