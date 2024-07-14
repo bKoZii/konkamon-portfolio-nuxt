@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="flex flex-col flex-nowrap items-center gap-5 rounded-lg border bg-white py-4 text-gray-500 drop-shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:drop-shadow-none"
+    class="flex flex-col flex-nowrap items-center gap-5 rounded-none sm:rounded-lg border bg-white py-4 text-gray-500 drop-shadow-md dark:border-neutral-800 dark:bg-neutral-900 dark:drop-shadow-none"
   >
     <div class="flex flex-col items-center">
       <span>© 2024 กรกมล ศรีอ่อน</span>
