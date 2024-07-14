@@ -7,8 +7,8 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/blog': { cache: { maxAge: 60 * 60 } },
-    '/blog/**': { cache: { maxAge: 60 * 60 } }
+    '/blog': { ssr: false, cache: { maxAge: 60 * 60 } },
+    '/blog/**': { ssr: false, cache: { maxAge: 60 * 60 } }
   },
 
   modules: [
@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sanity',
     'dayjs-nuxt',
     '@vueuse/motion/nuxt',
-    "@stefanobartoletti/nuxt-social-share"
+    '@stefanobartoletti/nuxt-social-share'
   ],
 
   app: {
@@ -71,5 +71,8 @@ export default defineNuxtConfig({
   socialShare: {
     baseUrl: 'https://konkamon.vercel.app/' // required!
     // other optional module options
+  },
+  nitro: {
+    compressPublicAssets: true
   }
 })
