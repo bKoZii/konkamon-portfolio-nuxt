@@ -2,14 +2,15 @@
   <div>
     <div v-if="postData">
       <article class="flex flex-col gap-5">
-        <section>
+        <section class="hidden sm:block">
           <UBreadcrumb divider="/" :links="[{ label: 'Konkamon\'s Blog', to: '/blog' }, { label: postData.title }]" />
+          <UDivider class="mt-3"/>
         </section>
-        <UDivider />
         <section class="flex flex-col gap-5">
-          <div class="prose prose-sm md:prose-base dark:prose-invert prose-h1:mb-3 prose-p:mb-1 flex max-w-none flex-col gap-6">
+          <div class="prose prose-sm md:prose-base dark:prose-invert prose-h1:m-0 prose-p:my-3 flex max-w-none flex-col gap-6">
             <div>
               <h1>{{ postData.title }}</h1>
+              <p class="text-xs sm:text-sm">{{ postData.introText }}</p>
               <section class="flex flex-row gap-2" v-if="postData.categories">
                 <div v-for="(category, index) in postData.categories" :key="index">
                   <UBadge variant="soft">{{ category.title }}</UBadge>
