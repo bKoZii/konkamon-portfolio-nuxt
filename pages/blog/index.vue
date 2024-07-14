@@ -1,12 +1,10 @@
 <template>
-  <div>
+  <div v-if="data">
     <div class="flex flex-col gap-8">
       <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
       <section class="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-1 md:grid-cols-2">
         <div v-for="(post, index) in data" :key="index">
-          <Motion preset="pop" :delay="index * 100">
-            <BlogIndexCard :post="post" />
-          </Motion>
+          <BlogIndexCard :post="post" />
         </div>
       </section>
     </div>
