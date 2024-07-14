@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CodeBlock } from '~/types/BlogInterface'
-
+const { $Prism } = useNuxtApp()
 defineProps({
   code: {
     type: String,
@@ -10,6 +10,10 @@ defineProps({
     type: String
   },
   data: Object as () => CodeBlock
+})
+
+onMounted(() => {
+  $Prism.highlightAll()
 })
 </script>
 

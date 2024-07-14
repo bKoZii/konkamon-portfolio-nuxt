@@ -54,7 +54,7 @@ import type { IBlog } from '~/types/BlogInterface'
 import { BlogImage, BlogCodeBlock } from '#components'
 
 const route: RouteLocationNormalized = useRoute()
-const { $urlFor, $Prism } = useNuxtApp()
+const { $urlFor } = useNuxtApp()
 const sanity = useSanity()
 const query = groq`*[_type == "post" && slug.current==$slug][0]{title,author->{image{asset{_ref}}, name},introText, _createdAt,_updatedAt, mainImage, body,slug{current}, categories[]->{title}}`
 const { data: postData } = await useAsyncData('blog', () => sanity.fetch<IBlog>(query, { slug: route.params['slug'] }))
@@ -84,9 +84,6 @@ const serializers = markRaw({
     image: BlogImage,
     code: BlogCodeBlock
   }
-})
-onMounted(() => {
-  $Prism.highlightAll()
 })
 </script>
 
