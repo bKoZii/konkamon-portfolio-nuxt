@@ -7,8 +7,8 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/blog': { ssr: false, cache: { maxAge: 60 * 60 } },
-    '/blog/**': { ssr: false, cache: { maxAge: 60 * 60 } }
+    '/blog': { isr:3600 },
+    '/blog/**': { isr:3600 }
   },
 
   modules: [
