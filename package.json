@@ -21,7 +21,6 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
-    "@vueuse/motion": "^2.2.3",
     "nuxt": "^3.12.3",
     "nuxt-typed-router": "^3.6.5",
     "prismjs": "^1.29.0",
