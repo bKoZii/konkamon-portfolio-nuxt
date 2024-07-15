@@ -18,7 +18,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/sanity',
     'dayjs-nuxt',
-    '@vueuse/motion/nuxt',
     '@stefanobartoletti/nuxt-social-share'
   ],
 

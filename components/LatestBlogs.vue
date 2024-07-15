@@ -6,10 +6,8 @@
     </section>
     <section class="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-1 md:grid-cols-2">
       <ClientOnly>
-      <div v-for="(post, index) in data" :key="index">
-          <Motion is="div" preset="popVisibleOnce" :delay="index * 100">
-            <BlogIndexCard :post="post" />
-          </Motion>
+        <div v-for="(post, index) in data" :key="index">
+          <BlogIndexCard :post="post" />
         </div>
         <template #fallback>
           <div v-for="fallback in 2" :key="fallback">
