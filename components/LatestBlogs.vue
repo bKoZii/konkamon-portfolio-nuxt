@@ -5,23 +5,18 @@
       <UButton label="Blogs ทั้งหมด" variant="ghost" icon="ph:arrow-right" trailing to="/blog" />
     </section>
     <section class="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-1 md:grid-cols-2">
+      <ClientOnly>
       <div v-for="(post, index) in data" :key="index">
-        <ClientOnly>
           <Motion is="div" preset="popVisibleOnce" :delay="index * 100">
             <BlogIndexCard :post="post" />
           </Motion>
-          <template #fallback>
-            <UCard class="h-fit">
-              <div class="flex flex-col space-y-4">
-                <USkeleton class="h-40 w-full" />
-                <USkeleton class="h-4 w-full" />
-                <USkeleton class="h-10 w-full" />
-                <USkeleton class="h-6 w-full" />
-              </div>
-            </UCard>
-          </template>
-        </ClientOnly>
-      </div>
+        </div>
+        <template #fallback>
+          <div v-for="fallback in 2" :key="fallback">
+            <BlogSkeletonFallback />
+          </div>
+        </template>
+      </ClientOnly>
     </section>
   </div>
 </template>

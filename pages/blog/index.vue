@@ -2,13 +2,18 @@
   <div v-if="blogData">
     <div class="flex flex-col gap-8">
       <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
-      <ClientOnly>
-        <section class="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-1 md:grid-cols-2">
+      <section class="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-1 md:grid-cols-2">
+        <ClientOnly>
           <div v-for="(post, index) in data" :key="index">
             <BlogIndexCard :post="post" />
           </div>
-        </section>
-      </ClientOnly>
+          <template #fallback>
+            <div v-for="fallback in 4" :key="fallback">
+              <BlogSkeletonFallback />
+            </div>
+          </template>
+        </ClientOnly>
+      </section>
     </div>
   </div>
 </template>
