@@ -5,7 +5,7 @@
         <ClientOnly>
           <section class="hidden sm:block">
             <UBreadcrumb divider="/" :links="[{ label: 'Konkamon\'s Blog', to: '/blog' }, { label: postData.title }]" />
-            <UDivider class="mt-3"/>
+            <UDivider class="mt-3" />
           </section>
           <section class="flex flex-col gap-5">
             <div class="prose prose-sm md:prose-base dark:prose-invert prose-h1:m-0 prose-p:my-3 flex max-w-none flex-col gap-6">
@@ -42,6 +42,9 @@
               <SanityContent :blocks="postData.body" :serializers="serializers" />
             </section>
           </section>
+          <template #fallback>
+            <BlogSlugFallback />
+          </template>
         </ClientOnly>
       </article>
     </div>
@@ -52,7 +55,6 @@
 import type { RouteLocationNormalized } from 'vue-router'
 import type { IBlog } from '~/types/BlogInterface'
 import { BlogImage, BlogCodeBlock } from '#components'
-
 const route: RouteLocationNormalized = useRoute()
 const { $urlFor } = useNuxtApp()
 const sanity = useSanity()
