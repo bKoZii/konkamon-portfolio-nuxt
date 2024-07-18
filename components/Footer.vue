@@ -6,11 +6,15 @@
       <span>© 2024 กรกมล ศรีอ่อน</span>
       <span>ไม่มีลิขสิทธิ์ เพราะเป็น Open Source!</span>
     </div>
-    <a href="https://github.com/bKoZii/konkamon-portfolio-nuxt" target="_blank" ref="noopener noreferrer">
-      <div class="hover:text-black active:scale-95 dark:hover:text-white">
-        <Icon name="ph:github-logo-duotone" size="28px" mode="svg" />
-      </div>
-    </a>
+    <div class="flex flex-row gap-5">
+      <UTooltip text="Source Code" :popper="{ placement: 'top' }">
+        <a href="https://github.com/bKoZii/konkamon-portfolio-nuxt" target="_blank" ref="noopener noreferrer">
+          <div class="hover:text-black active:scale-95 dark:hover:text-white">
+            <Icon name="ph:github-logo-duotone" size="28px" mode="svg" />
+          </div>
+        </a>
+      </UTooltip>
+    </div>
   </footer>
 </template>
 
