@@ -14,7 +14,7 @@
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.17.0",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "@nuxtjs/sanity": "^1.11.4",
+    "@nuxtjs/sanity": "^1.11.5",
     "@sanity/image-url": "^1.0.2",
     "@stefanobartoletti/nuxt-social-share": "^1.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -24,8 +24,8 @@
     "nuxt": "^3.12.3",
     "nuxt-typed-router": "^3.6.5",
     "prismjs": "^1.29.0",
-    "tailwindcss": "^3.4.4",
-    "vue": "^3.4.31",
+    "tailwindcss": "^3.4.6",
+    "vue": "^3.4.32",
     "vue-router": "^4.4.0"
   },
   "devDependencies": {
@@ -42,5 +42,5 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5"
   },
-  "packageManager": "pnpm@9.4.0+sha256.b6fd0bfda555e7e584ad7e56b30c68b01d5a04f9ee93989f4b93ca8473c49c74"
+  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
 }
