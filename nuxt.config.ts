@@ -36,13 +36,15 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Outfit: {
+      "Space Grotesk": {
         wght: [400, 500, 600, 700, 800, 900]
       },
       'Noto Sans Thai Looped': {
         wght: [400, 600, 700, 800]
       },
-      'M PLUS Code Latin': true
+      'Ubuntu Mono': {
+        wght: [400, 600, 700, 800]
+      }
     }
   },
   tailwindcss: {

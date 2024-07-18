@@ -32,8 +32,8 @@ export default <Partial<Config>>{
         }
       },
       fontFamily: {
-        sans: ['Outfit', 'Noto Sans Thai Looped', 'system-ui'],
-        mono: ['M Plus Code Latin', 'Noto Sans Thai Looped']
+        sans: ['Space Grotesk', 'Noto Sans Thai Looped', 'system-ui'],
+        mono: ['Ubuntu Mono', 'Noto Sans Thai Looped']
       }
     }
   }
