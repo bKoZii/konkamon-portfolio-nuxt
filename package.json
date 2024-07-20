@@ -21,11 +21,11 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
-    "nuxt": "^3.12.3",
+    "nuxt": "^3.12.4",
     "nuxt-typed-router": "^3.6.5",
     "prismjs": "^1.29.0",
     "tailwindcss": "^3.4.6",
-    "vue": "^3.4.32",
+    "vue": "^3.4.33",
     "vue-router": "^4.4.0"
   },
   "devDependencies": {
@@ -35,9 +35,9 @@
     "@iconify-json/mdi": "^1.1.67",
     "@iconify-json/ph": "^1.1.13",
     "@iconify-json/simple-icons": "^1.1.109",
-    "@nuxt/kit": "^3.12.3",
+    "@nuxt/kit": "^3.12.4",
     "@types/prismjs": "^1.26.4",
-    "dayjs": "^1.11.11",
+    "dayjs": "^1.11.12",
     "dayjs-nuxt": "^2.1.9",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5"
