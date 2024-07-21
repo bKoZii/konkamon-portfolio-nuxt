@@ -63,7 +63,7 @@ export default defineNuxtConfig({
   sanity: {
     projectId: process.env.SANITY_PROJECTID,
     minimal: true,
-    apiVersion: '2022-03-17'
+    apiVersion: '1'
   },
   dayjs: {
     locales: ['th'],
