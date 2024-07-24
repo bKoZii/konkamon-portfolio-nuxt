@@ -3,8 +3,10 @@
     <ULink :to="`/blog/${post.slug.current}`">
       <UCard
         :ui="{
-          base: 'hover:scale-[1.01] transition-all hover:drop-shadow-md',
+          base: 'transition-all',
+          ring: 'dark:ring-2 dark:hover:ring-ocean-green-700',
           background: 'dark:bg-neutral-800',
+          shadow: 'shadow hover:shadow-lg dark:shadow-none dark:hover:shadow-none',
           body: {
             base: 'hover:text-primary prose-h2:hover:text-primary',
             padding: 'p-0 sm:px-0 sm:pt-0 md:p-0'
