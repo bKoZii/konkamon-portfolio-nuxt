@@ -9,8 +9,9 @@
 
 ## See it live!
 
-- Firebase's hosting (Static SSR) : [konkamon-nuxt.web.app](https://konkamon-nuxt.web.app)
+- Nuxt Hub (CloudFlare) : [konkamon.live](https://konkamon.live)
 - Vercel : [konkamon.vercel.app](https://konkamon.vercel.app/)
+- Firebase's hosting (Static SSR) : [konkamon-nuxt.web.app](https://konkamon-nuxt.web.app)
 
 A Minimal Portfolio & Blog Website, Made with Nuxt 3, Nuxt UI and Sanity CMS
 
