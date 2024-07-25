@@ -4,7 +4,7 @@
       <UTooltip text="Switch Theme" :popper="{ strategy: 'absolute' }">
         <UButton square @click="switchColorMode" :padded="false" size="xl" color="black" variant="ghost" :icon="iconName" class="group">
           <template #trailing>
-            <span class="block text-sm group-hover:block md:hidden">{{ capitalize($colorMode.preference) }}</span>
+            <span class="block text-sm">{{ capitalize($colorMode.preference) }}</span>
           </template>
         </UButton>
       </UTooltip>
