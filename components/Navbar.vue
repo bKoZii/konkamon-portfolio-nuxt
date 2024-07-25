@@ -34,7 +34,7 @@
             />
             <ULink id="myName" to="/" class="text-2xl font-extrabold" aria-label="logo"> KONKAMON </ULink>
             <UDivider />
-            <UVerticalNavigation :links="navItems" :ui="{ active: 'text-primary', icon: { active: 'text-primary' } }" @click="isSidebarOpen = false" />
+            <UVerticalNavigation :links="navItems" :ui="{ active: 'text-primary dark:text-primary', icon: { active: 'text-primary dark:text-primary' } }" @click="isSidebarOpen = false" />
           </div>
         </USlideover>
       </nav>
