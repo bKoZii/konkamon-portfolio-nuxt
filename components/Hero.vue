@@ -1,27 +1,25 @@
 <template>
   <section class="body-font mb-0 text-gray-600 lg:mb-5">
     <UContainer class="flex flex-col-reverse items-center justify-between gap-5 pt-4 lg:flex-row" :ui="{ padding: 'px-0 lg:px-0', base: 'mx-auto' }">
-      <div class="prose prose-sm flex max-w-none flex-col items-center sm:prose-base dark:prose-invert md:mb-0 lg:flex-grow lg:items-start">
-        <h1 class="mb-0 text-3xl font-bold sm:text-4xl md:mb-1">นาย กรกมล ศรีอ่อน</h1>
-        <p class="text-center sm:text-left">นักศึกษา มหาวิทยาลัยเทคโนโลยีราชมงคลศรีวิชัย คณะวิทยาศาสตร์และเทคโนโลยี แผนกเทคโนโลยีสารสนเทศ</p>
-        <div class="flex w-full flex-col gap-2">
+      <div class="prose prose-sm prose-h1:mb-0 flex max-w-none flex-col items-center sm:prose-base dark:prose-invert md:mb-0 lg:flex-grow lg:items-start">
+        <h1 class="text-3xl font-bold sm:text-4xl">นาย กรกมล ศรีอ่อน</h1>
+        <p class="text-center lg:text-left">นักศึกษา มหาวิทยาลัยเทคโนโลยีราชมงคลศรีวิชัย คณะวิทยาศาสตร์และเทคโนโลยี แผนกเทคโนโลยีสารสนเทศ</p>
+        <div class="flex w-full flex-row items-center justify-center lg:justify-start gap-2">
           <UButton
             @click="downloadCV()"
             icon="ph:file-text-fill"
             :loading="loading"
-            class="p-2 transition-transform hover:scale-105 active:scale-100"
             color="primary"
             size="lg"
-            block
             >Download CV - Thai</UButton
           >
-          <UButton icon="ph:file-text-fill" block variant="link" to="/Resume">Open Resume</UButton>
+          <UButton icon="ph:file-text-fill" variant="soft"  size="lg" to="/Resume">Open Resume</UButton>
         </div>
       </div>
-      <div class="w-1/2 sm:w-1/2 lg:max-w-[20rem]">
+      <div class="w-1/3 sm:w-1/4 lg:w-1/3">
         <NuxtImg
           src="/me-rmutsv-square.webp"
-          class="rounded-lg object-contain object-center shadow-md"
+          class="rounded-lg object-contain object-center shadow-md dark:shadow-none"
           width="100%"
           height="100%"
           alt="Picture of Me, Konkamon Sion"
