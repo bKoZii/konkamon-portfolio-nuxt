@@ -6,10 +6,12 @@ export default defineNuxtConfig({
   },
   ssr: true,
 
-  // routeRules: {
-  //   '/blog': { ssr: false, cache: { maxAge: 60 * 60 } },
-  //   '/blog/**': { ssr: false, cache: { maxAge: 60 * 60 } }
-  // },
+  routeRules: {
+    '/WhatIsInMyBag': { ssr: false },
+    '/Resume': { ssr: false },
+    '/Bookmarks': { ssr: false },
+    '/Projects': { ssr: false },
+  },
 
   modules: [
     'nuxt-typed-router',
@@ -18,7 +20,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/sanity',
     'dayjs-nuxt',
-    '@stefanobartoletti/nuxt-social-share'
+    '@stefanobartoletti/nuxt-social-share',
   ],
 
   app: {
@@ -36,7 +38,7 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      "Space Grotesk": {
+      'Space Grotesk': {
         wght: [400, 500, 600, 700, 800, 900]
       },
       'Noto Sans Thai Looped': {
@@ -70,8 +72,7 @@ export default defineNuxtConfig({
     defaultLocale: 'th'
   },
   socialShare: {
-    baseUrl: 'https://konkamon.vercel.app/' // required!
-    // other optional module options
+    baseUrl: 'https://konkamon.vercel.app/'
   },
   nitro: {
     compressPublicAssets: true
