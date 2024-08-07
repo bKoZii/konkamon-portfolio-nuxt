@@ -1,7 +1,16 @@
 <template>
 
     <div class="flex flex-col gap-8">
-      <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
+      <div class="flex flex-col lg:flex-row justify-between items-center">
+        <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
+        <div class="mt-5 lg:m-0 ">
+          <span class="text-xs text-neutral-500">Powered by
+          </span>
+          <a href="https://sanity.io/" target="_blank" rel="noopener noreferrer">
+            <UIcon name="logos:sanity" class="ml-2 inline-block" mode="svg" />
+          </a>
+        </div>
+      </div>
       <div>
         <UInput type="text" size="lg" icon="ph:magnifying-glass" placeholder="ค้นหา Blog..." @input="debounceSearch" v-model="searchInput" />
         <UAlert
