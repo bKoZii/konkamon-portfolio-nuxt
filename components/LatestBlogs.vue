@@ -6,7 +6,7 @@
     </section>
     <section class="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-1 md:grid-cols-2">
       <ClientOnly>
-        <div v-for="(post, index) in data" :key="index">
+        <div v-for="(post, index) in latestBlogs" :key="index">
           <BlogIndexCard :post="post" />
         </div>
         <template #fallback>
@@ -20,23 +20,44 @@
 </template>
 
 <script lang="ts" setup>
-import type { IBlogIndex } from '~/types/BlogIndexInterface'
+import type { Strapi4RequestParams } from '@nuxtjs/strapi';
+import type { StrapiBlogs } from '~/types/StrapiBlogs';
 
-const query = groq`*[_type == "post"] {
-title,
-author->{image{asset{_ref}}, name},
-  introText,
-  mainImage {
-    ...,
-    asset{_ref}
-  },
-  categories[]->{title},
-  slug{current},
-  _createdAt
+const { find } = useStrapi()
+const latestBlogs = ref<StrapiBlogs[]>()
+
+const fetchBlogs = async () => {
+  const params: Strapi4RequestParams = {
+    fields: ['title', 'subtitle', 'publishedAt', 'slug'],
+    sort: 'publishedAt:desc',
+    pagination: {
+      pageSize: 4,
+      page: 1
+    },
+    populate: {
+      mainImage: true,
+      createdBy: true,
+      categories: {
+        fields: ['name']
+      },
+      blogIcon: {
+        fields: ['url']
+      }
+    }
+  }
+
+  try {
+    const { data } = await find<StrapiBlogs>('blogs', params)
+    if (data) {
+      latestBlogs.value = data.map((item) => item.attributes)
+    }
+  } catch (error) {
+    console.error(error)
+  }
 }
-| order(_createdAt desc) [0..1]`
-const sanity = useSanity()
-const { data } = await useLazyAsyncData('latestBlogs', () => sanity.fetch<IBlogIndex>(query))
+await fetchBlogs()
+
+
 </script>
 
 <style></style>

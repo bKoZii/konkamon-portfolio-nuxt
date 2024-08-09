@@ -1,45 +1,36 @@
 <template>
   <template v-if="post">
-    <ULink :to="`/blog/${post.slug.current}`">
-      <UCard
-        :ui="{
-          base: 'transition-all',
-          ring: 'dark:ring-2 dark:hover:ring-ocean-green-700',
-          background: 'dark:bg-neutral-800',
-          shadow: 'shadow hover:shadow-lg dark:shadow-none dark:hover:shadow-none',
-          body: {
-            base: 'hover:text-primary prose-h2:hover:text-primary',
-            padding: 'p-0 sm:px-0 sm:pt-0 md:p-0'
-          }
-        }"
-      >
-        <SanityImage
-          v-if="post.mainImage"
-          :asset-id="post.mainImage?.asset._ref"
-          class="rounded-t-lg"
-          w="560"
-          fit="clip"
-          auto="format"
-          :alt="`รูปภาพหลักของโพสต์ ${post.title}`"
-          :aria-label="`รูปภาพหลักของโพสต์ ${post.title}`"
-        />
-        <div class="md:prose-md prose prose-sm sm:prose-sm dark:prose-invert prose-h2:m-0 prose-p:m-0 flex max-w-none flex-col gap-2 p-5">
-          <div class="not-prose flex flex-row items-center space-x-2">
-            <SanityImage :asset-id="post.author.image.asset._ref" w="48" fit="clip" auto="format" class="h-6 w-6 rounded-lg" />
-            <p class="m-0 text-xs">{{ `${post.author.name}` }}</p>
-          </div>
-          <h2>{{ post.title }}</h2>
-          <p class="text-xs">{{ post.introText }}</p>
-          <section class="not-prose flex flex-row gap-1" v-if="post.categories">
-            <div v-for="(category, index) in post.categories" :key="index">
-              <UBadge size="xs" color="primary" variant="soft">{{ category.title }}</UBadge>
+    <ULink :to="`/blog/${post.slug}`">
+
+      <UCard :ui="{
+        base: 'transition-all relative',
+        ring: 'dark:ring-2 dark:hover:ring-ocean-green-700',
+        background: 'dark:bg-neutral-800',
+        shadow: 'shadow hover:shadow-lg dark:shadow-none dark:hover:shadow-none',
+        body: {
+          base: 'hover:text-primary prose-h2:hover:text-primary',
+          padding: 'p-0 sm:px-0 sm:pt-0 md:p-0'
+        }
+      }">
+        <div class="flex flex-row items-center p-4 gap-6">
+          <NuxtImg v-if="post.blogIcon" :src="`${post.blogIcon.data.attributes.url}`" width="100%"
+            class="w-12 sm:w-16 drop-shadow" :alt="`ไอคอนประจำโพสต์ ${post.title}`"
+            :aria-label="`ไอคอนประจำโพสต์ ${post.title}`" />
+          <div
+            class="md:prose-md prose prose-sm sm:prose-sm dark:prose-invert prose-h2:m-0 prose-p:m-0 flex max-w-none flex-col gap-2">
+            <h2>{{ post.title }}</h2>
+            <p class="text-xs">{{ post.subtitle }}</p>
+            <section class="not-prose flex flex-row gap-1" v-if="post.categories">
+              <div v-for="category in post.categories.data" :key="category.id">
+                <UBadge size="xs" color="primary" variant="soft">{{ category.attributes.name }}</UBadge>
+              </div>
+            </section>
+            <div class="not-prose flex flex-row items-center gap-1">
+              <UIcon name="ph:calendar-dots-duotone" class="size-5" />
+              <UTooltip :text="useFormatDate(post.publishedAt)" :popper="{ arrow: true, strategy: 'absolute' }">
+                <p class="m-0 text-xs">{{ `${useRelativeDate(post.publishedAt)}` }}</p>
+              </UTooltip>
             </div>
-          </section>
-          <div class="not-prose flex flex-row items-center gap-1">
-            <UIcon name="ph:calendar-dots-duotone" class="size-5" />
-            <UTooltip :text="useFormatDate(post._createdAt)" :popper="{ arrow: true, strategy: 'absolute' }">
-              <p class="m-0 text-xs">{{ `${useRelativeDate(post._createdAt)}` }}</p>
-            </UTooltip>
           </div>
         </div>
       </UCard>
@@ -48,9 +39,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { Root2 } from '~/types/BlogIndexInterface'
-const prop = defineProps<{ post: Root2 }>()
-const { post } = toRefs(prop)
+import type { StrapiBlogs } from '~/types/StrapiBlogs'
+const props = defineProps<{ post: StrapiBlogs }>()
+const { post } = toRefs(props)
 </script>
 
 <style></style>

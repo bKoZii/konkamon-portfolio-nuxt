@@ -7,10 +7,9 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/WhatIsInMyBag': { ssr: false },
-    '/Resume': { ssr: false },
-    '/Bookmarks': { ssr: false },
-    '/Projects': { ssr: false },
+    '/': { prerender: true},
+    '/blog': { prerender: true },
+    '/blog/**': { prerender: true }
   },
 
   modules: [
@@ -18,9 +17,10 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxt/image',
     '@nuxt/ui',
-    '@nuxtjs/sanity',
     'dayjs-nuxt',
     '@stefanobartoletti/nuxt-social-share',
+    '@nuxtjs/strapi',
+    '@nuxt/content'
   ],
 
   app: {
@@ -62,19 +62,27 @@ export default defineNuxtConfig({
     ]
   },
   compatibilityDate: '2024-07-04',
-  sanity: {
-    projectId: process.env.SANITY_PROJECTID,
-    minimal: true,
-    apiVersion: '1'
-  },
   dayjs: {
     locales: ['th'],
-    defaultLocale: 'th'
+    defaultLocale: 'th',
+    plugins: ['timezone']
   },
   socialShare: {
-    baseUrl: 'https://konkamon.vercel.app/'
+    baseUrl: 'https://www.konkamon.live/'
   },
   nitro: {
     compressPublicAssets: true
+  },
+  content: {
+    highlight: {
+      langs: ['shell', 'sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json','sql'],
+      theme: 'material-theme-darker'
+    },
+    markdown: {
+      anchorLinks: false,
+    },
+  },
+  strapi:{
+    url: process.env.STRAPI_URL
   }
 })

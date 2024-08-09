@@ -1,32 +1,26 @@
 <template>
+  <div>
+    <div class="flex flex-col lg:flex-row justify-between items-center mb-3">
+      <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
+      <div class="mt-5 lg:m-0 ">
+        <span class="text-xs text-neutral-500">Powered by
+        </span>
+        <a href="https://strapi.io/" target="_blank" rel="noopener noreferrer"
+          class="ml-1 p-1 dark:rounded-lg dark:bg-indigo-100">
+          <UIcon name="logos:strapi" class="inline-block" mode="svg" />
+        </a>
+      </div>
+    </div>
 
-    <div class="flex flex-col gap-8">
-      <div class="flex flex-col lg:flex-row justify-between items-center">
-        <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
-        <div class="mt-5 lg:m-0 ">
-          <span class="text-xs text-neutral-500">Powered by
-          </span>
-          <a href="https://sanity.io/" target="_blank" rel="noopener noreferrer">
-            <UIcon name="logos:sanity" class="ml-2 inline-block" mode="svg" />
-          </a>
-        </div>
-      </div>
-      <div>
-        <UInput type="text" size="lg" icon="ph:magnifying-glass" placeholder="ค้นหา Blog..." @input="debounceSearch" v-model="searchInput" />
-        <UAlert
-          description="ระบบ Search อยู่ในช่วงพัฒนา / Experimental"
-          title="แจ้งให้ทราบ"
-          color="orange"
-          variant="subtle"
-          size="lg"
-          icon="ph:warning-circle-duotone"
-          class="my-2"
-        />
-      </div>
-      <div v-if="Array.isArray(blogData) && blogData.length > 0">
-      <section class="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-1 md:grid-cols-2">
+    <div class="my-4">
+      <UInput :loading="loading" type="text" size="lg" icon="ph:magnifying-glass" placeholder="ค้นหา Blog..."
+        v-model="searchInput" />
+    </div>
+
+    <div v-if="blogsData">
+      <section class="grid grid-cols-2 gap-3 ">
         <ClientOnly>
-          <div v-for="(post, index) in blogData" :key="index">
+          <div v-for="(post, index) in blogsData" :key="index">
             <BlogIndexCard :post="post" />
           </div>
           <template #fallback>
@@ -36,71 +30,77 @@
           </template>
         </ClientOnly>
       </section>
-      </div>
-      <div v-else><h1>Not found</h1></div>
     </div>
+    <div v-else>
+      <UAlert icon="ic:round-search-off" title="ไม่พบ Blogs" :description="`ไม่พบ Blogs จากคำค้นหา ${searchInput}`"
+        color="primary" variant="soft" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import type { IBlogIndex } from '~/types/BlogIndexInterface'
-const blogData = ref<IBlogIndex>()
+import { type StrapiBlogs } from '~/types/StrapiBlogs';
 
-const textInput = ref()
-const query = groq`*[_type == "post"] {
-title,
-author->{image{asset{_ref}}, name},
-  introText,
-  mainImage {
-    ...,
-    asset{_ref}
-  },
-  categories[]->{title},
-  slug{current},
-  _createdAt
+const { find } = useStrapi()
+const loading = ref(false)
+const route = useRoute()
+const router = useRouter()
+const blogsData = ref<StrapiBlogs[]>()
+const searchInput = ref(route.query.search as string)
+
+const fetchBlogs = async (searchQuery?: string[]) => {
+  const baseParams = {
+    fields: ['title', 'subtitle', 'publishedAt', 'slug'],
+    sort: 'publishedAt:desc',
+    populate: {
+      mainImage: true,
+      createdBy: true,
+      categories: {
+        fields: ['name']
+      },
+      blogIcon: {
+        fields: ['url']
+      }
+    }
+  }
+
+  const searchParams = searchQuery
+    ? {
+      filters: {
+        $or: [{ title: { $containsi: searchQuery } }, { subtitle: { $containsi: searchQuery } }]
+      }
+    }
+    : {}
+
+  const params = { ...baseParams, ...searchParams }
+
+  try {
+    const { data } = await find<StrapiBlogs>('blogs', params)
+
+    if (data) {
+      blogsData.value = data.map((item) => item.attributes)
+    }
+  } catch (error) {
+    console.error(error)
+  }
 }
-| order(_createdAt desc)`
-const sanity = useSanity()
-const { data } = await useAsyncData('blogs', () => sanity.fetch<IBlogIndex>(query))
-useSeoMeta({
-  title: 'Blogs',
-  ogTitle: '%s - Konkamon Sion',
-  description: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
-  ogDescription: 'รวม Blog ต่างๆ จากนาย กรกมล ศรีอ่อน',
-  ogImage: '/ogImage-blogs.webp',
-  ogUrl: 'https://konkamon.vercel.app/blog'
+
+await fetchBlogs()
+
+let timeout: NodeJS.Timeout | null = null
+watch(searchInput, () => {
+  if (timeout) {
+    clearTimeout(timeout)
+  }
+  timeout = setTimeout(async () => {
+    await router.replace({ query: { search: searchInput.value } })
+    if (searchInput.value) {
+    } else {
+      router.replace({ path: '/blog/' })
+    }
+    await fetchBlogs([route.query.search as string, route.query.page as string])
+
+  }, 500)
 })
 
-if (data.value) {
-  blogData.value = data.value as IBlogIndex
-}
-const searchInput = ref('')
-let debounceTimeout: ReturnType<typeof setTimeout> | null = null
-
-const query2 = groq`*[_type == "post" && (title match $searchInput || introText match $searchInput)] {
-title,
-author->{image{asset{_ref}}, name},
-introText,
-mainImage {
-  ...,
-  asset{_ref}
-},
-categories[]->{title},
-slug{current},
-_createdAt
-}
-| order(_createdAt desc)`
-
-const debounceSearch = () => {
-  if (debounceTimeout !== null) {
-    clearTimeout(debounceTimeout)
-  }
-  debounceTimeout = setTimeout(async () => {
-    const searchRes = await sanity.fetch<IBlogIndex>(query2, { searchInput: `*${searchInput.value}*` })
-    blogData.value = (await searchRes) as IBlogIndex
-    console.log(searchRes)
-    console.log(blogData.value.length)
-  }, 300)
-}
 </script>
-
-<style></style>
