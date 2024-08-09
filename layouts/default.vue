@@ -9,7 +9,7 @@
       ></div>
     </div>
     <Navbar />
-    <UContainer class="flex max-w-[950px] flex-col flex-nowrap gap-2 sm:gap-5" :ui="{ padding: 'p-0 xs:p-0 sm:p-3' }">
+    <UContainer class="flex max-w-[1000px] flex-col flex-nowrap gap-2 sm:gap-5" :ui="{ padding: 'p-0 xs:p-0 sm:p-3' }">
       <main
         class="rounded-none border bg-white p-3 drop-shadow-md xs:p-5 sm:rounded-lg md:p-5 lg:p-8 dark:border-neutral-800 dark:bg-neutral-900 dark:drop-shadow-none"
       >
