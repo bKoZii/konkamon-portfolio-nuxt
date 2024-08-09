@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "@headlessui/tailwindcss": "^0.2.1",
+    "@nuxt/content": "^2.13.2",
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.18.2",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "@nuxtjs/sanity": "^1.11.5",
+    "@nuxtjs/strapi": "^1.12.0",
     "@sanity/image-url": "^1.0.2",
     "@stefanobartoletti/nuxt-social-share": "^1.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -42,5 +43,5 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5"
   },
-  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
