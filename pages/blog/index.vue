@@ -103,4 +103,13 @@ watch(searchInput, () => {
   }, 500)
 })
 
+useSeoMeta({
+  title: 'Blogs',
+  ogTitle: '%s - Konkamon Sion',
+  description: 'รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ จากนาย กรกมล ศรีอ่อน',
+  ogDescription: 'รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ จากนาย กรกมล ศรีอ่อน',
+  ogImage: '/ogImage-blogs.webp',
+  ogUrl: 'https://www.konkamon.live/blog'
+})
+
 </script>
