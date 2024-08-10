@@ -1366,6 +1366,15 @@
     "@parcel/watcher-win32-ia32" "2.4.1"
     "@parcel/watcher-win32-x64" "2.4.1"
 
+"@pinia-plugin-persistedstate/nuxt@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@pinia-plugin-persistedstate/nuxt/-/nuxt-1.2.1.tgz#15f7c3d172bd6320f6017d9ccf785019a7de1060"
+  integrity sha512-q8s+4aQW/AjBMyeqLL48/qzBR5lcgnvvf1525ovNuKf6Wl9CsoLjPKh/5X8vNoKGwSow4gP7lVmdYPQRypgjgg==
+  dependencies:
+    "@nuxt/kit" "^3.12.2"
+    defu "^6.1.4"
+    pinia-plugin-persistedstate ">=3.2.1"
+
 "@pinia/nuxt@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@pinia/nuxt/-/nuxt-0.5.3.tgz#d9de0653e36011d859e42917480b09c814ab6197"
@@ -5717,6 +5726,11 @@ pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
+
+pinia-plugin-persistedstate@>=3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-3.2.1.tgz#66780602aecd6c7b152dd7e3ddc249a1f7a13fe5"
+  integrity sha512-MK++8LRUsGF7r45PjBFES82ISnPzyO6IZx3CH5vyPseFLZCk1g2kgx6l/nW8pEBKxxd4do0P6bJw+mUSZIEZUQ==
 
 pinia@2.2.1, pinia@^2.2.1:
   version "2.2.1"

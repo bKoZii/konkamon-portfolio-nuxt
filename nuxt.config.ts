@@ -21,7 +21,8 @@ export default defineNuxtConfig({
     '@stefanobartoletti/nuxt-social-share',
     '@nuxtjs/strapi',
     '@nuxt/content',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt'
   ],
 
   app: {
