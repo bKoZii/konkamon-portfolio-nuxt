@@ -9,7 +9,7 @@
         shadow: 'shadow hover:shadow-lg dark:shadow-none dark:hover:shadow-none',
         body: {
           base: 'hover:text-primary prose-h2:hover:text-primary',
-          padding: 'p-0 sm:px-0 sm:pt-0 md:p-0'
+          padding: 'p-0 sm:px-0 sm:py-0 md:p-0'
         }
       }">
         <div class="flex flex-row items-center p-4 gap-6">
@@ -17,8 +17,8 @@
             class="w-12 sm:w-16 drop-shadow" :alt="`ไอคอนประจำโพสต์ ${post.title}`"
             :aria-label="`ไอคอนประจำโพสต์ ${post.title}`" />
           <div
-            class="md:prose-md prose prose-sm sm:prose-sm dark:prose-invert prose-h2:m-0 prose-p:m-0 flex max-w-none flex-col gap-2">
-            <h2>{{ post.title }}</h2>
+            class="md:prose-md prose prose-sm sm:prose-sm dark:prose-invert prose-h3:m-0 prose-p:m-0 flex max-w-none flex-col gap-2">
+            <h3 class="">{{ post.title }}</h3>
             <p class="text-xs">{{ post.subtitle }}</p>
             <section class="not-prose flex flex-row gap-1" v-if="post.categories">
               <div v-for="category in post.categories.data" :key="category.id">
