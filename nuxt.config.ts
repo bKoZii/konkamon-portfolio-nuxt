@@ -8,7 +8,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
-    '/blog': { prerender: true, cache: { maxAge: 60 * 60 * 24 } },
+    '/blog': { cache: { maxAge: 60 * 60 * 24 } },
     '/blog/*': { cache: { maxAge: 60 * 60 * 24 } }
   },
 
