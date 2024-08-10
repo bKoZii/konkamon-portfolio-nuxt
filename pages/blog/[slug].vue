@@ -89,6 +89,12 @@ const { data: content } = await useFetch(() => `/api/transform`, {
   },
 });
 
+definePageMeta({
+  middleware:[
+    'check-blog-post'
+]
+})
+
 
 </script>
 
