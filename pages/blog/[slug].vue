@@ -37,9 +37,7 @@
             <UDivider class="my-4" />
             <section
               class="prose prose-neutral dark:prose-invert prose-sm md:prose-base max-w-none font-sans prose-h1:mb-5 prose-h2:my-4">
-              <ContentRenderer v-bind="$attrs">
-                <ContentRendererMarkdown :value="parsedMarkdown" />
-              </ContentRenderer>
+              <ContentRenderer :value="content" v-bind="$attrs" />
             </section>
           </section>
           <template #fallback>
@@ -54,7 +52,6 @@
 <script lang="ts" setup>
 import type { RouteLocationNormalized } from 'vue-router'
 import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug';
-import markdownParser from '@nuxt/content/transformers/markdown'
 
 const parsedMarkdown = ref()
 const { findOne } = useStrapi()
@@ -85,7 +82,12 @@ useSeoMeta({
   ogUrl: `https://konkamon.vercel.app/blog/${blogSlug.value?.slug}`
 })
 
-parsedMarkdown.value = await markdownParser.parse(null, blogSlug.value?.content)
+const { data: content } = await useFetch(() => `/api/transform`, {
+  method: "POST",
+  body: {
+    content: blogSlug.value?.content,
+  },
+});
 
 
 </script>
