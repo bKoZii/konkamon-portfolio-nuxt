@@ -18,7 +18,7 @@
     </div>
 
     <div v-if="blogsData">
-      <section class="grid grid-cols-2 gap-3 ">
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <ClientOnly>
           <div v-for="(post, index) in blogsData" :key="index">
             <BlogIndexCard :post="post" />
