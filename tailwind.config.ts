@@ -1,14 +1,14 @@
 import type { Config } from 'tailwindcss'
-import tailwindTypography from '@tailwindcss/typography'
+const defaultTheme = require('tailwindcss/defaultTheme')
 export default <Partial<Config>>{
-  content: [],
   css: ['~/assets/main.css'],
   darkMode: 'selector',
   theme: {
+    screens: {
+      xs: '400px',
+      ...defaultTheme.screens
+    },
     extend: {
-      screens: {
-        xs: '400px'
-      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
