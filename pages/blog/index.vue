@@ -111,5 +111,5 @@ useSeoMeta({
   ogImage: '/ogImage-blogs.webp',
   ogUrl: 'https://www.konkamon.live/blog'
 })
-
+useMySlugCacheStore()
 </script>

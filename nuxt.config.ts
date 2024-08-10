@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     'dayjs-nuxt',
     '@stefanobartoletti/nuxt-social-share',
     '@nuxtjs/strapi',
-    '@nuxt/content'
+    '@nuxt/content',
+    '@pinia/nuxt'
   ],
 
   app: {
@@ -84,5 +85,8 @@ export default defineNuxtConfig({
   },
   strapi:{
     url: process.env.STRAPI_URL
+  },
+  pinia: {
+    storesDirs: ['./stores/**']
   }
 })
