@@ -37,7 +37,8 @@
             <section
               class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-lg prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight"
             >
-              <MDC :value="ast" />
+              <!-- <MDC :value="ast" /> -->
+              <MDCRenderer :body="ast?.body" :data="ast?.data" />
             </section>
           </section>
           <template #fallback>
@@ -79,12 +80,16 @@ useSeoMeta({
   ogUrl: `https://konkamon.live/blog/${blogSlug.value?.slug}`
 })
 
-const { data: ast } = await useFetch(() => `/api/mdc-transform`, {
-  method: 'POST',
-  body: {
-    content: blogSlug.value?.content
-  }
-})
+// const { data: ast } = await useFetch(() => `/api/mdc-transform`, {
+//   method: 'POST',
+//   body: {
+//     content: blogSlug.value?.content
+//   }
+// })
+
+import { parseMarkdown } from '@nuxtjs/mdc/runtime'
+
+const { data: ast } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.value?.content))
 
 definePageMeta({
   middleware: ['check-blog-post']
