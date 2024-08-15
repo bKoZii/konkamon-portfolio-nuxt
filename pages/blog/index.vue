@@ -1,5 +1,10 @@
 <template>
   <div>
+    <UAlert v-if="alertMessage" title="Error" :description="alertMessage"
+    color="red" variant="subtle" icon="ph:warning-circle-duotone" class="mb-5"
+    :close-button="{ icon: 'i-heroicons-x-mark-20-solid', color: 'red', variant: 'link', padded: false }"
+    @close="router.replace({ path: '/blog/' })"
+  />
     <div class="flex flex-col lg:flex-row justify-between items-center mb-3">
       <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
       <div class="mt-5 lg:m-0 ">
@@ -112,4 +117,14 @@ useSeoMeta({
   ogUrl: 'https://www.konkamon.live/blog'
 })
 useMySlugCacheStore()
+
+const alertMessage = computed(() => {
+  if (route.query.notfound) {
+    return `ไมพบ Blog จาก Link ของคุณ : ${route.query.link}`
+  } else if (route.query.unpublished) {
+    return `Blog จาก Link '${route.query.link}' ถูกยกเลิกการเผยแพร่แล้ว`
+  }
+  return null
+})
+
 </script>
