@@ -8,8 +8,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
-    '/blog': { cache: { maxAge: 60 * 60 * 24 } },
-    '/blog/*': { cache: { maxAge: 60 * 60 * 24 } }
+    '/blog': { prerender: true }
   },
 
   modules: [
@@ -20,7 +19,7 @@ export default defineNuxtConfig({
     'dayjs-nuxt',
     '@stefanobartoletti/nuxt-social-share',
     '@nuxtjs/strapi',
-    '@nuxt/content',
+    '@nuxtjs/mdc',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt'
   ],
@@ -75,16 +74,16 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true
   },
-  content: {
+  mdc: {
     highlight: {
-      langs: ['shell', 'sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json','sql'],
-      theme: 'material-theme-darker'
+      langs: ['shell', 'sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json', 'sql'],
+      theme: 'one-dark-pro'
     },
-    markdown: {
-      anchorLinks: false,
-    },
+    headings: {
+      anchorLinks: false
+    }
   },
-  strapi:{
+  strapi: {
     url: process.env.STRAPI_URL
   },
   pinia: {

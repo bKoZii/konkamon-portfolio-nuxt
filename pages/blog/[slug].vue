@@ -8,8 +8,7 @@
             <UDivider class="mt-3" />
           </section>
           <section class="flex flex-col gap-5">
-            <div
-              class="prose prose-sm md:prose-base dark:prose-invert prose-h1:m-0 prose-p:my-3 flex max-w-none flex-col gap-6">
+            <div class="prose prose-sm md:prose-base dark:prose-invert prose-h1:m-0 prose-p:my-3 flex max-w-none flex-col gap-6">
               <div>
                 <h1>{{ blogSlug.title }}</h1>
                 <p class="text-xs sm:text-sm">{{ blogSlug.subtitle }}</p>
@@ -36,8 +35,9 @@
             <NuxtImg :src="blogSlug.mainImage.data.attributes.url" class="rounded-lg" />
             <UDivider class="my-4" />
             <section
-              class="prose prose-neutral dark:prose-invert prose-sm md:prose-base max-w-none font-sans prose-h1:mb-5 prose-h2:my-4">
-              <ContentRenderer :value="content" v-bind="$attrs" />
+              class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-lg prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight"
+            >
+              <MDC :value="ast" />
             </section>
           </section>
           <template #fallback>
@@ -51,26 +51,23 @@
 
 <script lang="ts" setup>
 import type { RouteLocationNormalized } from 'vue-router'
-import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug';
+import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 
-const parsedMarkdown = ref()
 const { findOne } = useStrapi()
-const blogSlug = ref<StrapiBlogSlug>()
 const route: RouteLocationNormalized = useRoute()
-await useAsyncData('blogSlug', () =>
+
+const { data: blogSlug } = await useAsyncData('blogSlug', () =>
   findOne<StrapiBlogSlug>('blogs', route.params['slug'] as string, {
     fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
     populate: {
       mainImage: true,
-      createdBy: true,
       categories: {
-        fields: ["name"]
-      },
+        fields: ['name']
+      }
     }
-  })
-).then((item) => {
-  blogSlug.value = item?.data?.value?.data?.attributes
-})
+  }).then((data) => data.data.attributes)
+)
+
 const title = computed(() => `${blogSlug.value?.title}`)
 useSeoMeta({
   title: title.value,
@@ -79,23 +76,19 @@ useSeoMeta({
   description: blogSlug.value?.subtitle,
   ogDescription: blogSlug.value?.subtitle,
   ogImage: blogSlug.value?.mainImage.data.attributes.url,
-  ogUrl: `https://konkamon.vercel.app/blog/${blogSlug.value?.slug}`
+  ogUrl: `https://konkamon.live/blog/${blogSlug.value?.slug}`
 })
 
-const { data: content } = await useFetch(() => `/api/transform`, {
-  method: "POST",
+const { data: ast } = await useFetch(() => `/api/mdc-transform`, {
+  method: 'POST',
   body: {
-    content: blogSlug.value?.content,
-  },
-});
+    content: blogSlug.value?.content
+  }
+})
 
 definePageMeta({
-  middleware:[
-    'check-blog-post'
-]
+  middleware: ['check-blog-post']
 })
-
-
 </script>
 
 <style></style>
