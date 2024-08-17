@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import remarkGfm from 'remark-gfm'
 
 export default defineNuxtConfig({
   devtools: {
@@ -54,14 +53,6 @@ export default defineNuxtConfig({
     cssPath: '~/assets/main.css',
     configPath: 'tailwind.config.ts'
   },
-  // icon: {
-  //   customCollections: [
-  //     {
-  //       prefix: 'my-icon',
-  //       dir: './assets/icons'
-  //     }
-  //   ]
-  // },
   compatibilityDate: '2024-07-04',
   dayjs: {
     locales: ['th'],
@@ -76,7 +67,7 @@ export default defineNuxtConfig({
   },
   mdc: {
     highlight: {
-      langs: ['shell', 'sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json', 'sql'],
+      langs: ['shell', 'sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json', 'sql', 'console'],
       theme: 'one-dark-pro',
       wrapperStyle: true
     },
