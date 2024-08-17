@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@headlessui/tailwindcss": "^0.2.1",
-    "@nuxtjs/mdc": "^0.8.3",
     "@nuxt/image": "^1.7.0",
     "@nuxt/ui": "^2.18.4",
     "@nuxtjs/google-fonts": "^3.2.0",
+    "@nuxtjs/mdc": "^0.8.3",
     "@nuxtjs/strapi": "^1.12.0",
     "@pinia/nuxt": "^0.5.3",
     "@stefanobartoletti/nuxt-social-share": "^1.0.0",
@@ -42,7 +42,9 @@
     "dayjs": "^1.11.12",
     "dayjs-nuxt": "^2.1.9",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.6"
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "sass": "^1.77.8",
+    "shiki": "^1.13.0"
   },
   "resolutions": {
     "string-width": "4.2.3"
