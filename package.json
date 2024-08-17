@@ -36,6 +36,7 @@
     "@iconify-json/mdi": "^1.1.68",
     "@iconify-json/ph": "^1.1.14",
     "@iconify-json/simple-icons": "^1.1.113",
+    "@iconify-json/vscode-icons": "^1.1.37",
     "@nuxt/kit": "^3.12.4",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "dayjs": "^1.11.12",
@@ -43,5 +44,8 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  "resolutions": {
+    "string-width": "4.2.3"
+  },
+  "packageManager": "pnpm@9.7.1+sha512.faf344af2d6ca65c4c5c8c2224ea77a81a5e8859cbc4e06b1511ddce2f0151512431dd19e6aff31f2c6a8f5f2aced9bd2273e1fed7dd4de1868984059d2c4247"
 }
