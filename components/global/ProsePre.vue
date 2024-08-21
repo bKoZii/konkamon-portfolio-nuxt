@@ -51,7 +51,7 @@ defineProps({
   overflow-x: hidden;
 
   &-body {
-    padding: 5px 0px;
+    padding: 0.75em;
     overflow-x: auto;
 
     code {
@@ -77,7 +77,6 @@ defineProps({
       background-color: color-mix(in srgb, var(--shiki-default-bg) 70%, #888888);
     }
     .line {
-      padding: 0 0.95rem;
       line-height: 1.6;
 
       span {
