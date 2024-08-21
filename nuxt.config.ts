@@ -7,7 +7,9 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/': { prerender: true }
+    '/': { prerender: true },
+    '/blog': { ssr: false },
+    '/blog/**': { ssr: false }
   },
 
   modules: [
@@ -21,7 +23,7 @@ export default defineNuxtConfig({
     '@nuxtjs/mdc',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/seo'
+    "@nuxtjs/robots"
   ],
 
   app: {
@@ -85,14 +87,8 @@ export default defineNuxtConfig({
   experimental: {
     externalVue: false
   },
-  site: {
-    url: 'https://www.konkamon.live',
-    name: 'Konkamon Sion - Portfolio & Blogs Website',
-    description: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
-    indexable: true
-  },
   robots: {
-    allow: ['/', '/blog/', '/blog/**'],
+    allow: ['/', '/blog/'],
     disallow: ['/api']
   }
 })
