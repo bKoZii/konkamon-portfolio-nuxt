@@ -2,11 +2,11 @@
   <div>
     <div v-if="blogSlug">
       <article class="flex flex-col gap-5">
-        <LazyBlogSlugHeader :blog-slug="blogSlug" />
+        <BlogSlugHeader :blog-slug="blogSlug" />
         <ClientOnly>
           <LazyBlogSlugContent :blog-content="blogSlug.content" />
           <template #fallback>
-            <BlogSlugFallback />
+            <LazyBlogSlugFallback />
           </template>
         </ClientOnly>
       </article>
