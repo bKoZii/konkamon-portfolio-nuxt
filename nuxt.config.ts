@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     '@nuxtjs/strapi',
     '@nuxtjs/mdc',
     '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt'
+    '@pinia-plugin-persistedstate/nuxt',
+    '@nuxtjs/seo'
   ],
 
   app: {
@@ -83,5 +84,15 @@ export default defineNuxtConfig({
   },
   experimental: {
     externalVue: false
+  },
+  site: {
+    url: 'https://www.konkamon.live',
+    name: 'Konkamon Sion - Portfolio & Blogs Website',
+    description: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
+    indexable: true
+  },
+  robots: {
+    allow: ['/', '/blog/', '/blog/**'],
+    disallow: ['/api']
   }
 })
