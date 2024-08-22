@@ -12,7 +12,7 @@
     <p v-else class="text-sm sm:text-lg">
       {{ workData.name }}
     </p>
-    <span class="flex-shrink-0 text-xs sm:text-sm text-gray-600 dark:text-gray-400">{{ workData.description }}</span>
+    <span class="flex-shrink-0 text-xs sm:text-sm text-gray-600 dark:text-gray-500 dark:text-gray-400">{{ workData.description }}</span>
   </div>
 
   <span class="hidden flex-grow border-b border-dashed border-gray-300 sm:block dark:border-gray-700"></span>

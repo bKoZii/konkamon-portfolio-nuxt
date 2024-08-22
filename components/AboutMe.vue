@@ -1,6 +1,6 @@
 <template>
   <article class="prose dark:prose-invert max-w-none prose-sm sm:prose-base">
-    <h2 class="text-lg font-bold text-gray-500">เกี่ยวกับผม</h2>
+    <h2 class="text-lg font-bold text-gray-500 dark:text-gray-400">เกี่ยวกับผม</h2>
     <p>
       สวัสดีครับ กระผม นายกรกมล ศรีอ่อน ขณะนี้กําลังศึกษาอยู่ในระดับชั้นปริญญาตรี เทียบโอนปีที่ 2 (ปี 4) คณะวิทยาศาสตร์และเทคโนโลยี สาขา
       เทคโนโลยีสารสนเทศ เป็นคนที่ชื่นชอบและมีความถนัดในการสร้าง Web / Front End โดยใช้ Vue / Nuxt / Tailwind

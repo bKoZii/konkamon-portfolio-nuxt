@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h2 class="mb-6 text-lg font-bold text-gray-500">Social Links</h2>
+      <h2 class="mb-6 text-lg font-bold text-gray-500 dark:text-gray-400">Social Links</h2>
     </div>
     <div class="flex flex-col gap-4 text-black sm:gap-3 dark:text-white">
       <div v-for="data in socialList" :key="data.name">

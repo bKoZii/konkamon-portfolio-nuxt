@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="mb-6 flex flex-row items-center justify-between">
-      <h2 class="text-lg font-bold text-gray-500">Blogs ล่าสุด</h2>
+      <h2 class="text-lg font-bold text-gray-500 dark:text-gray-400">Blogs ล่าสุด</h2>
       <UButton label="Blogs ทั้งหมด" variant="ghost" icon="ph:arrow-right" trailing to="/blog" />
     </section>
     <section class="grid grid-cols-1 gap-3 sm:grid-cols-1 md:grid-cols-2">

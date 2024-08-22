@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky top-0 z-10 border-b bg-white/80 px-6 py-2 shadow-md backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-900/85 dark:text-white"
+    class="sticky top-0 z-10 border-b bg-white/80 px-6 py-2 shadow-md backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-950/80 dark:text-white"
   >
     <header class="flex items-center justify-between xs:justify-between sm:justify-between">
       <ULink id="myName" to="/" class="inline-flex items-center gap-2.5 text-xl font-extrabold" aria-label="logo"> KONKAMON </ULink>
@@ -74,6 +74,11 @@ const navItems = [
     label: 'Blog',
     to: '/blog',
     icon: 'ph:notebook-duotone'
+  },
+  {
+    label: 'Nuxt MDC',
+    to: '/nuxt-mdc',
+    icon: 'ph:markdown-logo-duotone'
   }
 ]
 </script>
