@@ -47,7 +47,7 @@ export default defineNuxtConfig({
       'Noto Sans Thai Looped': {
         wght: [400, 600, 700, 800]
       },
-      'Ubuntu Mono': {
+      'Fira Code': {
         wght: [400, 600, 700, 800]
       }
     }

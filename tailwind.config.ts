@@ -33,7 +33,7 @@ export default <Partial<Config>>{
       },
       fontFamily: {
         sans: ['Space Grotesk', 'Noto Sans Thai Looped', 'system-ui'],
-        mono: ['Ubuntu Mono', 'Noto Sans Thai Looped']
+        mono: ['Fira Code', 'Noto Sans Thai Looped']
       }
     }
   }
