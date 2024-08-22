@@ -8,8 +8,8 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true },
-    '/blog': { ssr: false },
-    '/blog/**': { ssr: false }
+    '/blog': { isr: true },
+    '/blog/**': { isr: true }
   },
 
   modules: [
