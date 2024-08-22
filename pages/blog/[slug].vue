@@ -59,13 +59,4 @@ const { data: ast } = await useFetch(() => `/api/mdc-transform`, {
   }
 })
 
-// const {data: ast } = await useAsyncData('markdownParser', ()=> $fetch('/api/mdc-transform', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     content: blogSlug.value?.content
-//   })
-// }).then((data) => data))
 </script>

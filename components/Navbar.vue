@@ -74,11 +74,6 @@ const navItems = [
     label: 'Blog',
     to: '/blog',
     icon: 'ph:notebook-duotone'
-  },
-  {
-    label: 'Nuxt MDC',
-    to: '/nuxt-mdc',
-    icon: 'ph:markdown-logo-duotone'
   }
 ]
 </script>
