@@ -18,7 +18,7 @@
       </div>
       <div class="w-1/3 sm:w-1/4 lg:w-1/3">
         <NuxtImg
-          src="/me-rmutsv-square.webp"
+          src="https://res.cloudinary.com/dqx4sss9s/image/upload/v1724321379/me-rmutsv-square_hhiarv.webp"
           class="rounded-lg object-contain object-center shadow-md dark:shadow-none"
           width="100%"
           height="100%"
