@@ -4,9 +4,9 @@
       <article class="flex flex-col gap-5">
         <BlogSlugHeader :blog-slug="blogSlug" />
         <ClientOnly>
-          <LazyBlogSlugContent :blog-content="blogSlug.content" />
+          <BlogSlugContent :blog-content="blogSlug.content" />
           <template #fallback>
-            <LazyBlogSlugFallback />
+            <BlogSlugFallback />
           </template>
         </ClientOnly>
       </article>
