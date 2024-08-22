@@ -3,11 +3,15 @@
     <div v-if="blogSlug">
       <article class="flex flex-col gap-5">
         <BlogSlugHeader :blog-slug="blogSlug" />
+        <UDivider class="my-3" />
         <ClientOnly>
           <section
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight">
             <MDCRenderer :body="ast?.body" :data="ast?.data" />
           </section>
+          <template #fallback>
+            <BlogSlugFallback />
+          </template>
         </ClientOnly>
       </article>
     </div>
@@ -54,4 +58,14 @@ const { data: ast } = await useFetch(() => `/api/mdc-transform`, {
     content: blogSlug.value?.content
   }
 })
+
+// const {data: ast } = await useAsyncData('markdownParser', ()=> $fetch('/api/mdc-transform', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//     content: blogSlug.value?.content
+//   })
+// }).then((data) => data))
 </script>
