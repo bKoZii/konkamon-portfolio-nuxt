@@ -15,38 +15,38 @@ import type FrameworkListInterface from '~/types/FrameworkListInterface'
 const languageList: FrameworkListInterface[] = [
   {
     name: 'TypeScript',
-    icon: 'mdi:language-typescript'
+    icon: 'simple-icons:typescript'
   },
   {
     name: 'JavaScript',
-    icon: 'mdi:language-javascript'
+    icon: 'simple-icons:javascript'
   },
   {
     name: 'Python',
-    icon: 'mdi:language-python'
+    icon: 'simple-icons:python'
   },
   {
     name: 'HTML',
-    icon: 'mdi:language-html5'
+    icon: 'simple-icons:html5'
   },
   {
     name: 'CSS',
-    icon: 'mdi:language-css3'
+    icon: 'simple-icons:css3'
   }
 ]
 
 const frameworkList: FrameworkListInterface[] = [
   {
     name: 'VueJS',
-    icon: 'mdi:vuejs'
+    icon: 'simple-icons:vuedotjs'
   },
   {
     name: 'Angular',
-    icon: 'mdi:angular'
+    icon: 'simple-icons:angular'
   },
   {
     name: 'Nuxt',
-    icon: 'mdi:nuxt'
+    icon: 'simple-icons:nuxtdotjs'
   },
   {
     name: 'Quasar',
@@ -54,22 +54,22 @@ const frameworkList: FrameworkListInterface[] = [
   },
   {
     name: 'Ionic',
-    icon: 'ion:logo-ionic'
+    icon: 'simple-icons:ionic'
   }
 ]
 
 const softwareList: FrameworkListInterface[] = [
   {
     name: 'Visual Studio Code',
-    icon: 'mdi:microsoft-visual-studio-code'
+    icon: 'simple-icons:visualstudiocode'
   },
   {
     name: 'GitHub',
-    icon: 'mdi:github'
+    icon: 'simple-icons:github'
   },
   {
     name: 'Firebase',
-    icon: 'mdi:firebase'
+    icon: 'simple-icons:firebase'
   }
 ]
 </script>

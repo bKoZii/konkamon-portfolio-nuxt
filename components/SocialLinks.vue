@@ -9,7 +9,7 @@
           <div v-if="data.link">
             <a :href="data.link" target="_blank" ref="noopener noreferrer" class="hover:text-primary flex flex-shrink-0 gap-2 text-base sm:text-lg"
               >{{ data.name }}
-              <Icon class="flex-shrink-0" name="mdi:launch" />
+              <Icon class="flex-shrink-0" name="ic:baseline-launch" />
             </a>
           </div>
           <span class="flex-grow border-b border-dashed border-gray-300 dark:border-neutral-700"></span>
