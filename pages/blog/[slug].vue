@@ -2,9 +2,9 @@
   <div>
     <div v-if="blogSlug">
       <article class="flex flex-col gap-5">
-        <BlogSlugHeader :blog-slug="blogSlug" />
-        <UDivider class="my-3" />
         <ClientOnly>
+          <BlogSlugHeader :blog-slug="blogSlug" />
+          <UDivider class="my-3" />
           <section
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight">
             <MDCRenderer :body="ast?.body" :data="ast?.data" />
@@ -21,11 +21,14 @@
 <script lang="ts" setup>
 import type { RouteLocationNormalized } from 'vue-router'
 import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
+import { parseMarkdown } from '@nuxtjs/mdc/runtime'
+import type { MDCParserResult } from '@nuxtjs/mdc'
 
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
+const blogSlug = shallowRef<StrapiBlogSlug>()
 
-const { data: blogSlug } = await useAsyncData('blogSlug', () =>
+await useAsyncData('blogSlug', () =>
   findOne<StrapiBlogSlug>('blogs', route.params['slug'] as string, {
     fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
     populate: {
@@ -34,7 +37,11 @@ const { data: blogSlug } = await useAsyncData('blogSlug', () =>
         fields: ['name']
       }
     }
-  }).then((data) => data.data.attributes)
+  })
+    .then((data) => data.data.attributes)
+    .then((data) => {
+      blogSlug.value = data
+    })
 )
 
 const title = computed(() => `${blogSlug.value?.title}`)
@@ -48,15 +55,9 @@ useSeoMeta({
   ogUrl: `https://konkamon.live/blog/${blogSlug.value?.slug}`
 })
 
-definePageMeta({
-  middleware: ['check-blog-post']
-})
+  definePageMeta({
+    middleware: ['check-blog-post']
+  })
 
-const { data: ast } = await useFetch(() => `/api/mdc-transform`, {
-  method: 'POST',
-  body: {
-    content: blogSlug.value?.content
-  }
-})
-
+const { data: ast } = await useAsyncData<MDCParserResult>('markdown', () => parseMarkdown(blogSlug.value?.content))
 </script>
