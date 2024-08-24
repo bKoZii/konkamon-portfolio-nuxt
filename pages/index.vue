@@ -4,7 +4,7 @@
       <Hero />
       <AboutMe />
       <Technology />
-      <LazyLatestBlogs />
+      <LatestBlogs />
       <SocialLinks />
       <FeaturedWork />
     </div>
