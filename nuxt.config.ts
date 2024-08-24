@@ -103,10 +103,7 @@ export default defineNuxtConfig({
         dir: './assets/icons'
       },
     ],
-    serverBundle: {
-      remote: 'jsdelivr',
-      collections: ['ic', 'ph', 'simple-icons', 'vscode-icons']
-    },
+    serverBundle: 'local',
     clientBundle: {
       includeCustomCollections: true,
       icons: [
@@ -121,7 +118,9 @@ export default defineNuxtConfig({
         'ph:sun-duotone',
         'ph:moon-duotone',
         'ic:baseline-close',
-        'ph:arrow-right'
+        'ph:arrow-right',
+        'ph:globe-duotone',
+
       ]
     }
   }
