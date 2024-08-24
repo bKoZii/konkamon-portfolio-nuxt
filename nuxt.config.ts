@@ -23,7 +23,8 @@ export default defineNuxtConfig({
     '@nuxtjs/mdc',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap'
   ],
 
   app: {
@@ -123,5 +124,15 @@ export default defineNuxtConfig({
 
       ]
     }
-  }
+  },
+  site: {
+    url: 'https://www.konkamon.live',
+    name: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.'
+  },
+  sitemap: {
+    sources: [
+      '/api/sitemap/urls'
+    ],
+    excludeAppSources: ['nuxt:route-rules']
+  },
 })
