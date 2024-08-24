@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/': { prerender: true },
+    '/': { isr: true },
     '/blog': { isr: true },
     '/blog/**': { isr: true }
   },
@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     '@nuxtjs/mdc',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    "@nuxtjs/robots"
+    '@nuxtjs/robots'
   ],
 
   app: {
@@ -90,5 +90,39 @@ export default defineNuxtConfig({
   robots: {
     allow: ['/', '/blog/'],
     disallow: ['/api']
+  },
+  sourcemap: {
+    server: false,
+    client: true
+  },
+  icon: {
+    provider: 'server',
+    customCollections: [
+      {
+        prefix: 'my-icon',
+        dir: './assets/icons'
+      },
+    ],
+    serverBundle: {
+      remote: 'jsdelivr',
+      collections: ['ic', 'ph', 'simple-icons', 'vscode-icons']
+    },
+    clientBundle: {
+      includeCustomCollections: true,
+      icons: [
+        'ph:house-duotone',
+        'ph:folder-open-duotone',
+        'ph:backpack-duotone',
+        'ph:bookmark-duotone',
+        'ph:read-cv-logo-duotone',
+        'ph:notebook-duotone',
+        'ph:calendar-dots-duotone',
+        'ph:monitor-duotone',
+        'ph:sun-duotone',
+        'ph:moon-duotone',
+        'ic:baseline-close',
+        'ph:arrow-right'
+      ]
+    }
   }
 })
