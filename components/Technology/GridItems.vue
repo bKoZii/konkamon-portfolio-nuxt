@@ -4,8 +4,8 @@
       <h3 class="mb-2 font-bold">{{ title }}</h3>
       <div class="flex flex-row flex-wrap justify-center gap-1 sm:justify-start">
         <div v-for="item in technologyData" :key="item.name">
-          <UBadge class="flex flex-row gap-1" variant="subtle" size="xs">
-            <UIcon :name="item.icon" class="size-6" />
+          <UBadge class="flex flex-row gap-1 font-bold drop-shadow-md dark:drop-shadow-none" variant="subtle" size="sm">
+            <UIcon :name="item.icon" class="size-4 m-0.5" />
             {{ item.name }}
           </UBadge>
         </div>
