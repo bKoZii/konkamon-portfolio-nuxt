@@ -26,9 +26,8 @@ import type { MDCParserResult } from '@nuxtjs/mdc'
 
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
-const blogSlug = shallowRef<StrapiBlogSlug>()
 
-await useAsyncData('blogSlug', () =>
+const { data:blogSlug } = await useAsyncData('blogSlug', () =>
   findOne<StrapiBlogSlug>('blogs', route.params['slug'] as string, {
     fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
     populate: {
@@ -39,14 +38,10 @@ await useAsyncData('blogSlug', () =>
     }
   })
     .then((data) => data.data.attributes)
-    .then((data) => {
-      blogSlug.value = data
-    })
 )
 
-const title = computed(() => `${blogSlug.value?.title}`)
 useSeoMeta({
-  title: title.value,
+  title: blogSlug.value?.title,
   ogTitle: '%s [Blogs - Konkamon]',
   titleTemplate: '%s [Blogs - Konkamon]',
   description: blogSlug.value?.subtitle,
