@@ -82,7 +82,7 @@ importers:
         specifier: ^1.1.37
         version: 1.1.37
       '@nuxt/kit':
-        specifier: ^3.12.4
+        specifier: ^3.13.0
         version: 3.13.0(magicast@0.3.4)(rollup@4.21.0)
       '@pinia-plugin-persistedstate/nuxt':
         specifier: ^1.2.1
@@ -137,8 +137,8 @@ packages:
     resolution: {integrity: sha512-BBt3opiCOxUr9euZ5/ro/Xv8/V7yJ5bjYMqG/C1YAo8MIKAnumZalCN+msbci3Pigy4lIQfPUpfMM27HMGaYEA==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/generator@7.25.4':
-    resolution: {integrity: sha512-NFtZmZsyzDPJnk9Zg3BbTfKKc9UlHYzD0E//p2Z3B9nCwwtJW9T0gVbCz8+fBngnn4zf1Dr3IK8PHQQHq0lDQw==}
+  '@babel/generator@7.25.5':
+    resolution: {integrity: sha512-abd43wyLfbWoxC6ahM8xTkqLpGB2iWBVyuKC9/srhFunCd1SDNrV1s72bBpK4hLj8KLzHBBcOblvLQZBNw9r3w==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-annotate-as-pure@7.24.7':
@@ -261,8 +261,8 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/standalone@7.25.4':
-    resolution: {integrity: sha512-F2P17c0lbgnrG9++a5A3izJDSbHK7ekJS+y8p9NZVoioMRPlmFh0szX+9U7vBw1VUt152B1uslGR+CsLmd94qw==}
+  '@babel/standalone@7.25.5':
+    resolution: {integrity: sha512-46bI7GJHwgWfWszOWMvJIsJjXd+LBMIlaiw4R54+b7GvDfxTVE6ytsqR8uEiI/zYECoB33ChwfN0wq/MLHLFXg==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.25.0':
@@ -753,14 +753,14 @@ packages:
   '@iconify-json/vscode-icons@1.1.37':
     resolution: {integrity: sha512-02+dR2/LdIZTqGfyQerla5snhdN4edwYgpDuFZpI2lK9w8OVm26WYbg8RR8TxXQrlCRs726NQYxl5W+7V1YM/Q==}
 
-  '@iconify/collections@1.0.451':
-    resolution: {integrity: sha512-rxJuvER88l6nkZf3AW1uhnz5KGYwOgUoJMQ7wOn1lEf2PGkvgT+vPNfqT5ig0hp7vAlOo7reasI8TgElXZP0AQ==}
+  '@iconify/collections@1.0.453':
+    resolution: {integrity: sha512-s6X0BI2CeFwE8VNpxkMrIo1Peud7InUtGgYEYw2hfBT59pjhMJRAzMWpAM7ZvBx5N+UfXVE19dbyLGOcazdJ4A==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
-  '@iconify/utils@2.1.31':
-    resolution: {integrity: sha512-WCu65iVaFRXyGU+op12XVbDZgIov0vzMIlUokZ1WR42cU2wwYMks/pZY8v0tE72W8ShXVaprO79Jv6EjYm3Sjw==}
+  '@iconify/utils@2.1.32':
+    resolution: {integrity: sha512-LeifFZPPKu28O3AEDpYJNdEbvS4/ojAPyIW+pF/vUpJTYnbTiXUHkCh0bwgFRzKvdpb8H4Fbfd/742++MF4fPQ==}
 
   '@iconify/vue@4.1.3-beta.1':
     resolution: {integrity: sha512-N7iEOnWfhjbMqiyGMhotJKip23nrK5l3+T1hQwpEjKeMD2o4zOjm8zmeEfOOH81EXllhhOm7upR8jcH499YRWA==}
@@ -851,8 +851,8 @@ packages:
     peerDependencies:
       vite: '*'
 
-  '@nuxt/icon@1.4.8':
-    resolution: {integrity: sha512-m/KnEFap65O99eG4ISCB9e61o6gTJgztB0MfErYKOLbl1C5404jzz0uVgKXkwJ8ASJzPVT5Kw6OYQeEWgiUdPw==}
+  '@nuxt/icon@1.4.9':
+    resolution: {integrity: sha512-FzyfQDR/sjVZpn4fagn+lWYdHQiBg2c0zH15e7GH+b7CpDSlhII6crJf1ctSmlWYv9kgrNLVT6nh3xzW4RWHXw==}
 
   '@nuxt/image@1.7.0':
     resolution: {integrity: sha512-zSj32bLgbV9AvLkLX0pF52J5KBfSyj0eSIdpXCtTJATSZlqgcJigoCvmabC1nbcMIp0SZ29Bu9+acQpGTQKz+g==}
@@ -1191,11 +1191,11 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
-  '@tanstack/virtual-core@3.10.2':
-    resolution: {integrity: sha512-nQXJnavN0D5PcKW2XL+w05aO/bxnuBq0+p3X+RG+R+lTHluNSWp5ePNbz0wIfg7U4HPrX/LBE9llMOvS3/6Cuw==}
+  '@tanstack/virtual-core@3.10.4':
+    resolution: {integrity: sha512-yHyli4RHVsI+eJ0RjmOsjA9RpHp3/Zah9t+iRjmFa72dq00TeG/NwuLYuCV6CB4RkWD4i5RD421j1eb6BdKgvQ==}
 
-  '@tanstack/vue-virtual@3.10.2':
-    resolution: {integrity: sha512-mmHi/gFVMe3fr8hjgsQIBhQlJrNYHjPvxydwPDrh7zEpduJRDfxO0klc5XPjuIz9fG0Gl1GM1OFv8SqOOUoCMw==}
+  '@tanstack/vue-virtual@3.10.4':
+    resolution: {integrity: sha512-oikrjnC7BnUCmqh5ptemclUK6EtJj48AdLcJx1t2fTLQyu+60Alo6gPGC3cANgmbEP/1C9DptbeMcm5AAjyBVg==}
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
 
@@ -2867,8 +2867,8 @@ packages:
   micromark@4.0.0:
     resolution: {integrity: sha512-o/sd0nMof8kYff+TqcDx3VSrgBTcZpSvYcAHIfHhv5VAuNmisCxjhx6YmxS8PFEpb9z5WKWKPdzf0jM23ro3RQ==}
 
-  micromatch@4.0.7:
-    resolution: {integrity: sha512-LPP/3KorzCwBxfeUuZmaR6bG2kdeHSbe0P2tY3FLRU4vYrjYz5hI4QZwV0njUx3jeuKe67YukQ1LSPZBKDqO/Q==}
+  micromatch@4.0.8:
+    resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
 
   mime-db@1.52.0:
@@ -3071,8 +3071,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nuxi@3.12.0:
-    resolution: {integrity: sha512-6vRdiXTw9SajEQOUi6Ze/XaIXzy1q/sD5UqHQSv3yqTu7Pot5S7fEihNXV8LpcgLz+9HzjVt70r7jYe7R99c2w==}
+  nuxi@3.13.0:
+    resolution: {integrity: sha512-15cnHePX+A0Vwwpgj/X+BQGcGulJQr6ddzfMXpvevpEsuAr/hHe5HioHVqYwqMSqiQLVtZLhPxeVOrg8eJn09Q==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
@@ -4458,7 +4458,7 @@ snapshots:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.25.4
+      '@babel/generator': 7.25.5
       '@babel/helper-compilation-targets': 7.25.2
       '@babel/helper-module-transforms': 7.25.2(@babel/core@7.25.2)
       '@babel/helpers': 7.25.0
@@ -4474,7 +4474,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/generator@7.25.4':
+  '@babel/generator@7.25.5':
     dependencies:
       '@babel/types': 7.25.4
       '@jridgewell/gen-mapping': 0.3.5
@@ -4630,7 +4630,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/standalone@7.25.4': {}
+  '@babel/standalone@7.25.5': {}
 
   '@babel/template@7.25.0':
     dependencies:
@@ -4641,7 +4641,7 @@ snapshots:
   '@babel/traverse@7.25.4':
     dependencies:
       '@babel/code-frame': 7.24.7
-      '@babel/generator': 7.25.4
+      '@babel/generator': 7.25.5
       '@babel/parser': 7.25.4
       '@babel/template': 7.25.0
       '@babel/types': 7.25.4
@@ -4670,7 +4670,7 @@ snapshots:
 
   '@egoist/tailwindcss-icons@1.8.1(tailwindcss@3.4.10)':
     dependencies:
-      '@iconify/utils': 2.1.31
+      '@iconify/utils': 2.1.32
       tailwindcss: 3.4.10
     transitivePeerDependencies:
       - supports-color
@@ -4896,7 +4896,7 @@ snapshots:
 
   '@headlessui/vue@1.7.22(vue@3.4.38)':
     dependencies:
-      '@tanstack/vue-virtual': 3.10.2(vue@3.4.38)
+      '@tanstack/vue-virtual': 3.10.4(vue@3.4.38)
       vue: 3.4.38
 
   '@iconify-json/heroicons@1.1.24':
@@ -4919,13 +4919,13 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/collections@1.0.451':
+  '@iconify/collections@1.0.453':
     dependencies:
       '@iconify/types': 2.0.0
 
   '@iconify/types@2.0.0': {}
 
-  '@iconify/utils@2.1.31':
+  '@iconify/utils@2.1.32':
     dependencies:
       '@antfu/install-pkg': 0.4.0
       '@antfu/utils': 0.7.10
@@ -5103,11 +5103,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@nuxt/icon@1.4.8(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@22.5.0)(sass@1.77.8)(terser@5.31.6))(vue@3.4.38)':
+  '@nuxt/icon@1.4.9(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@22.5.0)(sass@1.77.8)(terser@5.31.6))(vue@3.4.38)':
     dependencies:
-      '@iconify/collections': 1.0.451
+      '@iconify/collections': 1.0.453
       '@iconify/types': 2.0.0
-      '@iconify/utils': 2.1.31
+      '@iconify/utils': 2.1.32
       '@iconify/vue': 4.1.3-beta.1(vue@3.4.38)
       '@nuxt/devtools-kit': 1.3.14(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@22.5.0)(sass@1.77.8)(terser@5.31.6))
       '@nuxt/kit': 3.13.0(magicast@0.3.4)(rollup@4.21.0)
@@ -5231,7 +5231,7 @@ snapshots:
       '@headlessui/tailwindcss': 0.2.1(tailwindcss@3.4.10)
       '@headlessui/vue': 1.7.22(vue@3.4.38)
       '@iconify-json/heroicons': 1.1.24
-      '@nuxt/icon': 1.4.8(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@22.5.0)(sass@1.77.8)(terser@5.31.6))(vue@3.4.38)
+      '@nuxt/icon': 1.4.9(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@22.5.0)(sass@1.77.8)(terser@5.31.6))(vue@3.4.38)
       '@nuxt/kit': 3.13.0(magicast@0.3.4)(rollup@4.21.0)
       '@nuxtjs/color-mode': 3.4.4(magicast@0.3.4)(rollup@4.21.0)
       '@nuxtjs/tailwindcss': 6.12.1(magicast@0.3.4)(rollup@4.21.0)
@@ -5476,7 +5476,7 @@ snapshots:
   '@parcel/watcher-wasm@2.4.1':
     dependencies:
       is-glob: 4.0.3
-      micromatch: 4.0.7
+      micromatch: 4.0.8
 
   '@parcel/watcher-win32-arm64@2.4.1':
     optional: true
@@ -5491,7 +5491,7 @@ snapshots:
     dependencies:
       detect-libc: 1.0.3
       is-glob: 4.0.3
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       node-addon-api: 7.1.1
     optionalDependencies:
       '@parcel/watcher-android-arm64': 2.4.1
@@ -5698,11 +5698,11 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.10
 
-  '@tanstack/virtual-core@3.10.2': {}
+  '@tanstack/virtual-core@3.10.4': {}
 
-  '@tanstack/vue-virtual@3.10.2(vue@3.4.38)':
+  '@tanstack/vue-virtual@3.10.4(vue@3.4.38)':
     dependencies:
-      '@tanstack/virtual-core': 3.10.2
+      '@tanstack/virtual-core': 3.10.4
       vue: 3.4.38
 
   '@trysound/sax@0.2.0': {}
@@ -5779,7 +5779,7 @@ snapshots:
       estree-walker: 2.0.2
       glob: 7.2.3
       graceful-fs: 4.2.11
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       node-gyp-build: 4.8.1
       resolve-from: 5.0.0
     transitivePeerDependencies:
@@ -6749,7 +6749,7 @@ snapshots:
       '@nodelib/fs.walk': 1.2.8
       glob-parent: 5.1.2
       merge2: 1.4.1
-      micromatch: 4.0.7
+      micromatch: 4.0.8
 
   fast-npm-meta@0.2.2: {}
 
@@ -7742,7 +7742,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  micromatch@4.0.7:
+  micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
       picomatch: 2.3.1
@@ -7983,7 +7983,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxi@3.12.0:
+  nuxi@3.13.0:
     optionalDependencies:
       fsevents: 2.3.3
 
@@ -8070,7 +8070,7 @@ snapshots:
       magic-string: 0.30.11
       mlly: 1.7.1
       nitropack: 2.9.7(magicast@0.3.4)
-      nuxi: 3.12.0
+      nuxi: 3.13.0
       nypm: 0.3.9
       ofetch: 1.3.4
       ohash: 1.1.3
@@ -9059,7 +9059,7 @@ snapshots:
       is-glob: 4.0.3
       jiti: 1.21.6
       lilconfig: 2.1.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.1
@@ -9326,7 +9326,7 @@ snapshots:
   untyped@1.4.2:
     dependencies:
       '@babel/core': 7.25.2
-      '@babel/standalone': 7.25.4
+      '@babel/standalone': 7.25.5
       '@babel/types': 7.25.4
       defu: 6.1.4
       jiti: 1.21.6

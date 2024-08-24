@@ -35,7 +35,7 @@
     "@iconify-json/ph": "^1.1.14",
     "@iconify-json/simple-icons": "^1.1.114",
     "@iconify-json/vscode-icons": "^1.1.37",
-    "@nuxt/kit": "^3.12.4",
+    "@nuxt/kit": "^3.13.0",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "dayjs": "^1.11.13",
     "dayjs-nuxt": "^2.1.9",
