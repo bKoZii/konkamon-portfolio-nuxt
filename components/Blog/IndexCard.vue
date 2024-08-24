@@ -1,9 +1,9 @@
 <template>
   <template v-if="post">
-    <ULink :to="`/blog/${post.slug}`">
+    <NuxtLink :to="`/blog/${post.slug}`" prefetch-on="interaction">
 
       <UCard :ui="{
-        base: 'transition-all relative h-full flex items-center',
+        base: 'transition-shadow relative h-full flex items-center',
         ring: 'dark:ring-1 dark:hover:ring-2 dark:hover:ring-ocean-green-700',
         background: 'dark:bg-neutral-900',
         shadow: 'shadow hover:shadow-lg dark:shadow-none dark:hover:shadow-none',
@@ -34,7 +34,7 @@
           </div>
         </div>
       </UCard>
-    </ULink>
+    </NuxtLink>
   </template>
 </template>
 
