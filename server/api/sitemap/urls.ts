@@ -7,7 +7,7 @@ export default defineSitemapEventHandler(async () => {
 
   return posts.data.map((post) =>
     asSitemapUrl({
-      loc: post.attributes.slug,
+      loc: `blog/${post.attributes.slug}`,
       lastmod: post.attributes.updatedAt
     })
   )
