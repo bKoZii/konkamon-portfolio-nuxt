@@ -45,7 +45,7 @@ const workList: workListInterface[] = [
   {
     name: 'Vue + Vuetify - Firestore CRUD',
     description: 'ศึกษาการใช้งาน Vuetify ในการสร้างแอพ CRUD',
-    icon: 'mdi:vuetify',
+    icon: 'simple-icons:vuetify',
     link: 'https://github.com/bKoZii/vuetify-firestore-crud'
   }
 ]

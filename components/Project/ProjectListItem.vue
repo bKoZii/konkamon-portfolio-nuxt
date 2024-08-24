@@ -7,7 +7,7 @@
       ref="noopener noreferrer"
       class="hover:text-primary flex flex-shrink-0 gap-2 text-sm sm:text-lg"
       >{{ workData.name }}
-      <Icon name="mdi:launch" mode="svg" />
+      <Icon name="ic:baseline-launch" mode="svg" />
     </a>
     <p v-else class="text-sm sm:text-lg">
       {{ workData.name }}
