@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/': { isr: true },
+    '/': { isr: false },
     '/blog': { isr: true },
     '/blog/**': { isr: true }
   },
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
     highlight: {
       langs: ['shell', 'sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json', 'sql', 'console'],
       theme: 'one-dark-pro',
-      wrapperStyle: true
+      wrapperStyle: true,
     },
     headings: {
       anchorLinks: false
