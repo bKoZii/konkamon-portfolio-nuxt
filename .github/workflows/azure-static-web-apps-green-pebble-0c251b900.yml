@@ -44,3 +44,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_PEBBLE_0C251B900 }}
           action: "close"
+          STRAPI_URL: ${{ secrets.STRAPI_URL || vars.STRAPI_URL }}
