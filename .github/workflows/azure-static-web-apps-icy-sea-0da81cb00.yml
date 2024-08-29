@@ -10,6 +10,15 @@ on:
       - main
 
 jobs:
+  create_env_file:
+    runs-on: ubuntu-latest
+    name: Create .env file
+    steps:
+      - name: Create .env file
+        run: |
+          touch .env
+          echo STRAPI_KEY=${{ secrets.STRAPI_KEY }} >> .env
+
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
