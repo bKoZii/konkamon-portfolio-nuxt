@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@headlessui/tailwindcss": "^0.2.1",
-    "@nuxt/image": "^1.7.1",
+    "@nuxt/image": "^1.8.0",
     "@nuxt/ui": "^2.18.4",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/mdc": "^0.8.3",
@@ -44,7 +44,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "sass": "^1.77.8",
-    "shiki": "^1.14.1"
+    "shiki": "^1.15.2"
   },
   "resolutions": {
     "string-width": "4.2.3"
