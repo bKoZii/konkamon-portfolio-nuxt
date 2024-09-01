@@ -29,7 +29,7 @@
         <p class="text-sm font-bold">Share this Blog!</p>
         <SocialShare network="facebook" :label="false" class="h-7 w-7 rounded bg-blue-600 p-1 text-white" />
       </section>
-      <NuxtImg v-if="blogSlug.mainImage.data" :src="blogSlug.mainImage.data.attributes.url" class="rounded-lg shadow-lg" />
+      <NuxtImg :src="blogSlug.mainImage.data.attributes.url" class="rounded-lg shadow-lg" />
     </section>
   </div>
 </template>
