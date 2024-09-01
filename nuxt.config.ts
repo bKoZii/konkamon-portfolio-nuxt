@@ -139,8 +139,11 @@ export default defineNuxtConfig({
     excludeAppSources: ['nuxt:route-rules']
   },
   runtimeConfig: {
-    public: {
-      strapiUrl: {
+    strapi:{
+      url: process.env.STRAPI_URL
+    },
+    public:{
+      strapi: {
         url: process.env.STRAPI_URL
       }
     }
