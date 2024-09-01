@@ -58,8 +58,6 @@ const fetchBlogs = async (searchQuery?: string[]) => {
     fields: ['title', 'subtitle', 'publishedAt', 'slug'],
     sort: 'publishedAt:desc',
     populate: {
-      mainImage: true,
-      createdBy: true,
       categories: {
         fields: ['name']
       },

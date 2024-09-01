@@ -31,7 +31,9 @@ const { data:blogSlug } = await useAsyncData('blogSlug', () =>
   findOne<StrapiBlogSlug>('blogs', route.params['slug'] as string, {
     fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
     populate: {
-      mainImage: true,
+      mainImage: {
+        fields: ['url']
+      },
       categories: {
         fields: ['name']
       }
