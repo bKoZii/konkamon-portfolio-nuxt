@@ -32,7 +32,6 @@ const params: Strapi4RequestParams = {
     page: 1
   },
   populate: {
-    mainImage: true,
     categories: {
       fields: ['name']
     },
