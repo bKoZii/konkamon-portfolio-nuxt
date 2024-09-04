@@ -26,7 +26,7 @@
     "nuxt-typed-router": "^3.6.5",
     "pinia": "^2.2.2",
     "tailwindcss": "^3.4.10",
-    "vue": "^3.5.0",
+    "vue": "^3.5.1",
     "vue-router": "^4.4.3"
   },
   "devDependencies": {
@@ -36,12 +36,12 @@
     "@iconify-json/ph": "^1.2.0",
     "@iconify-json/simple-icons": "^1.2.1",
     "@iconify-json/vscode-icons": "^1.2.0",
-    "@nuxt/kit": "^3.13.0",
+    "@nuxt/kit": "^3.13.1",
     "@nuxtjs/sitemap": "6.0.0-beta.4",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "dayjs": "^1.11.13",
     "dayjs-nuxt": "^2.1.11",
-    "nuxt": "^3.13.0",
+    "nuxt": "^3.13.1",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "sass": "^1.78.0",
