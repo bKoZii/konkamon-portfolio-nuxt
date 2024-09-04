@@ -104,10 +104,7 @@ export default defineNuxtConfig({
         dir: './assets/icons'
       },
     ],
-    serverBundle: {
-      remote: 'jsdelivr',
-      collections: ['ph', 'ic', 'simple-icons', 'vscode-icons']
-    },
+    serverBundle: 'local',
     clientBundle: {
       includeCustomCollections: true,
       icons: [
