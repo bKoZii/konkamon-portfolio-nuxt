@@ -56,6 +56,16 @@ const { data: tagBlogs } = await useAsyncData('tagBlogs', () =>
     }
   })
 )
+
+useSeoMeta({
+  title: 'Tag: ' + tagName,
+  ogTitle: '%s [Blogs - Konkamon]',
+  titleTemplate: '%s [Blogs - Konkamon]',
+  description: `รวม Blogs ที่มี Tag: '${tagName}'`,
+  ogDescription: `รวม Blogs ที่มี Tag: '${tagName}'`,
+  ogImage: '/ogImage-blogs.webp',
+  ogUrl: 'https://www.konkamon.live/blog'
+})
 </script>
 
 <style></style>
