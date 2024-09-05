@@ -24,6 +24,10 @@
     <div class="my-4">
       <UInput :loading="loading" type="text" size="lg" icon="ph:magnifying-glass" placeholder="ค้นหา Blog..." v-model="searchInput" />
     </div>
+    <section v-if="!route.query.search">
+      <BlogTagsDisplay />
+      <UDivider class="my-6" />
+    </section>
 
     <main v-if="blogsData && blogsData.length > 0 && status === 'success'">
       <section class="grid grid-cols-1 gap-3 md:grid-cols-2">
