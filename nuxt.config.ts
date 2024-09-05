@@ -79,9 +79,6 @@ export default defineNuxtConfig({
       anchorLinks: false
     }
   },
-  strapi: {
-    url: process.env.STRAPI_URL
-  },
   pinia: {
     storesDirs: ['./stores/**']
   },
@@ -104,7 +101,10 @@ export default defineNuxtConfig({
         dir: './assets/icons'
       },
     ],
-    serverBundle: 'local',
+    serverBundle: {
+      remote: 'unpkg',
+      collections: ['ph', 'vscode-icons', 'simple-icons', 'ic', 'logos']
+    },
     clientBundle: {
       includeCustomCollections: true,
       icons: [
@@ -136,13 +136,9 @@ export default defineNuxtConfig({
     excludeAppSources: ['nuxt:route-rules']
   },
   runtimeConfig: {
-    strapi:{
-      url: process.env.STRAPI_URL
-    },
-    public:{
-      strapi: {
-        url: process.env.STRAPI_URL
-      }
+    strapiUrl: process.env.STRAPI_URL,
+    public: {
+      strapiUrl: process.env.STRAPI_URL
     }
   }
 })
