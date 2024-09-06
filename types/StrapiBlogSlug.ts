@@ -21,8 +21,8 @@ export interface Data {
 
 export interface Attributes {
   name: string
-  alternativeText: any
-  caption: any
+  alternativeText: string
+  caption: string
   width: number
   height: number
   formats: Formats
@@ -31,9 +31,9 @@ export interface Attributes {
   mime: string
   size: number
   url: string
-  previewUrl: any
+  previewUrl: string
   provider: string
-  provider_metadata: any
+  provider_metadata: string
   folderPath: string
   createdAt: string
   updatedAt: string
@@ -52,7 +52,7 @@ export interface Large {
   hash: string
   mime: string
   name: string
-  path: any
+  path: string
   size: number
   width: number
   height: number
@@ -65,7 +65,7 @@ export interface Small {
   hash: string
   mime: string
   name: string
-  path: any
+  path: string
   size: number
   width: number
   height: number
@@ -78,7 +78,7 @@ export interface Medium {
   hash: string
   mime: string
   name: string
-  path: any
+  path: string
   size: number
   width: number
   height: number
@@ -91,7 +91,7 @@ export interface Thumbnail {
   hash: string
   mime: string
   name: string
-  path: any
+  path: string
   size: number
   width: number
   height: number
@@ -113,11 +113,11 @@ export interface Attributes2 {
   username: string
   email: string
   password: string
-  resetPasswordToken: any
-  registrationToken: any
+  resetPasswordToken: string
+  registrationToken: string
   isActive: boolean
   blocked: boolean
-  preferedLanguage: any
+  preferedLanguage: string
   createdAt: string
   updatedAt: string
 }
