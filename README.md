@@ -19,7 +19,9 @@ The design of this website is inspired by [fayazara/zooper](https://github.com/f
 ## TODOs
 
 - [ ] i18n - English / Thai
-- Blog - Sanity CMS + Nuxt 3
+- Blog : Strapi 4 CMS
     - [x] Fetch Posts
-    - [ ] Search / Pagination (Coming Soon...)
+    - [x] Search
+    - [x] Filter By Tags
+    - [ ] Pagination (Coming Soon...)
 - TBA...
