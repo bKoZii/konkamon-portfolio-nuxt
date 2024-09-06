@@ -37,5 +37,3 @@ const socialList: ItemWithIcon[] = [
   }
 ]
 </script>
-
-<style></style>

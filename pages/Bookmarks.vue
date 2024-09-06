@@ -72,5 +72,3 @@ useSeoMeta({
   ogUrl: 'https://konkamon.vercel.app/Bookmarks'
 })
 </script>
-
-<style></style>

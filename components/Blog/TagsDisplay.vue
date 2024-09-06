@@ -17,5 +17,3 @@ interface tagsItem {
 const { find } = useStrapi()
 const { data: tagItems } = await useLazyAsyncData('tags', () => find<tagsItem>('categories', { fields: ['name'], sort: 'name:asc' }))
 </script>
-
-<style></style>

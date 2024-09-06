@@ -62,5 +62,3 @@ const downloadCV = async () => {
   }
 }
 </script>
-
-<style></style>

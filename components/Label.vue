@@ -14,5 +14,3 @@ defineProps({
   offset: String
 })
 </script>
-
-<style></style>

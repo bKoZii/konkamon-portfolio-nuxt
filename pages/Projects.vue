@@ -59,5 +59,3 @@ useSeoMeta({
   ogUrl: 'https://konkamon.vercel.app/Projects'
 })
 </script>
-
-<style></style>

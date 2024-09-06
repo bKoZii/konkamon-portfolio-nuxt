@@ -79,16 +79,10 @@
 </template>
 
 <script lang="ts" setup>
-type IResume = Resume[]
 interface Resume {
   technology: headingAndDetail[]
   education: headingAndDetail[]
   project: projects[]
-}
-
-interface introWeb {
-  name: string
-  url: string
 }
 
 interface headingAndDetail {
@@ -152,5 +146,3 @@ function removeHttps(url: string) {
   return url.replace('https://', '')
 }
 </script>
-
-<style></style>

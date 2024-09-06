@@ -67,5 +67,3 @@ useSeoMeta({
   ogUrl: 'https://konkamon.vercel.app/WhatIsInMyBag'
 })
 </script>
-
-<style></style>

@@ -14,5 +14,3 @@ const pageHeader = defineProps({
 })
 const data = markRaw(pageHeader)
 </script>
-
-<style></style>

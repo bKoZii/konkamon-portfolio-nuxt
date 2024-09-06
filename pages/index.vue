@@ -26,5 +26,3 @@ useSeoMeta({
   titleTemplate: '%s - Portfolio & Blogs Website'
 })
 </script>
-
-<style></style>

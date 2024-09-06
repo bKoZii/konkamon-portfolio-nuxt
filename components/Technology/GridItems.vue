@@ -24,5 +24,3 @@ defineProps({
   title: String
 })
 </script>
-
-<style></style>

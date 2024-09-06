@@ -43,5 +43,3 @@ const params: Strapi4RequestParams = {
 
 const { data: latestBlogs } = await useLazyAsyncData('latestBlog', () => find<StrapiBlogs>('blogs', params))
 </script>
-
-<style></style>

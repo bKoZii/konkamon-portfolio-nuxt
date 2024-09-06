@@ -67,5 +67,3 @@ useSeoMeta({
   ogUrl: 'https://www.konkamon.live/blog'
 })
 </script>
-
-<style></style>

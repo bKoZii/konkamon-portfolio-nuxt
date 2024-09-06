@@ -39,5 +39,3 @@ const iconName = computed(() => {
   return `ph:${iconNameMap[iconName]}`
 })
 </script>
-
-<style></style>

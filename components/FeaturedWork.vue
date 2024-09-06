@@ -36,5 +36,3 @@ const workList: workListInterface[] = [
   }
 ]
 </script>
-
-<style></style>

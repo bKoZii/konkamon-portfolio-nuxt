@@ -43,5 +43,3 @@ import type { StrapiBlogs } from '~/types/StrapiBlogs'
 const props = defineProps<{ post: StrapiBlogs }>()
 const { post } = toRefs(props)
 </script>
-
-<style></style>

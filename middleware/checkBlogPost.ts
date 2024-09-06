@@ -31,7 +31,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (cachedSlug !== slug) {
       return navigateTo('/blog/')
     }
-    return
+    // return
   }
 
 })
