@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   ssr: true,
 
   routeRules: {
-    '/': { isr: false },
+    '/': { isr: true },
     '/blog': { isr: true },
     '/blog/**': { isr: true }
   },
@@ -101,10 +101,7 @@ export default defineNuxtConfig({
         dir: './assets/icons'
       },
     ],
-    serverBundle: {
-      remote: 'unpkg',
-      collections: ['ph', 'vscode-icons', 'simple-icons', 'ic', 'logos']
-    },
+    serverBundle: 'local',
     clientBundle: {
       includeCustomCollections: true,
       icons: [
