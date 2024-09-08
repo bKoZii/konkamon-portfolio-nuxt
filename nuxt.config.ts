@@ -101,7 +101,10 @@ export default defineNuxtConfig({
         dir: './assets/icons'
       },
     ],
-    serverBundle: 'local',
+    serverBundle: {
+      remote: 'unpkg',
+      collections: ['ph', 'vscode-icons', 'simple-icons', 'ic', 'logos']
+    },
     clientBundle: {
       includeCustomCollections: true,
       icons: [
@@ -109,8 +112,8 @@ export default defineNuxtConfig({
         'ph:folder-open-duotone',
         'ph:backpack-duotone',
         'ph:bookmark-duotone',
-        'ph:read-cv-logo-duotone',
-        'ph:notebook-duotone',
+        'ph:file-text',
+        'ph:book-duotone',
         'ph:calendar-dots-duotone',
         'ph:monitor-duotone',
         'ph:sun-duotone',
@@ -119,7 +122,8 @@ export default defineNuxtConfig({
         'ph:arrow-right',
         'ph:globe-duotone',
 
-      ]
+      ],
+      scan: true
     }
   },
   site: {
