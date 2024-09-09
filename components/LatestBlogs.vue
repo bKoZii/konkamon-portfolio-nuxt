@@ -42,6 +42,10 @@ const params: Strapi4RequestParams = {
   }
 }
 
-const data = await find<StrapiBlogs>('blogs', params)
-latestBlogs.value = data.data.map((item) => item.attributes)
+onMounted(async () => {
+  await find<StrapiBlogs>('blogs', params).then((res) => {
+    latestBlogs.value = res.data.map((item) => item.attributes)
+    return latestBlogs.value
+  })
+})
 </script>
