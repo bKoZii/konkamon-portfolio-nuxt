@@ -6,8 +6,8 @@
     </section>
     <section class="grid grid-cols-1 gap-3 sm:grid-cols-1 md:grid-cols-2">
       <ClientOnly>
-        <div v-for="post in latestBlogs?.data" :key="post.id">
-          <BlogIndexCard :post="post.attributes" />
+        <div v-for="post in latestBlogs" :key="post.slug">
+          <BlogIndexCard :post="post" />
         </div>
         <template #fallback>
           <div v-for="fallback in 2" :key="fallback">
@@ -23,6 +23,7 @@
 import type { Strapi4RequestParams } from '@nuxtjs/strapi'
 import type { StrapiBlogs } from '~/types/StrapiBlogs'
 
+const latestBlogs = ref<StrapiBlogs[]>([])
 const { find } = useStrapi()
 const params: Strapi4RequestParams = {
   fields: ['title', 'subtitle', 'publishedAt', 'slug'],
@@ -41,5 +42,6 @@ const params: Strapi4RequestParams = {
   }
 }
 
-const { data: latestBlogs } = await useLazyAsyncData('latestBlog', () => find<StrapiBlogs>('blogs', params))
+const data = await find<StrapiBlogs>('blogs', params)
+latestBlogs.value = data.data.map((item) => item.attributes)
 </script>
