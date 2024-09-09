@@ -2,22 +2,17 @@
   <div class="inline-flex">
     <ClientOnly>
       <UTooltip text="Switch Theme" :popper="{ strategy: 'absolute' }">
-        <UButton square @click="switchColorMode" :padded="false" size="xl" color="black" variant="ghost" :icon="iconName" class="group">
-          <template #trailing>
-            <span class="block text-sm">{{ capitalize($colorMode.preference) }}</span>
-          </template>
-        </UButton>
+        <UButton square @click="switchColorMode" :padded="false" size="xl" color="black" variant="soft" :icon="iconName" class="group"> </UButton>
       </UTooltip>
 
       <template #fallback>
-        <USkeleton class="h-6 w-6" :ui="{ rounded: 'rounded-full' }" />
+        <USkeleton class="size-6" :ui="{ rounded: 'rounded-full' }" />
       </template>
     </ClientOnly>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { capitalize } from 'vue'
 const colorMode = useColorMode()
 
 const ColorModeList = ['light', 'dark', 'system'] as const
