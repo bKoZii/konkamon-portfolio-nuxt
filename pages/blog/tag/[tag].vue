@@ -6,11 +6,13 @@
     </section>
     <UDivider class="my-4" />
     <section>
-      <div v-if="tagBlogs?.data.length ?? 0 >= 0" v-for="tagBlogItems in tagBlogs?.data" :key="tagBlogItems.id">
+      <template v-if="tagBlogs?.data.length ?? 0 >= 0">
         <section class="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <BlogIndexCard :post="tagBlogItems.attributes" />
+          <div v-for="tagBlogItems in tagBlogs?.data" :key="tagBlogItems.id">
+            <BlogIndexCard :post="tagBlogItems.attributes" />
+          </div>
         </section>
-      </div>
+      </template>
       <div v-else>
         <UAlert
           title="No Blogs Found"
@@ -58,7 +60,7 @@ const { data: tagBlogs } = await useAsyncData('tagBlogs', () =>
 )
 
 useSeoMeta({
-  title: 'Tag: ' + tagName,
+  title: `Tag: ${tagName}`,
   ogTitle: '%s [Blogs - Konkamon]',
   titleTemplate: '%s [Blogs - Konkamon]',
   description: `รวม Blogs ที่มี Tag: '${tagName}'`,
