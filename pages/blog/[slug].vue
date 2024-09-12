@@ -21,14 +21,12 @@
 <script lang="ts" setup>
 import type { RouteLocationNormalized } from 'vue-router'
 import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
-import { parseMarkdown } from '@nuxtjs/mdc/runtime'
-import type { MDCParserResult } from '@nuxtjs/mdc'
 
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
 
 const { data:blogSlug } = await useAsyncData('blogSlug', () =>
-  findOne<StrapiBlogSlug>('blogs', route.params['slug'] as string, {
+  findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
     fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
     populate: {
       mainImage: {
@@ -52,9 +50,14 @@ useSeoMeta({
   ogUrl: `https://konkamon.live/blog/${blogSlug.value?.slug}`
 })
 
-  definePageMeta({
-    middleware: ['check-blog-post']
-  })
+definePageMeta({
+  middleware: ['check-blog-post']
+})
 
-const { data: ast } = await useAsyncData<MDCParserResult>('markdown', () => parseMarkdown(blogSlug.value?.content))
+const { data: ast } = await useFetch('/api/mdc-transform', {
+  method: 'POST',
+  body: {
+    content: blogSlug.value?.content
+  }
+})
 </script>
