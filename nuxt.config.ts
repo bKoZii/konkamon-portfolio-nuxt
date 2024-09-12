@@ -90,8 +90,7 @@ export default defineNuxtConfig({
     storesDirs: ['./stores/**']
   },
   experimental: {
-    externalVue: false,
-    buildCache: true
+    externalVue: false
   },
   robots: {
     allow: ['/', '/blog/'],
