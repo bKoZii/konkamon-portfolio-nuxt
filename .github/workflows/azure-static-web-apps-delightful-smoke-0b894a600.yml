@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
@@ -31,6 +32,7 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
 
         with:
+          production_branch: "main"
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DELIGHTFUL_SMOKE_0B894A600 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: 'upload'
