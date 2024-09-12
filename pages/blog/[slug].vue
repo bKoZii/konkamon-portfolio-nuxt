@@ -5,9 +5,9 @@
         <ClientOnly>
           <BlogSlugHeader :blog-slug="blogSlug" />
           <UDivider class="my-3" />
-          <section
+          <section v-if="ast"
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight">
-            <MDC :value="blogSlug.content" tag="article" />
+             <MDCRenderer :body="ast.body" :data="ast.data" />
           </section>
           <template #fallback>
             <BlogSlugFallback />
@@ -53,4 +53,6 @@ useSeoMeta({
 definePageMeta({
   middleware: ['check-blog-post']
 })
+
+const { data: ast } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.value?.content as string))
 </script>
