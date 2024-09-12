@@ -67,7 +67,14 @@ export default defineNuxtConfig({
     baseUrl: 'https://www.konkamon.live/'
   },
   nitro: {
-    compressPublicAssets: true
+    compressPublicAssets: true,
+    azure: {
+      config: {
+        platform: {
+          apiRuntime: 'node:20'
+        }
+      }
+    }
   },
   mdc: {
     highlight: {
@@ -83,7 +90,8 @@ export default defineNuxtConfig({
     storesDirs: ['./stores/**']
   },
   experimental: {
-    externalVue: false
+    externalVue: false,
+    buildCache: true
   },
   robots: {
     allow: ['/', '/blog/'],
@@ -102,7 +110,7 @@ export default defineNuxtConfig({
       },
     ],
     serverBundle: {
-      remote: 'unpkg',
+      remote: 'github-raw',
       collections: ['ph', 'vscode-icons', 'simple-icons', 'ic', 'logos']
     },
     clientBundle: {
