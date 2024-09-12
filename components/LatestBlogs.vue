@@ -23,7 +23,6 @@
 import type { Strapi4RequestParams } from '@nuxtjs/strapi'
 import type { StrapiBlogs } from '~/types/StrapiBlogs'
 
-const latestBlogs = ref<StrapiBlogs[]>([])
 const { find } = useStrapi()
 const params: Strapi4RequestParams = {
   fields: ['title', 'subtitle', 'publishedAt', 'slug'],
@@ -42,10 +41,5 @@ const params: Strapi4RequestParams = {
   }
 }
 
-onMounted(async () => {
-  await find<StrapiBlogs>('blogs', params).then((res) => {
-    latestBlogs.value = res.data.map((item) => item.attributes)
-    return latestBlogs.value
-  })
-})
+const latestBlogs = await find<StrapiBlogs>('blogs', params).then((res) => res.data.map((item) => item.attributes))
 </script>
