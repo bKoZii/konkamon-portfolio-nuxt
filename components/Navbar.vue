@@ -12,7 +12,7 @@
           <UTooltip :text="data.label" :ui="{ popper: { strategy: 'absolute' } }">
             <ULink
               :to="data.to"
-              inactive-class="text-neutral-700 hover:text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-900"
+              inactive-class="text-neutral-700 hover:text-black dark:text-white dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-900"
               active-class="text-primary-500 dark:text-primary-500 dark:hover:text-primary hover:text-primary bg-primary-100/50 dark:bg-primary-900"
               class="inline-flex rounded-lg p-1"
               :aria-label="`Go to ${data.label} Page.`"
@@ -25,7 +25,7 @@
         <NavbarThemeSwitch />
         <UButton class="inline-flex md:hidden" aria-label="Open" icon="ph:list" variant="ghost" color="black" @click="isSidebarOpen = true" />
         <USlideover v-model="isSidebarOpen">
-          <div class="it flex flex-1 flex-col gap-3 p-4">
+          <div class="flex flex-1 flex-col gap-3 p-4">
             <div class="flex flex-row items-center justify-between">
               <ULink id="myName" to="/" class="inline-flex items-center gap-1 text-2xl font-extrabold" aria-label="logo">
                 <UIcon name="my-icon:konkamon-logo" mode="svg" size="24" />
