@@ -1,20 +1,22 @@
 <template>
   <div>
-    <div v-if="blogSlug">
-      <article class="flex flex-col gap-5">
-        <ClientOnly>
+    <ClientOnly>
+      <div v-if="blogSlug">
+        <article class="flex flex-col gap-5">
           <BlogSlugHeader :blog-slug="blogSlug" />
           <UDivider class="my-3" />
-          <section v-if="ast"
-            class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight">
-             <MDCRenderer :body="ast.body" :data="ast.data" />
+          <section
+            v-if="ast"
+            class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight"
+          >
+            <MDCRenderer :body="ast.body" :data="ast.data" />
           </section>
-          <template #fallback>
-            <BlogSlugFallback />
-          </template>
-        </ClientOnly>
-      </article>
-    </div>
+        </article>
+      </div>
+      <template #fallback>
+        <BlogSlugFallback />
+      </template>
+    </ClientOnly>
   </div>
 </template>
 
@@ -25,7 +27,7 @@ import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
 
-const { data:blogSlug } = await useAsyncData('blogSlug', () =>
+const { data: blogSlug } = await useAsyncData('blogSlug', () =>
   findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
     fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
     populate: {
@@ -36,8 +38,7 @@ const { data:blogSlug } = await useAsyncData('blogSlug', () =>
         fields: ['name']
       }
     }
-  })
-    .then((data) => data.data.attributes)
+  }).then((data) => data.data.attributes)
 )
 
 useSeoMeta({
