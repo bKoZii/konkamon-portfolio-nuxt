@@ -87,7 +87,7 @@ const {
   error,
   refresh
 } = await useAsyncData(
-  'searchTest',
+  'allBlogsWithSearch',
   () =>
     find<StrapiBlogs>('blogs', {
       fields: ['title', 'subtitle', 'publishedAt', 'slug'],
@@ -107,7 +107,6 @@ const {
   {
     deep: false,
     watch: false,
-    lazy: true,
     getCachedData(key) {
       const data = nuxt.payload.data[key] || nuxt.static.data[key]
       if (!data) {
