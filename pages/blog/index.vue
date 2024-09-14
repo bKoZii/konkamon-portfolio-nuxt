@@ -13,11 +13,9 @@
     />
     <div class="mb-3 flex flex-col items-center justify-between lg:flex-row">
       <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
-      <div class="mt-5 lg:m-0 text-xs text-neutral-500">
+      <div class="mt-5 text-xs text-neutral-500 lg:m-0">
         <span>Powered by </span>
-        <a href="https://strapi.io/" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-bold dark:text-indigo-500">
-          Strapi
-        </a>
+        <a href="https://strapi.io/" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-700 dark:text-indigo-500"> Strapi </a>
       </div>
     </div>
 
@@ -72,6 +70,8 @@
 </template>
 
 <script lang="ts" setup>
+useMySlugCacheStore()
+
 import { type StrapiBlogs } from '~/types/StrapiBlogs'
 
 const { find } = useStrapi()
@@ -80,45 +80,50 @@ const route = useRoute()
 const router = useRouter()
 const searchInput = ref('')
 const toast = useToast()
+const nuxt = useNuxtApp()
 const {
   data: blogsData,
   status,
   error,
   refresh
-} = await useAsyncData('blogs', async () => {
-  const baseParams = {
-    fields: ['title', 'subtitle', 'publishedAt', 'slug'],
-    sort: 'publishedAt:desc',
-    populate: {
-      categories: {
-        fields: ['name']
+} = await useAsyncData(
+  'searchTest',
+  () =>
+    find<StrapiBlogs>('blogs', {
+      fields: ['title', 'subtitle', 'publishedAt', 'slug'],
+      sort: 'publishedAt:desc',
+      populate: {
+        categories: {
+          fields: ['name']
+        },
+        blogIcon: {
+          fields: ['url']
+        }
       },
-      blogIcon: {
-        fields: ['url']
+      filters: {
+        $or: [{ title: { $containsi: searchInput.value } }, { subtitle: { $containsi: searchInput.value } }]
       }
+    }).then((data) => data.data.map((item) => item.attributes)),
+  {
+    deep: false,
+    watch: false,
+    lazy: true,
+    getCachedData(key) {
+      const data = nuxt.payload.data[key] || nuxt.static.data[key]
+      if (!data) {
+        return
+      }
+
+      const expirationDate = new Date(data.fetchedAt)
+      expirationDate.setTime(expirationDate.getTime() + 10 * 1000)
+      const isExpired = expirationDate.getTime() < Date.now()
+      if (isExpired) {
+        return
+      }
+      return data
     }
   }
-
-  const searchParams = searchInput.value
-    ? {
-        filters: {
-          $or: [{ title: { $containsi: searchInput.value } }, { subtitle: { $containsi: searchInput.value } }]
-        }
-      }
-    : {}
-
-  const params = { ...baseParams, ...searchParams }
-
-  try {
-    const { data } = await find<StrapiBlogs>('blogs', params)
-    return data ? data.map((item) => item.attributes) : []
-  } catch (error) {
-    console.error(error)
-    status.value = 'error'
-    return []
-  }
-})
-
+)
 if (error.value) {
   toast.add({
     title: 'Error',
@@ -127,16 +132,13 @@ if (error.value) {
     icon: 'ph:warning-circle-duotone'
   })
 }
+
 let timeout: NodeJS.Timeout | null = null
 watch(searchInput, () => {
   if (timeout) {
     clearTimeout(timeout)
   }
   timeout = setTimeout(async () => {
-    await router.replace({ query: { search: searchInput.value } })
-    if (!searchInput.value) {
-      router.replace({ path: '/blog/' })
-    }
     await refresh()
   }, 500)
 })
@@ -149,7 +151,6 @@ useSeoMeta({
   ogImage: '/ogImage-blogs.webp',
   ogUrl: 'https://www.konkamon.live/blog'
 })
-useMySlugCacheStore()
 
 const alertMessage = computed(() => {
   if (route.query.notfound) {
