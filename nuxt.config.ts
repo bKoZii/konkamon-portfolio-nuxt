@@ -78,8 +78,10 @@ export default defineNuxtConfig({
   },
   mdc: {
     highlight: {
-      langs: ['shell', 'sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json', 'sql', 'console'],
-      theme: 'one-dark-pro',
+      highlighter: 'shiki',
+      langs: ['sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json', 'sql', 'vue'],
+      theme: 'aurora-x',
+      themes: ['aurora-x'],
       wrapperStyle: true,
     },
     headings: {
@@ -110,7 +112,7 @@ export default defineNuxtConfig({
     ],
     serverBundle: {
       remote: 'github-raw',
-      collections: ['ph', 'vscode-icons', 'simple-icons', 'ic', 'logos']
+      collections: ['ph', 'simple-icons', 'ic']
     },
     clientBundle: {
       includeCustomCollections: true,
