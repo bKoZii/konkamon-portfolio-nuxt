@@ -20,7 +20,11 @@
     </div>
 
     <div class="my-4">
-      <UInput :loading="loading" type="text" size="lg" icon="ph:magnifying-glass" placeholder="ค้นหา Blog..." v-model="searchInput" />
+      <UInput :loading="loading" id="searchInput" type="text" size="lg" icon="ph:magnifying-glass" placeholder="ค้นหา Blog..." v-model="searchInput">
+        <template #trailing>
+          <UKbd>F</UKbd>
+        </template>
+      </UInput>
     </div>
     <section v-if="!route.query.search">
       <BlogTagsDisplay />
@@ -133,8 +137,9 @@ const {
       }
       return null
     }
-  }
+  },
 )
+
 if (error.value) {
   toast.add({
     title: 'Error',
@@ -150,8 +155,10 @@ watch(searchInput, () => {
     clearTimeout(timeout)
   }
   timeout = setTimeout(async () => {
+    loading.value = true
     currentPage.value = 1
     await refresh()
+    loading.value = false
   }, 500)
 })
 
@@ -171,5 +178,13 @@ const alertMessage = computed(() => {
     return `Blog จาก Link '${route.query.link}' ถูกยกเลิกการเผยแพร่แล้ว`
   }
   return null
+})
+defineShortcuts({
+  f: {
+    usingInput: true,
+    handler: () => {
+      document.getElementById('searchInput')?.focus()
+    }
+  }
 })
 </script>
