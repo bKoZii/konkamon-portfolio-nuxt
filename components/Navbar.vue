@@ -24,7 +24,7 @@
         <UDivider orientation="vertical" class="hidden md:block" />
         <NavbarThemeSwitch />
         <UButton class="inline-flex md:hidden" aria-label="Open" icon="ph:list" variant="ghost" color="black" @click="isSidebarOpen = true" />
-        <USlideover v-model="isSidebarOpen">
+        <LazyUSlideover v-model="isSidebarOpen">
           <div class="flex flex-1 flex-col gap-3 p-4">
             <div class="flex flex-row items-center justify-between">
               <ULink id="myName" to="/" class="inline-flex items-center gap-1 text-2xl font-extrabold" aria-label="logo">
@@ -43,13 +43,13 @@
               />
             </div>
             <UDivider />
-            <UVerticalNavigation
+            <LazyUVerticalNavigation
               :links="navItems"
               :ui="{ active: 'text-primary dark:text-primary', icon: { active: 'text-primary dark:text-primary' } }"
               @click="isSidebarOpen = false"
             />
           </div>
-        </USlideover>
+        </LazyUSlideover>
       </nav>
     </header>
   </div>
@@ -87,6 +87,11 @@ const navItems = [
     label: 'Blog',
     to: '/blog',
     icon: 'ph:book-duotone'
+  },
+  {
+    label: 'Search Test',
+    to: '/searchTest',
+    icon: 'ph:magnifying-glass-duotone'
   }
 ]
 </script>
