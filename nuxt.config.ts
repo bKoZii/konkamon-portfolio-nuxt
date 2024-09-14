@@ -115,20 +115,9 @@ export default defineNuxtConfig({
     clientBundle: {
       includeCustomCollections: true,
       icons: [
-        'ph:house-duotone',
-        'ph:folder-open-duotone',
-        'ph:backpack-duotone',
-        'ph:bookmark-duotone',
-        'ph:file-text',
-        'ph:book-duotone',
-        'ph:calendar-dots-duotone',
         'ph:monitor-duotone',
         'ph:sun-duotone',
         'ph:moon-duotone',
-        'ic:baseline-close',
-        'ph:arrow-right',
-        'ph:globe-duotone',
-
       ],
       scan: true
     }
