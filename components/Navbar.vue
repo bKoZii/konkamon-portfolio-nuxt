@@ -1,19 +1,20 @@
 <template>
   <div
-    class="sticky top-0 z-10 border-b bg-white px-6 py-2 shadow-md dark:backdrop-blur-lg dark:border-neutral-800 dark:bg-neutral-950/80 dark:text-white"
+    class="sticky top-0 z-10 border-b bg-white px-6 py-1 shadow-md dark:border-neutral-800 dark:bg-neutral-950/80 dark:text-white dark:backdrop-blur-lg"
   >
-    <header class="flex items-center justify-between xs:justify-between sm:justify-between max-w-[1300px] mx-auto">
+    <header class="mx-auto flex max-w-[1300px] items-center justify-between xs:justify-between sm:justify-between">
       <ULink id="myName" to="/" class="inline-flex items-center gap-2 text-xl font-extrabold" aria-label="logo">
         <UIcon name="my-icon:konkamon-logo" mode="svg" size="24" />
         <UIcon name="my-icon:konkamon" mode="svg" size="26" />
       </ULink>
-      <nav class="flex gap-5">
+      <nav class="flex gap-4">
         <div v-for="data in navItems" :key="data.label" class="hidden self-center md:inline-flex">
           <UTooltip :text="data.label" :ui="{ popper: { strategy: 'absolute' } }">
             <ULink
               :to="data.to"
-              active-class="text-primary dark:text-primary dark:hover:text-primary hover:text-primary"
-              class="inline-flex text-gray-600 transition duration-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-neutral-400"
+              inactive-class="text-neutral-700 hover:text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-900"
+              active-class="text-primary-500 dark:text-primary-500 dark:hover:text-primary hover:text-primary bg-primary-100/50 dark:bg-primary-900"
+              class="inline-flex rounded-lg p-1"
               :aria-label="`Go to ${data.label} Page.`"
             >
               <icon :name="data.icon" size="24px" mode="svg" class="active:scale-90" />
@@ -24,9 +25,9 @@
         <NavbarThemeSwitch />
         <UButton class="inline-flex md:hidden" aria-label="Open" icon="ph:list" variant="ghost" color="black" @click="isSidebarOpen = true" />
         <USlideover v-model="isSidebarOpen">
-          <div class="flex flex-1 flex-col gap-3 p-4 it">
-            <div class="flex flex-row justify-between items-center">
-              <ULink id="myName" to="/" class="text-2xl font-extrabold inline-flex gap-1 items-center" aria-label="logo">
+          <div class="it flex flex-1 flex-col gap-3 p-4">
+            <div class="flex flex-row items-center justify-between">
+              <ULink id="myName" to="/" class="inline-flex items-center gap-1 text-2xl font-extrabold" aria-label="logo">
                 <UIcon name="my-icon:konkamon-logo" mode="svg" size="24" />
                 <UIcon name="my-icon:konkamon" mode="svg" size="26" />
               </ULink>
@@ -42,7 +43,11 @@
               />
             </div>
             <UDivider />
-            <UVerticalNavigation :links="navItems" :ui="{ active: 'text-primary dark:text-primary', icon: { active: 'text-primary dark:text-primary' } }" @click="isSidebarOpen = false" />
+            <UVerticalNavigation
+              :links="navItems"
+              :ui="{ active: 'text-primary dark:text-primary', icon: { active: 'text-primary dark:text-primary' } }"
+              @click="isSidebarOpen = false"
+            />
           </div>
         </USlideover>
       </nav>
