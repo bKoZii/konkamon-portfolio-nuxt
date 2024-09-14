@@ -9,7 +9,12 @@
             v-if="ast"
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
-            <MDCRenderer :body="ast.body" :data="ast.data" />
+            <div v-if="ast && status == 'success'">
+              <MDCRenderer :body="ast.body" :data="ast.data" />
+            </div>
+            <div v-else-if="status == 'pending'">
+              <UAlert title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
+            </div>
           </section>
         </article>
       </div>
@@ -26,19 +31,25 @@ import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
-
-const { data: blogSlug } = await useAsyncData('blogSlug', () =>
-  findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
-    fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
-    populate: {
-      mainImage: {
-        fields: ['url']
-      },
-      categories: {
-        fields: ['name']
+const nuxt = useNuxtApp()
+const { data: blogSlug } = await useAsyncData(
+  'blogSlug',
+  () =>
+    findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
+      fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
+      populate: {
+        mainImage: {
+          fields: ['url']
+        },
+        categories: {
+          fields: ['name']
+        }
       }
-    }
-  }).then((data) => data.data.attributes)
+    }).then((data) => data.data.attributes),
+  {
+    watch: false,
+    deep: false
+  }
 )
 
 useSeoMeta({
@@ -55,5 +66,19 @@ definePageMeta({
   middleware: ['check-blog-post']
 })
 
-const { data: ast } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.value?.content as string))
+const { data: ast, status } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.value?.content as string), {
+  getCachedData: (key) => {
+    if (nuxt.isHydrating && nuxt.payload.data[key]) {
+      return nuxt.payload.data[key]
+    }
+    if (nuxt.static.data[key]) {
+      return nuxt.static.data[key]
+    }
+    return null
+  },
+  watch: false,
+  deep: false,
+  server: false,
+  lazy: true
+})
 </script>
