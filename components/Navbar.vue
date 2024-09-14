@@ -87,11 +87,6 @@ const navItems = [
     label: 'Blog',
     to: '/blog',
     icon: 'ph:book-duotone'
-  },
-  {
-    label: 'Search Test',
-    to: '/searchTest',
-    icon: 'ph:magnifying-glass-duotone'
   }
 ]
 </script>
