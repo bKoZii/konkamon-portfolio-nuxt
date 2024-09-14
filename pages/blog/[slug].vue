@@ -13,7 +13,7 @@
               <MDCRenderer :body="ast.body" :data="ast.data" />
             </div>
             <div v-else-if="status == 'pending'">
-              <UAlert title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
+              <UAlert class="not-prose" title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
             </div>
           </section>
         </article>
