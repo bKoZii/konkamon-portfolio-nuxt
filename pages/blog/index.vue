@@ -27,18 +27,29 @@
       <UDivider class="my-6" />
     </section>
 
-    <main v-if="blogsData && blogsData.length > 0 && status === 'success'">
+    <main v-if="blogsData?.data && blogsData?.meta.pagination.total > 0 && status === 'success'">
       <section class="grid grid-cols-1 gap-3 md:grid-cols-2">
         <ClientOnly>
-          <div v-for="post in blogsData" :key="post.slug">
-            <LazyBlogIndexCard :post="post" />
+          <div v-for="post in blogsData.data" :key="post.id">
+            <LazyBlogIndexCard :post="post.attributes" />
           </div>
           <template #fallback>
-            <div v-for="fallback in 4" :key="fallback">
+            <div v-for="fallback in pageSize" :key="fallback">
               <BlogSkeletonFallback />
             </div>
           </template>
         </ClientOnly>
+      </section>
+      <section class="mt-5 flex justify-center">
+        <UPagination
+          v-model="currentPage"
+          :total="blogsData.meta.pagination.total"
+          :page-count="pageSize"
+          show-first
+          show-last
+          :first-button="{ icon: 'ph:arrow-arc-left', label: 'First', color: 'white' }"
+          :last-button="{ icon: 'ph:arrow-arc-right', label: 'Last', color: 'white' }"
+        />
       </section>
     </main>
     <UAlert
@@ -51,10 +62,10 @@
     />
 
     <UAlert
-      v-else-if="route.query.search && blogsData?.length === 0 && status === 'success'"
+      v-else-if="blogsData?.meta.pagination.total === 0 && status === 'success'"
       icon="ic:round-search-off"
       title="ไม่พบ Blogs"
-      :description="`ไม่พบ Blogs จากคำค้นหา ${route.query.search}`"
+      :description="`ไม่พบ Blogs จากคำค้นหา ${searchInput}`"
       color="orange"
       variant="subtle"
     />
@@ -81,6 +92,8 @@ const router = useRouter()
 const searchInput = ref('')
 const toast = useToast()
 const nuxt = useNuxtApp()
+const currentPage = ref(1)
+const pageSize = 6
 const {
   data: blogsData,
   status,
@@ -100,26 +113,25 @@ const {
           fields: ['url']
         }
       },
+      pagination: {
+        page: currentPage.value,
+        pageSize: pageSize
+      },
       filters: {
         $or: [{ title: { $containsi: searchInput.value } }, { subtitle: { $containsi: searchInput.value } }]
       }
-    }).then((data) => data.data.map((item) => item.attributes)),
+    }),
   {
     deep: false,
-    watch: false,
+    watch: [currentPage],
     getCachedData(key) {
-      const data = nuxt.payload.data[key] || nuxt.static.data[key]
-      if (!data) {
-        return
+      if (nuxt.isHydrating && nuxt.payload.data[key]) {
+        return nuxt.payload.data[key]
       }
-
-      const expirationDate = new Date(data.fetchedAt)
-      expirationDate.setTime(expirationDate.getTime() + 10 * 1000)
-      const isExpired = expirationDate.getTime() < Date.now()
-      if (isExpired) {
-        return
+      if (nuxt.static.data[key]) {
+        return nuxt.static.data[key]
       }
-      return data
+      return null
     }
   }
 )
@@ -138,6 +150,7 @@ watch(searchInput, () => {
     clearTimeout(timeout)
   }
   timeout = setTimeout(async () => {
+    currentPage.value = 1
     await refresh()
   }, 500)
 })
