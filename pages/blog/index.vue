@@ -13,10 +13,10 @@
     />
     <div class="mb-3 flex flex-col items-center justify-between lg:flex-row">
       <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
-      <div class="mt-5 lg:m-0">
-        <span class="text-xs text-neutral-500">Powered by </span>
-        <a href="https://strapi.io/" target="_blank" rel="noopener noreferrer" class="ml-1 p-1 dark:rounded-lg dark:bg-indigo-100">
-          <UIcon name="logos:strapi" class="inline-block" mode="svg" />
+      <div class="mt-5 lg:m-0 text-xs text-neutral-500">
+        <span>Powered by </span>
+        <a href="https://strapi.io/" target="_blank" rel="noopener noreferrer" class="text-indigo-700 font-bold dark:text-indigo-500">
+          Strapi
         </a>
       </div>
     </div>
