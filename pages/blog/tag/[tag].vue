@@ -4,6 +4,22 @@
       <h1 class="text-3xl font-bold">All Blogs With Tag:</h1>
       <UBadge size="lg" variant="subtle" :label="tagName" />
     </section>
+    <section class="my-4">
+      <UInput
+        :loading="loading"
+        type="text"
+        size="lg"
+        icon="ph:magnifying-glass"
+        :placeholder="tagBlogs?.meta.pagination.total == 0 && !searchInput ? 'ปิดการค้นหา เนื่องจากไม่พบ Blog' : `ค้นหา Blog ที่มีแท็ก ${tagName}...`"
+        v-model="searchInput"
+        id="searchInput"
+        :disabled="tagBlogs?.meta.pagination.total == 0 && !searchInput"
+      >
+        <template #trailing>
+          <UKbd>F</UKbd>
+        </template>
+      </UInput>
+    </section>
     <UDivider class="my-4" />
     <section>
       <template v-if="tagBlogs?.data.length ?? 0 >= 0">
@@ -23,6 +39,17 @@
         />
       </div>
     </section>
+    <section class="mt-5 flex justify-center" v-if="tagBlogs">
+      <UPagination
+        v-model="currentPage"
+        :total="tagBlogs.meta.pagination.total"
+        :page-count="pageSize"
+        show-first
+        show-last
+        :first-button="{ icon: 'ph:arrow-arc-left', label: 'First', color: 'white' }"
+        :last-button="{ icon: 'ph:arrow-arc-right', label: 'Last', color: 'white' }"
+      />
+    </section>
   </div>
 </template>
 
@@ -32,31 +59,51 @@ import type { StrapiBlogs } from '~/types/StrapiBlogs'
 const { find } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
 const tagName = route.params.tag as string
+const currentPage = ref(1)
+const pageSize = 6
+const searchInput = ref('')
+const loading = ref(false)
 
-const { data: tagBlogs } = await useAsyncData('tagBlogs', () =>
-  find<StrapiBlogs>('blogs', {
-    filters: {
-      $or: [
-        {
-          categories: {
-            name: {
-              $containsi: tagName
+const { data: tagBlogs, refresh } = await useAsyncData(
+  'tagBlogs',
+  () =>
+    find<StrapiBlogs>('blogs', {
+      filters: {
+        $or: [
+          {
+            categories: {
+              name: {
+                $containsi: tagName
+              }
             }
           }
-        }
-      ]
-    },
-    fields: ['title', 'subtitle', 'publishedAt', 'slug'],
-    sort: 'publishedAt:desc',
-    populate: {
-      categories: {
-        fields: ['name']
+        ],
+        $and: [
+          {
+            title: {
+              $containsi: searchInput.value
+            }
+          }
+        ]
       },
-      blogIcon: {
-        fields: ['url']
+      fields: ['title', 'subtitle', 'publishedAt', 'slug'],
+      sort: 'publishedAt:desc',
+      populate: {
+        categories: {
+          fields: ['name']
+        },
+        blogIcon: {
+          fields: ['url']
+        }
+      },
+      pagination: {
+        page: currentPage.value,
+        pageSize: pageSize
       }
-    }
-  })
+    }),
+  {
+    deep: false
+  }
 )
 
 useSeoMeta({
@@ -67,5 +114,26 @@ useSeoMeta({
   ogDescription: `รวม Blogs ที่มี Tag: '${tagName}'`,
   ogImage: '/ogImage-blogs.webp',
   ogUrl: 'https://www.konkamon.live/blog'
+})
+let timeout: NodeJS.Timeout | null = null
+watch(searchInput, () => {
+  if (timeout) {
+    clearTimeout(timeout)
+  }
+  timeout = setTimeout(async () => {
+    loading.value = true
+    currentPage.value = 1
+    await refresh()
+    loading.value = false
+  }, 500)
+})
+
+defineShortcuts({
+  f: {
+    usingInput: true,
+    handler: () => {
+      document.getElementById('searchInput')?.focus()
+    }
+  }
 })
 </script>
