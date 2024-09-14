@@ -7,8 +7,13 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   const cachedSlug = slugCacheStore.getSlug(slug)
 
-
   try {
+    if (cachedSlug) {
+      if (cachedSlug !== slug) {
+        return navigateTo('/blog/')
+      }
+      return true
+    }
     const { data } = await findOne<StrapiBlogSlug>('blogs', slug, {
       fields: ['slug', 'publishedAt']
     })
@@ -26,12 +31,4 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   } catch (error) {
     return navigateTo({ path: '/blog/', query: { notfound: 'true', link: from.params.slug }, replace: true })
   }
-
-  if (cachedSlug) {
-    if (cachedSlug !== slug) {
-      return navigateTo('/blog/')
-    }
-    return true
-  }
-
 })
