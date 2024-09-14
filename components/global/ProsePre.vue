@@ -1,11 +1,18 @@
 <template>
   <div class="pre">
     <div class="rounded-t-lg border-b-0 bg-neutral-900 p-2 text-xs dark:border dark:border-neutral-700 dark:bg-neutral-900">
-      <div class="flex flex-row flex-nowrap items-center gap-2">
-        <UIcon v-if="language" :name="`vscode-icons:file-type-${language}`" mode="svg" class="inline-block size-5" /><span
-          class="tracking-normal text-white"
-          >{{ $props.filename }}</span
-        >
+      <div class="flex flex-row flex-nowrap items-center justify-between gap-2 text-white">
+        <span class="tracking-normal">{{ $props.filename }}</span>
+        <UButton
+          @click="copyCode"
+          variant="solid"
+          class="p-1"
+          :color="codeCopied ? 'primary' : 'white'"
+          size="xs"
+          :icon="codeCopied ? 'ph:check-square-duotone' : 'ph:clipboard-duotone'"
+          aria-label="Copy Code"
+          :label="codeCopied ? 'Copied!' : 'Copy Code'"
+        />
       </div>
     </div>
     <pre
@@ -18,7 +25,7 @@
 <script setup lang="ts">
 import type { BundledLanguage } from 'shiki'
 
-defineProps({
+const props = defineProps({
   code: {
     type: String,
     default: ''
@@ -44,6 +51,19 @@ defineProps({
     default: null
   }
 })
+
+const codeCopied = ref(false)
+const copyCode = async (): Promise<void> => {
+  try {
+    await navigator.clipboard.writeText(props.code);
+    codeCopied.value = true;
+    setTimeout(() => {
+      codeCopied.value = false;
+    }, 1500);
+  } catch (error) {
+    console.error('Error: Unable to copy code.', error);
+  }
+};
 </script>
 
 <style lang="scss">
