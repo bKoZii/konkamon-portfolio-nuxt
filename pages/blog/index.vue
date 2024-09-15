@@ -181,7 +181,6 @@ const alertMessage = computed(() => {
 })
 defineShortcuts({
   f: {
-    usingInput: true,
     handler: () => {
       document.getElementById('searchInput')?.focus()
     }
