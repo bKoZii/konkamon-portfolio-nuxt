@@ -23,7 +23,7 @@
     <UDivider class="my-4" />
     <section>
       <template v-if="tagBlogs?.data.length ?? 0 >= 0">
-        <section class="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <section class="flex flex-col flex-nowrap gap-3">
           <div v-for="tagBlogItems in tagBlogs?.data" :key="tagBlogItems.id">
             <BlogIndexCard :post="tagBlogItems.attributes" />
           </div>

@@ -32,7 +32,7 @@
     </section>
 
     <main v-if="blogsData?.data && blogsData?.meta.pagination.total > 0 && status === 'success'">
-      <section class="grid grid-cols-1 gap-3 md:grid-cols-2">
+      <section class="flex flex-col flex-nowrap gap-3">
         <ClientOnly>
           <div v-for="post in blogsData.data" :key="post.id">
             <LazyBlogIndexCard :post="post.attributes" />
