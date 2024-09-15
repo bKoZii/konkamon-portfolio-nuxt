@@ -12,6 +12,16 @@ export default defineAppConfig({
       default: {
         timeout: 2500
       }
+    },
+    pagination: {
+      default: {
+        nextButton: {
+          icon: 'ph:arrow-right'
+        },
+        prevButton: {
+          icon: 'ph:arrow-left'
+        }
+      }
     }
   }
 })
