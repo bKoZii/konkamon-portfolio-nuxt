@@ -4,8 +4,8 @@
     <template v-if="tagItems">
       <div v-for="tags in tagItems.data" :key="tags.id">
         <NuxtLink :to="`/blog/tag/${tags.attributes.name}`"
-          ><UBadge variant="subtle">{{ tags.attributes.name }}</UBadge></NuxtLink
-        >
+          ><UBadge variant="subtle" :ui="{ variant: { subtle: 'hover:bg-neutral-950' } }" color="primary">{{ tags.attributes.name }}</UBadge>
+        </NuxtLink>
       </div>
     </template>
   </div>
