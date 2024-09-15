@@ -4,7 +4,7 @@
       <h2 class="text-lg font-bold text-gray-500 dark:text-gray-400">Blogs ล่าสุด</h2>
       <UButton label="Blogs ทั้งหมด" variant="ghost" icon="ph:arrow-right" trailing to="/blog" />
     </section>
-    <section class="grid grid-cols-1 gap-3 sm:grid-cols-1 md:grid-cols-2">
+    <section class="flex flex-col flex-nowrap gap-3">
       <ClientOnly>
         <div v-for="post in latestBlogs" :key="post.slug">
           <BlogIndexCard :post="post" />
@@ -28,7 +28,7 @@ const params: Strapi4RequestParams = {
   fields: ['title', 'subtitle', 'publishedAt', 'slug'],
   sort: 'publishedAt:desc',
   pagination: {
-    pageSize: 4,
+    pageSize: 2,
     page: 1
   },
   populate: {
