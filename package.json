@@ -39,7 +39,7 @@
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "dayjs": "^1.11.13",
     "dayjs-nuxt": "^2.1.11",
-    "nuxt": "^3.13.1",
+    "nuxt": "^3.13.2",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "sass": "^1.78.0",
