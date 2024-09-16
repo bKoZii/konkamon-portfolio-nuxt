@@ -98,6 +98,13 @@ const toast = useToast()
 const nuxt = useNuxtApp()
 const currentPage = ref(1)
 const pageSize = 6
+const constructSearchFilters = (searchInput: string) => {
+  const keywords = searchInput.split(' ')
+  const filters = keywords.map((keyword) => ({
+    $or: [{ title: { $containsi: keyword } }, { subtitle: { $containsi: keyword } }]
+  }))
+  return { $and: filters }
+}
 const {
   data: blogsData,
   status,
@@ -121,9 +128,7 @@ const {
         page: currentPage.value,
         pageSize: pageSize
       },
-      filters: {
-        $or: [{ title: { $containsi: searchInput.value } }, { subtitle: { $containsi: searchInput.value } }]
-      }
+      filters: constructSearchFilters(searchInput.value)
     }),
   {
     deep: false,
@@ -137,7 +142,7 @@ const {
       }
       return null
     }
-  },
+  }
 )
 
 if (error.value) {

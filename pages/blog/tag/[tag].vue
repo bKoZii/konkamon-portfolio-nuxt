@@ -64,28 +64,34 @@ const pageSize = 6
 const searchInput = ref('')
 const loading = ref(false)
 
+const constructSearchFilters = (searchInput: string) => {
+  const keywords = searchInput.split(' ')
+  const filters = keywords.map((keyword) => ({
+    $or: [
+      {
+        categories: {
+          name: {
+            $containsi: tagName
+          }
+        }
+      }
+    ],
+    $and: [
+      {
+        title: {
+          $containsi: keyword
+        }
+      }
+    ]
+  }))
+  return { $and: filters }
+}
+
 const { data: tagBlogs, refresh } = await useAsyncData(
   'tagBlogs',
   () =>
     find<StrapiBlogs>('blogs', {
-      filters: {
-        $or: [
-          {
-            categories: {
-              name: {
-                $containsi: tagName
-              }
-            }
-          }
-        ],
-        $and: [
-          {
-            title: {
-              $containsi: searchInput.value
-            }
-          }
-        ]
-      },
+      filters: constructSearchFilters(searchInput.value),
       fields: ['title', 'subtitle', 'publishedAt', 'slug'],
       sort: 'publishedAt:desc',
       populate: {
