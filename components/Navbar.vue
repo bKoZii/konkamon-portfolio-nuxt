@@ -1,8 +1,8 @@
 <template>
   <div
-    class="sticky top-0 z-10 border-b bg-white px-6 py-1 shadow-md dark:border-neutral-800 dark:bg-neutral-950/80 dark:text-white dark:backdrop-blur-lg"
+    class="sticky max-w-[1300px] mx-auto top-1 z-10 border rounded-b-lg bg-white px-6 py-1 shadow-md dark:border-neutral-800 dark:bg-neutral-950/80 dark:text-white dark:backdrop-blur-lg"
   >
-    <header class="mx-auto flex max-w-[1300px] items-center justify-between xs:justify-between sm:justify-between">
+    <header class="flex items-center justify-between xs:justify-between sm:justify-between">
       <ULink id="myName" to="/" class="inline-flex items-center gap-2 text-xl font-extrabold" aria-label="logo">
         <UIcon name="my-icon:konkamon-logo" mode="svg" size="24" />
         <UIcon name="my-icon:konkamon" mode="svg" size="26" />
