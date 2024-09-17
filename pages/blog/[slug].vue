@@ -33,7 +33,8 @@ import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
 const nuxt = useNuxtApp()
-const { data: blogSlug } = await useAsyncData(
+const { data: blogSlug } = useNuxtData('blogSlug')
+const { data } = await useAsyncData(
   'blogSlug',
   () =>
     findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
@@ -48,6 +49,9 @@ const { data: blogSlug } = await useAsyncData(
       }
     }).then((data) => data.data.attributes),
   {
+    default(){
+      return blogSlug.value
+    },
     watch: false,
     deep: false,
     getCachedData: (key) => {
