@@ -16,6 +16,22 @@ interface tagsItem {
   id: string
   name: string
 }
+const nuxt = useNuxtApp()
 const { find } = useStrapi()
-const { data: tagItems } = await useLazyAsyncData('tags', () => find<tagsItem>('categories', { fields: ['name'], sort: 'name:asc' }))
+const { data: tagItems } = useNuxtData('tags')
+const { data } = await useLazyAsyncData('tags', () => find<tagsItem>('categories', { fields: ['name'], sort: 'name:asc' }), {
+  default() {
+    return tagItems.value
+  },
+  getCachedData: (key) => {
+    if (nuxt.isHydrating && nuxt.payload.data[key]) {
+      return nuxt.payload.data[key]
+    }
+    if (nuxt.static.data[key]) {
+      return nuxt.static.data[key]
+    }
+    return null
+  },
+  deep: false
+})
 </script>

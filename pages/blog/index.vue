@@ -56,30 +56,13 @@
         />
       </section>
     </main>
-    <UAlert
-      v-else-if="status === 'pending'"
-      title="Loading"
-      description="กำลังค้นหา Blog กรุณารอสักครู่"
-      icon="ph:magnifying-glass-duotone"
-      color="primary"
-      variant="soft"
-    />
-
-    <UAlert
-      v-else-if="blogsData?.meta.pagination.total === 0 && status === 'success'"
-      icon="ic:round-search-off"
-      title="ไม่พบ Blogs"
-      :description="`ไม่พบ Blogs จากคำค้นหา ${searchInput}`"
-      color="orange"
-      variant="subtle"
-    />
-    <UAlert
-      v-else-if="error?.statusCode || status === 'error'"
-      title="Error"
-      description="เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้งในภายหลัง"
-      icon="ph:magnifying-glass-duotone"
-      color="red"
-      variant="subtle"
+    <LazyUAlert
+      v-if="alertConfig"
+      :title="alertConfig.title"
+      :description="alertConfig.description"
+      :icon="alertConfig.icon"
+      :color="alertConfig.color"
+      :variant="alertConfig.variant"
     />
   </div>
 </template>
@@ -88,6 +71,7 @@
 useMySlugCacheStore()
 
 import { type StrapiBlogs } from '~/types/StrapiBlogs'
+import type { AlertColor, AlertVariant } from '#ui/types'
 
 const { find } = useStrapi()
 const loading = ref(false)
@@ -98,6 +82,7 @@ const toast = useToast()
 const nuxt = useNuxtApp()
 const currentPage = ref(1)
 const pageSize = 6
+const { data: blogsData } = useNuxtData('allBlogsWithSearch')
 const constructSearchFilters = (searchInput: string) => {
   const keywords = searchInput.split(' ')
   const filters = keywords.map((keyword) => ({
@@ -105,12 +90,7 @@ const constructSearchFilters = (searchInput: string) => {
   }))
   return { $and: filters }
 }
-const {
-  data: blogsData,
-  status,
-  error,
-  refresh
-} = await useAsyncData(
+const { data, status, error, refresh } = await useAsyncData(
   'allBlogsWithSearch',
   () =>
     find<StrapiBlogs>('blogs', {
@@ -132,6 +112,7 @@ const {
     }),
   {
     deep: false,
+    lazy: true,
     watch: [currentPage],
     getCachedData(key) {
       if (nuxt.isHydrating && nuxt.payload.data[key]) {
@@ -141,6 +122,9 @@ const {
         return nuxt.static.data[key]
       }
       return null
+    },
+    default() {
+      return blogsData.value
     }
   }
 )
@@ -190,5 +174,34 @@ defineShortcuts({
       document.getElementById('searchInput')?.focus()
     }
   }
+})
+
+const alertConfig = computed(() => {
+  if (status.value === 'pending') {
+    return {
+      title: 'Loading',
+      description: 'กำลังค้นหา Blog กรุณารอสักครู่',
+      icon: 'ph:magnifying-glass-duotone',
+      color: 'primary' as AlertColor,
+      variant: 'soft' as AlertVariant
+    }
+  } else if (blogsData.value?.meta.pagination.total === 0 && status.value === 'success') {
+    return {
+      title: 'ไม่พบ Blogs',
+      description: `ไม่พบ Blogs จากคำค้นหา ${searchInput.value}`,
+      icon: 'ic:round-search-off',
+      color: 'orange' as AlertColor,
+      variant: 'subtle' as AlertVariant
+    }
+  } else if (error.value?.statusCode || status.value === 'error') {
+    return {
+      title: 'Error',
+      description: 'เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้งในภายหลัง',
+      icon: 'ph:magnifying-glass-duotone',
+      color: 'red' as AlertColor,
+      variant: 'subtle' as AlertVariant
+    }
+  }
+  return null
 })
 </script>

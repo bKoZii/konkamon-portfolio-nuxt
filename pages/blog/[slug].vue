@@ -29,6 +29,7 @@
 import type { RouteLocationNormalized } from 'vue-router'
 import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 
+
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
 const nuxt = useNuxtApp()
@@ -48,7 +49,16 @@ const { data: blogSlug } = await useAsyncData(
     }).then((data) => data.data.attributes),
   {
     watch: false,
-    deep: false
+    deep: false,
+    getCachedData: (key) => {
+    if (nuxt.isHydrating && nuxt.payload.data[key]) {
+      return nuxt.payload.data[key]
+    }
+    if (nuxt.static.data[key]) {
+      return nuxt.static.data[key]
+    }
+    return null
+  },
   }
 )
 
@@ -65,8 +75,8 @@ useSeoMeta({
 definePageMeta({
   middleware: ['check-blog-post']
 })
-
-const { data: ast, status } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.value?.content as string), {
+const { data: ast } = useNuxtData('markdown')
+const { status } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.value?.content as string), {
   getCachedData: (key) => {
     if (nuxt.isHydrating && nuxt.payload.data[key]) {
       return nuxt.payload.data[key]
@@ -75,6 +85,9 @@ const { data: ast, status } = await useAsyncData('markdown', () => parseMarkdown
       return nuxt.static.data[key]
     }
     return null
+  },
+  default(){
+    return ast.value
   },
   watch: false,
   deep: false,
