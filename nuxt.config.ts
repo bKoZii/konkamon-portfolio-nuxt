@@ -74,6 +74,11 @@ export default defineNuxtConfig({
           apiRuntime: 'node:20'
         }
       }
+    },
+    netlify: {
+      images: {
+        remote_images: [`https://res.cloudinary.com/${process.env.CLOUDINARY_KEY}/image/upload/*`]
+      }
     }
   },
   mdc: {
