@@ -2,6 +2,7 @@
   <Html class="dark:bg-neutral-950" />
   <NuxtLoadingIndicator />
   <NuxtLayout>
+    <VitePwaManifest />
     <NuxtPage />
   </NuxtLayout>
   <UNotifications />
@@ -38,14 +39,16 @@ useHead({
     filter: blur(4px);
     transform: translateY(-20px);
   }
-  .layout-enter-active,
+  .layout-enter-active {
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.25, 1);
+  }
   .layout-leave-active {
-    transition: all 0.4s;
+    transition: all 0.3s cubic-bezier(0.75, 0, 0.75, 0);
   }
   .layout-enter-from,
   .layout-leave-to {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(-20px);
   }
 }
 </style>

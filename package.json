@@ -37,6 +37,7 @@
     "@nuxtjs/mdc": "^0.9.0",
     "@nuxtjs/sitemap": "6.0.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
+    "@vite-pwa/nuxt": "^0.10.5",
     "dayjs": "^1.11.13",
     "dayjs-nuxt": "^2.1.11",
     "nuxt": "^3.13.2",
