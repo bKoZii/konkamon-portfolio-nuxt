@@ -12,8 +12,8 @@
             <div v-if="ast && status == 'success'">
               <MDCRenderer :body="ast.body" :data="ast.data" />
             </div>
-            <div v-else-if="status == 'pending'">
-              <UAlert class="not-prose" title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
+            <div v-else-if="status == 'pending' && !ast">
+              <LazyUAlert class="not-prose" title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
             </div>
           </section>
         </article>
@@ -95,7 +95,6 @@ const { status } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.v
   },
   watch: false,
   deep: false,
-  server: false,
   lazy: true
 })
 </script>
