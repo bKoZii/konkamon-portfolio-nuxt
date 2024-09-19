@@ -86,8 +86,9 @@ const constructSearchFilters = (searchInput: string) => {
   }))
   return { $and: filters }
 }
-
-const { data: tagBlogs, refresh } = await useAsyncData(
+const { data: tagBlogs} = useNuxtData('tagBlogs')
+const nuxt = useNuxtApp()
+const { data, refresh } = await useAsyncData(
   'tagBlogs',
   () =>
     find<StrapiBlogs>('blogs', {
@@ -108,7 +109,19 @@ const { data: tagBlogs, refresh } = await useAsyncData(
       }
     }),
   {
-    deep: false
+    deep: false,
+    getCachedData: (key) => {
+      if (nuxt.isHydrating && nuxt.payload.data[key]) {
+        return nuxt.payload.data[key]
+      }
+      if (nuxt.static.data[key]) {
+        return nuxt.static.data[key]
+      }
+      return null
+    },
+    default() {
+      return tagBlogs.value
+    },
   }
 )
 
