@@ -147,9 +147,6 @@ export default defineNuxtConfig({
     }
   },
   pwa: {
-    strategies: 'injectManifest',
-    srcDir: 'service-worker',
-    filename: 'sw.ts',
     mode: 'production',
     manifest: {
       name: 'Konkamon Sion - Portfolio & Blogs',
@@ -157,12 +154,6 @@ export default defineNuxtConfig({
       categories: ['portfolio', 'blogs'],
       description: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
       lang: 'th',
-    },
-    workbox: {
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-    },
-    injectManifest: {
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-    },
+    }
   }
 })
