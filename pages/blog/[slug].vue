@@ -29,32 +29,38 @@
 import type { RouteLocationNormalized } from 'vue-router'
 import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 
-
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
 const nuxt = useNuxtApp()
 const { data: blogSlug } = useNuxtData('blogSlug')
-const { data } = await useAsyncData(
-  'blogSlug',
-  () =>
-    findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
-      fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
-      populate: {
-        mainImage: {
-          fields: ['url']
-        },
-        categories: {
-          fields: ['name']
-        }
+const fetchBlogSlug = async () => {
+  const cache = await caches.open('api-cache')
+  const cachedResponse = await cache.match(`/api/blogs/${route.params.slug}`)
+  if (cachedResponse) {
+    return cachedResponse.json()
+  }
+  const response = await findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
+    fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
+    populate: {
+      mainImage: {
+        fields: ['url']
+      },
+      categories: {
+        fields: ['name']
       }
-    }).then((data) => data.data.attributes),
-  {
-    default(){
-      return blogSlug.value
-    },
-    watch: false,
-    deep: false,
-    getCachedData: (key) => {
+    }
+  })
+  cache.put(`/api/blogs/${route.params.slug}`, new Response(JSON.stringify(response.data.attributes)))
+  return response.data.attributes
+}
+
+const { data } = await useAsyncData('blogSlug', fetchBlogSlug, {
+  default() {
+    return blogSlug.value
+  },
+  watch: false,
+  deep: false,
+  getCachedData: (key) => {
     if (nuxt.isHydrating && nuxt.payload.data[key]) {
       return nuxt.payload.data[key]
     }
@@ -62,9 +68,8 @@ const { data } = await useAsyncData(
       return nuxt.static.data[key]
     }
     return null
-  },
   }
-)
+})
 
 useSeoMeta({
   title: blogSlug.value?.title,
@@ -79,8 +84,24 @@ useSeoMeta({
 definePageMeta({
   middleware: ['check-blog-post']
 })
+
 const { data: ast } = useNuxtData('markdown')
-const { status } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.value?.content as string), {
+const fetchMarkdown = async () => {
+  const mdCache = await caches.open('markdown-cache')
+  const cachedMdResponse = await mdCache.match(`/api/markdown/${route.params.slug}`)
+  if (cachedMdResponse) {
+    return cachedMdResponse.json()
+  }
+  const response = await parseMarkdown(blogSlug.value?.content as string)
+  mdCache.put(`/api/markdown/${route.params.slug}`, new Response(JSON.stringify(response)))
+  return response
+}
+const { status } = await useAsyncData('markdown', fetchMarkdown, {
+  default() {
+    return ast.value
+  },
+  watch: false,
+  deep: false,
   getCachedData: (key) => {
     if (nuxt.isHydrating && nuxt.payload.data[key]) {
       return nuxt.payload.data[key]
@@ -89,12 +110,6 @@ const { status } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.v
       return nuxt.static.data[key]
     }
     return null
-  },
-  default(){
-    return ast.value
-  },
-  watch: false,
-  deep: false,
-  lazy: true
+  }
 })
 </script>
