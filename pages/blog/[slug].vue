@@ -6,13 +6,12 @@
           <BlogSlugHeader :blog-slug="blogSlug" />
           <UDivider class="my-3" />
           <section
-            v-if="ast"
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
             <div v-if="ast && status == 'success'">
-              <MDCRenderer :body="ast.body" :data="ast.data" />
+              <MDCRenderer :body="ast.body" :data="ast.data" tag="article" />
             </div>
-            <div v-else-if="status == 'pending' && !ast">
+            <div v-else-if="status == 'pending'">
               <LazyUAlert class="not-prose" title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
             </div>
           </section>
@@ -28,7 +27,6 @@
 <script lang="ts" setup>
 import type { RouteLocationNormalized } from 'vue-router'
 import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
-
 
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
@@ -49,20 +47,20 @@ const { data } = await useAsyncData(
       }
     }).then((data) => data.data.attributes),
   {
-    default(){
+    default() {
       return blogSlug.value
     },
     watch: false,
     deep: false,
     getCachedData: (key) => {
-    if (nuxt.isHydrating && nuxt.payload.data[key]) {
-      return nuxt.payload.data[key]
+      if (nuxt.isHydrating && nuxt.payload.data[key]) {
+        return nuxt.payload.data[key]
+      }
+      if (nuxt.static.data[key]) {
+        return nuxt.static.data[key]
+      }
+      return null
     }
-    if (nuxt.static.data[key]) {
-      return nuxt.static.data[key]
-    }
-    return null
-  },
   }
 )
 
@@ -80,21 +78,18 @@ definePageMeta({
   middleware: ['check-blog-post']
 })
 const { data: ast } = useNuxtData('markdown')
-const { status } = await useAsyncData('markdown', () => parseMarkdown(blogSlug.value?.content as string), {
-  getCachedData: (key) => {
-    if (nuxt.isHydrating && nuxt.payload.data[key]) {
-      return nuxt.payload.data[key]
-    }
-    if (nuxt.static.data[key]) {
-      return nuxt.static.data[key]
-    }
-    return null
+const { status } = await useFetch('/api/mdc-transform', {
+  method: 'POST',
+  key: 'markdown',
+  body: {
+    content: blogSlug.value?.content
   },
-  default(){
+  cache: 'force-cache',
+  lazy: true,
+  default() {
     return ast.value
   },
-  watch: false,
   deep: false,
-  lazy: true
+  dedupe: 'cancel'
 })
 </script>
