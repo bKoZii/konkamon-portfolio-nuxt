@@ -24,8 +24,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/robots',
-    '@nuxtjs/sitemap',
-    '@vite-pwa/nuxt'
+    '@nuxtjs/sitemap'
   ],
 
   app: {
@@ -144,16 +143,6 @@ export default defineNuxtConfig({
     strapiUrl: process.env.STRAPI_URL,
     public: {
       strapiUrl: process.env.STRAPI_URL
-    }
-  },
-  pwa: {
-    mode: 'production',
-    manifest: {
-      name: 'Konkamon Sion - Portfolio & Blogs',
-      theme_color: '#379777',
-      categories: ['portfolio', 'blogs'],
-      description: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
-      lang: 'th',
     }
   }
 })
