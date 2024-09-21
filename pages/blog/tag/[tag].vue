@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="flex flex-row items-center gap-2">
+    <section class="flex flex-col md:flex-row items-center gap-2">
       <h1 class="text-3xl font-bold">All Blogs With Tag:</h1>
       <UBadge size="lg" variant="subtle" :label="tagName" />
     </section>
