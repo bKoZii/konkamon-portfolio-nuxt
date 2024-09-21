@@ -9,7 +9,7 @@
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
             <div v-if="blogSlug && status == 'success'">
-              <article v-html="$markdownIt.render(blogSlug.content)" />
+              <article v-html="$sanitizeHTML(markdownContent)" />
             </div>
             <div v-else-if="status == 'pending'">
               <LazyUAlert class="not-prose" title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
@@ -63,6 +63,7 @@ const { status } = await useAsyncData(
     }
   }
 )
+const markdownContent = useMarkdownIt(blogSlug.value?.content as string)
 
 useSeoMeta({
   title: blogSlug.value?.title,
