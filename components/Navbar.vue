@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky max-w-[1300px] mx-auto top-0 md:top-1 z-10 border-b md:border md:rounded-lg bg-white px-6 py-1 shadow-md dark:border-neutral-800 dark:bg-neutral-950/80 dark:text-white dark:backdrop-blur-lg"
+    class="sticky max-w-[1300px] mx-auto top-0 md:top-1 z-10 border-b md:border md:rounded-lg bg-white px-6 py-1 shadow-md dark:border-neutral-800 dark:bg-neutral-800/80 dark:text-white dark:backdrop-blur-lg"
   >
     <header class="flex items-center justify-between xs:justify-between sm:justify-between">
       <ULink id="myName" to="/" class="inline-flex items-center gap-2 text-xl font-extrabold" aria-label="logo">
@@ -13,7 +13,7 @@
             <ULink
               :to="data.to"
               inactive-class="text-neutral-700 hover:text-black dark:text-white dark:hover:text-white hover:bg-neutral-200 dark:hover:bg-neutral-900"
-              active-class="text-primary-500 dark:text-primary-500 dark:hover:text-primary hover:text-primary bg-primary-100/50 dark:bg-primary-900"
+              active-class="text-primary-500 dark:text-primary dark:hover:text-primary hover:text-primary bg-primary-100/50 dark:bg-neutral-700"
               class="inline-flex rounded-lg p-1"
               :aria-label="`Go to ${data.label} Page.`"
             >
