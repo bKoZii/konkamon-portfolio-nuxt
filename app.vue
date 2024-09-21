@@ -2,7 +2,6 @@
   <Html class="dark:bg-neutral-950" />
   <NuxtLoadingIndicator />
   <NuxtLayout>
-    <VitePwaManifest />
     <NuxtPage />
   </NuxtLayout>
   <UNotifications />
