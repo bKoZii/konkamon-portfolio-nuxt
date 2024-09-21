@@ -20,7 +20,6 @@ export default defineNuxtConfig({
     'dayjs-nuxt',
     '@stefanobartoletti/nuxt-social-share',
     '@nuxtjs/strapi',
-    '@nuxtjs/mdc',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/robots',
@@ -79,18 +78,6 @@ export default defineNuxtConfig({
       images: {
         remote_images: [`https://res.cloudinary.com/${process.env.CLOUDINARY_KEY}/image/upload/*`]
       }
-    }
-  },
-  mdc: {
-    highlight: {
-      highlighter: 'shiki',
-      langs: ['sh', 'typescript', 'python', 'java', 'php', 'html', 'css', 'javascript', 'json', 'sql', 'vue'],
-      theme: 'aurora-x',
-      themes: ['aurora-x'],
-      wrapperStyle: true,
-    },
-    headings: {
-      anchorLinks: false
     }
   },
   pinia: {

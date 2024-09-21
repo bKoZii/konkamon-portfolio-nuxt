@@ -6,10 +6,10 @@
           <BlogSlugHeader :blog-slug="blogSlug" />
           <UDivider class="my-3" />
           <section
-            class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm prose-pre:m-0 prose-li:my-1 max-w-none font-sans tracking-tight"
+            class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
-            <div v-if="ast && status == 'success'">
-              <MDCRenderer :body="ast.body" :data="ast.data" tag="article" />
+            <div v-if="blogSlug && status == 'success'">
+              <article v-html="$markdownIt.render(blogSlug.content)" />
             </div>
             <div v-else-if="status == 'pending'">
               <LazyUAlert class="not-prose" title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
@@ -31,8 +31,8 @@ import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
 const nuxt = useNuxtApp()
-const { data: blogSlug } = useNuxtData('blogSlug')
-const { data } = await useAsyncData(
+const { data: blogSlug } = useNuxtData<StrapiBlogSlug>('blogSlug')
+const { status } = await useAsyncData(
   'blogSlug',
   () =>
     findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
@@ -48,7 +48,7 @@ const { data } = await useAsyncData(
     }).then((data) => data.data.attributes),
   {
     default() {
-      return blogSlug.value
+      return blogSlug.value as StrapiBlogSlug
     },
     watch: false,
     deep: false,
@@ -76,20 +76,5 @@ useSeoMeta({
 
 definePageMeta({
   middleware: ['check-blog-post']
-})
-const { data: ast } = useNuxtData('markdown')
-const { status } = await useFetch('/api/mdc-transform', {
-  method: 'POST',
-  key: 'markdown',
-  body: {
-    content: blogSlug.value?.content
-  },
-  cache: 'force-cache',
-  lazy: true,
-  default() {
-    return ast.value
-  },
-  deep: false,
-  dedupe: 'cancel'
 })
 </script>
