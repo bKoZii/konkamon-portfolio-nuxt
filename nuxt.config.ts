@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/blog': { isr: true },
-    '/blog/**': { isr: true, cache: { maxAge: 60 * 60 * 24 * 7 } }
+    '/blog/**': { isr: false }
   },
 
   modules: [
