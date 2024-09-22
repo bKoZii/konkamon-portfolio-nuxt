@@ -63,7 +63,7 @@ const { status } = await useAsyncData(
     }
   }
 )
-const markdownContent = useMarkdownIt(blogSlug.value?.content as string)
+const markdownContent = await useMarkdownIt(blogSlug.value ? blogSlug.value.content : '')
 
 useSeoMeta({
   title: blogSlug.value?.title,
