@@ -123,9 +123,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.6
         version: 0.6.6(prettier@3.3.3)
-      sass:
-        specifier: ^1.79.3
-        version: 1.79.3
       shiki:
         specifier: ^1.18.0
         version: 1.18.0
@@ -6304,6 +6301,7 @@ snapshots:
   chokidar@4.0.0:
     dependencies:
       readdirp: 4.0.1
+    optional: true
 
   chownr@1.1.4:
     optional: true
@@ -7151,7 +7149,8 @@ snapshots:
 
   image-meta@0.2.1: {}
 
-  immutable@4.3.7: {}
+  immutable@4.3.7:
+    optional: true
 
   impound@0.1.0(rollup@4.22.4):
     dependencies:
@@ -8450,7 +8449,8 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.0.1: {}
+  readdirp@4.0.1:
+    optional: true
 
   redis-errors@1.2.0: {}
 
@@ -8541,6 +8541,7 @@ snapshots:
       chokidar: 4.0.0
       immutable: 4.3.7
       source-map-js: 1.2.1
+    optional: true
 
   saxes@6.0.0:
     dependencies:
