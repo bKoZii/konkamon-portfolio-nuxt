@@ -1,11 +1,11 @@
 <template>
   <div
-    class="sticky max-w-[1300px] mx-auto top-0 md:top-1 z-10 border-b md:border md:rounded-lg bg-white px-6 py-1 shadow-md dark:border-neutral-800 dark:bg-neutral-800/80 dark:text-white dark:backdrop-blur-lg"
+    class="sticky max-w-[1300px] mx-auto top-0 md:top-1 z-10 border-b md:border md:rounded-lg bg-white px-3 md:px-4 py-1 shadow-md dark:border-neutral-800 dark:bg-neutral-800/80 dark:text-white dark:backdrop-blur-lg"
   >
     <header class="flex items-center justify-between xs:justify-between sm:justify-between">
       <ULink id="myName" to="/" class="inline-flex items-center gap-2 text-xl font-extrabold" aria-label="logo">
-        <UIcon name="my-icon:konkamon-logo" mode="svg" size="24" />
-        <UIcon name="my-icon:konkamon" mode="svg" size="26" />
+        <UIcon name="my-icon:konkamon-logo" mode="svg" size="20" />
+        <UIcon name="my-icon:konkamon" mode="svg" size="22" />
       </ULink>
       <nav class="flex gap-4">
         <div v-for="data in navItems" :key="data.label" class="hidden self-center md:inline-flex">
