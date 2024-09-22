@@ -6,11 +6,25 @@ import 'markdown-it-github-alerts/styles/github-colors-light.css'
 import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
 import 'markdown-it-github-alerts/styles/github-base.css'
 
-const { highlighter } = await getShikiHighlight()
-const md = MarkdownIt({ linkify: true, typographer: true })
-md.use(fromHighlighter(highlighter, { theme: 'aurora-x' }))
-md.use(MarkdownItGitHubAlerts)
+let md: MarkdownIt
+
+async function setupMarkdownIt() {
+  const { highlighter } = await getShikiHighlight()
+  md = MarkdownIt({ linkify: true, typographer: true })
+  md.use(fromHighlighter(highlighter, { theme: 'aurora-x' }))
+  md.use(MarkdownItGitHubAlerts)
+}
+
+setupMarkdownIt()
+
+export default defineNuxtPlugin(() => {
+  return {
+    provide: {
+      markdownIt: (content: string) => md.render(content)
+    }
+  }
+})
 
 export const useMarkdownIt = async (content: string) => {
-  return await md.render(content)
+  return md.render(content)
 }
