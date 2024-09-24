@@ -12,7 +12,7 @@
   "dependencies": {
     "@headlessui/tailwindcss": "^0.2.1",
     "@nuxt/image": "^1.8.0",
-    "@nuxt/ui": "^2.18.5",
+    "@nuxt/ui": "^2.18.6",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/robots": "^4.1.7",
     "@nuxtjs/strapi": "^1.12.0",
@@ -23,19 +23,19 @@
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",
     "dompurify": "^3.1.6",
-    "jsdom": "^25.0.0",
+    "jsdom": "^25.0.1",
     "markdown-it-github-alerts": "^0.3.0",
     "nuxt-typed-router": "^3.6.5",
     "pinia": "^2.2.2",
-    "tailwindcss": "^3.4.12",
-    "vue": "^3.5.7",
+    "tailwindcss": "^3.4.13",
+    "vue": "^3.5.8",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.8.1",
     "@iconify-json/ic": "^1.2.0",
     "@iconify-json/ph": "^1.2.0",
-    "@iconify-json/simple-icons": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.4",
     "@nuxt/kit": "^3.13.2",
     "@nuxtjs/sitemap": "6.0.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
@@ -54,5 +54,5 @@
   "resolutions": {
     "string-width": "4.2.3"
   },
-  "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
+  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
 }
