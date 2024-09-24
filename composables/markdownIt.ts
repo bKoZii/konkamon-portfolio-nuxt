@@ -17,14 +17,6 @@ async function setupMarkdownIt() {
 
 setupMarkdownIt()
 
-export default defineNuxtPlugin(() => {
-  return {
-    provide: {
-      markdownIt: (content: string) => md.render(content)
-    }
-  }
-})
-
 export const useMarkdownIt = async (content: string) => {
   return md.render(content)
 }
