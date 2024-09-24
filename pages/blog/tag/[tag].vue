@@ -1,19 +1,18 @@
 <template>
   <div>
-    <section class="flex flex-col md:flex-row items-center gap-2">
+    <section class="flex flex-col items-center gap-2 md:flex-row">
       <h1 class="text-3xl font-bold">All Blogs With Tag:</h1>
       <UBadge size="lg" variant="subtle" :label="tagName" />
     </section>
-    <section class="my-4">
+    <section class="my-4" v-if="tagBlogs?.meta.pagination.total">
       <UInput
         :loading="loading"
         type="text"
         size="lg"
         icon="ph:magnifying-glass"
-        :placeholder="tagBlogs?.meta.pagination.total == 0 && !searchInput ? 'ปิดการค้นหา เนื่องจากไม่พบ Blog' : `ค้นหา Blog ที่มีแท็ก ${tagName}...`"
+        :placeholder="`ค้นหา Blog ที่มีแท็ก ${tagName}...`"
         v-model="searchInput"
         id="searchInput"
-        :disabled="tagBlogs?.meta.pagination.total == 0 && !searchInput"
       >
         <template #trailing>
           <UKbd>F</UKbd>
@@ -22,7 +21,7 @@
     </section>
     <UDivider class="my-4" />
     <section>
-      <template v-if="tagBlogs?.data.length ?? 0 >= 0">
+      <template v-if="tagBlogs?.meta.pagination.total ?? 0 >= 0">
         <section class="flex flex-col flex-nowrap gap-3">
           <div v-for="tagBlogItems in tagBlogs?.data" :key="tagBlogItems.id">
             <BlogIndexCard :post="tagBlogItems.attributes" />
@@ -39,7 +38,7 @@
         />
       </div>
     </section>
-    <section class="mt-5 flex justify-center" v-if="tagBlogs">
+    <section class="mt-5 flex justify-center" v-if="tagBlogs.meta.pagination.total">
       <UPagination
         v-model="currentPage"
         :total="tagBlogs.meta.pagination.total"
@@ -86,7 +85,7 @@ const constructSearchFilters = (searchInput: string) => {
   }))
   return { $and: filters }
 }
-const { data: tagBlogs} = useNuxtData('tagBlogs')
+const { data: tagBlogs } = useNuxtData('tagBlogs')
 const nuxt = useNuxtApp()
 const { data, refresh } = await useAsyncData(
   'tagBlogs',
@@ -121,7 +120,7 @@ const { data, refresh } = await useAsyncData(
     },
     default() {
       return tagBlogs.value
-    },
+    }
   }
 )
 
