@@ -6,14 +6,23 @@
     </section>
     <section class="flex flex-col flex-nowrap gap-3">
       <ClientOnly>
-        <div v-for="post in latestBlogs" :key="post.slug">
-          <BlogIndexCard :post="post" />
+        <div v-for="post in latestBlogs" :key="post.id">
+          <BlogIndexCard :post="post.attributes" />
         </div>
         <template #fallback>
           <div v-for="fallback in 2" :key="fallback">
             <BlogSkeletonFallback />
           </div>
         </template>
+        <div v-if="error">
+          <UAlert
+            title="Error"
+            icon="ph:warning-circle-duotone"
+            description="เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้งในภายหลัง"
+            color="red"
+            variant="subtle"
+          />
+        </div>
       </ClientOnly>
     </section>
   </div>
@@ -41,5 +50,14 @@ const params: Strapi4RequestParams = {
   }
 }
 
-const latestBlogs = await find<StrapiBlogs>('blogs', params).then((res) => res.data.map((item) => item.attributes))
+const { data: latestBlogs, error } = await useLazyAsyncData(
+  async () => {
+    return await find<StrapiBlogs>('blogs', params)
+  },
+  {
+    deep: false,
+    server: false,
+    transform: (data) => data.data
+  }
+)
 </script>
