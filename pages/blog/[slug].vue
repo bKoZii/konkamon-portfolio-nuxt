@@ -72,7 +72,20 @@ useSeoMeta({
   description: blogSlug.value?.subtitle,
   ogDescription: blogSlug.value?.subtitle,
   ogImage: blogSlug.value?.mainImage.data.attributes.url,
-  ogUrl: `https://konkamon.live/blog/${blogSlug.value?.slug}`
+  ogImageType: 'image/png',
+  ogImageAlt: `รูปภาพปกประจำโพสต์ ${blogSlug.value?.title}`,
+  ogImageSecureUrl: blogSlug.value?.mainImage.data.attributes.url,
+  ogUrl: `https://konkamon.live/blog/${blogSlug.value?.slug}`,
+  publisher: 'Konkamon Sion',
+  robots: {
+    index: true
+  },
+  ogType: 'article',
+  articlePublishedTime: blogSlug.value?.publishedAt,
+  articleModifiedTime: blogSlug.value?.updatedAt,
+  articleTag: blogSlug.value?.categories.data.map((category) => category.attributes.name),
+  articleAuthor: ['Konkamon Sion'],
+  author: 'Konkamon Sion'
 })
 
 definePageMeta({

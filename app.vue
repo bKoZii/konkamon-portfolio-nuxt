@@ -22,6 +22,10 @@ useHead({
     }
   ]
 })
+
+useSeoMeta({
+  ogLocale: 'th_TH'
+})
 </script>
 
 <style>

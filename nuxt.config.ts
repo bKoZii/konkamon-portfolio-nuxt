@@ -31,6 +31,11 @@ export default defineNuxtConfig({
     layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
       titleTemplate: '%s - Konkamon Sion',
+      meta: [
+        { name: 'author', content: 'Konkamon Sion' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'charset', content: 'utf-8' }
+      ],
       htmlAttrs: {
         lang: 'th'
       },
