@@ -19,14 +19,24 @@
       </div>
     </div>
 
-    <div class="my-4">
-      <UInput :loading="loading" id="searchInput" type="text" size="lg" icon="ph:magnifying-glass" placeholder="ค้นหา Blog..." v-model="searchInput">
+    <div class="my-4" v-if="status == 'success'">
+      <UInput
+        :loading="loading"
+        id="searchInput"
+        type="text"
+        size="lg"
+        icon="ph:magnifying-glass"
+        placeholder="ค้นหา Blog..."
+        v-model="searchInput"
+        :ui="{ icon: { trailing: { pointer: '' } } }"
+      >
         <template #trailing>
-          <UKbd>F</UKbd>
+          <UKbd v-show="searchInput == ''">F</UKbd>
+          <UButton v-show="searchInput !== ''" color="white" variant="ghost" icon="ic:baseline-close" @click="searchInput = ''" />
         </template>
       </UInput>
     </div>
-    <section v-if="!route.query.search">
+    <section v-if="!route.query.search || !error">
       <BlogTagsDisplay />
       <UDivider class="my-6" />
     </section>
@@ -56,14 +66,17 @@
         />
       </section>
     </main>
-    <LazyUAlert
-      v-if="alertConfig"
-      :title="alertConfig.title"
-      :description="alertConfig.description"
-      :icon="alertConfig.icon"
-      :color="alertConfig.color"
-      :variant="alertConfig.variant"
-    />
+    <div v-else-if="status == 'error' || error?.data">
+      <UDivider class="my-6" />
+      <LazyUAlert
+        v-if="alertConfig"
+        :title="alertConfig.title"
+        :description="alertConfig.description"
+        :icon="alertConfig.icon"
+        :color="alertConfig.color"
+        :variant="alertConfig.variant"
+      />
+    </div>
   </div>
 </template>
 
@@ -78,7 +91,6 @@ const loading = ref(false)
 const route = useRoute()
 const router = useRouter()
 const searchInput = ref('')
-const toast = useToast()
 const nuxt = useNuxtApp()
 const currentPage = ref(1)
 const pageSize = 6
@@ -90,7 +102,7 @@ const constructSearchFilters = (searchInput: string) => {
   }))
   return { $and: filters }
 }
-const { data, status, error, refresh } = await useAsyncData(
+const { status, error, refresh } = await useAsyncData(
   'allBlogsWithSearch',
   () =>
     find<StrapiBlogs>('blogs', {
@@ -128,15 +140,6 @@ const { data, status, error, refresh } = await useAsyncData(
     }
   }
 )
-
-if (error.value) {
-  toast.add({
-    title: 'Error',
-    description: 'เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้งในภายหลัง',
-    color: 'red',
-    icon: 'ph:warning-circle-duotone'
-  })
-}
 
 let timeout: NodeJS.Timeout | null = null
 watch(searchInput, () => {
