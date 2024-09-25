@@ -131,7 +131,7 @@ useSeoMeta({
   description: `รวม Blogs ที่มี Tag: '${tagName}'`,
   ogDescription: `รวม Blogs ที่มี Tag: '${tagName}'`,
   ogImage: '/ogImage-blogs.webp',
-  ogUrl: 'https://www.konkamon.live/blog'
+  ogUrl: `https://www.konkamon.live/blog/tag/${tagName}`
 })
 let timeout: NodeJS.Timeout | null = null
 watch(searchInput, () => {
