@@ -14,8 +14,11 @@
             <BlogSkeletonFallback />
           </div>
         </template>
-        <div v-if="error">
-          <UAlert
+        <div v-if="status == 'pending'">
+          <LazyUAlert title="Loading" icon="ph:magnifying-glass-duotone" description="กำลังโหลด Blog กรุณารอสักครู่" color="primary" variant="subtle" />
+        </div>
+        <div v-if="error && status == 'error'">
+          <LazyUAlert
             title="Error"
             icon="ph:warning-circle-duotone"
             description="เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้งในภายหลัง"
@@ -50,7 +53,11 @@ const params: Strapi4RequestParams = {
   }
 }
 
-const { data: latestBlogs, error } = await useLazyAsyncData(
+const {
+  data: latestBlogs,
+  error,
+  status
+} = await useLazyAsyncData(
   async () => {
     return await find<StrapiBlogs>('blogs', params)
   },
