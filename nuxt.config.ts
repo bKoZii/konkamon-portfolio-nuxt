@@ -34,7 +34,8 @@ export default defineNuxtConfig({
       meta: [
         { name: 'author', content: 'Konkamon Sion' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'charset', content: 'utf-8' }
+        { name: 'charset', content: 'utf-8' },
+        { name: 'theme-color', content: '#379777' },
       ],
       htmlAttrs: {
         lang: 'th'
@@ -92,6 +93,7 @@ export default defineNuxtConfig({
     externalVue: false
   },
   robots: {
+    sitemap: 'https://www.konkamon.live/sitemap.xml',
     allow: ['/', '/blog/'],
     disallow: ['/api']
   },

@@ -24,7 +24,8 @@ useHead({
 })
 
 useSeoMeta({
-  ogLocale: 'th_TH'
+  ogLocale: 'th_TH',
+  themeColor: '#379777'
 })
 </script>
 
