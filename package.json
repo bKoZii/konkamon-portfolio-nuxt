@@ -39,7 +39,7 @@
     "@nuxt/kit": "^3.13.2",
     "@nuxtjs/sitemap": "6.0.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
-    "@shikijs/markdown-it": "^1.18.0",
+    "@shikijs/markdown-it": "^1.19.0",
     "@types/dompurify": "^3.0.5",
     "@types/jsdom": "^21.1.7",
     "@types/markdown-it": "^14.1.2",
@@ -48,8 +48,8 @@
     "markdown-it": "^14.1.0",
     "nuxt": "^3.13.2",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.6",
-    "shiki": "^1.18.0"
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "shiki": "^1.19.0"
   },
   "resolutions": {
     "string-width": "4.2.3"
