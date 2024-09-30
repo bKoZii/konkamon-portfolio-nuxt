@@ -20,7 +20,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
     if (data?.attributes.slug) {
       if (data.attributes.publishedAt == null) {
-        return navigateTo({ path: '/blog/', query: { unpublished: 'true', link: from.params.slug }, replace: true })
+        return createError({ statusCode: 404, message: 'Blog ที่คุณกำลังเข้าถึง ได้ยกเลิกการเผยแพร่แล้ว' })
       }
       slugCacheStore.setSlug(slug, data.attributes.slug)
     }
@@ -29,6 +29,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       return navigateTo('/blog/')
     }
   } catch (error) {
-    return navigateTo({ path: '/blog/', query: { notfound: 'true', link: from.params.slug }, replace: true })
+    return createError({ statusCode: 404, message: 'ไม่พบ Blog ที่คุณกำลังเข้าถึง' })
   }
 })
