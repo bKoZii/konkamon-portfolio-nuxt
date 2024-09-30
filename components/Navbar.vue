@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sticky max-w-[1300px] mx-auto top-0 md:top-1 z-10 border-b md:border md:rounded-lg bg-white px-3 md:px-4 py-1 shadow-md dark:border-neutral-800 dark:bg-neutral-800/80 dark:text-white dark:backdrop-blur-lg"
+    class="sticky top-0 z-10 mx-0 max-w-[1300px] border-b bg-white px-3 py-1 shadow-md md:top-1 md:mx-2 md:rounded-lg md:border md:px-4 lg:mx-auto dark:border-neutral-800 dark:bg-neutral-900/80 dark:text-white dark:backdrop-blur-lg"
   >
     <header class="flex items-center justify-between xs:justify-between sm:justify-between">
       <ULink id="myName" to="/" class="inline-flex items-center gap-2 text-xl font-extrabold" aria-label="logo">
@@ -45,7 +45,17 @@
             <UDivider />
             <LazyUVerticalNavigation
               :links="navItems"
-              :ui="{ active: 'text-primary dark:text-primary', icon: { active: 'text-primary dark:text-primary' } }"
+              :ui="{
+                wrapper: 'border-s-2 border-gray-200 dark:border-gray-800 space-y-2',
+                base: 'group flex border-s-2 -ms-px leading-6 before:hidden',
+                padding: 'p-0 ps-4 py-1',
+                rounded: '',
+                ring: '',
+                icon: { active: 'text-primary-500 dark:text-primary-400', base: 'size-8' },
+                active: 'text-primary-500 dark:text-primary-400 border-current font-semibold bg-neutral-800',
+                inactive:
+                  'border-transparent hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300'
+              }"
               @click="isSidebarOpen = false"
             />
           </div>
