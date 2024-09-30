@@ -19,14 +19,14 @@
       </div>
     </div>
 
-    <div class="my-4" v-if="status == 'success'">
+    <div class="my-4">
       <UInput
         :loading="loading"
         id="searchInput"
         type="text"
         size="lg"
         icon="ph:magnifying-glass"
-        placeholder="ค้นหา Blog..."
+        placeholder="ค้นหา Blog... (พิมพ์ 3 ตัวอักษรขึ้นไป)"
         v-model="searchInput"
         :ui="{ icon: { trailing: { pointer: '' } } }"
       >
@@ -43,13 +43,13 @@
 
     <main v-if="blogsData?.data && blogsData?.meta.pagination.total > 0 && status === 'success'">
       <section class="flex flex-col flex-nowrap gap-3">
-        <ClientOnly>
+        <ClientOnly fallback-tag="div">
           <div v-for="post in blogsData.data" :key="post.id">
-            <LazyBlogIndexCard :post="post.attributes" />
+            <BlogIndexCard :post="post.attributes" />
           </div>
           <template #fallback>
             <div v-for="fallback in pageSize" :key="fallback">
-              <BlogSkeletonFallback />
+              <LazyBlogSkeletonFallback />
             </div>
           </template>
         </ClientOnly>
@@ -66,8 +66,7 @@
         />
       </section>
     </main>
-    <div v-else-if="status == 'error' || error?.data">
-      <UDivider class="my-6" />
+    <div v-else>
       <LazyUAlert
         v-if="alertConfig"
         :title="alertConfig.title"
@@ -85,6 +84,7 @@ useMySlugCacheStore()
 
 import { type StrapiBlogs } from '~/types/StrapiBlogs'
 import type { AlertColor, AlertVariant } from '#ui/types'
+import type { Strapi4ResponseMany } from '@nuxtjs/strapi'
 
 const { find } = useStrapi()
 const loading = ref(false)
@@ -94,7 +94,7 @@ const searchInput = ref('')
 const nuxt = useNuxtApp()
 const currentPage = ref(1)
 const pageSize = 6
-const { data: blogsData } = useNuxtData('allBlogsWithSearch')
+const { data: blogsData } = useNuxtData<Strapi4ResponseMany<StrapiBlogs>>('allBlogsWithSearch')
 const constructSearchFilters = (searchInput: string) => {
   const keywords = searchInput.split(' ')
   const filters = keywords.map((keyword) => ({
@@ -146,12 +146,17 @@ watch(searchInput, () => {
   if (timeout) {
     clearTimeout(timeout)
   }
-  timeout = setTimeout(async () => {
-    loading.value = true
+  if (searchInput.value.length >= 3 && searchInput.value !== '') {
+    timeout = setTimeout(async () => {
+      loading.value = true
+      currentPage.value = 1
+      await refresh()
+      loading.value = false
+    }, 500)
+  } else if (searchInput.value === '') {
     currentPage.value = 1
-    await refresh()
-    loading.value = false
-  }, 500)
+    refresh()
+  }
 })
 
 useSeoMeta({
@@ -207,4 +212,5 @@ const alertConfig = computed(() => {
   }
   return null
 })
+preloadRouteComponents('/blog/[slug].vue')
 </script>
