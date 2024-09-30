@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ClientOnly>
+    <ClientOnly fallback-tag="div">
       <div v-if="blogSlug">
         <article class="flex flex-col gap-5">
           <BlogSlugHeader :blog-slug="blogSlug" />
@@ -8,7 +8,7 @@
           <section
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
-            <div v-if="blogSlug && status == 'success'">
+            <div v-if="blogSlug.content && status == 'success'">
               <article v-html="$sanitizeHTML(markdownContent)" />
             </div>
             <div v-else-if="status == 'pending'">
@@ -18,7 +18,7 @@
         </article>
       </div>
       <template #fallback>
-        <BlogSlugFallback />
+        <LazyBlogSlugFallback />
       </template>
     </ClientOnly>
   </div>
