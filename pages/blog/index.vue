@@ -1,16 +1,5 @@
 <template>
   <div>
-    <UAlert
-      v-if="alertMessage"
-      title="Error"
-      :description="alertMessage"
-      color="red"
-      variant="subtle"
-      icon="ph:warning-circle-duotone"
-      class="mb-5"
-      :close-button="{ icon: 'i-heroicons-x-mark-20-solid', color: 'red', variant: 'link', padded: false }"
-      @close="router.replace({ path: '/blog/' })"
-    />
     <div class="mb-3 flex flex-col items-center justify-between lg:flex-row">
       <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
       <div class="mt-5 text-xs text-neutral-500 lg:m-0">
@@ -89,7 +78,6 @@ import type { Strapi4ResponseMany } from '@nuxtjs/strapi'
 const { find } = useStrapi()
 const loading = ref(false)
 const route = useRoute()
-const router = useRouter()
 const searchInput = ref('')
 const nuxt = useNuxtApp()
 const currentPage = ref(1)
@@ -168,14 +156,6 @@ useSeoMeta({
   ogUrl: 'https://www.konkamon.live/blog'
 })
 
-const alertMessage = computed(() => {
-  if (route.query.notfound) {
-    return `ไมพบ Blog จาก Link ของคุณ : ${route.query.link}`
-  } else if (route.query.unpublished) {
-    return `Blog จาก Link '${route.query.link}' ถูกยกเลิกการเผยแพร่แล้ว`
-  }
-  return null
-})
 defineShortcuts({
   f: {
     handler: () => {
