@@ -8,6 +8,19 @@ export interface Daum {
   attributes: Attributes2
 }
 
+/**
+ * Represents a blog entry in Strapi.
+ *
+ * @interface StrapiBlogs
+ * @property {string} title - The title of the blog.
+ * @property {string} subtitle - The subtitle of the blog.
+ * @property {string} publishedAt - The publication date of the blog.
+ * @property {string} slug - The URL-friendly identifier for the blog.
+ * @property {MainImage} mainImage - The main image associated with the blog.
+ * @property {Categories} categories - The categories to which the blog belongs.
+ * @property {BlogIcon} blogIcon - The icon representing the blog.
+ * @property {CreatedBy} createdBy - Information about the creator of the blog.
+ */
 export interface StrapiBlogs {
   title: string
   subtitle: string
