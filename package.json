@@ -16,8 +16,8 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/robots": "^4.1.7",
     "@nuxtjs/strapi": "^1.12.0",
-    "@pinia/nuxt": "^0.5.4",
-    "@stefanobartoletti/nuxt-social-share": "^1.1.1",
+    "@pinia/nuxt": "^0.5.5",
+    "@stefanobartoletti/nuxt-social-share": "^1.1.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.9",
@@ -26,7 +26,7 @@
     "jsdom": "^25.0.1",
     "markdown-it-github-alerts": "^0.3.0",
     "nuxt-typed-router": "^3.7.0",
-    "pinia": "^2.2.2",
+    "pinia": "^2.2.4",
     "tailwindcss": "^3.4.13",
     "vue": "^3.5.10",
     "vue-router": "^4.4.5"
@@ -35,9 +35,10 @@
     "@egoist/tailwindcss-icons": "^1.8.1",
     "@iconify-json/ic": "^1.2.0",
     "@iconify-json/ph": "^1.2.0",
-    "@iconify-json/simple-icons": "^1.2.4",
+    "@iconify-json/simple-icons": "^1.2.5",
+    "@nuxt/eslint": "^0.5.7",
     "@nuxt/kit": "^3.13.2",
-    "@nuxtjs/sitemap": "6.0.1",
+    "@nuxtjs/sitemap": "6.1.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "@shikijs/markdown-it": "^1.21.0",
     "@types/dompurify": "^3.0.5",
@@ -45,11 +46,13 @@
     "@types/markdown-it": "^14.1.2",
     "dayjs": "^1.11.13",
     "dayjs-nuxt": "^2.1.11",
+    "eslint": "^9.11.1",
     "markdown-it": "^14.1.0",
     "nuxt": "^3.13.2",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "shiki": "^1.21.0"
+    "shiki": "^1.21.0",
+    "typescript": "^5.6.2"
   },
   "resolutions": {
     "string-width": "4.2.3"
