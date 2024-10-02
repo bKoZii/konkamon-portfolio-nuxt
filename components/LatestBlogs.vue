@@ -15,7 +15,7 @@
           </div>
         </template>
         <div v-if="status == 'pending'">
-          <LazyUAlert title="Loading" icon="ph:magnifying-glass-duotone" description="กำลังโหลด Blog กรุณารอสักครู่" color="primary" variant="subtle" />
+          <LazyBlogAlertLoading />
         </div>
         <div v-if="error && status == 'error'">
           <LazyUAlert
@@ -67,4 +67,5 @@ const {
     transform: (data) => data.data
   }
 )
+preloadRouteComponents('/blog/[slug].vue')
 </script>

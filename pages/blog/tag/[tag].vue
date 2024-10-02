@@ -87,7 +87,7 @@ const constructSearchFilters = (searchInput: string) => {
 }
 const { data: tagBlogs } = useNuxtData('tagBlogs')
 const nuxt = useNuxtApp()
-const { data, refresh } = await useAsyncData(
+const { refresh } = await useAsyncData(
   'tagBlogs',
   () =>
     find<StrapiBlogs>('blogs', {

@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import { fromHighlighter } from '@shikijs/markdown-it/core'
-import { getShikiHighlight } from '~/utils/ShikiHighlight'
 import MarkdownItGitHubAlerts from 'markdown-it-github-alerts'
+import { getShikiHighlight } from '~/utils/ShikiHighlight'
 import 'markdown-it-github-alerts/styles/github-colors-light.css'
 import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'
 import 'markdown-it-github-alerts/styles/github-base.css'

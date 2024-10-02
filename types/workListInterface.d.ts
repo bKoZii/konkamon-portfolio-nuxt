@@ -1,6 +1,6 @@
-export default interface workListInterface{
-    name: string
-    description: string
-    icon: string
-    link?: string
+export default interface workListInterface {
+  name: string
+  description: string
+  icon: string
+  link?: string
 }

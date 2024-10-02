@@ -8,9 +8,9 @@ export async function getShikiHighlight() {
       import('shiki/langs/shell.mjs'),
       import('shiki/langs/typescript.mjs'),
       import('shiki/langs/vue.mjs'),
-      import('shiki/langs/php.mjs')
+      import('shiki/langs/php.mjs'),
     ],
-    loadWasm: import('shiki/wasm')
+    loadWasm: import('shiki/wasm'),
   })
   const loadedLanguages = highlighter.getLoadedLanguages ? highlighter.getLoadedLanguages() : []
 

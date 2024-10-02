@@ -11,14 +11,19 @@
         </template>
       </ClientOnly>
     </section>
-    <section class="mt-5 flex justify-center" v-if="bookmarkItems?.meta">
-      <UPagination v-model="currentPage" :page-count="itemPerPage" :total="bookmarkItems.meta.pagination.total" />
+    <section v-if="bookmarkItems?.meta" class="mt-5 flex justify-center">
+      <UPagination
+        v-model="currentPage"
+        :page-count="itemPerPage"
+        :total="bookmarkItems.meta.pagination.total"
+      />
     </section>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type BookmarkItemsInterface from '~/types/BookmarkItemsInterface'
+
 const currentPage = ref(1)
 const itemPerPage = 6
 const nuxt = useNuxtApp()
@@ -36,8 +41,8 @@ const { data: bookmarkItems } = await useLazyAsyncData(
         return nuxt.static.data[key]
       }
       return null
-    }
-  }
+    },
+  },
 )
 useSeoMeta({
   title: 'Bookmarks',
@@ -45,6 +50,6 @@ useSeoMeta({
   description: 'รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ',
   ogDescription: 'รวมเว็บไซต์แนว IT, Linux, Tutorials และเว็บไซต์ที่อื่นๆ ที่น่าสนใจ',
   ogImage: '/ogImage-bookmarks.webp',
-  ogUrl: 'https://konkamon.vercel.app/Bookmarks'
+  ogUrl: 'https://konkamon.vercel.app/Bookmarks',
 })
 </script>

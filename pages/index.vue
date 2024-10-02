@@ -23,6 +23,6 @@ useSeoMeta({
   ogUrl: 'https://konkamon.vercel.app/',
   ogLocale: 'th_TH',
   ogSiteName: 'Konkamon Sion',
-  titleTemplate: '%s - Portfolio & Blogs Website'
+  titleTemplate: '%s - Portfolio & Blogs Website',
 })
 </script>

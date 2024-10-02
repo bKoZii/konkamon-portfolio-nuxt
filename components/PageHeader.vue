@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 const pageHeader = defineProps({
   title: String,
-  description: String
+  description: String,
 })
 const data = markRaw(pageHeader)
 </script>

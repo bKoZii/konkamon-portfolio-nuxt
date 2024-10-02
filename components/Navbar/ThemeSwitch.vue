@@ -2,7 +2,16 @@
   <div class="inline-flex">
     <ClientOnly>
       <UTooltip text="Switch Theme" :popper="{ strategy: 'absolute' }">
-        <UButton square @click="switchColorMode" :padded="false" size="xl" color="black" variant="soft" :icon="iconName" class="group"> </UButton>
+        <UButton
+          square
+          :padded="false"
+          size="xl"
+          color="black"
+          variant="soft"
+          :icon="iconName"
+          class="group"
+          @click="switchColorMode"
+        />
       </UTooltip>
 
       <template #fallback>
@@ -28,7 +37,7 @@ const iconName = computed(() => {
   const iconNameMap: Record<ColorMode, string> = {
     system: 'monitor-duotone',
     light: 'sun-duotone',
-    dark: 'moon-duotone'
+    dark: 'moon-duotone',
   }
   const iconName = colorMode.preference as ColorMode
   return `ph:${iconNameMap[iconName]}`

@@ -12,7 +12,7 @@ export default defineNuxtPlugin(async () => {
 
   return {
     provide: {
-      sanitizeHTML: sanitize
-    }
+      sanitizeHTML: sanitize,
+    },
   }
 })

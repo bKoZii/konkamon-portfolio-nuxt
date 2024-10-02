@@ -14,6 +14,6 @@ export const useMySlugCacheStore = defineStore({
     },
   },
   persist: {
-    storage: persistedState.localStorage
-  }
+    storage: persistedState.localStorage,
+  },
 })

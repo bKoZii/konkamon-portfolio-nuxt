@@ -9,10 +9,17 @@
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
             <div v-if="blogSlug.content && status == 'success'">
+              <!-- eslint-disable-next-line vue/no-v-html -->
               <article v-html="$sanitizeHTML(markdownContent)" />
             </div>
             <div v-else-if="status == 'pending'">
-              <LazyUAlert class="not-prose" title="Loading" color="primary" description="กำลังโหลดเนื้อหา กรุณารอสักครู่" variant="subtle" />
+              <LazyUAlert
+                class="not-prose"
+                title="Loading"
+                color="primary"
+                description="กำลังโหลดเนื้อหา กรุณารอสักครู่"
+                variant="subtle"
+              />
             </div>
           </section>
         </article>
@@ -39,12 +46,12 @@ const { status } = await useAsyncData(
       fields: ['title', 'subtitle', 'publishedAt', 'slug', 'content', 'updatedAt', 'createdAt'],
       populate: {
         mainImage: {
-          fields: ['url']
+          fields: ['url'],
         },
         categories: {
-          fields: ['name']
-        }
-      }
+          fields: ['name'],
+        },
+      },
     }).then((data) => data.data.attributes),
   {
     default() {
@@ -60,8 +67,8 @@ const { status } = await useAsyncData(
         return nuxt.static.data[key]
       }
       return null
-    }
-  }
+    },
+  },
 )
 const markdownContent = await useMarkdownIt(blogSlug.value ? blogSlug.value.content : '')
 
@@ -78,17 +85,17 @@ useSeoMeta({
   ogUrl: `https://konkamon.live/blog/${blogSlug.value?.slug}`,
   publisher: 'Konkamon Sion',
   robots: {
-    index: true
+    index: true,
   },
   ogType: 'article',
   articlePublishedTime: blogSlug.value?.publishedAt,
   articleModifiedTime: blogSlug.value?.updatedAt,
   articleTag: blogSlug.value?.categories.data.map((category) => category.attributes.name),
   articleAuthor: ['Konkamon Sion'],
-  author: 'Konkamon Sion'
+  author: 'Konkamon Sion',
 })
 
 definePageMeta({
-  middleware: ['check-blog-post']
+  middleware: ['check-blog-post'],
 })
 </script>

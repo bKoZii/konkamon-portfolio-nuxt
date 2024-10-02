@@ -7,8 +7,8 @@
         <USkeleton class="h-4 w-full" />
         <USkeleton class="h-4 w-1/3" />
         <section class="flex flex-row gap-2">
-          <USkeleton class="w-10 h-5"/>
-          <USkeleton class="w-10 h-5"/>
+          <USkeleton class="w-10 h-5" />
+          <USkeleton class="w-10 h-5" />
         </section>
         <USkeleton class="h-6 w-20" />
       </div>

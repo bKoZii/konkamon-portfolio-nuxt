@@ -6,10 +6,11 @@
   </NuxtLayout>
   <UNotifications />
 </template>
+
 <script setup lang="ts">
 useHead({
   htmlAttrs: {
-    lang: 'th'
+    lang: 'th',
   },
   titleTemplate: (titleChunk) => {
     return titleChunk ? `${titleChunk} - Konkamon Sion` : 'Konkamon Sion'
@@ -18,14 +19,14 @@ useHead({
     {
       rel: 'icon',
       type: 'image/vnd.microsoft.icon',
-      href: '/favicon.ico'
-    }
-  ]
+      href: '/favicon.ico',
+    },
+  ],
 })
 
 useSeoMeta({
   ogLocale: 'th_TH',
-  themeColor: '#379777'
+  themeColor: '#379777',
 })
 </script>
 

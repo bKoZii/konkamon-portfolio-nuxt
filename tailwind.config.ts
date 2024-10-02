@@ -1,17 +1,13 @@
 import type { Config } from 'tailwindcss'
-import defaultTheme from 'tailwindcss/defaultTheme'
+
 export default <Partial<Config>>{
   css: ['~/assets/main.css'],
   darkMode: 'selector',
   theme: {
-    screens: {
-      xs: '400px',
-      ...defaultTheme.screens
-    },
     extend: {
       colors: {
-        transparent: 'transparent',
-        current: 'currentColor',
+        'transparent': 'transparent',
+        'current': 'currentColor',
         'ocean-green': {
           DEFAULT: '#379777',
           50: '#C8EBE0',
@@ -24,17 +20,17 @@ export default <Partial<Config>>{
           700: '#215B48',
           800: '#163D30',
           900: '#0B1F19',
-          950: '#06100D'
+          950: '#06100D',
         },
-        secondary: {
+        'secondary': {
           DEFAULT: '#344C64',
-          light: '#577B8D'
-        }
+          light: '#577B8D',
+        },
       },
       fontFamily: {
         sans: ['Space Grotesk', 'Noto Sans Thai Looped', 'system-ui'],
-        mono: ['Fira Code', 'Noto Sans Thai Looped']
-      }
-    }
-  }
+        mono: ['Fira Code', 'Noto Sans Thai Looped'],
+      },
+    },
+  },
 }

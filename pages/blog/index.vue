@@ -4,24 +4,37 @@
       <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
       <div class="mt-5 text-xs text-neutral-500 lg:m-0">
         <span>Powered by </span>
-        <a href="https://strapi.io/" target="_blank" rel="noopener noreferrer" class="font-bold text-indigo-700 dark:text-indigo-500"> Strapi </a>
+        <a
+          href="https://strapi.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-bold text-indigo-700 dark:text-indigo-500"
+        > Strapi </a>
       </div>
     </div>
 
     <div class="my-4">
       <UInput
-        :loading="loading"
         id="searchInput"
+        v-model="searchInput"
+        :loading="loading"
         type="text"
         size="lg"
         icon="ph:magnifying-glass"
         placeholder="ค้นหา Blog... (พิมพ์ 3 ตัวอักษรขึ้นไป)"
-        v-model="searchInput"
         :ui="{ icon: { trailing: { pointer: '' } } }"
       >
         <template #trailing>
-          <UKbd v-show="searchInput == ''">F</UKbd>
-          <UButton v-show="searchInput !== ''" color="white" variant="ghost" icon="ic:baseline-close" @click="searchInput = ''" />
+          <UKbd v-show="searchInput == ''">
+            F
+          </UKbd>
+          <UButton
+            v-show="searchInput !== ''"
+            color="white"
+            variant="ghost"
+            icon="ic:baseline-close"
+            @click="searchInput = ''"
+          />
         </template>
       </UInput>
     </div>
@@ -69,11 +82,11 @@
 </template>
 
 <script lang="ts" setup>
-useMySlugCacheStore()
-
-import { type StrapiBlogs } from '~/types/StrapiBlogs'
-import type { AlertColor, AlertVariant } from '#ui/types'
 import type { Strapi4ResponseMany } from '@nuxtjs/strapi'
+import type { StrapiBlogs } from '~/types/StrapiBlogs'
+import type { AlertColor, AlertVariant } from '#ui/types'
+
+useMySlugCacheStore()
 
 const { find } = useStrapi()
 const loading = ref(false)
@@ -86,7 +99,7 @@ const { data: blogsData } = useNuxtData<Strapi4ResponseMany<StrapiBlogs>>('allBl
 const constructSearchFilters = (searchInput: string) => {
   const keywords = searchInput.split(' ')
   const filters = keywords.map((keyword) => ({
-    $or: [{ title: { $containsi: keyword } }, { subtitle: { $containsi: keyword } }]
+    $or: [{ title: { $containsi: keyword } }, { subtitle: { $containsi: keyword } }],
   }))
   return { $and: filters }
 }
@@ -98,17 +111,17 @@ const { status, error, refresh } = await useAsyncData(
       sort: 'publishedAt:desc',
       populate: {
         categories: {
-          fields: ['name']
+          fields: ['name'],
         },
         blogIcon: {
-          fields: ['url']
-        }
+          fields: ['url'],
+        },
       },
       pagination: {
         page: currentPage.value,
-        pageSize: pageSize
+        pageSize: pageSize,
       },
-      filters: constructSearchFilters(searchInput.value)
+      filters: constructSearchFilters(searchInput.value),
     }),
   {
     deep: false,
@@ -125,8 +138,8 @@ const { status, error, refresh } = await useAsyncData(
     },
     default() {
       return blogsData.value
-    }
-  }
+    },
+  },
 )
 
 let timeout: NodeJS.Timeout | null = null
@@ -153,15 +166,15 @@ useSeoMeta({
   description: 'รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ จากนาย กรกมล ศรีอ่อน',
   ogDescription: 'รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ จากนาย กรกมล ศรีอ่อน',
   ogImage: '/ogImage-blogs.webp',
-  ogUrl: 'https://www.konkamon.live/blog'
+  ogUrl: 'https://www.konkamon.live/blog',
 })
 
 defineShortcuts({
   f: {
     handler: () => {
       document.getElementById('searchInput')?.focus()
-    }
-  }
+    },
+  },
 })
 
 const alertConfig = computed(() => {
@@ -171,7 +184,7 @@ const alertConfig = computed(() => {
       description: 'กำลังค้นหา Blog กรุณารอสักครู่',
       icon: 'ph:magnifying-glass-duotone',
       color: 'primary' as AlertColor,
-      variant: 'soft' as AlertVariant
+      variant: 'soft' as AlertVariant,
     }
   } else if (blogsData.value?.meta.pagination.total === 0 && status.value === 'success') {
     return {
@@ -179,7 +192,7 @@ const alertConfig = computed(() => {
       description: `ไม่พบ Blogs จากคำค้นหา ${searchInput.value}`,
       icon: 'ic:round-search-off',
       color: 'orange' as AlertColor,
-      variant: 'subtle' as AlertVariant
+      variant: 'subtle' as AlertVariant,
     }
   } else if (error.value?.statusCode || status.value === 'error') {
     return {
@@ -187,7 +200,7 @@ const alertConfig = computed(() => {
       description: 'เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้งในภายหลัง',
       icon: 'ph:magnifying-glass-duotone',
       color: 'red' as AlertColor,
-      variant: 'subtle' as AlertVariant
+      variant: 'subtle' as AlertVariant,
     }
   }
   return null

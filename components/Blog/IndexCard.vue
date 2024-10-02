@@ -9,8 +9,8 @@
           shadow: 'shadow hover:shadow-lg dark:shadow-none dark:hover:shadow-none',
           body: {
             base: 'hover:text-primary prose-h2:hover:text-primary',
-            padding: 'p-0 sm:px-0 sm:py-0 md:p-0'
-          }
+            padding: 'p-0 sm:px-0 sm:py-0 md:p-0',
+          },
         }"
       >
         <div class="flex flex-row items-center gap-4 p-4 md:gap-6">
@@ -23,11 +23,21 @@
             :aria-label="`ไอคอนประจำโพสต์ ${post.title}`"
           />
           <div>
-            <h3 class="text-base font-semibold md:text-lg">{{ post.title }}</h3>
-            <p class="mt-1 text-xs text-neutral-600 dark:text-neutral-300">{{ post.subtitle }}</p>
-            <section class="my-2 flex flex-row gap-1" v-if="post.categories">
+            <h3 class="text-base font-semibold md:text-lg">
+              {{ post.title }}
+            </h3>
+            <p class="mt-1 text-xs text-neutral-600 dark:text-neutral-300">
+              {{ post.subtitle }}
+            </p>
+            <section v-if="post.categories" class="my-2 flex flex-row gap-1">
               <div v-for="category in post.categories.data" :key="category.id">
-                <UBadge size="xs" color="primary" variant="soft">{{ category.attributes.name }}</UBadge>
+                <UBadge
+                  size="xs"
+                  color="primary"
+                  variant="soft"
+                >
+                  {{ category.attributes.name }}
+                </UBadge>
               </div>
             </section>
             <div class="flex flex-row items-center gap-1">
@@ -45,6 +55,7 @@
 
 <script lang="ts" setup>
 import type { StrapiBlogs } from '~/types/StrapiBlogs'
+
 const props = defineProps<{ post: StrapiBlogs }>()
 const { post } = toRefs(props)
 </script>

@@ -1,4 +1,4 @@
-export default interface BagItemInterface{
+export default interface BagItemInterface {
   name: string
   description: string
 }
