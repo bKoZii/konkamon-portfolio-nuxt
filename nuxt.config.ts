@@ -25,6 +25,7 @@ export default defineNuxtConfig({
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
     '@nuxt/eslint',
+    '@formkit/auto-animate/nuxt',
   ],
 
   app: {
@@ -112,7 +113,7 @@ export default defineNuxtConfig({
     ],
     serverBundle: {
       remote: 'github-raw',
-      collections: ['ph', 'simple-icons', 'ic'],
+      collections: ['ph', 'simple-icons', 'ic', 'mdi'],
     },
     clientBundle: {
       includeCustomCollections: true,

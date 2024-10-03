@@ -1,10 +1,18 @@
 <template>
   <div>
     <section class="mb-6 flex flex-row items-center justify-between">
-      <h2 class="text-lg font-bold text-gray-500 dark:text-gray-400">Blogs ล่าสุด</h2>
-      <UButton label="Blogs ทั้งหมด" variant="ghost" icon="ph:arrow-right" trailing to="/blog" />
+      <h2 class="text-lg font-bold text-gray-500 dark:text-gray-400">
+        Blogs ล่าสุด
+      </h2>
+      <UButton
+        label="Blogs ทั้งหมด"
+        variant="ghost"
+        icon="ph:arrow-right"
+        trailing
+        to="/blog"
+      />
     </section>
-    <section class="flex flex-col flex-nowrap gap-3">
+    <section v-auto-animate class="flex flex-col flex-nowrap gap-3">
       <ClientOnly>
         <div v-for="post in latestBlogs" :key="post.id">
           <BlogIndexCard :post="post.attributes" />
@@ -41,22 +49,22 @@ const params: Strapi4RequestParams = {
   sort: 'publishedAt:desc',
   pagination: {
     pageSize: 2,
-    page: 1
+    page: 1,
   },
   populate: {
     categories: {
-      fields: ['name']
+      fields: ['name'],
     },
     blogIcon: {
-      fields: ['url']
-    }
-  }
+      fields: ['url'],
+    },
+  },
 }
 
 const {
   data: latestBlogs,
   error,
-  status
+  status,
 } = await useLazyAsyncData(
   async () => {
     return await find<StrapiBlogs>('blogs', params)
@@ -64,8 +72,8 @@ const {
   {
     deep: false,
     server: false,
-    transform: (data) => data.data
-  }
+    transform: (data) => data.data,
+  },
 )
 preloadRouteComponents('/blog/[slug].vue')
 </script>
