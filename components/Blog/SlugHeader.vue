@@ -33,16 +33,6 @@
           </p>
         </div>
       </div>
-      <section class="not-prose mt-2 space-y-2">
-        <p class="text-sm font-bold">
-          Share this Blog!
-        </p>
-        <SocialShare
-          network="facebook"
-          :label="false"
-          class="h-7 w-7 rounded bg-blue-600 p-1 text-white"
-        />
-      </section>
       <NuxtImg :src="blogSlug.mainImage.data.attributes.url" class="rounded-lg shadow-lg" />
     </section>
   </div>

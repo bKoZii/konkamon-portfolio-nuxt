@@ -22,6 +22,18 @@
               />
             </div>
           </section>
+          <UCard :ui="{ base: 'not-prose', body: { padding: 'p-0 sm:p-3' } }">
+            <section class="flex justify-center flex-col items-center space-y-2">
+              <p class="text-sm font-bold">
+                Share this Blog!
+              </p>
+              <SocialShare
+                network="facebook"
+                :label="false"
+                class="h-7 w-7 rounded bg-blue-600 p-1 text-white"
+              />
+            </section>
+          </UCard>
         </article>
       </div>
       <template #fallback>
