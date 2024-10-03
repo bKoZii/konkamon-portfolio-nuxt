@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/blog': { isr: true },
-    '/blog/**': { ssr: false },
+    '/blog/**': { isr: false },
   },
 
   modules: [
