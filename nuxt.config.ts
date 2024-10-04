@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/blog': { isr: true },
     '/blog/**': { isr: false },
+    '/api/mdc': { prerender: true },
   },
 
   modules: [
@@ -26,6 +27,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxt/eslint',
     '@formkit/auto-animate/nuxt',
+    '@nuxtjs/mdc',
   ],
 
   app: {
@@ -146,6 +148,24 @@ export default defineNuxtConfig({
         blockSpacing: true,
         braceStyle: '1tbs',
         arrowParens: true,
+      },
+    },
+  },
+  mdc: {
+    highlight: {
+      highlighter: 'shiki',
+      theme: 'aurora-x',
+      themes: ['aurora-x'],
+      langs: ['javascript', 'typescript', 'json', 'vue', 'shell', 'php'],
+      wrapperStyle: false,
+    },
+    headings: {
+      anchorLinks: false,
+    },
+    components: {
+      prose: false,
+      map: {
+        ['pre']: 'ProsePre',
       },
     },
   },

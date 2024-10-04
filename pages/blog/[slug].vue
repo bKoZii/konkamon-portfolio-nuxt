@@ -8,9 +8,8 @@
           <section
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
-            <div v-if="blogSlug.content && status == 'success'">
-              <!-- eslint-disable-next-line vue/no-v-html -->
-              <article v-html="$sanitizeHTML(markdownContent)" />
+            <div v-if="blogSlug.content && ast">
+              <MDCRenderer :body="ast" />
             </div>
             <div v-else-if="status == 'pending'">
               <LazyUAlert
@@ -82,7 +81,15 @@ const { status } = await useAsyncData(
     },
   },
 )
-const markdownContent = await useMarkdownIt(blogSlug.value ? blogSlug.value.content : '')
+const { data: ast } = await useFetch('/api/mdc', {
+  method: 'POST',
+  body: {
+    content: blogSlug.value ? blogSlug.value.content : '',
+  },
+  deep: false,
+  cache: 'force-cache',
+  priority: 'high',
+})
 
 useSeoMeta({
   title: blogSlug.value?.title,

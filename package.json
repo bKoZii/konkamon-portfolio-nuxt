@@ -39,16 +39,14 @@
     "@iconify-json/simple-icons": "^1.2.5",
     "@nuxt/eslint": "^0.5.7",
     "@nuxt/kit": "^3.13.2",
+    "@nuxtjs/mdc": "^0.9.0",
     "@nuxtjs/sitemap": "6.1.1",
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
-    "@shikijs/markdown-it": "^1.21.0",
     "@types/dompurify": "^3.0.5",
     "@types/jsdom": "^21.1.7",
-    "@types/markdown-it": "^14.1.2",
     "dayjs": "^1.11.13",
     "dayjs-nuxt": "^2.1.11",
     "eslint": "^9.11.1",
-    "markdown-it": "^14.1.0",
     "nuxt": "^3.13.2",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
@@ -58,5 +56,5 @@
   "resolutions": {
     "string-width": "4.2.3"
   },
-  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
+  "packageManager": "pnpm@9.12.0+sha512.4abf725084d7bcbafbd728bfc7bee61f2f791f977fd87542b3579dcb23504d170d46337945e4c66485cd12d588a0c0e570ed9c477e7ccdd8507cf05f3f92eaca"
 }
