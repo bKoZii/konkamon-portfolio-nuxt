@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/blog': { isr: true },
     '/blog/**': { isr: false },
-    '/api/mdc': { prerender: true },
   },
 
   modules: [
