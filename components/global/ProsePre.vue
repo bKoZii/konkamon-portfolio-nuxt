@@ -1,23 +1,36 @@
 <template>
-  <div class="pre">
-    <div class="rounded-t-lg border-b-0 bg-neutral-900 p-2 text-xs dark:border dark:border-neutral-700 dark:bg-neutral-900">
+  <div class="pre relative">
+    <div v-if="$props.filename" class="rounded-t-lg border-b-0 bg-neutral-900 p-2 text-xs dark:border dark:border-neutral-700 dark:bg-neutral-900">
       <div class="flex flex-row flex-nowrap items-center justify-between gap-2 text-white">
         <span class="tracking-normal">{{ $props.filename }}</span>
         <UButton
           variant="solid"
           class="p-1"
-          :color="codeCopied ? 'primary' : 'white'"
+          :color="copied ? 'primary' : 'white'"
           size="xs"
-          :icon="codeCopied ? 'ph:check-square-duotone' : 'ph:clipboard-duotone'"
+          :icon="copied ? 'ph:check-square-duotone' : 'ph:clipboard-duotone'"
           aria-label="Copy Code"
-          :label="codeCopied ? 'Copied!' : 'Copy Code'"
-          @click="copyCode"
+          :label="copied ? 'Copied!' : 'Copy Code'"
+          @click="copy($props.code as string)"
         />
       </div>
     </div>
+
+    <div v-else>
+      <UButton
+        variant="solid"
+        class="p-1 absolute right-0 m-2"
+        :color="copied ? 'primary' : 'white'"
+        size="xs"
+        :icon="copied ? 'ph:check-square-duotone' : 'ph:clipboard-duotone'"
+        aria-label="Copy Code"
+        :label="copied ? 'Copied!' : 'Copy Code'"
+        @click="copy($props.code as string)"
+      />
+    </div>
     <pre
       class="pre-body"
-      :class="`${$props.class} !mt-0 !rounded-t-none tracking-normal dark:border dark:border-t-0 dark:border-neutral-700`"
+      :class="`${$props.class} ${$props.filename ? '!rounded-t-none': '!rounded-t-lg'} !mt-0 !rounded-t-none tracking-normal dark:border dark:border-t-0 dark:border-neutral-700`"
     ><slot /></pre>
   </div>
 </template>
@@ -25,7 +38,8 @@
 <script setup lang="ts">
 import type { BundledLanguage } from 'shiki'
 
-const props = defineProps({
+const toast = useToast()
+defineProps({
   code: {
     type: String,
     default: '',
@@ -52,18 +66,17 @@ const props = defineProps({
   },
 })
 
-const codeCopied = ref(false)
-const copyCode = async (): Promise<void> => {
-  try {
-    await navigator.clipboard.writeText(props.code)
-    codeCopied.value = true
-    setTimeout(() => {
-      codeCopied.value = false
-    }, 1500)
-  } catch (error) {
-    console.error('Error: Unable to copy code.', error)
+const { copy, copied } = useClipboard()
+
+watch(copied, (value) => {
+  if (value == true) {
+    toast.add({
+      title: 'Copied!',
+      description: 'คัดลอก Code ไปยัง Clipboard แล้ว!',
+      icon: 'ph:check-circle-duotone',
+    })
   }
-}
+})
 </script>
 
 <style scoped>
