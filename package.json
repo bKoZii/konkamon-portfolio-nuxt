@@ -25,6 +25,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "dompurify": "^3.1.7",
     "jsdom": "^25.0.1",
+    "lru-cache": "^11.0.1",
     "markdown-it-github-alerts": "^0.3.0",
     "nuxt-typed-router": "^3.7.0",
     "pinia": "^2.2.4",
