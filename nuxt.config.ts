@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/blog': { isr: true },
     '/blog/**': { isr: false },
+    '/api/mdc': { ssr: false },
   },
 
   modules: [
@@ -27,6 +28,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@formkit/auto-animate/nuxt',
     '@nuxtjs/mdc',
+    '@vueuse/nuxt',
   ],
 
   app: {
