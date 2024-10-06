@@ -68,7 +68,7 @@ const { status } = await useAsyncData(
     default() {
       return blogSlug.value as StrapiBlogSlug
     },
-    watch: false,
+    watch: [],
     deep: false,
     getCachedData: (key) => {
       if (nuxt.isHydrating && nuxt.payload.data[key]) {
@@ -81,7 +81,7 @@ const { status } = await useAsyncData(
     },
   },
 )
-const { data: ast } = await useFetch('/api/mdc', {
+const { data: ast } = await useAsyncData('parsedMarkdown', () => $fetch('/api/mdc', {
   method: 'POST',
   body: {
     content: blogSlug.value ? blogSlug.value.content : '',
@@ -89,6 +89,8 @@ const { data: ast } = await useFetch('/api/mdc', {
   deep: false,
   cache: 'force-cache',
   priority: 'high',
+}), {
+  deep: false,
 })
 
 useSeoMeta({
