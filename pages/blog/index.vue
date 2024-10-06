@@ -142,20 +142,17 @@ const { status, error, refresh } = await useAsyncData(
   },
 )
 
-let timeout: NodeJS.Timeout | null = null
+const { start } = useTimeoutFn(async () => {
+  loading.value = true
+  currentPage.value = 1
+  await refresh()
+  loading.value = false
+}, 500, { immediate: false })
+
 watch(searchInput, () => {
-  if (timeout) {
-    clearTimeout(timeout)
-  }
   if (searchInput.value.length >= 3 && searchInput.value !== '') {
-    timeout = setTimeout(async () => {
-      loading.value = true
-      currentPage.value = 1
-      await refresh()
-      loading.value = false
-    }, 500)
+    start()
   } else if (searchInput.value === '') {
-    currentPage.value = 1
     refresh()
   }
 })
