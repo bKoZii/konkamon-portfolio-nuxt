@@ -1,18 +1,13 @@
-import crypto from 'crypto'
 import { parseMarkdown } from '@nuxtjs/mdc/runtime'
 import { useStorage } from '@vueuse/core'
 import type { MDCRoot } from '@nuxtjs/mdc'
-
-function hashContent(content: string): string {
-  return crypto.createHash('sha256').update(content).digest('hex')
-}
 
 const cache = useStorage<Record<string, MDCRoot>>('mdc-cache', {})
 
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event)
-    const cacheKey = hashContent(body.content)
+    const cacheKey = body.title
 
     if (cache.value[cacheKey]) {
       return cache.value[cacheKey]
