@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '/blog': { isr: true },
     '/blog/**': { isr: false },
     '/api/mdc': { ssr: false },
+    '/sitemap.xml': { prerender: true },
   },
 
   modules: [
