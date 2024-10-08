@@ -3,9 +3,9 @@ import { parseMarkdown } from '@nuxtjs/mdc/runtime'
 export default defineEventHandler(async (event) => {
   const cache = useStorage('markdown-cache')
   try {
-    const body = await readBody(event) as { title: string, content: string }
-    const { title, content } = body
-    const cacheKey = title
+    const body = await readBody(event) as { slug: string, content: string }
+    const { slug, content } = body
+    const cacheKey = slug
 
     const cachedItem = await cache.getItem(cacheKey)
     if (cachedItem) {

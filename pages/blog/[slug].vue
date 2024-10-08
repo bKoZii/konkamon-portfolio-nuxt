@@ -85,7 +85,7 @@ const { data: ast } = await useAsyncData('parsedMarkdown', () => $fetch('/api/md
   method: 'POST',
   body: {
     content: blogSlug.value ? blogSlug.value.content : '',
-    title: blogSlug.value ? blogSlug.value.title : '',
+    slug: blogSlug.value ? blogSlug.value.slug : '',
   },
   deep: false,
   cache: 'force-cache',
