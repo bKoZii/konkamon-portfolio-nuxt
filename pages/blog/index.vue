@@ -92,7 +92,7 @@ const { find } = useStrapi()
 const loading = ref(false)
 const route = useRoute()
 const searchInput = ref('')
-const nuxt = useNuxtApp()
+const debouncedSearchInput = refDebounced(searchInput, 500)
 const currentPage = ref(1)
 const pageSize = 6
 const { data: blogsData } = useNuxtData<Strapi4ResponseMany<StrapiBlogs>>('allBlogsWithSearch')
@@ -125,34 +125,16 @@ const { status, error, refresh } = await useAsyncData(
     }),
   {
     deep: false,
-    lazy: true,
     watch: [currentPage],
-    getCachedData(key) {
-      if (nuxt.isHydrating && nuxt.payload.data[key]) {
-        return nuxt.payload.data[key]
-      }
-      if (nuxt.static.data[key]) {
-        return nuxt.static.data[key]
-      }
-      return null
-    },
-    default() {
-      return blogsData.value
-    },
   },
 )
 
-const { start } = useTimeoutFn(async () => {
+watch(searchInput, () => {
   loading.value = true
   currentPage.value = 1
-  await refresh()
+  search()
   loading.value = false
-}, 500, { immediate: false })
-
-watch(searchInput, () => {
-  if (searchInput.value.length >= 3 && searchInput.value !== '') {
-    start()
-  } else if (searchInput.value === '') {
+  if (searchInput.value === '') {
     refresh()
   }
 })
@@ -186,7 +168,7 @@ const alertConfig = computed(() => {
   } else if (blogsData.value?.meta.pagination.total === 0 && status.value === 'success') {
     return {
       title: 'ไม่พบ Blogs',
-      description: `ไม่พบ Blogs จากคำค้นหา ${searchInput.value}`,
+      description: `ไม่พบ Blogs จากคำค้นหา ${debouncedSearchInput.value}`,
       icon: 'ic:round-search-off',
       color: 'orange' as AlertColor,
       variant: 'subtle' as AlertVariant,
