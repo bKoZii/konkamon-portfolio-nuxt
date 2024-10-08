@@ -139,6 +139,12 @@ watch(searchInput, () => {
   }
 })
 
+const search = useDebounceFn(() => {
+  if (searchInput.value.length >= 3 && searchInput.value !== '') {
+    refresh()
+  }
+}, 500)
+
 useSeoMeta({
   title: 'Blogs',
   ogTitle: '%s - Konkamon Sion',
