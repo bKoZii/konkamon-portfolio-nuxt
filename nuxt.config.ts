@@ -79,6 +79,11 @@ export default defineNuxtConfig({
   },
   nitro: {
     compressPublicAssets: true,
+    storage: {
+      data: {
+        driver: 'vercelKV',
+      },
+    },
     azure: {
       config: {
         platform: {
