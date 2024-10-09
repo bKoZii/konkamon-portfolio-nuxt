@@ -12,6 +12,7 @@
 </template>
 
 <script lang="ts" setup>
+preloadComponents('MDC')
 useSeoMeta({
   title: 'Konkamon Sion',
   description: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',

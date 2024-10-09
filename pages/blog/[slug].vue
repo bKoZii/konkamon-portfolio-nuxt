@@ -8,8 +8,8 @@
           <section
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
-            <div v-if="blogSlug.content && ast">
-              <MDCRenderer :body="ast" />
+            <div v-if="blogSlug.content">
+              <MDC :value="blogSlug.content" tag="article" />
             </div>
             <div v-else-if="status == 'pending'">
               <LazyUAlert
@@ -81,19 +81,6 @@ const { status } = await useAsyncData(
     },
   },
 )
-const { data: ast } = await useAsyncData('parsedMarkdown', () => $fetch('/api/mdc', {
-  method: 'POST',
-  body: {
-    content: blogSlug.value ? blogSlug.value.content : '',
-    slug: blogSlug.value ? blogSlug.value.slug : '',
-  },
-  deep: false,
-  cache: 'force-cache',
-  priority: 'high',
-}), {
-  deep: false,
-})
-
 useSeoMeta({
   title: blogSlug.value?.title,
   ogTitle: '%s [Blogs - Konkamon]',

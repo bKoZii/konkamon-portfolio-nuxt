@@ -87,6 +87,7 @@ import type { StrapiBlogs } from '~/types/StrapiBlogs'
 import type { AlertColor, AlertVariant } from '#ui/types'
 
 useMySlugCacheStore()
+preloadComponents('MDC')
 
 const { find } = useStrapi()
 const loading = ref(false)
