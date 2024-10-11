@@ -179,14 +179,5 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [wasm()],
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            wasm: ['*.wasm'],
-          },
-        },
-      },
-    },
   },
 })
