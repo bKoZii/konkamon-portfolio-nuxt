@@ -84,8 +84,9 @@ const { status } = await useAsyncData(
 
 const { data: ast, status: parseStatus } = await useFetch('/api/mdc', {
   method: 'POST',
-  body: { content: blogSlug.value?.content },
+  body: { content: blogSlug.value?.content, slug: blogSlug.value?.slug },
   cache: 'force-cache',
+  deep: false,
 })
 
 useSeoMeta({
