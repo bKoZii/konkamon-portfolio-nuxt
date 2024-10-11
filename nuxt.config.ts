@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import wasm from '@rollup/plugin-wasm'
 
 export default defineNuxtConfig({
   devtools: {
@@ -30,6 +31,7 @@ export default defineNuxtConfig({
     '@formkit/auto-animate/nuxt',
     '@nuxtjs/mdc',
     '@vueuse/nuxt',
+    'nuxt-shiki',
   ],
 
   app: {
@@ -159,20 +161,31 @@ export default defineNuxtConfig({
     },
   },
   mdc: {
-    highlight: {
-      highlighter: 'shiki',
-      theme: 'aurora-x',
-      themes: ['aurora-x'],
-      langs: ['javascript', 'typescript', 'json', 'vue', 'shell', 'php'],
-      wrapperStyle: false,
-    },
+    highlight: false,
     headings: {
       anchorLinks: false,
     },
     components: {
       prose: false,
       map: {
-        ['pre']: 'ProsePre',
+        pre: 'ProsePre',
+      },
+    },
+  },
+  shiki: {
+    bundledLangs: ['javascript', 'typescript', 'vue', 'shell', 'php'],
+    bundledThemes: ['houston'],
+    defaultTheme: 'houston',
+  },
+  vite: {
+    plugins: [wasm()],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            wasm: ['*.wasm'],
+          },
+        },
       },
     },
   },

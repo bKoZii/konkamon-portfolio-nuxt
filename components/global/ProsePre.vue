@@ -1,10 +1,10 @@
 <template>
-  <div class="pre relative">
-    <div v-if="$props.filename" class="rounded-t-lg border-b-0 bg-neutral-900 p-2 text-xs dark:border dark:border-neutral-700 dark:bg-neutral-900">
+  <div class="relative">
+    <div v-if="$props.filename" class="rounded-t-lg bg-neutral-900 p-2 text-xs border border-b border-neutral-600 dark:border-neutral-800 dark:border-b-0 dark:bg-neutral-900">
       <div class="flex flex-row flex-nowrap items-center justify-between gap-2 text-white">
         <span class="tracking-normal">{{ $props.filename }}</span>
         <UButton
-          variant="solid"
+          variant="soft"
           class="p-1"
           :color="copied ? 'primary' : 'white'"
           size="xs"
@@ -15,7 +15,6 @@
         />
       </div>
     </div>
-
     <div v-else>
       <UButton
         variant="solid"
@@ -28,10 +27,10 @@
         @click="copy($props.code as string)"
       />
     </div>
-    <pre
-      class="pre-body"
-      :class="`${$props.class} ${$props.filename ? '!rounded-t-none': '!rounded-t-lg'} !mt-0 !rounded-t-none tracking-normal dark:border dark:border-t-0 dark:border-neutral-700`"
-    ><slot /></pre>
+    <div
+      :class="`${$props.class} ${$props.filename ? 'prose-pre:rounded-t-none': 'rounded-t-lg'} !mt-0  tracking-normal m-0 prose-pre:m-0 `"
+      v-html="html"
+    />
   </div>
 </template>
 
@@ -39,7 +38,8 @@
 import type { BundledLanguage } from 'shiki'
 
 const toast = useToast()
-defineProps({
+
+const props = defineProps({
   code: {
     type: String,
     default: '',
@@ -65,6 +65,8 @@ defineProps({
     default: null,
   },
 })
+
+const html = await useShikiHighlighted(props.code, { lang: props.language })
 
 const { copy, copied } = useClipboard()
 

@@ -8,10 +8,10 @@
           <section
             class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
-            <div v-if="blogSlug.content">
-              <MDC :value="blogSlug.content" tag="article" />
+            <div v-if="ast">
+              <MDCRenderer :body="ast" tag="article" />
             </div>
-            <div v-else-if="status == 'pending'">
+            <div v-else-if="status == 'pending' || parseStatus == 'pending'">
               <LazyUAlert
                 class="not-prose"
                 title="Loading"
@@ -81,6 +81,13 @@ const { status } = await useAsyncData(
     },
   },
 )
+
+const { data: ast, status: parseStatus } = await useFetch('/api/mdc', {
+  method: 'POST',
+  body: { content: blogSlug.value?.content },
+  cache: 'force-cache',
+})
+
 useSeoMeta({
   title: blogSlug.value?.title,
   ogTitle: '%s [Blogs - Konkamon]',
