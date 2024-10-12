@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout to the branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Azure Login
         uses: azure/login@v1
@@ -33,6 +33,8 @@ jobs:
 
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
+        env:
+          STRAPI_URL: ${{ vars.STRAPI_URL}}
         with:
           appSourcePath: ${{ github.workspace }}
           _dockerfilePathKey_: _dockerfilePath_
