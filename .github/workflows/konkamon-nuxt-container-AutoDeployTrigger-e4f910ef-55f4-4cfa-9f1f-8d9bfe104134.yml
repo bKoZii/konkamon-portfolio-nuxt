@@ -33,8 +33,7 @@ jobs:
 
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
-        env:
-          STRAPI_URL: ${{ vars.STRAPI_URL}}
+
         with:
           appSourcePath: ${{ github.workspace }}
           _dockerfilePathKey_: _dockerfilePath_
@@ -46,5 +45,6 @@ jobs:
           imageToBuild: konkamonnuxt.azurecr.io/konkamon-nuxt-container:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
-
+        env:
+          STRAPI_URL: ${{ vars.STRAPI_URL }}
 
