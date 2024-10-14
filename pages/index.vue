@@ -3,10 +3,8 @@
     <div class="flex flex-col flex-nowrap gap-10">
       <Hero />
       <AboutMe />
-      <Technology />
+      <HomeTabs />
       <LatestBlogs />
-      <SocialLinks />
-      <FeaturedWork />
     </div>
   </main>
 </template>
