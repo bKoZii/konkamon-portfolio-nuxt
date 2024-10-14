@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     '@nuxtjs/mdc',
     '@vueuse/nuxt',
     'nuxt-shiki',
+    '@vueuse/motion/nuxt',
   ],
 
   app: {
