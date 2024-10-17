@@ -59,6 +59,7 @@ export default defineNuxtConfig({
       prose: false,
       map: {
         pre: 'ProsePre',
+        code: 'ProseCode',
       },
     },
   },

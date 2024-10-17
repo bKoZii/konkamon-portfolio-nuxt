@@ -6,7 +6,7 @@
           <BlogSlugHeader :blog-slug="blogSlug" />
           <UDivider class="my-3" />
           <section
-            class="prose prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
+            class="prose prose-code:prose-h3:border-dashed prose-code:prose-h3:font-semibold prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
             <div v-if="ast">
               <MDCRenderer :body="ast" tag="article" />
@@ -22,7 +22,7 @@
             </div>
           </section>
           <UCard :ui="{ base: 'not-prose', body: { padding: 'p-0 sm:p-3' } }">
-            <section class="flex justify-center flex-col items-center space-y-2">
+            <section class="flex flex-col items-center justify-center space-y-2">
               <p class="text-sm font-bold">
                 Share this Blog!
               </p>
