@@ -56,7 +56,7 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      'Space Grotesk': {
+      'Albert Sans': {
         wght: [400, 500, 600, 700, 800, 900],
       },
       'Noto Sans Thai Looped': {

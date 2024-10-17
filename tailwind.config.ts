@@ -28,7 +28,7 @@ export default <Partial<Config>>{
         },
       },
       fontFamily: {
-        sans: ['Space Grotesk', 'Noto Sans Thai Looped', 'system-ui'],
+        sans: ['Albert Sans', 'Noto Sans Thai Looped', 'system-ui'],
         mono: ['Fira Code', 'Noto Sans Thai Looped'],
       },
     },
