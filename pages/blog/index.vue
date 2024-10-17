@@ -44,10 +44,12 @@
     </section>
 
     <main v-if="blogsData?.data && blogsData?.meta.pagination.total > 0 && status === 'success'">
-      <section v-auto-animate class="flex flex-col flex-nowrap gap-3">
+      <section class="flex flex-col flex-nowrap gap-3">
         <ClientOnly fallback-tag="div">
-          <div v-for="post in blogsData.data" :key="post.id">
-            <BlogIndexCard :post="post.attributes" />
+          <div v-for="(post, index) in blogsData.data" :key="post.id">
+            <Motion preset="slideVisibleOnceBottom" :delay="index * 30">
+              <BlogIndexCard :post="post.attributes" />
+            </Motion>
           </div>
           <template #fallback>
             <div v-for="fallback in pageSize" :key="fallback">
@@ -127,6 +129,9 @@ const { status, error, refresh } = await useAsyncData(
   {
     deep: false,
     watch: [currentPage],
+    default() {
+      return blogsData.value
+    },
   },
 )
 
