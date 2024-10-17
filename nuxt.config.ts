@@ -2,18 +2,6 @@
 import wasm from '@rollup/plugin-wasm'
 
 export default defineNuxtConfig({
-  devtools: {
-    enabled: true,
-  },
-  ssr: true,
-
-  routeRules: {
-    '/': { prerender: true },
-    '/blog': { isr: true },
-    '/blog/**': { isr: 900 },
-    '/api/mdc': { ssr: false },
-    '/sitemap.xml': { prerender: true },
-  },
 
   modules: [
     'nuxt-typed-router',
@@ -34,6 +22,10 @@ export default defineNuxtConfig({
     'nuxt-shiki',
     '@vueuse/motion/nuxt',
   ],
+  ssr: true,
+  devtools: {
+    enabled: true,
+  },
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -54,32 +46,44 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/vnd.microsoft.icon', href: '/favicon.ico' }],
     },
   },
-  googleFonts: {
-    families: {
-      'Albert Sans': {
-        wght: [400, 500, 600, 700, 800, 900],
-      },
-      'Noto Sans Thai Looped': {
-        wght: [400, 600, 700, 800],
-      },
-      'Fira Code': {
-        wght: [400, 600, 700, 800],
+  site: {
+    url: 'https://www.konkamon.live',
+    name: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
+  },
+  mdc: {
+    highlight: false,
+    headings: {
+      anchorLinks: false,
+    },
+    components: {
+      prose: false,
+      map: {
+        pre: 'ProsePre',
       },
     },
   },
-  tailwindcss: {
-    cssPath: '~/assets/main.css',
-    configPath: 'tailwind.config.ts',
+  runtimeConfig: {
+    strapiUrl: process.env.STRAPI_URL,
+    public: {
+      strapiUrl: process.env.STRAPI_URL,
+    },
+  },
+
+  routeRules: {
+    '/': { prerender: true },
+    '/blog': { isr: true },
+    '/blog/**': { isr: 900 },
+    '/api/mdc': { ssr: false },
+    '/sitemap.xml': { prerender: true },
+  },
+  sourcemap: {
+    server: false,
+    client: true,
+  },
+  experimental: {
+    externalVue: false,
   },
   compatibilityDate: '2024-07-04',
-  dayjs: {
-    locales: ['th'],
-    defaultLocale: 'th',
-    plugins: ['timezone'],
-  },
-  socialShare: {
-    baseUrl: 'https://www.konkamon.live/',
-  },
   nitro: {
     compressPublicAssets: true,
     storage: {
@@ -99,21 +103,47 @@ export default defineNuxtConfig({
         remote_images: [`https://res.cloudinary.com/${process.env.CLOUDINARY_KEY}/image/upload/*`],
       },
     },
+    vercel: {
+      functions: {
+        memory: 512,
+      },
+      regions: ['sin1'],
+    },
   },
-  pinia: {
-    storesDirs: ['./stores/**'],
+  vite: {
+    plugins: [wasm()],
   },
-  experimental: {
-    externalVue: false,
+  dayjs: {
+    locales: ['th'],
+    defaultLocale: 'th',
+    plugins: ['timezone'],
   },
-  robots: {
-    sitemap: 'https://www.konkamon.live/sitemap.xml',
-    allow: ['/', '/blog/'],
-    disallow: ['/api'],
+  eslint: {
+    config: {
+      stylistic: {
+        indent: 2,
+        commaDangle: 'always-multiline',
+        quotes: 'single',
+        jsx: false,
+        semi: false,
+        blockSpacing: true,
+        braceStyle: '1tbs',
+        arrowParens: true,
+      },
+    },
   },
-  sourcemap: {
-    server: false,
-    client: true,
+  googleFonts: {
+    families: {
+      'Albert Sans': {
+        wght: [400, 500, 600, 700, 800, 900],
+      },
+      'Noto Sans Thai Looped': {
+        wght: [400, 600, 700, 800],
+      },
+      'Fira Code': {
+        wght: [400, 600, 700, 800],
+      },
+    },
   },
   icon: {
     provider: 'server',
@@ -133,52 +163,28 @@ export default defineNuxtConfig({
       scan: true,
     },
   },
-  site: {
-    url: 'https://www.konkamon.live',
-    name: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
+  pinia: {
+    storesDirs: ['./stores/**'],
   },
-  sitemap: {
-    sources: ['/api/sitemap/urls'],
-    excludeAppSources: ['nuxt:route-rules'],
-  },
-  runtimeConfig: {
-    strapiUrl: process.env.STRAPI_URL,
-    public: {
-      strapiUrl: process.env.STRAPI_URL,
-    },
-  },
-  eslint: {
-    config: {
-      stylistic: {
-        indent: 2,
-        commaDangle: 'always-multiline',
-        quotes: 'single',
-        jsx: false,
-        semi: false,
-        blockSpacing: true,
-        braceStyle: '1tbs',
-        arrowParens: true,
-      },
-    },
-  },
-  mdc: {
-    highlight: false,
-    headings: {
-      anchorLinks: false,
-    },
-    components: {
-      prose: false,
-      map: {
-        pre: 'ProsePre',
-      },
-    },
+  robots: {
+    sitemap: 'https://www.konkamon.live/sitemap.xml',
+    allow: ['/', '/blog/'],
+    disallow: ['/api'],
   },
   shiki: {
     bundledLangs: ['javascript', 'typescript', 'vue', 'shell', 'php'],
     bundledThemes: ['houston'],
     defaultTheme: 'houston',
   },
-  vite: {
-    plugins: [wasm()],
+  sitemap: {
+    sources: ['/api/sitemap/urls'],
+    excludeAppSources: ['nuxt:route-rules'],
+  },
+  socialShare: {
+    baseUrl: 'https://www.konkamon.live/',
+  },
+  tailwindcss: {
+    cssPath: '~/assets/main.css',
+    configPath: 'tailwind.config.ts',
   },
 })
