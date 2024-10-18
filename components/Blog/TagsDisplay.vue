@@ -8,7 +8,7 @@
         <Motion preset="fadeVisibleOnce" :delay="index * 20">
           <NuxtLink :to="`/blog/tag/${tags.attributes.name}`"><UBadge
             variant="subtle"
-            :ui="{ variant: { subtle: 'hover:bg-neutral-950' } }"
+            :ui="{ variant: { subtle: 'hover:bg-primary-500 hover:text-white dark:hover:bg-primary-800' } }"
             color="primary"
           >
             {{ tags.attributes.name }}

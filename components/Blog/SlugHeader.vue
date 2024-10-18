@@ -15,9 +15,11 @@
           </p>
           <section v-if="blogSlug.categories" class="flex flex-row gap-2">
             <div v-for="(category, index) in blogSlug.categories.data" :key="index">
-              <UBadge variant="soft">
-                {{ category.attributes.name }}
-              </UBadge>
+              <NuxtLink :to="`/blog/tag/${category.attributes.name}`">
+                <UBadge variant="subtle" :ui="{ variant: { subtle: 'hover:bg-primary-500 hover:text-white dark:hover:bg-primary-800' } }">
+                  {{ category.attributes.name }}
+                </UBadge>
+              </NuxtLink>
             </div>
           </section>
         </div>
