@@ -1,0 +1,26 @@
+{
+  "tailwindCSS.experimental.classRegex": [
+    ["ui:\\s*{([^)]*)\\s*}", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["/\\*\\s?ui\\s?\\*/\\s*{([^;]*)}", ":\\s*[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "tailwindCSS.experimental.configFile": "tailwind.config.ts",
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "class:list", "ui"],
+  "eslint.useFlatConfig": true,
+  "conventionalCommits.scopes": [
+    ".vscode",
+    "Blog",
+    "Blog Slug",
+    "Blog Index",
+    "Blog Tag",
+    "Blog Middleware",
+    "MDC API",
+    "nuxt.config",
+    "MDC",
+    "MDC Component",
+    "deps",
+    "Azure",
+    "app",
+    "Bookmark",
+    "Project",
+  ]
+}
