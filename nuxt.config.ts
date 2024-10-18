@@ -92,24 +92,6 @@ export default defineNuxtConfig({
         driver: 'vercelKV',
       },
     },
-    azure: {
-      config: {
-        platform: {
-          apiRuntime: 'node:20',
-        },
-      },
-    },
-    netlify: {
-      images: {
-        remote_images: [`https://res.cloudinary.com/${process.env.CLOUDINARY_KEY}/image/upload/*`],
-      },
-    },
-    vercel: {
-      functions: {
-        memory: 512,
-      },
-      regions: ['sin1'],
-    },
   },
   vite: {
     plugins: [wasm()],
