@@ -1,34 +1,66 @@
-import type { MDCParserResult as OriginalMDCParserResult } from '@nuxtjs/mdc'
+import type { MDCParserResult } from '@nuxtjs/mdc'
 import { parseMarkdown } from '@nuxtjs/mdc/runtime'
-import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 
-interface MDCParserResult extends OriginalMDCParserResult {
-  updatedAt: string
+interface RequestBody {
+  slug: string
+  content: string
 }
 
-interface CachedMDC extends MDCParserResult {
-  ast: OriginalMDCParserResult
+interface CachedItem {
+  slug: string
+  content: string
+  ast: MDCParserResult
 }
 
 export default defineEventHandler(async (event) => {
   const cache = useStorage('markdown-cache')
+
+  const getRequestBody = async (): Promise<RequestBody> => {
+    try {
+      return await readBody<RequestBody>(event)
+    } catch (error) {
+      console.error('Error reading request body:', error)
+      throw createError({ statusCode: 400, statusMessage: 'Bad Request' })
+    }
+  }
+
+  const getCachedItem = async (cacheKey: string): Promise<CachedItem | null> => {
+    try {
+      return await cache.getItem<CachedItem>(cacheKey)
+    } catch (error) {
+      console.error('Error getting cached item:', error)
+      return null
+    }
+  }
+
+  const setCachedItem = async (cacheKey: string, item: CachedItem): Promise<void> => {
+    try {
+      await cache.setItem(cacheKey, item)
+    } catch (error) {
+      console.error('Error setting cached item:', error)
+    }
+  }
+
   try {
-    const body = await readBody<StrapiBlogSlug>(event)
-    const { slug, content, updatedAt } = body
+    const { slug, content } = await getRequestBody()
     const cacheKey = slug
 
-    const cachedItem = await cache.getItem<CachedMDC>(cacheKey)
-    if (cachedItem && new Date(cachedItem.updatedAt) >= new Date(updatedAt)) {
-      console.log('Using Cache :', cacheKey)
-      return cachedItem.ast
+    const cachedItem = await getCachedItem(cacheKey)
+    if (cachedItem) {
+      if (cachedItem.content === content) {
+        console.log('Using Cache:', cacheKey)
+        return cachedItem.ast.body
+      } else {
+        console.log('Content Changed:', cacheKey)
+      }
+    } else {
+      console.log('Cache Not Found:', cacheKey)
     }
 
     const ast = await parseMarkdown(content)
-    console.log('Cache Not Found or Outdated : ', cacheKey)
+    await setCachedItem(cacheKey, { slug, content, ast })
 
-    await cache.setItem(cacheKey, { ast, updatedAt })
-
-    return ast
+    return ast.body
   } catch (error) {
     console.error('Error processing request:', error)
     throw createError({ statusCode: 500, statusMessage: 'Internal Server Error' })
