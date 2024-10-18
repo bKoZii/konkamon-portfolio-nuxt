@@ -9,7 +9,11 @@
             class="prose prose-code:prose-h3:border-dashed prose-code:prose-h3:font-semibold prose-neutral dark:prose-invert prose-sm md:prose-base prose-h1:mb-5 prose-h2:my-4 prose-pre:text-sm dark:prose-pre:border dark:prose-pre:border-neutral-800 prose-li:my-1 max-w-none font-sans tracking-tight"
           >
             <div v-if="ast">
-              <MDCRenderer :body="ast" tag="article" />
+              <MDCRenderer
+                :body="ast.body"
+                :data="ast.data"
+                tag="article"
+              />
             </div>
             <div v-else-if="status == 'pending' || parseStatus == 'pending'">
               <LazyUAlert
