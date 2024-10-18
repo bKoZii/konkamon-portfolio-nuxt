@@ -6,8 +6,9 @@
         list: {
           background: 'bg-neutral-100',
           base: 'border dark:border-none border-neutral-300 drop-shadow-sm h-fit',
+          marker: { background: 'bg-primary-500' },
           tab: {
-            active: 'bg-primary-500 border dark:border-none text-white dark:bg-gray-900 dark:text-primary-400',
+            active: 'bg-primary-500 text-white dark:bg-gray-900 dark:text-primary-400',
             inactive: 'text-gray-900 hover:text-primary-500 dark:hover:text-primary-400',
           },
         },
@@ -16,25 +17,23 @@
       <template #item="{ item }: { item: Item }">
         <UCard :ui="{ base: 'overflow-hidden' }">
           <template #header>
-            <p class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
+            <h2 class="text-lg font-bold leading-6 text-gray-900 dark:text-white">
               {{ item.label }}
-            </p>
+            </h2>
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
               {{ item.description }}
             </p>
           </template>
           <section>
-            <Motion preset="slideBottom" as="section">
-              <div v-if="item.key == 'techStacks'">
-                <LazyTechnology />
-              </div>
-              <div v-else-if="item.key == 'socialLinks'">
-                <LazySocialLinks />
-              </div>
-              <div v-else-if="item.key == 'featuredWork'">
-                <LazyFeaturedWork />
-              </div>
-            </Motion>
+            <div v-if="item.key == 'techStacks'">
+              <LazyTechnology />
+            </div>
+            <div v-else-if="item.key == 'socialLinks'">
+              <LazySocialLinks />
+            </div>
+            <div v-else-if="item.key == 'featuredWork'">
+              <LazyFeaturedWork />
+            </div>
           </section>
         </UCard>
       </template>
