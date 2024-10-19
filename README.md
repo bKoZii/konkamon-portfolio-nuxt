@@ -18,10 +18,10 @@ The design of this website is inspired by [fayazara/zooper](https://github.com/f
 
 ## TODOs
 
-- [ ] i18n - English / Thai
+- [x] i18n - English / Thai (Work in Progress..)
 - Blog : Strapi 4 CMS
     - [x] Fetch Posts
     - [x] Search
     - [x] Filter By Tags
-    - [ ] Pagination (Coming Soon...)
+    - [x] Pagination
 - TBA...
