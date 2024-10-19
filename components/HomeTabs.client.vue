@@ -42,30 +42,32 @@
 </template>
 
 <script lang="ts" setup>
+const { t } = useI18n()
+
 interface Item {
   key: string
   label: string
   description: string
   icon?: string
 }
-const items: Item[] = [
+const items = computed<Item[]>(() => [
   {
     key: 'techStacks',
     label: 'Tech Stacks',
     icon: 'ph:code-duotone',
-    description: 'รวม Tech Stack ที่ผมใช้งาน',
+    description: t('home.techStacks.subtitle'),
   },
   {
     key: 'socialLinks',
     label: 'Social Links',
     icon: 'ph:link-duotone',
-    description: 'Social Media ของกระผม',
+    description: t('home.socialLinks.subtitle'),
   },
   {
     key: 'featuredWork',
     label: 'Featured Work',
     icon: 'ph:briefcase-duotone',
-    description: 'รวมโปรเจค / ชิ้นงาน ต่างๆ ผมเป็นคนที่ชอบทำงาน / โปรเจคอะไรเล็กๆ น้อยๆ',
+    description: t('home.featuredWork.subtitle'),
   },
-]
+])
 </script>

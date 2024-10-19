@@ -44,7 +44,10 @@
           </UTooltip>
         </div>
         <UDivider orientation="vertical" class="hidden md:block" />
-        <NavbarThemeSwitch />
+        <section class="flex items-center gap-4">
+          <NavbarThemeSwitch />
+          <NavbarLangSwitch />
+        </section>
         <UButton
           class="inline-flex md:hidden"
           aria-label="Open"

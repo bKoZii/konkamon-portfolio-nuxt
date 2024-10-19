@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-shiki',
     '@vueuse/motion/nuxt',
+    '@nuxtjs/i18n',
   ],
   ssr: true,
   devtools: {
@@ -128,6 +129,26 @@ export default defineNuxtConfig({
       },
     },
   },
+  i18n: {
+    baseUrl: 'https://www.konkamon.live',
+    strategy: 'no_prefix',
+    defaultLocale: 'th',
+    locales: [
+      {
+        code: 'th',
+        language: 'th-TH',
+        name: 'ภาษาไทย',
+        file: 'th.ts',
+      },
+      {
+        code: 'en',
+        language: 'en-US',
+        name: 'English',
+        file: 'en.ts',
+      },
+    ],
+    langDir: 'lang/',
+  },
   icon: {
     provider: 'server',
     customCollections: [
@@ -138,11 +159,11 @@ export default defineNuxtConfig({
     ],
     serverBundle: {
       remote: 'github-raw',
-      collections: ['ph', 'simple-icons', 'ic', 'mdi'],
+      collections: ['ph', 'simple-icons', 'ic', 'mdi', 'circle-flags'],
     },
     clientBundle: {
       includeCustomCollections: true,
-      icons: ['ph:monitor-duotone', 'ph:sun-duotone', 'ph:moon-duotone'],
+      icons: ['ph:monitor-duotone', 'ph:sun-duotone', 'ph:moon-duotone', 'circle-flags:us', 'circle-flags:th'],
       scan: true,
     },
   },
