@@ -133,18 +133,20 @@ export default defineNuxtConfig({
     baseUrl: 'https://www.konkamon.live',
     strategy: 'no_prefix',
     defaultLocale: 'th',
+    lazy: true,
     locales: [
       {
         code: 'th',
         language: 'th-TH',
         name: 'ภาษาไทย',
-        file: 'th.ts',
+        file: 'th.json',
+        isCatchallLocale: true,
       },
       {
         code: 'en',
         language: 'en-US',
         name: 'English',
-        file: 'en.ts',
+        file: 'en.json',
       },
     ],
     langDir: 'lang/',
