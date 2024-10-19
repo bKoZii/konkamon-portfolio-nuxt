@@ -2,10 +2,10 @@
   <div>
     <section class="mb-6 flex flex-row items-center justify-between">
       <h2 class="text-lg font-bold text-gray-500 dark:text-gray-400">
-        Blogs ล่าสุด
+        {{ $t('home.latestBlogs.title') }}
       </h2>
       <UButton
-        label="Blogs ทั้งหมด"
+        :label="$t('home.latestBlogs.allBlogsBtn')"
         variant="ghost"
         icon="ph:arrow-right"
         trailing
@@ -22,8 +22,14 @@
             <BlogSkeletonFallback />
           </div>
         </template>
-        <div v-if="status == 'pending'">
-          <LazyBlogAlertLoading />
+        <div v-if="status == 'pending' && !latestBlogs">
+          <LazyUAlert
+            title="Loading"
+            icon="ph:magnifying-glass-duotone"
+            description="กำลังโหลด Blog กรุณารอสักครู่"
+            color="primary"
+            variant="subtle"
+          />
         </div>
         <div v-if="error && status == 'error'">
           <LazyUAlert

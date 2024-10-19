@@ -3,8 +3,8 @@
     class="flex flex-col flex-nowrap items-center justify-between gap-5 rounded-none border-t md:border bg-white px-8 py-4  text-gray-600 dark:text-gray-300 drop-shadow-md sm:flex-row sm:rounded-lg dark:border-neutral-800 dark:bg-neutral-950 dark:drop-shadow-none"
   >
     <div class="flex flex-col items-center text-sm sm:items-start">
-      <span>© 2024 กรกมล ศรีอ่อน</span>
-      <span>ไม่มีลิขสิทธิ์ เพราะเป็น Open Source!</span>
+      <span>© 2024 {{ $t('home.hero.myName') }}</span>
+      <span>{{ $t('home.footer.copyrightText') }}</span>
     </div>
     <div class="flex flex-row gap-5">
       <UTooltip text="Source Code" :popper="{ placement: 'top' }">
