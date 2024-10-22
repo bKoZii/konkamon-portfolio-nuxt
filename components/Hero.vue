@@ -1,14 +1,16 @@
 <template>
   <section class="body-font mb-0 text-gray-600 lg:mb-5">
     <UContainer class="flex flex-col-reverse items-center justify-between gap-5 pt-4 lg:flex-row" :ui="{ padding: 'px-0 lg:px-0', base: 'mx-auto' }">
-      <div class="prose prose-sm prose-h1:mb-0 flex max-w-none flex-col items-center sm:prose-base dark:prose-invert md:mb-0 lg:flex-grow lg:items-start">
+      <div
+        class="prose prose-sm flex max-w-none flex-grow basis-full flex-col items-center justify-center sm:prose-base dark:prose-invert prose-h1:mb-0 lg:items-start"
+      >
         <h1 class="text-3xl font-bold sm:text-4xl">
           {{ $t('home.hero.myName') }}
         </h1>
-        <p class="text-center lg:text-left">
+        <p class="text-center lg:text-left text-balance">
           {{ $t('home.hero.intro') }}
         </p>
-        <div class="flex w-full flex-row items-center justify-center lg:justify-start gap-2">
+        <div class="flex w-full flex-row items-center justify-center gap-2 lg:justify-start">
           <UButton
             icon="ph:file-text-fill"
             :loading="loading"
@@ -28,10 +30,10 @@
           </UButton>
         </div>
       </div>
-      <div class="w-1/3 sm:w-1/4 lg:w-1/3">
+      <div class="basis-1/3">
         <NuxtImg
           src="https://res.cloudinary.com/dqx4sss9s/image/upload/v1724321379/me-rmutsv-square_hhiarv.webp"
-          class="rounded-lg object-contain object-center shadow-md dark:shadow-none"
+          class="aspect-square size-40 rounded-lg shadow-md md:size-48 lg:size-full dark:shadow-none"
           width="100%"
           height="100%"
           alt="Picture of Me, Konkamon Sion"
