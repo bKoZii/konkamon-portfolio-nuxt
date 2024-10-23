@@ -1,10 +1,10 @@
 <template>
   <main>
     <div class="flex flex-col flex-nowrap gap-10">
-      <Hero v-motion-slide-top :delay="200" />
-      <AboutMe v-motion-slide-visible-once-bottom :delay="300" />
-      <HomeTabs v-motion-slide-visible-once-bottom :delay="500" />
-      <LatestBlogs v-motion-slide-visible-once-bottom :delay="300" />
+      <Hero />
+      <AboutMe />
+      <HomeTabs />
+      <LatestBlogs />
     </div>
   </main>
 </template>

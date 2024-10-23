@@ -4,17 +4,15 @@
   </h2>
   <div class="mb-5 flex flex-row flex-wrap gap-1">
     <template v-if="tagItems">
-      <div v-for="(tags, index) in tagItems.data" :key="tags.id">
-        <Motion preset="fadeVisibleOnce" :delay="index * 20">
-          <NuxtLink :to="`/blog/tag/${tags.attributes.name}`"><UBadge
-            variant="subtle"
-            :ui="{ variant: { subtle: 'hover:bg-primary-500 hover:text-white dark:hover:bg-primary-800' } }"
-            color="primary"
-          >
-            {{ tags.attributes.name }}
-          </UBadge>
-          </NuxtLink>
-        </Motion>
+      <div v-for="tags in tagItems.data" :key="tags.id">
+        <NuxtLink :to="`/blog/tag/${tags.attributes.name}`"><UBadge
+          variant="subtle"
+          :ui="{ variant: { subtle: 'hover:bg-primary-500 hover:text-white dark:hover:bg-primary-800' } }"
+          color="primary"
+        >
+          {{ tags.attributes.name }}
+        </UBadge>
+        </NuxtLink>
       </div>
     </template>
   </div>
