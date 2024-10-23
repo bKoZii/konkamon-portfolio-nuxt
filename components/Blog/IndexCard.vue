@@ -3,12 +3,11 @@
     <NuxtLink :to="`/blog/${post.slug}`" prefetch-on="interaction">
       <UCard
         :ui="{
-          base: 'transition-shadow relative h-full flex items-center',
-          ring: 'dark:ring-1 dark:hover:ring-2 dark:hover:ring-ocean-green-700',
+          base: 'transition-all duration-100 relative h-full flex items-center hover:text-primary-500 dark:hover:text-primary-500',
+          ring: 'ring-1 hover:ring-primary-300 dark:hover:ring-2 dark:hover:ring-ocean-green-700',
           background: 'dark:bg-neutral-900',
-          shadow: 'shadow hover:shadow-lg dark:shadow-none dark:hover:shadow-none',
+          shadow: 'shadow hover:shadow-md dark:shadow-none',
           body: {
-            base: 'hover:text-primary prose-h2:hover:text-primary',
             padding: 'p-0 sm:px-0 sm:py-0 md:p-0',
           },
         }"
@@ -40,9 +39,12 @@
                 </UBadge>
               </div>
             </section>
-            <div class="flex flex-row items-center gap-1">
-              <UIcon name="ph:calendar-dots-duotone" class="size-5 text-neutral-600 dark:text-neutral-200" />
-              <UTooltip :text="useFormatDate(post.publishedAt)" :popper="{ arrow: true, strategy: 'absolute' }">
+            <div class="flex flex-row items-center gap-1 text-neutral-800 dark:text-neutral-300">
+              <UIcon name="ph:calendar-dots-duotone" class="size-4" />
+              <UTooltip
+                :text="useFormatDate(post.publishedAt)"
+                :popper="{ arrow: true, strategy: 'absolute', offsetDistance: 15, placement: 'right' }"
+              >
                 <span class="text-xs">{{ `${useRelativeDate(post.publishedAt)}` }}</span>
               </UTooltip>
             </div>
