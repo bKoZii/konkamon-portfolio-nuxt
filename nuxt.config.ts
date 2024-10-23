@@ -98,9 +98,9 @@ export default defineNuxtConfig({
     plugins: [wasm()],
   },
   dayjs: {
-    locales: ['th'],
+    locales: ['th', 'en'],
     defaultLocale: 'th',
-    plugins: ['timezone'],
+    plugins: ['timezone', 'localeData'],
   },
   eslint: {
     config: {
