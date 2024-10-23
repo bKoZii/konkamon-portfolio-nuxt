@@ -10,9 +10,9 @@
 </template>
 
 <script lang="ts" setup>
-preloadComponents('MDC')
+const { t } = useI18n()
 useSeoMeta({
-  title: 'Konkamon Sion',
+  title: () => t('home.hero.myName'),
   description: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
   author: 'Konkamon Sion',
   ogTitle: '%s - Portfolio & Blogs Website',
