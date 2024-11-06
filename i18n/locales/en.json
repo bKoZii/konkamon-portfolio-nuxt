@@ -25,5 +25,13 @@
     "footer": {
       "copyrightText": "No Right Reserved, It's Open Source!"
     }
+  },
+  "project": {
+    "title": "Project",
+    "subtitle": "Collection of my Works"
+  },
+  "whatsInMyBag": {
+    "title": "What's In My Bag?",
+    "subtitle": "Collection of my Hardware, Software, I currently using"
   }
 }

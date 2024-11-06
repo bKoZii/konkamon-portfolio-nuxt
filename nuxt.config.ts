@@ -132,7 +132,7 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: 'https://www.konkamon.live',
     strategy: 'no_prefix',
-    defaultLocale: 'th',
+    defaultLocale: 'en',
     lazy: true,
     locales: [
       {
@@ -149,7 +149,12 @@ export default defineNuxtConfig({
         file: 'en.json',
       },
     ],
-    langDir: 'lang/',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_language',
+      fallbackLocale: 'en',
+    },
+    vueI18n: 'i18n.config.ts',
   },
   icon: {
     provider: 'server',
