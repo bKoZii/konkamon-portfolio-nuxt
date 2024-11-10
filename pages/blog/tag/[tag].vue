@@ -18,7 +18,7 @@
         type="text"
         size="lg"
         icon="ph:magnifying-glass"
-        :placeholder="`ค้นหา Blog ที่มีแท็ก ${tagName}...`"
+        :placeholder="$t('blogs.tagPage.searchPlaceholder', { tagName: tagName })"
       >
         <template #trailing>
           <UKbd>F</UKbd>

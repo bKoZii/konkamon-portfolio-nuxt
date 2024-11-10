@@ -33,5 +33,13 @@
   "whatsInMyBag": {
     "title": "อะไรอยู่ในกระเป๋า?",
     "subtitle": "รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้"
+  },
+  "blogs": {
+    "title": "Blog ของกระผม",
+    "subtitle": "รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ",
+    "searchPlaceholder": "ค้นหา Blog... (พิมพ์ 3 ตัวอักษรขึ้นไป)",
+    "tagPage": {
+      "searchPlaceholder": "ค้นหา Blog ที่มี Tag {tagName}"
+    }
   }
 }

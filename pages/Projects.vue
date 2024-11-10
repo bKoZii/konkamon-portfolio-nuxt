@@ -2,8 +2,8 @@
   <div>
     <div class="flex flex-col flex-nowrap gap-10">
       <PageHeader
-        title="Projects"
-        description="รวมโปรเจค / ชิ้นงาน ต่างๆ ผมเป็นคนที่ชอบทำงาน / โปรเจคอะไรเล็กๆ น้อยๆ โดย List ต่อไปนี้จะเลือกเฉพาะงานที่พอจะนำมาเสนอได้"
+        :title="$t('project.title')"
+        :description="$t('project.subtitle')"
       />
       <section class="flex flex-col gap-3 space-y-3 rounded-lg text-black dark:text-white">
         <div

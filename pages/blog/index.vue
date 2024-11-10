@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="mb-3 flex flex-col items-center justify-between lg:flex-row">
-      <PageHeader title="My Blog" description="รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ" />
+      <PageHeader :title="$t('blogs.title')" :description="$t('blogs.subtitle')" />
       <div class="mt-5 text-xs text-neutral-500 lg:m-0">
         <span>Powered by </span>
         <a
@@ -21,7 +21,7 @@
         type="text"
         size="lg"
         icon="ph:magnifying-glass"
-        placeholder="ค้นหา Blog... (พิมพ์ 3 ตัวอักษรขึ้นไป)"
+        :placeholder="$t('blogs.searchPlaceholder')"
         :ui="{ icon: { trailing: { pointer: '' } } }"
       >
         <template #trailing>

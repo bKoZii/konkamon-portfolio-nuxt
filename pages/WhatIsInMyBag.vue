@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageHeader title="อะไรอยู่ในกระเป๋า?" description="รวม Hardware, Software, อื่นๆ ที่เกี่ยวข้อง ที่ผมใช้งานอยู่ในช่วงนี้" />
+    <PageHeader :title="$t('whatsInMyBag.title')" :description="$t('whatsInMyBag.subtitle')" />
     <div class="flex flex-col flex-nowrap gap-12 mt-10">
       <div>
         <UDivider label="Hardware" class="mb-3" />

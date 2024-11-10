@@ -33,5 +33,13 @@
   "whatsInMyBag": {
     "title": "What's In My Bag?",
     "subtitle": "Collection of my Hardware, Software, I currently using"
+  },
+  "blogs": {
+    "title": "My Blog",
+    "subtitle": "Collection of my Blogs",
+    "searchPlaceholder": "Search Blog... (Type at least 3 characters)",
+    "tagPage": {
+      "searchPlaceholder": "Search Blog in tag {tagName}"
+    }
   }
 }
