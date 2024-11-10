@@ -43,11 +43,11 @@
       <UDivider class="my-6" />
     </section>
 
-    <main v-if="blogsData?.data && blogsData?.meta.pagination.total > 0 && status === 'success'">
+    <main v-if="blogsData?.data && blogsData?.meta.pagination.total >= 1">
       <section v-auto-animate class="flex flex-col flex-nowrap gap-3">
         <ClientOnly fallback-tag="div">
-          <div v-for="post in blogsData.data" :key="post.id">
-              <BlogIndexCard :post="post.attributes" />
+          <div v-for="post in blogsData.data" :key="post.documentId">
+            <BlogIndexCard :post="post" />
           </div>
           <template #fallback>
             <div v-for="fallback in pageSize" :key="fallback">
@@ -82,13 +82,14 @@
 </template>
 
 <script lang="ts" setup>
-import type { Strapi4ResponseMany } from '@nuxtjs/strapi'
+import type { Strapi5ResponseMany } from '@nuxtjs/strapi'
 import type { StrapiBlogs } from '~/types/StrapiBlogs'
 import type { AlertColor, AlertVariant } from '#ui/types'
 
 useMySlugCacheStore()
 preloadComponents('MDC')
 
+const { locale } = useI18n()
 const { find } = useStrapi()
 const loading = ref(false)
 const route = useRoute()
@@ -96,7 +97,7 @@ const searchInput = ref('')
 const debouncedSearchInput = refDebounced(searchInput, 500)
 const currentPage = ref(1)
 const pageSize = 6
-const { data: blogsData } = useNuxtData<Strapi4ResponseMany<StrapiBlogs>>('allBlogsWithSearch')
+const { data: blogsData } = useNuxtData<Strapi5ResponseMany<StrapiBlogs>>('allBlogsWithSearch')
 const constructSearchFilters = (searchInput: string) => {
   const keywords = searchInput.split(' ')
   const filters = keywords.map((keyword) => ({
@@ -108,8 +109,8 @@ const { status, error, refresh } = await useAsyncData(
   'allBlogsWithSearch',
   () =>
     find<StrapiBlogs>('blogs', {
-      fields: ['title', 'subtitle', 'publishedAt', 'slug'],
-      sort: 'publishedAt:desc',
+      fields: ['title', 'subtitle', 'createdAt', 'publishedAt', 'slug'],
+      sort: 'createdAt:desc',
       populate: {
         categories: {
           fields: ['name'],
@@ -118,6 +119,7 @@ const { status, error, refresh } = await useAsyncData(
           fields: ['url'],
         },
       },
+      locale: locale.value,
       pagination: {
         page: currentPage.value,
         pageSize: pageSize,
@@ -126,26 +128,33 @@ const { status, error, refresh } = await useAsyncData(
     }),
   {
     deep: false,
-    watch: [currentPage],
+    lazy: true,
+    watch: [currentPage, locale],
     default() {
-      return blogsData.value
+      return blogsData.value as Strapi5ResponseMany<StrapiBlogs>
     },
   },
 )
+const { start, finish } = useLoadingIndicator()
+
+const handleLoading = async (callback: () => Promise<void>) => {
+  loading.value = true
+  await start()
+  await callback()
+  await finish()
+  loading.value = false
+}
 
 watch(searchInput, () => {
-  loading.value = true
-  currentPage.value = 1
   search()
-  loading.value = false
   if (searchInput.value === '') {
     refresh()
   }
 })
 
-const search = useDebounceFn(() => {
+const search = useDebounceFn(async () => {
   if (searchInput.value.length >= 3 && searchInput.value !== '') {
-    refresh()
+    await handleLoading(refresh)
   }
 }, 500)
 
@@ -167,7 +176,7 @@ defineShortcuts({
 })
 
 const alertConfig = computed(() => {
-  if (status.value === 'pending') {
+  if (status.value === 'pending' && searchInput.value != '') {
     return {
       title: 'Loading',
       description: 'กำลังค้นหา Blog กรุณารอสักครู่',
@@ -178,7 +187,7 @@ const alertConfig = computed(() => {
   } else if (blogsData.value?.meta.pagination.total === 0 && status.value === 'success') {
     return {
       title: 'ไม่พบ Blogs',
-      description: `ไม่พบ Blogs จากคำค้นหา ${debouncedSearchInput.value}`,
+      description: `ไม่พบ Blogs จากคำค้นหา '${debouncedSearchInput.value}'`,
       icon: 'ic:round-search-off',
       color: 'orange' as AlertColor,
       variant: 'subtle' as AlertVariant,
@@ -194,5 +203,4 @@ const alertConfig = computed(() => {
   }
   return null
 })
-preloadRouteComponents('/blog/[slug].vue')
 </script>

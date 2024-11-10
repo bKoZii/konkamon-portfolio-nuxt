@@ -4,16 +4,18 @@ import { parseMarkdown } from '@nuxtjs/mdc/runtime'
 interface RequestBody {
   slug: string
   content: string
+  locale: string
 }
 
 interface CachedItem {
   slug: string
   content: string
+  locale: string
   ast: MDCParserResult
 }
 
 export default defineEventHandler(async (event) => {
-  const cache = useStorage('markdown-cache')
+  const cache = useStorage('konkamon-nuxt-kv')
 
   const getRequestBody = async (): Promise<RequestBody> => {
     try {
@@ -42,8 +44,8 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const { slug, content } = await getRequestBody()
-    const cacheKey = slug
+    const { slug, content, locale } = await getRequestBody()
+    const cacheKey = `${slug}-${locale}`
 
     const cachedItem = await getCachedItem(cacheKey)
     if (cachedItem) {
@@ -58,7 +60,7 @@ export default defineEventHandler(async (event) => {
     }
 
     const ast = await parseMarkdown(content)
-    await setCachedItem(cacheKey, { slug, content, ast })
+    await setCachedItem(cacheKey, { slug, content, locale, ast })
 
     return ast.body
   } catch (error) {

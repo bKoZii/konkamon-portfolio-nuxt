@@ -9,7 +9,8 @@
             class="prose prose-sm prose-neutral max-w-none font-sans tracking-tight md:prose-base dark:prose-invert prose-h1:mb-5 prose-h2:my-4 prose-code:prose-h3:border-dashed prose-code:prose-h3:font-semibold prose-pre:font-semibold prose-li:my-1 dark:prose-pre:border dark:prose-pre:border-neutral-800"
           >
             <div v-if="ast">
-              <MDCRenderer :body="ast" tag="article" />
+              <!-- <MDCRenderer :body="ast" tag="article" /> -->
+              <MDC :value="blogSlug.content" />
             </div>
             <div v-else-if="status == 'pending' || parseStatus == 'pending'">
               <LazyUAlert
@@ -46,6 +47,7 @@
 import type { RouteLocationNormalized } from 'vue-router'
 import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 
+const { locale } = useI18n()
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
 const nuxt = useNuxtApp()
@@ -63,13 +65,15 @@ const { status } = await useAsyncData(
           fields: ['name'],
         },
       },
-    }).then((data) => data.data.attributes),
+      locale: locale.value,
+    }),
   {
     default() {
       return blogSlug.value as StrapiBlogSlug
     },
-    watch: [],
+    watch: [locale],
     deep: false,
+    transform: (data) => data.data,
     getCachedData: (key) => {
       if (nuxt.isHydrating && nuxt.payload.data[key]) {
         return nuxt.payload.data[key]
@@ -84,21 +88,24 @@ const { status } = await useAsyncData(
 
 const { data: ast, status: parseStatus } = await useFetch('/api/mdc', {
   method: 'POST',
-  body: { content: blogSlug.value?.content, slug: blogSlug.value?.slug },
-  cache: 'force-cache',
+  body: { content: blogSlug.value?.content, slug: blogSlug.value?.slug, locale: locale.value },
   deep: false,
+  watch: [locale],
+  keepalive: true,
+  priority: 'high',
+  lazy: true,
 })
 
 useSeoMeta({
-  title: blogSlug.value?.title,
+  title: () => blogSlug.value?.title ?? '',
   ogTitle: '%s [Blogs - Konkamon]',
   titleTemplate: '%s [Blogs - Konkamon]',
-  description: blogSlug.value?.subtitle,
-  ogDescription: blogSlug.value?.subtitle,
-  ogImage: blogSlug.value?.mainImage.data.attributes.url,
+  description: () => blogSlug.value?.subtitle,
+  ogDescription: () => blogSlug.value?.subtitle,
+  ogImage: blogSlug.value?.mainImage.url,
   ogImageType: 'image/png',
-  ogImageAlt: `รูปภาพปกประจำโพสต์ ${blogSlug.value?.title}`,
-  ogImageSecureUrl: blogSlug.value?.mainImage.data.attributes.url,
+  ogImageAlt: `รูปภาพปกประจำโพสต์ ${() => blogSlug.value?.title}`,
+  ogImageSecureUrl: blogSlug.value?.mainImage.url,
   ogUrl: `https://konkamon.live/blog/${blogSlug.value?.slug}`,
   publisher: 'Konkamon Sion',
   robots: {
@@ -107,7 +114,7 @@ useSeoMeta({
   ogType: 'article',
   articlePublishedTime: blogSlug.value?.publishedAt,
   articleModifiedTime: blogSlug.value?.updatedAt,
-  articleTag: blogSlug.value?.categories.data.map((category) => category.attributes.name),
+  articleTag: blogSlug.value?.categories.map((category) => category.name),
   articleAuthor: ['Konkamon Sion'],
   author: 'Konkamon Sion',
 })

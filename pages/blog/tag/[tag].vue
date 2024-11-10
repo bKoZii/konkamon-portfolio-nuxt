@@ -29,8 +29,8 @@
     <section>
       <template v-if="tagBlogs?.meta.pagination.total ?? 0 >= 0">
         <section class="flex flex-col flex-nowrap gap-3">
-          <div v-for="tagBlogItems in tagBlogs?.data" :key="tagBlogItems.id">
-            <BlogIndexCard :post="tagBlogItems.attributes" />
+          <div v-for="tagBlogItems in tagBlogs?.data" :key="tagBlogItems.documentId">
+            <BlogIndexCard :post="tagBlogItems" />
           </div>
         </section>
       </template>
@@ -59,10 +59,12 @@
 </template>
 
 <script lang="ts" setup>
+import type { Strapi5ResponseMany } from '@nuxtjs/strapi'
 import type { RouteLocationNormalized } from 'vue-router'
 import type { StrapiBlogs } from '~/types/StrapiBlogs'
 
 const { find } = useStrapi()
+const { locale } = useI18n()
 const route: RouteLocationNormalized = useRoute()
 const tagName = route.params.tag as string
 const currentPage = ref(1)
@@ -92,14 +94,14 @@ const constructSearchFilters = (searchInput: string) => {
   }))
   return { $and: filters }
 }
-const { data: tagBlogs } = useNuxtData('tagBlogs')
+const { data: tagBlogs } = useNuxtData<Strapi5ResponseMany<StrapiBlogs>>('tagBlogs')
 const nuxt = useNuxtApp()
 const { refresh } = await useAsyncData(
   'tagBlogs',
   () =>
     find<StrapiBlogs>('blogs', {
       filters: constructSearchFilters(searchInput.value),
-      fields: ['title', 'subtitle', 'publishedAt', 'slug'],
+      fields: ['title', 'subtitle', 'createdAt', 'publishedAt', 'slug'],
       sort: 'publishedAt:desc',
       populate: {
         categories: {
@@ -113,9 +115,11 @@ const { refresh } = await useAsyncData(
         page: currentPage.value,
         pageSize: pageSize,
       },
+      locale: locale.value,
     }),
   {
     deep: false,
+    watch: [currentPage, locale],
     getCachedData: (key) => {
       if (nuxt.isHydrating && nuxt.payload.data[key]) {
         return nuxt.payload.data[key]

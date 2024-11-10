@@ -4,13 +4,13 @@
   </h2>
   <div class="mb-5 flex flex-row flex-wrap gap-1">
     <template v-if="tagItems">
-      <div v-for="tags in tagItems.data" :key="tags.id">
-        <NuxtLink :to="`/blog/tag/${tags.attributes.name}`"><UBadge
+      <div v-for="tags in tagItems.data" :key="tags.documentId">
+        <NuxtLink :to="`/blog/tag/${tags}`"><UBadge
           variant="subtle"
           :ui="{ variant: { subtle: 'hover:bg-primary-500 hover:text-white dark:hover:bg-primary-800' } }"
           color="primary"
         >
-          {{ tags.attributes.name }}
+          {{ tags.name }}
         </UBadge>
         </NuxtLink>
       </div>
@@ -19,13 +19,15 @@
 </template>
 
 <script lang="ts" setup>
+import type { Strapi5ResponseMany } from '@nuxtjs/strapi'
+
 interface tagsItem {
-  id: string
+  documentId: string
   name: string
 }
 const nuxt = useNuxtApp()
 const { find } = useStrapi()
-const { data: tagItems } = useNuxtData('tags')
+const { data: tagItems } = useNuxtData<Strapi5ResponseMany<tagsItem>>('tags')
 await useLazyAsyncData('tags', () => find<tagsItem>('categories', { fields: ['name'], sort: 'name:asc' }), {
   default() {
     return tagItems.value

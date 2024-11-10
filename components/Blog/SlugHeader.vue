@@ -14,10 +14,10 @@
             {{ blogSlug.subtitle }}
           </p>
           <section v-if="blogSlug.categories" class="flex flex-row gap-2">
-            <div v-for="(category, index) in blogSlug.categories.data" :key="index">
-              <NuxtLink :to="`/blog/tag/${category.attributes.name}`">
+            <div v-for="category in blogSlug.categories" :key="category.documentId">
+              <NuxtLink :to="`/blog/tag/${category.name}`">
                 <UBadge variant="subtle" :ui="{ variant: { subtle: 'hover:bg-primary-500 hover:text-white dark:hover:bg-primary-800' } }">
-                  {{ category.attributes.name }}
+                  {{ category.name }}
                 </UBadge>
               </NuxtLink>
             </div>
@@ -25,17 +25,17 @@
         </div>
         <div class="not-prose flex flex-col flex-nowrap gap-1">
           <div class="flex flex-row items-center space-x-2">
-            <UIcon name="ph:calendar-dots-duotone" class="size-6" />
+            <UIcon name="ph:calendar-dots-duotone" class="size-5" />
             <p class="m-0 text-sm">
-              {{ `${useFormatDate(blogSlug.publishedAt ?? '')}` }}
+              {{ `${useFormatDate(blogSlug.createdAt ?? '')}` }}
             </p>
           </div>
           <p v-if="blogSlug.updatedAt" class="m-0 text-xs italic text-neutral-500">
-            {{ `แก้ไขล่าสุดเมื่อ: ${useFormatDate(blogSlug.updatedAt ?? '')}` }}
+            {{ `แก้ไขล่าสุดเมื่อ: ${useFormatDate(blogSlug.publishedAt ?? '')}` }}
           </p>
         </div>
       </div>
-      <NuxtImg :src="blogSlug.mainImage.data.attributes.url" class="rounded-lg shadow-lg" />
+      <NuxtImg :src="blogSlug.mainImage.url" class="rounded-lg shadow-lg" />
     </section>
   </div>
 </template>

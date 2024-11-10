@@ -15,7 +15,7 @@
         <div class="flex flex-row items-center gap-4 p-4 md:gap-6">
           <NuxtImg
             v-if="post.blogIcon"
-            :src="`${post.blogIcon.data.attributes.url}`"
+            :src="`${post.blogIcon.url}`"
             width="100%"
             class="w-10 drop-shadow sm:w-16"
             :alt="`ไอคอนประจำโพสต์ ${post.title}`"
@@ -29,13 +29,13 @@
               {{ post.subtitle }}
             </p>
             <section v-if="post.categories" class="my-2 flex flex-row gap-1">
-              <div v-for="category in post.categories.data" :key="category.id">
+              <div v-for="category in post.categories" :key="category.documentId">
                 <UBadge
                   size="xs"
                   color="primary"
                   variant="soft"
                 >
-                  {{ category.attributes.name }}
+                  {{ category.name }}
                 </UBadge>
               </div>
             </section>
