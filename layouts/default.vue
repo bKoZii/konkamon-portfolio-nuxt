@@ -1,9 +1,16 @@
 <template>
   <div>
     <div class="fixed place-items-center w-full min-h-screen -z-10">
-      <div class="relative h-[400px]">
-        <Particles class="absolute top-0" color="#379777" />
+      <div class="relative -z-10 h-screen w-screen">
         <ParticleBackground color="#379777" />
+        <ParticlesBg
+          class="absolute inset-0"
+          :quantity="700"
+          :ease="100"
+          :color=" $colorMode.value == 'dark' ? '#6BC9AA' : '#379777'"
+          :staticity="30"
+          refresh
+        />
       </div>
     </div>
     <MainNavbar />
