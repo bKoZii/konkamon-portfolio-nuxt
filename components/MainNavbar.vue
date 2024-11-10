@@ -134,11 +134,6 @@ const navItems = [
     icon: 'ph:bookmark-duotone',
   },
   {
-    label: 'Resume',
-    to: '/Resume',
-    icon: 'ph:file-text',
-  },
-  {
     label: 'Blog',
     to: '/blog',
     icon: 'ph:book-duotone',
