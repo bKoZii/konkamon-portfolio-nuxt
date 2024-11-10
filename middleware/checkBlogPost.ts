@@ -19,15 +19,15 @@ export default defineNuxtRouteMiddleware(async (to) => {
       fields: ['slug', 'publishedAt'],
     })
 
-    if (!data?.attributes.slug || data.attributes.slug !== slug) {
+    if (!data?.slug || data.slug !== slug) {
       return navigateTo('/blog/')
     }
 
-    if (data.attributes.publishedAt == null) {
+    if (data.publishedAt == null) {
       return createError({ statusCode: 404, message: 'Blog ที่คุณกำลังเข้าถึง ได้ยกเลิกการเผยแพร่แล้ว' })
     }
 
-    slugCacheStore.setSlug(slug, data.attributes.slug)
+    slugCacheStore.setSlug(slug, data.slug)
     return true
   } catch {
     return createError({ statusCode: 404, message: 'ไม่พบ Blog ที่คุณกำลังเข้าถึง' })
