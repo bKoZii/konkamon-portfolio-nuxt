@@ -110,7 +110,7 @@ const { status, error, refresh } = await useAsyncData(
   () =>
     find<StrapiBlogs>('blogs', {
       fields: ['title', 'subtitle', 'createdAt', 'publishedAt', 'slug'],
-      sort: 'createdAt:desc',
+      sort: 'publishedAt:desc',
       populate: {
         categories: {
           fields: ['name'],
@@ -128,7 +128,6 @@ const { status, error, refresh } = await useAsyncData(
     }),
   {
     deep: false,
-    lazy: true,
     watch: [currentPage, locale],
     default() {
       return blogsData.value as Strapi5ResponseMany<StrapiBlogs>
