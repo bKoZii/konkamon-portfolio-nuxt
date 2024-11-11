@@ -97,7 +97,7 @@
                 rounded: '',
                 ring: '',
                 icon: { active: 'text-primary-500 dark:text-primary-400', base: 'size-8' },
-                active: 'text-primary-500 dark:text-primary-400 border-current font-semibold bg-neutral-800',
+                active: 'text-primary-500 dark:text-primary-400 border-current font-semibold bg-primary-100/50 dark:bg-neutral-800',
                 inactive:
                   'border-transparent hover:border-gray-400 dark:hover:border-gray-500 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300',
               }"
