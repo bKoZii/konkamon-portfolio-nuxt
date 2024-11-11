@@ -13,7 +13,6 @@ export default defineNuxtConfig({
     '@nuxtjs/strapi',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@nuxtjs/robots',
     '@nuxtjs/sitemap',
     '@nuxt/eslint',
     '@formkit/auto-animate/nuxt',
@@ -22,6 +21,8 @@ export default defineNuxtConfig({
     'nuxt-shiki',
     '@vueuse/motion/nuxt',
     '@nuxtjs/i18n',
+    '@nuxtjs/robots',
+    '@nuxtjs/google-adsense',
   ],
   ssr: true,
   devtools: {
@@ -34,6 +35,7 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: '%s - Konkamon Sion',
       meta: [
+        { name: 'google-adsense-account', content: process.env.GOOGLE_ADSENSE_ID },
         { name: 'author', content: 'Konkamon Sion' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'charset', content: 'utf-8' },
@@ -115,6 +117,9 @@ export default defineNuxtConfig({
         arrowParens: true,
       },
     },
+  },
+  googleAdsense: {
+    id: process.env.GOOGLE_ADSENSE_ID,
   },
   googleFonts: {
     families: {

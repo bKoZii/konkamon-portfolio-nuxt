@@ -14,6 +14,7 @@
     "@headlessui/tailwindcss": "^0.2.1",
     "@nuxt/image": "^1.8.1",
     "@nuxt/ui": "^2.18.7",
+    "@nuxtjs/google-adsense": "^3.0.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@pinia/nuxt": "0.7.0",
     "@stefanobartoletti/nuxt-social-share": "^1.1.2",

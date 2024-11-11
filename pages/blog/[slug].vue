@@ -36,6 +36,9 @@
           </UCard>
         </article>
       </div>
+      <section id="googleAds" class="mt-5">
+        <Adsbygoogle />
+      </section>
       <template #fallback>
         <LazyBlogSlugFallback />
       </template>
