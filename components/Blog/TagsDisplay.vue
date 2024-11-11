@@ -5,7 +5,7 @@
   <div class="mb-5 flex flex-row flex-wrap gap-1">
     <template v-if="tagItems">
       <div v-for="tags in tagItems.data" :key="tags.documentId">
-        <NuxtLink :to="`/blog/tag/${tags}`"><UBadge
+        <NuxtLink :to="`/blog/tag/${tags.name}`"><UBadge
           variant="subtle"
           :ui="{ variant: { subtle: 'hover:bg-primary-500 hover:text-white dark:hover:bg-primary-800' } }"
           color="primary"
