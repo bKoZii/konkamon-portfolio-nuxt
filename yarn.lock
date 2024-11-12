@@ -1189,7 +1189,7 @@
   optionalDependencies:
     ipx "^2.1.0"
 
-"@nuxt/kit@3.14.159", "@nuxt/kit@^3.10.3", "@nuxt/kit@^3.11.1", "@nuxt/kit@^3.12.2", "@nuxt/kit@^3.13.0", "@nuxt/kit@^3.13.1", "@nuxt/kit@^3.13.2", "@nuxt/kit@^3.14.0", "@nuxt/kit@^3.14.159", "@nuxt/kit@^3.6.5", "@nuxt/kit@^3.7.4", "@nuxt/kit@^3.9.0":
+"@nuxt/kit@3.14.159", "@nuxt/kit@^3.10.3", "@nuxt/kit@^3.11.1", "@nuxt/kit@^3.12.2", "@nuxt/kit@^3.13.0", "@nuxt/kit@^3.13.1", "@nuxt/kit@^3.13.2", "@nuxt/kit@^3.14.0", "@nuxt/kit@^3.14.159", "@nuxt/kit@^3.7.4", "@nuxt/kit@^3.9.0":
   version "3.14.159"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.14.159.tgz#1b856bd5ed75c97e425a0b57dacfe476990a6863"
   integrity sha512-ZqxsCI1NKV/gjfEUUZjMcr82sg0MKYZOuyB6bu9QY5Zr7NGpfIZY/z5Z822AKTmFxKGChnuz9M0UaS4ze6p42g==
@@ -1335,15 +1335,6 @@
     pathe "^1.1.2"
     pkg-types "^1.2.1"
     semver "^7.6.3"
-
-"@nuxtjs/google-adsense@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/google-adsense/-/google-adsense-3.0.0.tgz#e51317f2344e5c7ac9ac13a9564eabf88a8bc406"
-  integrity sha512-fR1rbj6mnfBCWMkVSocPUYX11rGzTwSs1v2sajG6wtXGjXLGRjJSFKSynYHdwO3V4o4xRvtve0W/Db96eiTKmA==
-  dependencies:
-    "@nuxt/kit" "^3.6.5"
-    "@vueuse/core" "^10.4.1"
-    defu "^6.1.2"
 
 "@nuxtjs/google-fonts@^3.2.0":
   version "3.2.0"
@@ -2406,7 +2397,7 @@
     "@vueuse/shared" "11.2.0"
     vue-demi ">=0.14.10"
 
-"@vueuse/core@^10.10.0", "@vueuse/core@^10.4.1":
+"@vueuse/core@^10.10.0":
   version "10.11.1"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-10.11.1.tgz#15d2c0b6448d2212235b23a7ba29c27173e0c2c6"
   integrity sha512-guoy26JQktXPcz+0n3GukWIy/JDNKti9v6VEMu6kV2sYBsWuGiTU8OWdg+ADfUbHg3/3DlqySDe7JmdHrktiww==
