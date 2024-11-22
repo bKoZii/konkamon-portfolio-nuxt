@@ -1,5 +1,5 @@
 <template>
-  <div v-if="latestBlogs">
+  <div>
     <section class="mb-6 flex flex-row items-center justify-between">
       <h2 class="text-lg font-bold text-gray-500 dark:text-gray-400">
         {{ $t('home.latestBlogs.title') }}
@@ -14,7 +14,7 @@
     </section>
     <section v-auto-animate class="flex flex-col flex-nowrap gap-3">
       <ClientOnly>
-        <div v-for="post in latestBlogs.data" :key="post.documentId">
+        <div v-for="post in latestBlogs?.data" :key="post.documentId">
           <BlogIndexCard :post="post" />
         </div>
         <template #fallback>
