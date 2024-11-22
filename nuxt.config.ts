@@ -121,7 +121,7 @@ export default defineNuxtConfig({
       'Albert Sans': {
         wght: [400, 500, 600, 700, 800, 900],
       },
-      'Noto Sans Thai Looped': {
+      'Anuphan': {
         wght: [400, 600, 700, 800],
       },
       'Fira Code': {

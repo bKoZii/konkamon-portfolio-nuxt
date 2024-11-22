@@ -28,8 +28,8 @@ export default <Partial<Config>>{
         },
       },
       fontFamily: {
-        sans: ['Albert Sans', 'Noto Sans Thai Looped', 'system-ui'],
-        mono: ['Fira Code', 'Noto Sans Thai Looped'],
+        sans: ['Albert Sans', 'Anuphan', 'system-ui'],
+        mono: ['Fira Code', 'Anuphan'],
       },
     },
   },
