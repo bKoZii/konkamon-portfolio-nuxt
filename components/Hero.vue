@@ -20,14 +20,6 @@
           >
             Download CV - Thai
           </UButton>
-          <UButton
-            icon="ph:file-text-fill"
-            variant="soft"
-            size="lg"
-            to="/Resume"
-          >
-            Open Resume
-          </UButton>
         </div>
       </div>
       <div class="basis-1/3">
