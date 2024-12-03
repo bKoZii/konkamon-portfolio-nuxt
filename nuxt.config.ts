@@ -102,20 +102,6 @@ export default defineNuxtConfig({
     defaultLocale: 'th',
     plugins: ['timezone', 'localeData'],
   },
-  eslint: {
-    config: {
-      stylistic: {
-        indent: 2,
-        commaDangle: 'always-multiline',
-        quotes: 'single',
-        jsx: false,
-        semi: false,
-        blockSpacing: true,
-        braceStyle: '1tbs',
-        arrowParens: true,
-      },
-    },
-  },
   googleFonts: {
     families: {
       'Albert Sans': {

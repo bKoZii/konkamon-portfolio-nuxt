@@ -1,11 +1,10 @@
+import prettierConfig from '@vue/eslint-config-prettier'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import pluginVue from 'eslint-plugin-vue'
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
-  {
-    files: ['**/*.ts', '**/*.vue', 'eslint.config.mjs'],
-    rules: {
-      'no-console': 'off',
-      'vue/max-attributes-per-line': ['warn', { singleline: 2, multiline: 1 }],
-    },
-  },
+  pluginVue.configs['flat/recommended'],
+  prettierConfig,
+  eslintPluginPrettierRecommended,
 )
