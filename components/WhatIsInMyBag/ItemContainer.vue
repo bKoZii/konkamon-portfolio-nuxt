@@ -4,7 +4,7 @@
       <h3 class="text-sm font-bold sm:text-base dark:text-white">
         {{ data.name }}
       </h3>
-      <p class="text-xs text-gray-500 dark:text-gray-400 sm:text-sm">
+      <p class="text-xs text-gray-500 sm:text-sm dark:text-gray-400">
         {{ data.description }}
       </p>
     </div>

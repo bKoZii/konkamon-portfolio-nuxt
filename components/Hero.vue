@@ -1,13 +1,14 @@
 <template>
   <section class="body-font mb-0 text-gray-600 lg:mb-5">
-    <UContainer class="flex flex-col-reverse items-center justify-between gap-5 pt-4 lg:flex-row" :ui="{ padding: 'px-0 lg:px-0', base: 'mx-auto' }">
+    <UContainer
+      class="flex flex-col-reverse items-center justify-between gap-5 pt-4 lg:flex-row"
+      :ui="{ padding: 'px-0 lg:px-0', base: 'mx-auto' }">
       <div
-        class="prose prose-sm flex max-w-none flex-grow basis-full flex-col items-center justify-center sm:prose-base dark:prose-invert prose-h1:mb-0 lg:items-start"
-      >
+        class="prose prose-sm sm:prose-base dark:prose-invert prose-h1:mb-0 flex max-w-none flex-grow basis-full flex-col items-center justify-center lg:items-start">
         <h1 class="text-3xl font-bold sm:text-4xl">
           {{ $t('home.hero.myName') }}
         </h1>
-        <p class="text-center lg:text-left text-balance">
+        <p class="text-balance text-center lg:text-left">
           {{ $t('home.hero.intro') }}
         </p>
         <div class="flex w-full flex-row items-center justify-center gap-2 lg:justify-start">
@@ -16,8 +17,7 @@
             :loading="loading"
             color="primary"
             size="lg"
-            @click="downloadCV()"
-          >
+            @click="downloadCV()">
             Download CV - Thai
           </UButton>
         </div>
@@ -29,11 +29,9 @@
           width="100%"
           height="100%"
           alt="Picture of Me, Konkamon Sion"
-          aria-label="Picture of Me, Konkamon Sion"
-        />
+          aria-label="Picture of Me, Konkamon Sion" />
       </div>
     </UContainer>
-    <!-- </div> -->
   </section>
 </template>
 

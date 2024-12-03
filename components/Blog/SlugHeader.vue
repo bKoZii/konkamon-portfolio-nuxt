@@ -1,11 +1,14 @@
 <template>
   <div v-if="blogSlug">
     <section class="hidden sm:block">
-      <UBreadcrumb divider="/" :links="[{ label: 'Konkamon\'s Blog', to: '/blog' }, { label: blogSlug.title }]" />
+      <UBreadcrumb
+        divider="/"
+        :links="[{ label: 'Konkamon\'s Blog', to: '/blog' }, { label: blogSlug.title }]" />
       <UDivider class="my-4" />
     </section>
     <section class="flex flex-col gap-5">
-      <div class="prose prose-sm md:prose-base dark:prose-invert prose-h1:m-0 prose-p:my-3 flex max-w-none flex-col gap-6">
+      <div
+        class="prose prose-sm md:prose-base dark:prose-invert prose-h1:m-0 prose-p:my-3 flex max-w-none flex-col gap-6">
         <div>
           <h1 class="text-2xl">
             {{ blogSlug.title }}
@@ -16,7 +19,13 @@
           <section v-if="blogSlug.categories" class="flex flex-row gap-2">
             <div v-for="category in blogSlug.categories" :key="category.documentId">
               <NuxtLink :to="`/blog/tag/${category.name}`">
-                <UBadge variant="subtle" :ui="{ variant: { subtle: 'hover:bg-primary-500 hover:text-white dark:hover:bg-primary-800' } }">
+                <UBadge
+                  variant="subtle"
+                  :ui="{
+                    variant: {
+                      subtle: 'hover:bg-primary-500 dark:hover:bg-primary-800 hover:text-white',
+                    },
+                  }">
                   {{ category.name }}
                 </UBadge>
               </NuxtLink>

@@ -9,8 +9,7 @@
         variant="ghost"
         icon="ph:arrow-right"
         trailing
-        to="/blog"
-      />
+        to="/blog" />
     </section>
     <section v-auto-animate class="flex flex-col flex-nowrap gap-3">
       <ClientOnly>
@@ -28,8 +27,7 @@
             icon="ph:magnifying-glass-duotone"
             description="กำลังโหลด Blog กรุณารอสักครู่"
             color="primary"
-            variant="subtle"
-          />
+            variant="subtle" />
         </div>
         <div v-if="error && status == 'error'">
           <LazyUAlert
@@ -37,8 +35,7 @@
             icon="ph:warning-circle-duotone"
             description="เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้งในภายหลัง"
             color="red"
-            variant="subtle"
-          />
+            variant="subtle" />
         </div>
       </ClientOnly>
     </section>

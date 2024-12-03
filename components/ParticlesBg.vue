@@ -1,15 +1,11 @@
 <template>
-  <div
-    ref="canvasContainerRef"
-    :class="$props.class"
-    aria-hidden="true"
-  >
+  <div ref="canvasContainerRef" :class="$props.class" aria-hidden="true">
     <canvas ref="canvasRef" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useMouse, useDevicePixelRatio } from '@vueuse/core'
+import { useDevicePixelRatio, useMouse } from '@vueuse/core'
 
 type Circle = {
   x: number
@@ -44,8 +40,8 @@ const canvasRef = ref<HTMLCanvasElement | null>(null)
 const canvasContainerRef = ref<HTMLDivElement | null>(null)
 const context = ref<CanvasRenderingContext2D | null>(null)
 const circles = ref<Circle[]>([])
-const mouse = reactive<{ x: number, y: number }>({ x: 0, y: 0 })
-const canvasSize = reactive<{ w: number, h: number }>({ w: 0, h: 0 })
+const mouse = reactive<{ x: number; y: number }>({ x: 0, y: 0 })
+const canvasSize = reactive<{ w: number; h: number }>({ w: 0, h: 0 })
 const { x: mouseX, y: mouseY } = useMouse()
 const { pixelRatio } = useDevicePixelRatio()
 
@@ -127,7 +123,7 @@ function circleParams(): Circle {
   const y = Math.floor(Math.random() * canvasSize.h)
   const translateX = 0
   const translateY = 0
-  const size = Math.floor(Math.random() * 2) + 0.5
+  const size = Math.floor(Math.random() * 1.5) + 1
   const alpha = 0
   const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1))
   const dx = (Math.random() - 0.5) * 0.2
@@ -178,7 +174,13 @@ function drawParticles() {
   }
 }
 
-function remapValue(value: number, start1: number, end1: number, start2: number, end2: number): number {
+function remapValue(
+  value: number,
+  start1: number,
+  end1: number,
+  start2: number,
+  end2: number,
+): number {
   const remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2
   return remapped > 0 ? remapped : 0
 }
@@ -206,11 +208,18 @@ function animate() {
 
     circle.x += circle.dx
     circle.y += circle.dy
-    circle.translateX += (mouse.x / (props.staticity / circle.magnetism) - circle.translateX) / props.ease
-    circle.translateY += (mouse.y / (props.staticity / circle.magnetism) - circle.translateY) / props.ease
+    circle.translateX +=
+      (mouse.x / (props.staticity / circle.magnetism) - circle.translateX) / props.ease
+    circle.translateY +=
+      (mouse.y / (props.staticity / circle.magnetism) - circle.translateY) / props.ease
 
     // circle gets out of the canvas
-    if (circle.x < -circle.size || circle.x > canvasSize.w + circle.size || circle.y < -circle.size || circle.y > canvasSize.h + circle.size) {
+    if (
+      circle.x < -circle.size ||
+      circle.x > canvasSize.w + circle.size ||
+      circle.y < -circle.size ||
+      circle.y > canvasSize.h + circle.size
+    ) {
       // remove the circle from the array
       circles.value.splice(i, 1)
       // create a new circle

@@ -1,6 +1,8 @@
 <template>
   <div class="relative">
-    <div v-if="$props.filename" class="rounded-t-lg bg-neutral-900 p-2 text-xs border border-b border-neutral-600 dark:border-neutral-800 dark:border-b-0 dark:bg-neutral-900">
+    <div
+      v-if="$props.filename"
+      class="rounded-t-lg border border-b border-neutral-600 bg-neutral-900 p-2 text-xs dark:border-b-0 dark:border-neutral-800 dark:bg-neutral-900">
       <div class="flex flex-row flex-nowrap items-center justify-between gap-2 text-white">
         <span class="tracking-normal">{{ $props.filename }}</span>
         <UButton
@@ -11,26 +13,23 @@
           :icon="copied ? 'ph:check-square-duotone' : 'ph:clipboard-duotone'"
           aria-label="Copy Code"
           :label="copied ? 'Copied!' : 'Copy Code'"
-          @click="copy($props.code as string)"
-        />
+          @click="copy($props.code as string)" />
       </div>
     </div>
     <div v-else>
       <UButton
         variant="solid"
-        class="p-1 absolute right-0 m-2"
+        class="absolute right-0 m-2 p-1"
         :color="copied ? 'primary' : 'white'"
         size="xs"
         :icon="copied ? 'ph:check-square-duotone' : 'ph:clipboard-duotone'"
         aria-label="Copy Code"
         :label="copied ? 'Copied!' : 'Copy Code'"
-        @click="copy($props.code as string)"
-      />
+        @click="copy($props.code as string)" />
     </div>
     <div
-      :class="`${$props.class} ${$props.filename ? 'prose-pre:rounded-t-none': 'rounded-t-lg'} !mt-0  tracking-normal m-0 prose-pre:m-0 `"
-      v-html="html"
-    />
+      :class="`${$props.class} ${$props.filename ? 'prose-pre:rounded-t-none' : 'rounded-t-lg'} prose-pre:m-0 m-0 !mt-0 tracking-normal`"
+      v-html="html" />
   </div>
 </template>
 

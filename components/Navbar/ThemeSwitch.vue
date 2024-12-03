@@ -10,8 +10,7 @@
           variant="soft"
           :icon="iconName"
           class="group"
-          @click="switchColorMode"
-        />
+          @click="switchColorMode" />
       </UTooltip>
 
       <template #fallback>

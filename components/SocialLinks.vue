@@ -9,17 +9,13 @@
               :href="data.link"
               target="_blank"
               class="hover:text-primary flex flex-shrink-0 gap-2 text-base sm:text-lg"
-            >{{ data.name }}
+              >{{ data.name }}
               <Icon class="flex-shrink-0" name="ic:baseline-launch" />
             </a>
           </div>
           <span class="flex-grow border-b border-dashed border-gray-300 dark:border-neutral-700" />
           <span class="flex-shrink-0 text-gray-800 dark:text-white">
-            <Icon
-              :name="data.icon"
-              size="28px"
-              mode="svg"
-            />
+            <Icon :name="data.icon" size="28px" mode="svg" />
           </span>
         </div>
       </div>

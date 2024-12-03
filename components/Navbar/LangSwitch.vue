@@ -19,8 +19,7 @@ const toggleLocale = () => {
         class="size-5 drop-shadow"
         :padded="false"
         variant="ghost"
-        @click="toggleLocale"
-      />
+        @click="toggleLocale" />
     </UTooltip>
 
     <template #fallback>

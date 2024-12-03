@@ -5,15 +5,14 @@
       :ui="{
         list: {
           background: 'bg-neutral-100',
-          base: 'border dark:border-none border-neutral-300 drop-shadow-sm h-fit',
+          base: 'h-fit border border-neutral-300 drop-shadow-sm dark:border-none',
           marker: { background: 'bg-primary-500' },
           tab: {
-            active: 'bg-primary-500 text-white dark:bg-gray-900 dark:text-primary-400',
-            inactive: 'text-gray-900 hover:text-primary-500 dark:hover:text-primary-400',
+            active: 'bg-primary-500 dark:text-primary-400 text-white dark:bg-gray-900',
+            inactive: 'hover:text-primary-500 dark:hover:text-primary-400 text-gray-900',
           },
         },
-      }"
-    >
+      }">
       <template #item="{ item }: { item: Item }">
         <UCard :ui="{ base: 'overflow-hidden' }">
           <template #header>
