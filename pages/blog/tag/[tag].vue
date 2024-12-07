@@ -120,14 +120,8 @@ const { refresh } = await useAsyncData(
   {
     deep: false,
     watch: [currentPage, locale],
-    getCachedData: (key) => {
-      if (nuxt.isHydrating && nuxt.payload.data[key]) {
-        return nuxt.payload.data[key]
-      }
-      if (nuxt.static.data[key]) {
-        return nuxt.static.data[key]
-      }
-      return null
+    default() {
+      return tagBlogs.value as Strapi5ResponseMany<StrapiBlogs>
     },
   },
 )

@@ -37,15 +37,6 @@ await useAsyncData(
     default() {
       return tagItems.value
     },
-    getCachedData: (key) => {
-      if (nuxt.isHydrating && nuxt.payload.data[key]) {
-        return nuxt.payload.data[key]
-      }
-      if (nuxt.static.data[key]) {
-        return nuxt.static.data[key]
-      }
-      return null
-    },
     deep: false,
     lazy: true,
   },

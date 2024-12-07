@@ -128,9 +128,10 @@ const { status, error, refresh } = await useAsyncData(
     }),
   {
     deep: false,
+    lazy: true,
     watch: [currentPage, locale],
     default() {
-      return blogsData.value as Strapi5ResponseMany<StrapiBlogs>
+      return blogsData.value
     },
   },
 )
@@ -175,7 +176,7 @@ defineShortcuts({
 })
 
 const alertConfig = computed(() => {
-  if (status.value === 'pending' && searchInput.value != '') {
+  if (status.value === 'pending') {
     return {
       title: 'Loading',
       description: 'กำลังค้นหา Blog กรุณารอสักครู่',

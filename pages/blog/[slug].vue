@@ -69,20 +69,11 @@ const { status } = await useAsyncData(
     }),
   {
     default() {
-      return blogSlug.value as StrapiBlogSlug
+      return blogSlug.value
     },
     watch: [locale],
     deep: false,
     transform: (data) => data.data,
-    getCachedData: (key) => {
-      if (nuxt.isHydrating && nuxt.payload.data[key]) {
-        return nuxt.payload.data[key]
-      }
-      if (nuxt.static.data[key]) {
-        return nuxt.static.data[key]
-      }
-      return null
-    },
   },
 )
 

@@ -43,16 +43,15 @@
 </template>
 
 <script lang="ts" setup>
+import type { Strapi5ResponseMany } from '@nuxtjs/strapi'
 import type { StrapiBlogs } from '~/types/StrapiBlogs'
 
 const { locale } = useI18n()
 const { find } = useStrapi()
 
-const {
-  data: latestBlogs,
-  error,
-  status,
-} = await useLazyAsyncData(
+const { data: latestBlogs } = useNuxtData<Strapi5ResponseMany<StrapiBlogs>>('latestBlogs')
+const { error, status } = await useLazyAsyncData(
+  'latestBlogs',
   async () => {
     return await find<StrapiBlogs>('blogs', {
       fields: ['title', 'subtitle', 'createdAt', 'slug', 'publishedAt', 'updatedAt'],
@@ -80,6 +79,9 @@ const {
     server: false,
     pick: ['data'],
     watch: [locale],
+    default() {
+      return latestBlogs.value
+    },
   },
 )
 preloadRouteComponents('/blog/[slug].vue')
