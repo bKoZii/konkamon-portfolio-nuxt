@@ -44,7 +44,7 @@
                 </UTooltip>
               </div>
               <UDivider orientation="vertical" class="hidden md:block" />
-              <div v-if="post.categories">
+              <div v-if="post.categories" class="flex gap-1">
                 <div v-for="category in post.categories" :key="category.documentId">
                   <NuxtLink :to="`/blog/tag/${category.name}`">
                     <UBadge
