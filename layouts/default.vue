@@ -1,15 +1,18 @@
 <template>
   <div>
+    <div class="absolute top-0 -z-10 h-fit w-full">
+      <ParticleBackground color="#379777" />
+    </div>
     <div class="fixed -z-10 min-h-screen w-full place-items-center">
-      <div class="relative -z-10 h-screen w-screen">
-        <ParticleBackground color="#379777" />
-        <ParticlesBg
-          class="absolute inset-0"
-          :quantity="700"
-          :ease="100"
-          :color="$colorMode.value == 'dark' ? '#6BC9AA' : '#379777'"
-          :staticity="30"
-          refresh />
+      <div class="relative h-screen w-screen">
+        <SparkleBackground
+          background="transparent"
+          :min-size="0.6"
+          :max-size="1.2"
+          :speed="0.7"
+          :particle-density="400"
+          class="absolute top-0 size-full"
+          :particle-color="$colorMode.value == 'dark' ? '#6BC9AA' : '#379777'" />
       </div>
     </div>
     <MainNavbar />
