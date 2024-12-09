@@ -8,19 +8,9 @@
           <section
             class="prose prose-sm prose-neutral max-w-none font-sans tracking-tight md:prose-base dark:prose-invert prose-h1:mb-5 prose-h2:my-4 prose-code:prose-h3:border-dashed prose-code:prose-h3:font-semibold prose-pre:font-semibold prose-li:my-1 dark:prose-pre:border dark:prose-pre:border-neutral-800"
           >
-            <div v-if="ast">
-              <!-- <MDCRenderer :body="ast" tag="article" /> -->
-              <MDC :value="blogSlug.content" />
-            </div>
-            <div v-else-if="status == 'pending' || parseStatus == 'pending'">
-              <LazyUAlert
-                class="not-prose"
-                title="Loading"
-                color="primary"
-                description="กำลังโหลดเนื้อหา กรุณารอสักครู่"
-                variant="subtle"
-              />
-            </div>
+          <div v-if="blogSlug.content">
+            <MDC :value="blogSlug.content" />
+          </div>
           </section>
           <UCard :ui="{ base: 'not-prose', body: { padding: 'p-0 sm:p-3' } }">
             <section class="flex flex-col items-center justify-center space-y-2">
@@ -50,9 +40,8 @@ import type { StrapiBlogSlug } from '~/types/StrapiBlogSlug'
 const { locale } = useI18n()
 const { findOne } = useStrapi()
 const route: RouteLocationNormalized = useRoute()
-const nuxt = useNuxtApp()
 const { data: blogSlug } = useNuxtData<StrapiBlogSlug>('blogSlug')
-const { status } = await useAsyncData(
+await useAsyncData(
   'blogSlug',
   () =>
     findOne<StrapiBlogSlug>('blogs', route.params.slug as string, {
@@ -77,7 +66,11 @@ const { status } = await useAsyncData(
   },
 )
 
-const { data: ast, status: parseStatus } = await useFetch('/api/mdc', {
+/*
+Temporary disable custom Markdown Renderer
+*/
+
+/* const { data: ast, status: parseStatus } = await useFetch('/api/mdc', {
   method: 'POST',
   body: { content: blogSlug.value?.content, slug: blogSlug.value?.slug, locale: locale.value },
   deep: false,
@@ -85,7 +78,7 @@ const { data: ast, status: parseStatus } = await useFetch('/api/mdc', {
   keepalive: true,
   priority: 'high',
   lazy: true,
-})
+}) */
 
 useSeoMeta({
   title: () => blogSlug.value?.title ?? '',
