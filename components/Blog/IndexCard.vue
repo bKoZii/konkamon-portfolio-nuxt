@@ -46,20 +46,15 @@
               <UDivider orientation="vertical" class="hidden md:block" />
               <div v-if="post.categories" class="flex gap-1">
                 <div v-for="category in post.categories" :key="category.documentId">
-                  <NuxtLink :to="`/blog/tag/${category.name}`">
-                    <UBadge
-                      size="xs"
-                      color="primary"
-                      variant="soft"
-                      :ui="{
-                        base: 'z-10 h-full',
-                        variant: {
-                          soft: 'hover:bg-primary-500 dark:hover:bg-primary-800 hover:text-white',
-                        },
-                      }">
-                      {{ category.name }}
-                    </UBadge>
-                  </NuxtLink>
+                  <UBadge
+                    size="xs"
+                    color="primary"
+                    variant="soft"
+                    :ui="{
+                      base: 'z-10 h-full',
+                    }">
+                    {{ category.name }}
+                  </UBadge>
                 </div>
               </div>
             </section>

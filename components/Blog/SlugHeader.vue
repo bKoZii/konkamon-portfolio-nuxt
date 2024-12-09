@@ -18,17 +18,9 @@
           </p>
           <section v-if="blogSlug.categories" class="flex flex-row gap-2">
             <div v-for="category in blogSlug.categories" :key="category.documentId">
-              <NuxtLink :to="`/blog/tag/${category.name}`">
-                <UBadge
-                  variant="subtle"
-                  :ui="{
-                    variant: {
-                      subtle: 'hover:bg-primary-500 dark:hover:bg-primary-800 hover:text-white',
-                    },
-                  }">
-                  {{ category.name }}
-                </UBadge>
-              </NuxtLink>
+              <UBadge variant="subtle">
+                {{ category.name }}
+              </UBadge>
             </div>
           </section>
         </div>
