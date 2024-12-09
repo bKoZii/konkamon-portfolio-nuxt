@@ -25,6 +25,7 @@
     "markdown-it-github-alerts": "^0.3.0",
     "nuxt-typed-router": "^3.7.0",
     "pinia": "^2.2.4",
+    "reka-ui": "^1.0.0-alpha.6",
     "shiki": "^1.22.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss": "^3.4.13",

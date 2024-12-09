@@ -1,33 +1,18 @@
 <template>
-  <h2 class="mb-2 text-2xl font-bold">Tags</h2>
+  <h2 class="mb-2 text-2xl font-bold">Tags:</h2>
   <div class="mb-5 flex flex-row flex-wrap gap-1">
     <template v-if="tagItems">
-      <div v-for="tags in tagItems.data" :key="tags.documentId">
-        <NuxtLink :to="`/blog/tag/${tags.name}`"
-          ><UBadge
-            variant="subtle"
-            :ui="{
-              variant: {
-                subtle: 'hover:bg-primary-500 dark:hover:bg-primary-800 hover:text-white',
-              },
-            }"
-            color="primary">
-            {{ tags.name }}
-          </UBadge>
-        </NuxtLink>
-      </div>
+      <BlogTagsToggler :tags="tagItems.data" @toggled-tags="$emit('toggledTags', $event)" />
     </template>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { Strapi5ResponseMany } from '@nuxtjs/strapi'
+import type { tagsItem } from '~/types/BlogTags'
 
-interface tagsItem {
-  documentId: string
-  name: string
-}
-const nuxt = useNuxtApp()
+defineEmits(['toggledTags'])
+
 const { find } = useStrapi()
 const { data: tagItems } = useNuxtData<Strapi5ResponseMany<tagsItem>>('tags')
 await useAsyncData(

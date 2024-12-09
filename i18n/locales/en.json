@@ -38,7 +38,7 @@
     "title": "My Blog",
     "subtitle": "Collection of my Blogs",
     "searchPlaceholder": "Search Blog... (Type at least 3 characters)",
-    "tagPage": {
+    "withTag": {
       "searchPlaceholder": "Search Blog in tag {tagName}"
     }
   }

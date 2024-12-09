@@ -8,8 +8,9 @@
           href="https://strapi.io/"
           target="_blank"
           rel="noopener noreferrer"
-          class="font-bold text-indigo-700 dark:text-indigo-500"
-        > Strapi </a>
+          class="font-bold text-indigo-700 dark:text-indigo-500">
+          Strapi
+        </a>
       </div>
     </div>
 
@@ -21,25 +22,28 @@
         type="text"
         size="lg"
         icon="ph:magnifying-glass"
-        :placeholder="$t('blogs.searchPlaceholder')"
-        :ui="{ icon: { trailing: { pointer: '' } } }"
-      >
+        :disabled="
+          toggledTags.length != 0 && blogsData?.meta.pagination.total === 0 && !searchInput
+        "
+        :placeholder="
+          toggledTags.length != 0
+            ? $t('blogs.withTag.searchPlaceholder', { tagName: toggledTags.toString() })
+            : $t('blogs.searchPlaceholder')
+        "
+        :ui="{ icon: { trailing: { pointer: '' } } }">
         <template #trailing>
-          <UKbd v-show="searchInput == ''">
-            F
-          </UKbd>
+          <UKbd v-show="searchInput == ''"> F </UKbd>
           <UButton
             v-show="searchInput !== ''"
             color="white"
             variant="ghost"
             icon="ic:baseline-close"
-            @click="searchInput = ''"
-          />
+            @click="searchInput = ''" />
         </template>
       </UInput>
     </div>
     <section v-if="!route.query.search || !error">
-      <BlogTagsDisplay />
+      <BlogTagsDisplay @toggled-tags="(tag) => (toggledTags = tag)" />
       <UDivider class="my-6" />
     </section>
 
@@ -64,8 +68,7 @@
           show-first
           show-last
           :first-button="{ icon: 'ph:arrow-arc-left', label: 'First', color: 'white' }"
-          :last-button="{ icon: 'ph:arrow-arc-right', label: 'Last', color: 'white' }"
-        />
+          :last-button="{ icon: 'ph:arrow-arc-right', label: 'Last', color: 'white' }" />
       </section>
     </main>
     <div v-else>
@@ -75,8 +78,7 @@
         :description="alertConfig.description"
         :icon="alertConfig.icon"
         :color="alertConfig.color"
-        :variant="alertConfig.variant"
-      />
+        :variant="alertConfig.variant" />
     </div>
   </div>
 </template>
@@ -98,13 +100,21 @@ const debouncedSearchInput = refDebounced(searchInput, 500)
 const currentPage = ref(1)
 const pageSize = 6
 const { data: blogsData } = useNuxtData<Strapi5ResponseMany<StrapiBlogs>>('allBlogsWithSearch')
-const constructSearchFilters = (searchInput: string) => {
-  const keywords = searchInput.split(' ')
-  const filters = keywords.map((keyword) => ({
+const toggledTags = ref<string[]>([])
+
+const constructFilters = computed(() => {
+  const searchKeywords = searchInput.value.split(' ')
+  const searchFilters = searchKeywords.map((keyword) => ({
     $or: [{ title: { $containsi: keyword } }, { subtitle: { $containsi: keyword } }],
   }))
-  return { $and: filters }
-}
+
+  const tagFilters = toggledTags.value.map((tag) => ({
+    $or: [{ categories: { name: { $containsi: tag } } }],
+  }))
+
+  return { $and: [...searchFilters, ...tagFilters] }
+})
+
 const { status, error, refresh } = await useAsyncData(
   'allBlogsWithSearch',
   () =>
@@ -124,12 +134,12 @@ const { status, error, refresh } = await useAsyncData(
         page: currentPage.value,
         pageSize: pageSize,
       },
-      filters: constructSearchFilters(searchInput.value),
+      filters: constructFilters.value,
     }),
   {
     deep: false,
     lazy: true,
-    watch: [currentPage, locale],
+    watch: [currentPage, locale, toggledTags],
     default() {
       return blogsData.value
     },
@@ -183,6 +193,14 @@ const alertConfig = computed(() => {
       icon: 'ph:magnifying-glass-duotone',
       color: 'primary' as AlertColor,
       variant: 'soft' as AlertVariant,
+    }
+  } else if (toggledTags.value) {
+    return {
+      title: 'ไม่พบ Blogs',
+      description: `ไม่พบ Blogs ที่มีแท็กทั้งหมดดังนี้ '${toggledTags.value.toString()}'`,
+      icon: 'ic:round-search-off',
+      color: 'orange' as AlertColor,
+      variant: 'subtle' as AlertVariant,
     }
   } else if (blogsData.value?.meta.pagination.total === 0 && status.value === 'success') {
     return {

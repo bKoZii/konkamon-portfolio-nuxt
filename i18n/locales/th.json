@@ -38,7 +38,7 @@
     "title": "Blog ของกระผม",
     "subtitle": "รวม Blog ต่างๆ ทั้งด้าน IT, Tips และอื่นๆ",
     "searchPlaceholder": "ค้นหา Blog... (พิมพ์ 3 ตัวอักษรขึ้นไป)",
-    "tagPage": {
+    "withTag": {
       "searchPlaceholder": "ค้นหา Blog ที่มี Tag {tagName}"
     }
   }
