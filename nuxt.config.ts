@@ -88,11 +88,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-07-04',
   nitro: {
     compressPublicAssets: true,
-    storage: {
-      data: {
-        driver: 'vercelKV',
-      },
-    },
   },
   vite: {
     plugins: [wasm()],
