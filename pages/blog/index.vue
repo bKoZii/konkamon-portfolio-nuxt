@@ -139,9 +139,9 @@ const { start, finish } = useLoadingIndicator()
 
 const handleLoading = async (callback: () => Promise<void>) => {
   loading.value = true
-  await start()
-  await callback()
-  await finish()
+  start()
+  callback()
+  finish()
   loading.value = false
 }
 
