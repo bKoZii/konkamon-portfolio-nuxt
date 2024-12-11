@@ -52,8 +52,8 @@ const { find } = useStrapi()
 const { data: latestBlogs } = useNuxtData<Strapi5ResponseMany<StrapiBlogs>>('latestBlogs')
 const { error, status } = await useLazyAsyncData(
   'latestBlogs',
-  async () => {
-    return await find<StrapiBlogs>('blogs', {
+  () =>
+    find<StrapiBlogs>('blogs', {
       fields: ['title', 'subtitle', 'createdAt', 'slug', 'publishedAt', 'updatedAt'],
       sort: 'publishedAt:desc',
       locale: locale.value,
@@ -65,15 +65,11 @@ const { error, status } = await useLazyAsyncData(
         categories: {
           fields: ['name'],
         },
-        mainImage: {
-          fields: ['url'],
-        },
         blogIcon: {
           fields: ['url'],
         },
       },
-    })
-  },
+    }),
   {
     deep: false,
     server: false,
@@ -84,5 +80,4 @@ const { error, status } = await useLazyAsyncData(
     },
   },
 )
-preloadRouteComponents('/blog/[slug].vue')
 </script>
