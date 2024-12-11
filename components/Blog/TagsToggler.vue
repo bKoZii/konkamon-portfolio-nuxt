@@ -25,7 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-import type { Strapi5ResponseMany } from '@nuxtjs/strapi'
 import { ToggleGroupItem, ToggleGroupRoot } from 'reka-ui'
 import type { tagsItem } from '~/types/BlogTags'
 
@@ -35,16 +34,4 @@ defineProps<{
 
 const emit = defineEmits(['toggledTags'])
 const toggledTags = ref([])
-const { find } = useStrapi()
-const { data: tagItems } = useNuxtData<Strapi5ResponseMany<tagsItem>>('tags')
-await useLazyAsyncData(
-  'tags',
-  () => find<tagsItem>('categories', { fields: ['name'], sort: 'name:asc' }),
-  {
-    deep: false,
-    default() {
-      return tagItems.value
-    },
-  },
-)
 </script>
