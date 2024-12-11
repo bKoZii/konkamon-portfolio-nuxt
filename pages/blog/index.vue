@@ -194,7 +194,7 @@ const alertConfig = computed(() => {
       color: 'primary' as AlertColor,
       variant: 'soft' as AlertVariant,
     }
-  } else if (toggledTags.value) {
+  } else if (toggledTags.value && !searchInput.value) {
     return {
       title: 'ไม่พบ Blogs',
       description: `ไม่พบ Blogs ที่มีแท็กทั้งหมดดังนี้ '${toggledTags.value.toString()}'`,
@@ -202,7 +202,7 @@ const alertConfig = computed(() => {
       color: 'orange' as AlertColor,
       variant: 'subtle' as AlertVariant,
     }
-  } else if (blogsData.value?.meta.pagination.total === 0 && status.value === 'success') {
+  } else if (blogsData.value?.meta.pagination.total === 0 && status.value === 'success' && searchInput.value && toggledTags.value.length === 0) {
     return {
       title: 'ไม่พบ Blogs',
       description: `ไม่พบ Blogs จากคำค้นหา '${debouncedSearchInput.value}'`,
@@ -216,6 +216,14 @@ const alertConfig = computed(() => {
       description: 'เกิดข้อผิดพลาดในการโหลดข้อมูล กรุณาลองใหม่อีกครั้งในภายหลัง',
       icon: 'ph:magnifying-glass-duotone',
       color: 'red' as AlertColor,
+      variant: 'subtle' as AlertVariant,
+    }
+  } else if (searchInput.value && toggledTags.value) {
+    return {
+      title: 'ไม่พบ Blogs',
+      description: `ไม่พบ Blogs จากคำค้นหา ${debouncedSearchInput.value} ในแท็ก '${toggledTags.value.toString()}'`,
+      icon: 'ic:round-search-off',
+      color: 'orange' as AlertColor,
       variant: 'subtle' as AlertVariant,
     }
   }
