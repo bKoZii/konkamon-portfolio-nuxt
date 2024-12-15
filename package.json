@@ -41,7 +41,7 @@
     "@inspira-ui/plugins": "^0.0.1",
     "@nuxt/eslint": "0.6.1",
     "@nuxtjs/i18n": "^9.0.0",
-    "@nuxtjs/mdc": "^0.9.0",
+    "@nuxtjs/mdc": "0.10.0",
     "@nuxtjs/robots": "^4.1.11",
     "@nuxtjs/sitemap": "6.1.4",
     "@nuxtjs/strapi": "^2.0.0",
