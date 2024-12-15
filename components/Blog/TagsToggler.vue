@@ -3,7 +3,7 @@
     <ToggleGroupRoot
       v-model="toggledTags"
       type="multiple"
-      class="flex gap-1 rounded-lg shadow-sm"
+      class="flex flex-wrap gap-1 rounded-lg shadow-sm"
       @update:model-value="$emit('toggledTags', toggledTags)">
       <div v-for="tags in $props.tags" :key="tags.documentId">
         <ToggleGroupItem :value="tags.name" :as-child="true">
