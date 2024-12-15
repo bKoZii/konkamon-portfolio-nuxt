@@ -97,11 +97,11 @@ const navItems = [
     to: '/WhatIsInMyBag',
     icon: 'ph:backpack-duotone',
   },
-  {
+  /* {
     label: 'Bookmarks',
     to: '/Bookmarks',
     icon: 'ph:bookmark-duotone',
-  },
+  }, */
   {
     label: 'Blog',
     to: '/blog',

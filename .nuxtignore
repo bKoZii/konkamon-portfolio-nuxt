@@ -1,1 +1,3 @@
 /server/api/mdc.post.ts
+/pages/Bookmarks.vue
+/components/Bookmark/*.vue
