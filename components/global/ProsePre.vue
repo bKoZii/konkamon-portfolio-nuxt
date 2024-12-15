@@ -27,9 +27,9 @@
         :label="copied ? 'Copied!' : 'Copy Code'"
         @click="copy($props.code as string)" />
     </div>
-    <div
-      :class="`${$props.class} ${$props.filename ? 'prose-pre:rounded-t-none' : 'rounded-t-lg'} prose-pre:m-0 m-0 !mt-0 tracking-normal`"
-      v-html="html" />
+    <div :class="`${$props.filename ? 'prose-pre:rounded-t-none' : 'prose-pre:rounded-t-lg'} `">
+      <pre :class="`${$props.class} prose-pre:m-0 m-0 !mt-0 tracking-normal`"><MDCSlot /></pre>
+    </div>
   </div>
 </template>
 
@@ -38,7 +38,7 @@ import type { BundledLanguage } from 'shiki'
 
 const toast = useToast()
 
-const props = defineProps({
+defineProps({
   code: {
     type: String,
     default: '',
@@ -64,8 +64,6 @@ const props = defineProps({
     default: null,
   },
 })
-
-const html = await useShikiHighlighted(props.code, { lang: props.language })
 
 const { copy, copied } = useClipboard()
 

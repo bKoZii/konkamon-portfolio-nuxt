@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     '@formkit/auto-animate/nuxt',
     '@nuxtjs/mdc',
     '@vueuse/nuxt',
-    'nuxt-shiki',
+    // 'nuxt-shiki',
     '@vueuse/motion/nuxt',
     '@nuxtjs/i18n',
   ],
@@ -52,7 +52,12 @@ export default defineNuxtConfig({
     name: 'เว็บไซต์ Portfolio & Blogs ของนาย กรกมล ศรีอ่อน - สร้างด้วย Nuxt 3 + TailwindCSS.',
   },
   mdc: {
-    highlight: false,
+    highlight: {
+      highlighter: 'shiki',
+      theme: 'houston',
+      langs: ['javascript', 'typescript', 'vue', 'shell', 'php'],
+      themes: ['houston']
+    },
     headings: {
       anchorLinks: false,
     },
@@ -163,11 +168,11 @@ export default defineNuxtConfig({
     allow: ['/', '/blog/'],
     disallow: ['/api'],
   },
-  shiki: {
+/*   shiki: {
     bundledLangs: ['javascript', 'typescript', 'vue', 'shell', 'php'],
     bundledThemes: ['houston'],
     defaultTheme: 'houston',
-  },
+  }, */
   sitemap: {
     sources: ['/api/sitemap/urls'],
     excludeAppSources: ['nuxt:route-rules'],
